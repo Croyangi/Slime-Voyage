@@ -159,6 +159,28 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
         _movementVars.deccelerationTimer = time;
     }
 
+    public void SetInputStall(bool state)
+    {
+        if (state)
+        {
+            //// Subscribes to Unity's input system
+            playerInput.BaseSlime.Movement.performed += OnMovementPerformed;
+            playerInput.BaseSlime.Movement.canceled += OnMovementCancelled;
+            playerInput.BaseSlime.Jump.performed += OnJumpPerformed;
+            playerInput.BaseSlime.Jump.canceled += OnJumpCancelled;
+        } else
+        {
+            // Resets player movement
+            _movementVars.rawInputMovement = Vector2.zero;
+
+            //// Unubscribes to Unity's input system
+            playerInput.BaseSlime.Movement.performed -= OnMovementPerformed;
+            playerInput.BaseSlime.Movement.canceled -= OnMovementCancelled;
+            playerInput.BaseSlime.Jump.performed -= OnJumpPerformed;
+            playerInput.BaseSlime.Jump.canceled -= OnJumpCancelled;
+        }
+    }
+
     private void DecellerationStall()
     {
         _movementVars.decceleration = 1f;

@@ -160,12 +160,12 @@ public class BaseSlime_Animator : MonoBehaviour
             currentHighestImpactVelocityY = newImpactVelocity;
         }
 
-        if (currentHighestImpactVelocityY < -1 && currentHighestImpactVelocityY > -30 && _stateHandler.isGrounded) 
+        if (currentHighestImpactVelocityY < -1 && currentHighestImpactVelocityY > -30 && _stateHandler.isGrounded && _rigidBody2D.velocity.y <= 0) 
         {
             currentHighestImpactVelocityY = 0;
-            currentPriorityTime = 0.05f;
+            currentPriorityTime = 0.07f;
             ChangeAnimationState(BASESLIME_LIGHTSPLAT);
-        } else if (currentHighestImpactVelocityY <= -30 && _stateHandler.isGrounded)
+        } else if (currentHighestImpactVelocityY <= -30 && _stateHandler.isGrounded && _rigidBody2D.velocity.y <= 0)
         {
             currentHighestImpactVelocityY = 0;
             currentPriorityTime = 0.2f;

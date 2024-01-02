@@ -160,6 +160,34 @@
             ]
         },
         {
+            "name": "Interact",
+            "id": "dc04e20b-14d2-4513-8143-da117bb65ed0",
+            "actions": [
+                {
+                    "name": "Interact1",
+                    "type": "Value",
+                    "id": "42334211-fe91-4738-85dc-36076c16f01b",
+                    "expectedControlType": "Integer",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "830720a2-07a8-4f81-8380-bd4f6a296962",
+                    "path": "<Keyboard>/X",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
             "name": "GhostSlime",
             "id": "81386914-8f61-44dc-b462-e7fc35bae6ff",
             "actions": [

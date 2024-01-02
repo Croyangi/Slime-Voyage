@@ -66,6 +66,11 @@ public class Manager_PlayerState : MonoBehaviour, IDataPersistence
 
     }
 
+    public void SetInputStall(bool state)
+    {
+        player.GetComponent<IMovementProcessor>().SetInputStall(state);
+    }
+
     public void InitiatePlayerDeath()
     {
         isDead = true;

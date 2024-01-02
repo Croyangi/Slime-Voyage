@@ -51,6 +51,25 @@ public class GhostSlime_Movement : MonoBehaviour, IMovementProcessor
         _movementVars.deccelerationTimer = time;
     }
 
+    public void SetInputStall(bool state)
+    {
+        if (state)
+        {
+            //// Subscribes to Unity's input system
+            playerInput.GhostSlime.Movement.performed += OnMovementPerformed;
+            playerInput.GhostSlime.Movement.canceled += OnMovementCancelled;
+        }
+        else
+        {
+            // Resets player movement
+            _movementVars.rawInputMovement = Vector2.zero;
+
+            //// Unubscribes to Unity's input system
+            playerInput.GhostSlime.Movement.performed -= OnMovementPerformed;
+            playerInput.GhostSlime.Movement.canceled -= OnMovementCancelled;
+        }
+    }
+
     private void OnMovementPerformed(InputAction.CallbackContext value)
     {
         _movementVars.rawInputMovement = value.ReadValue<Vector2>();
