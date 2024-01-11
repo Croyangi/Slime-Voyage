@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class Manager_PlayerState : MonoBehaviour, IDataPersistence
 {
     [Header("References")]
-    [SerializeField] private GameObject player;
+    [SerializeField] public GameObject player;
 
     [Header("Variables")]
     public bool isDead;

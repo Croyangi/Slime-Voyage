@@ -44,14 +44,120 @@ SpriteAtlas:
       enableAlphaDilation: 0
     secondaryTextureSettings: {}
     variantMultiplier: 1
-    packables: []
+    packables:
+    - {fileID: 2800000, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
-    packedSpriteRenderDataKeys: []
+    packedSpriteRenderDataKeys:
+    - 0e0e999c38406c54986248e14acfa35b: -1403441660
+    - 0e0e999c38406c54986248e14acfa35b: -875043355
+    - 0e0e999c38406c54986248e14acfa35b: 1928012466
+    - 0e0e999c38406c54986248e14acfa35b: -648138899
+    - 0e0e999c38406c54986248e14acfa35b: -1219329469
+    - 0e0e999c38406c54986248e14acfa35b: -1705656416
+    - 0e0e999c38406c54986248e14acfa35b: 1054076844
+    - 0e0e999c38406c54986248e14acfa35b: -413342521
+    - 0e0e999c38406c54986248e14acfa35b: 382226197
+    - 0e0e999c38406c54986248e14acfa35b: -539429614
+    - 0e0e999c38406c54986248e14acfa35b: 883057756
+    - 0e0e999c38406c54986248e14acfa35b: 1274346904
+    - 0e0e999c38406c54986248e14acfa35b: -212496748
+    - 0e0e999c38406c54986248e14acfa35b: 1011264450
+    - 0e0e999c38406c54986248e14acfa35b: 2012367622
+    - 0e0e999c38406c54986248e14acfa35b: 1747033250
+    - 0e0e999c38406c54986248e14acfa35b: -62904332
+    - 0e0e999c38406c54986248e14acfa35b: 864440363
+    - 0e0e999c38406c54986248e14acfa35b: -1050906139
+    - 0e0e999c38406c54986248e14acfa35b: 1798477253
+    - 0e0e999c38406c54986248e14acfa35b: -1906611202
+    - 0e0e999c38406c54986248e14acfa35b: -274891067
+    - 0e0e999c38406c54986248e14acfa35b: -1189440059
+    - 0e0e999c38406c54986248e14acfa35b: 964115759
+    - 0e0e999c38406c54986248e14acfa35b: -1594438488
+    - 0e0e999c38406c54986248e14acfa35b: -1507541796
+    - 0e0e999c38406c54986248e14acfa35b: -370054730
+    - 0e0e999c38406c54986248e14acfa35b: 1359316756
+    - 0e0e999c38406c54986248e14acfa35b: 2061155354
+    - 0e0e999c38406c54986248e14acfa35b: 402730940
+    - 0e0e999c38406c54986248e14acfa35b: 561953961
+    - 0e0e999c38406c54986248e14acfa35b: 1167981834
+    - 0e0e999c38406c54986248e14acfa35b: -1947080007
+    - 0e0e999c38406c54986248e14acfa35b: 1198336542
+    - 0e0e999c38406c54986248e14acfa35b: -1910009305
   m_MasterAtlas: {fileID: 0}
-  m_PackedSprites: []
-  m_PackedSpriteNamesToIndex: []
+  m_PackedSprites:
+  - {fileID: -1403441660, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  - {fileID: -875043355, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  - {fileID: 1928012466, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  - {fileID: -648138899, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  - {fileID: -1219329469, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  - {fileID: -1705656416, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  - {fileID: 1054076844, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  - {fileID: -413342521, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  - {fileID: 382226197, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  - {fileID: -539429614, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  - {fileID: 883057756, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  - {fileID: 1274346904, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  - {fileID: -212496748, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  - {fileID: 1011264450, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  - {fileID: 2012367622, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  - {fileID: 1747033250, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  - {fileID: -62904332, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  - {fileID: 864440363, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  - {fileID: -1050906139, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  - {fileID: 1798477253, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  - {fileID: -1906611202, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  - {fileID: -274891067, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  - {fileID: -1189440059, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  - {fileID: 964115759, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  - {fileID: -1594438488, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  - {fileID: -1507541796, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  - {fileID: -370054730, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  - {fileID: 1359316756, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  - {fileID: 2061155354, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  - {fileID: 402730940, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  - {fileID: 561953961, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  - {fileID: 1167981834, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  - {fileID: -1947080007, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  - {fileID: 1198336542, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  - {fileID: -1910009305, guid: 0e0e999c38406c54986248e14acfa35b, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Warehouse_Decoration_WoodenTiles_31
+  - Warehouse_Decoration_WoodenTiles_30
+  - Warehouse_Decoration_WoodenTiles_33
+  - Warehouse_Decoration_WoodenTiles_32
+  - Warehouse_Decoration_WoodenTiles_8
+  - Warehouse_Decoration_WoodenTiles_34
+  - Warehouse_Decoration_WoodenTiles_9
+  - Warehouse_Decoration_WoodenTiles_19
+  - Warehouse_Decoration_WoodenTiles_0
+  - Warehouse_Decoration_WoodenTiles_18
+  - Warehouse_Decoration_WoodenTiles_1
+  - Warehouse_Decoration_WoodenTiles_2
+  - Warehouse_Decoration_WoodenTiles_3
+  - Warehouse_Decoration_WoodenTiles_4
+  - Warehouse_Decoration_WoodenTiles_5
+  - Warehouse_Decoration_WoodenTiles_13
+  - Warehouse_Decoration_WoodenTiles_6
+  - Warehouse_Decoration_WoodenTiles_12
+  - Warehouse_Decoration_WoodenTiles_28
+  - Warehouse_Decoration_WoodenTiles_7
+  - Warehouse_Decoration_WoodenTiles_11
+  - Warehouse_Decoration_WoodenTiles_29
+  - Warehouse_Decoration_WoodenTiles_10
+  - Warehouse_Decoration_WoodenTiles_26
+  - Warehouse_Decoration_WoodenTiles_17
+  - Warehouse_Decoration_WoodenTiles_27
+  - Warehouse_Decoration_WoodenTiles_16
+  - Warehouse_Decoration_WoodenTiles_24
+  - Warehouse_Decoration_WoodenTiles_15
+  - Warehouse_Decoration_WoodenTiles_25
+  - Warehouse_Decoration_WoodenTiles_14
+  - Warehouse_Decoration_WoodenTiles_22
+  - Warehouse_Decoration_WoodenTiles_23
+  - Warehouse_Decoration_WoodenTiles_20
+  - Warehouse_Decoration_WoodenTiles_21
   m_RenderDataMap: {}
   m_Tag: SpriteAtlas
   m_IsVariant: 0

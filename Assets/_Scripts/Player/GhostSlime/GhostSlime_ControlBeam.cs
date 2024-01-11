@@ -148,13 +148,13 @@ public class GhostSlime_ControlBeam : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red; // Set the color for the Gizmos line
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red; // Set the color for the Gizmos line
 
-        // Draw a line to visualize the raycast in the Scene view
-        Gizmos.DrawLine(controlBeam_raycastAnchor.transform.position, mousePosition);
-    }
+    //    // Draw a line to visualize the raycast in the Scene view
+    //    Gizmos.DrawLine(controlBeam_raycastAnchor.transform.position, mousePosition);
+    //}
 
     private void ControlBeamRaycast()
     {

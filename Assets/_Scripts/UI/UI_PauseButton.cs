@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
@@ -9,6 +10,35 @@ public class UI_PauseButton : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject pauseMenuCanvas;
+
+    [Header("Technical References")]
+    [SerializeField] private PlayerInput playerInput = null;
+
+    private void Awake()
+    {
+        playerInput = new PlayerInput(); // Instantiate new Unity's Input System
+    }
+
+    private void OnEnable()
+    {
+        //// Subscribes to Unity's input system
+        playerInput.Interact.Pause.performed += OnInteractPerformed;
+        playerInput.Enable();
+    }
+
+    private void OnDestroy()
+    {
+        //// Unubscribes to Unity's input system
+        playerInput.Interact.Pause.performed -= OnInteractPerformed;
+        playerInput.Disable();
+
+        Time.timeScale = 1;
+    }
+
+    private void OnInteractPerformed(InputAction.CallbackContext value)
+    {
+        TogglePauseButtonPress();
+    }
 
     public void TogglePauseButtonPress()
     {
@@ -18,6 +48,7 @@ public class UI_PauseButton : MonoBehaviour
             ResumeGame();
         } else
         {
+            Manager_DialogueHandler.instance.EndDialogue();
             EnablePauseScreen();
             PauseGame();
         }
@@ -41,10 +72,5 @@ public class UI_PauseButton : MonoBehaviour
     private void DisablePauseScreen()
     {
         pauseMenuCanvas.SetActive(false);
-    }
-
-    private void OnDestroy()
-    {
-        Time.timeScale = 1;   
     }
 }

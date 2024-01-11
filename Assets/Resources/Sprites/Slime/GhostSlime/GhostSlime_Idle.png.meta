@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9b31828ebaac350489c21e521199da29
+guid: afeeb4f466ecc7d4caa9cb3f41398036
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,6 +64,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -75,6 +77,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -87,18 +90,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Server
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -111,6 +103,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -121,9 +127,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3
-        y: 7
-        width: 41
-        height: 22
+        y: 3
+        width: 26
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,8 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: adac28d86a8018d4abe511e9ea54661d
-      internalID: 1065642920
+      spriteID: badf7534f10b23541984172cbc2bc05c
+      internalID: -1605215706
       vertices: []
       indices: 
       edges: []
@@ -141,10 +147,10 @@ TextureImporter:
       name: GhostSlime_Idle_1
       rect:
         serializedVersion: 2
-        x: 52
-        y: 7
-        width: 40
-        height: 22
+        x: 35
+        y: 2
+        width: 26
+        height: 36
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,8 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e771661350923e4fb070ff575b24169
-      internalID: 1919076390
+      spriteID: 870a921a8af122940abfae15d51b4f65
+      internalID: -1604096179
       vertices: []
       indices: 
       edges: []
@@ -162,10 +168,10 @@ TextureImporter:
       name: GhostSlime_Idle_2
       rect:
         serializedVersion: 2
-        x: 100
-        y: 8
-        width: 39
-        height: 21
+        x: 67
+        y: 2
+        width: 26
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,8 +179,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a0fa30483cf4a04d874b458a45e6840
-      internalID: -1254414046
+      spriteID: d253c756a1b8bab479c92ffc97425047
+      internalID: -1778180007
       vertices: []
       indices: 
       edges: []
@@ -183,10 +189,10 @@ TextureImporter:
       name: GhostSlime_Idle_3
       rect:
         serializedVersion: 2
-        x: 147
-        y: 7
-        width: 40
-        height: 22
+        x: 99
+        y: 2
+        width: 26
+        height: 36
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,8 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6123233bd65d828499175bb31d27305d
-      internalID: -1827840089
+      spriteID: a011386349538b5449cd189165b79d61
+      internalID: -184193452
       vertices: []
       indices: 
       edges: []
@@ -211,13 +217,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      GhostSlime_Idle_1: 1919076390
-      GhostSlime_Idle_0: 1065642920
-      GhostSlime_Idle_3: -1827840089
-      GhostSlime_Idle_2: -1254414046
-  spritePackingTag: 
+      GhostSlime_Idle_0: -1605215706
+      GhostSlime_Idle_1: -1604096179
+      GhostSlime_Idle_2: -1778180007
+      GhostSlime_Idle_3: -184193452
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

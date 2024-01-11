@@ -19,6 +19,7 @@ public class StepSpike_StateHandler : MonoBehaviour
 
     [Header("Tags")]
     [SerializeField] private TagsScriptObj _isSolidGroundTag;
+    [SerializeField] private TagsScriptObj _isPlatformTag;
 
     [SerializeField] private ContactFilter2D _ignoreStepSpikeFilter;
 
@@ -40,7 +41,7 @@ public class StepSpike_StateHandler : MonoBehaviour
 
             if (collider.gameObject.TryGetComponent<Tags>(out var _tags) && temp != stepSpike_parentObject)
             {
-                if (_tags.CheckTags(_isSolidGroundTag.name) == true)
+                if (_tags.CheckTags(_isSolidGroundTag.name) == true || _tags.CheckTags(_isPlatformTag.name) == true)
                 {
                     return true;
                 }
@@ -59,7 +60,7 @@ public class StepSpike_StateHandler : MonoBehaviour
             GameObject temp = collider.gameObject;
             if (collider.gameObject.TryGetComponent<Tags>(out var _tags) && temp != stepSpike_parentObject)
             {
-                if (_tags.CheckTags(_isSolidGroundTag.name) == true)
+                if (_tags.CheckTags(_isSolidGroundTag.name) == true || _tags.CheckTags(_isPlatformTag.name) == true)
                 {
                     return true;
                 }
@@ -83,7 +84,7 @@ public class StepSpike_StateHandler : MonoBehaviour
             GameObject temp = collider.gameObject;
             if (collider.gameObject.TryGetComponent<Tags>(out var _tags) && temp != stepSpike_parentObject)
             {
-                if (_tags.CheckTags(_isSolidGroundTag.name) == true)
+                if (_tags.CheckTags(_isSolidGroundTag.name) == true || _tags.CheckTags(_isPlatformTag.name) == true)
                 {
                     return true;
                 }

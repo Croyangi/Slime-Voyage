@@ -193,6 +193,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Value"",
+                    ""id"": ""3acefeae-930d-45b3-b77f-cd93ae065d64"",
+                    ""expectedControlType"": ""Integer"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -204,6 +213,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Interact1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""11709e21-c023-463f-80f8-c321739829f8"",
+                    ""path"": ""<Keyboard>/Escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -377,6 +397,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         // Interact
         m_Interact = asset.FindActionMap("Interact", throwIfNotFound: true);
         m_Interact_Interact1 = m_Interact.FindAction("Interact1", throwIfNotFound: true);
+        m_Interact_Pause = m_Interact.FindAction("Pause", throwIfNotFound: true);
         // GhostSlime
         m_GhostSlime = asset.FindActionMap("GhostSlime", throwIfNotFound: true);
         m_GhostSlime_Movement = m_GhostSlime.FindAction("Movement", throwIfNotFound: true);
@@ -497,11 +518,13 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Interact;
     private List<IInteractActions> m_InteractActionsCallbackInterfaces = new List<IInteractActions>();
     private readonly InputAction m_Interact_Interact1;
+    private readonly InputAction m_Interact_Pause;
     public struct InteractActions
     {
         private @PlayerInput m_Wrapper;
         public InteractActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Interact1 => m_Wrapper.m_Interact_Interact1;
+        public InputAction @Pause => m_Wrapper.m_Interact_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Interact; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -514,6 +537,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Interact1.started += instance.OnInteract1;
             @Interact1.performed += instance.OnInteract1;
             @Interact1.canceled += instance.OnInteract1;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IInteractActions instance)
@@ -521,6 +547,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Interact1.started -= instance.OnInteract1;
             @Interact1.performed -= instance.OnInteract1;
             @Interact1.canceled -= instance.OnInteract1;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IInteractActions instance)
@@ -600,6 +629,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     public interface IInteractActions
     {
         void OnInteract1(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface IGhostSlimeActions
     {

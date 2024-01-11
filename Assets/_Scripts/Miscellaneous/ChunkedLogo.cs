@@ -17,7 +17,7 @@ public class ChunkedLogo : MonoBehaviour
 
     private void Start()
     {
-        SceneManager.LoadScene("_Bootloader_Global", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Bootloader_Global", LoadSceneMode.Additive);
     }
 
     private void FixedUpdate()
