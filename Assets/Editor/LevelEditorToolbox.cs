@@ -3,6 +3,7 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 using System.Linq;
+using static UnityEngine.Rendering.DebugUI;
 
 public class LevelEditorToolbox : EditorWindow
 {
@@ -10,6 +11,8 @@ public class LevelEditorToolbox : EditorWindow
 
     private string searchString = "";
     private List<string> searchTagList = new List<string>();
+
+    private string currentPrefabName = "";
 
     private Vector2 scrollPos = Vector2.zero;
 
@@ -61,6 +64,8 @@ public class LevelEditorToolbox : EditorWindow
         SearchBar();
         IconGUIs();
         DisplayFreeHandPaintMode();
+        DisplayCurrentName();
+
 
         GUILayout.Space(20);
 
@@ -68,6 +73,13 @@ public class LevelEditorToolbox : EditorWindow
         DisplayPrefabGrid();
         EditorGUILayout.EndScrollView();
 
+    }
+
+    private void DisplayCurrentName()
+    {
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("Current Prefab: " + currentPrefabName, GUILayout.Width(300));
+        GUILayout.EndHorizontal();
     }
 
     private void DisplayPaintButton()
@@ -240,11 +252,17 @@ public class LevelEditorToolbox : EditorWindow
 
     private void OnSceneGUI(SceneView sceneView)
     {
+        FieldInfo[] fields = _currentlyDisplayedScriptableObjects[paletteIndex].GetType().GetFields(BindingFlags.Public | BindingFlags.Instance);
+
+        // Get current name
+        int prefabIndex = GetIndexReflectionFields(fields, "levelEditorObject");
+        GameObject prefab = (GameObject)fields[prefabIndex].GetValue(_currentlyDisplayedScriptableObjects[paletteIndex]);
+        currentPrefabName = prefab.name;
+
         if (isPaintModeEnabled)
         {
             if (paletteIndex != -1)
             {
-                FieldInfo[] fields = _currentlyDisplayedScriptableObjects[paletteIndex].GetType().GetFields(BindingFlags.Public | BindingFlags.Instance);
                 int objectSizeIndex = GetIndexReflectionFields(fields, "levelEditorObjectSize");
                 Vector2 objectBoundingSize = (Vector2) fields[objectSizeIndex].GetValue(_currentlyDisplayedScriptableObjects[paletteIndex]);
 

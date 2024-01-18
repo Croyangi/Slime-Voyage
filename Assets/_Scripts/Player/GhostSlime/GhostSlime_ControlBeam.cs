@@ -163,7 +163,7 @@ public class GhostSlime_ControlBeam : MonoBehaviour
         // Cast raycast with the angle converted into a Vector2 direction
         float angle = GetRadianBetweenMouse();
         Vector2 raycastDirection = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-        Debug.Log(raycastDirection);
+        //Debug.Log(raycastDirection);
 
         RaycastHit2D[] hits = Physics2D.RaycastAll(controlBeam_raycastAnchor.transform.position, raycastDirection, controlBeam_beamMaxCaptureDistance);
 
@@ -179,7 +179,7 @@ public class GhostSlime_ControlBeam : MonoBehaviour
                     _tags = collidedObject.GetComponent<Tags>();
                     if (_tags.CheckTags(IS_GHOST_CONTROLLABLE) == true)
                     {
-                        Debug.Log("Hit tagged object " + hit.collider.gameObject);
+                        //Debug.Log("Hit tagged object " + hit.collider.gameObject);
                         SetControlledObject(hit.collider.gameObject);
                         return;
                     }
@@ -258,7 +258,7 @@ public class GhostSlime_ControlBeam : MonoBehaviour
         controlBeam_controlledObject = null;
         controlBeam_controlledObjectOffset = Vector2.zero;
 
-        Debug.Log("Control Beam connection snapped!");
+        //Debug.Log("Control Beam connection snapped!");
     }
 
     private float GetDistanceBetweenTwoPoints(Vector2 pointA, Vector2 pointB)

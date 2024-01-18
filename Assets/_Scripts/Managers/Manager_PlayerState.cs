@@ -17,6 +17,9 @@ public class Manager_PlayerState : MonoBehaviour, IDataPersistence
     [SerializeField] private TMP_Text test;
     [SerializeField] private int deathCount;
 
+    [Header("Actions")]
+    [SerializeField] public Action onPlayerMoldChanged;
+
     public static Manager_PlayerState instance { get; private set; }
 
     private void Awake()
@@ -51,9 +54,10 @@ public class Manager_PlayerState : MonoBehaviour, IDataPersistence
             if (obj.GetComponent<Tags>() != null)
             {
                 _tags = obj.GetComponent<Tags>();
-                if (_tags.CheckTags("Player") == true)
+                if (_tags.CheckTags("Player") == true && obj != player)
                 {
                     player = obj;
+                    onPlayerMoldChanged?.Invoke();
                 }
             }
         }
@@ -62,8 +66,6 @@ public class Manager_PlayerState : MonoBehaviour, IDataPersistence
     private void FixedUpdate()
     {
         if (player == null) { FindPlayer(); }
-
-
     }
 
     public void SetInputStall(bool state)
@@ -80,7 +82,6 @@ public class Manager_PlayerState : MonoBehaviour, IDataPersistence
     private void PlayerDeath()
     {
         isDead = false;
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Reloads current scene, might have to change it in the future
         player.transform.position = Manager_RespawnPoint.instance.respawnPointPosition;
         this.deathCount++;
         DeathCount();

@@ -17,7 +17,7 @@ public class LevelEditorObjectScriptObj : ScriptableObject
     {
         levelEditorObjectSize = levelEditorObject.GetComponent<Renderer>().bounds.size;
         //objectOffset.x = levelEditorObjectSize.x - levelEditorObject.transform.localScale.x;
-        //objectOffset.y = levelEditorObjectSize.y - levelEditorObject.transform.localScale.y;/
+        //objectOffset.y = levelEditorObjectSize.y - levelEditorObject.transform.localScale.y;
     }
 
     //[SerializeField] public bool hasEditableAttributes;

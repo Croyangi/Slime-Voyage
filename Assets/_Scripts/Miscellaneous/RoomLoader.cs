@@ -5,25 +5,31 @@ using UnityEngine.SceneManagement;
 
 public class RoomLoader : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private TagsScriptObj tag_roomLoader;
     [SerializeField] private Collider2D roomLoaderCollider;
-    [SerializeField] private Tags _tags;
-    //[SerializeField] private string roomName;
+
+    [Header("Inside References")]
     [SerializeField] private GameObject deloads;
-    [SerializeField] private bool sceneHasBeenLoaded = false;
+    [SerializeField] private GameObject cinemachine;
+    [SerializeField] private GameObject respawnPoint;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (_tags.CheckGameObjectTags(collision.gameObject, "RoomLoader"))
+        if (collision.gameObject.TryGetComponent<Tags>(out var _tags))
         {
-            LoadRoom();
+            if (_tags.CheckTags(tag_roomLoader.name) == true)
+            {
+                LoadRoom();
+            }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (_tags.CheckGameObjectTags(collision.gameObject, "RoomLoader"))
+        if (collision.gameObject.TryGetComponent<Tags>(out var _tags))
         {
-            if (CheckUnload() == false) // Returns false if no other "RoomLoader" objects are within, thus unloading the room
+            if (_tags.CheckTags(tag_roomLoader.name) == true && CheckUnload() == false)
             {
                 UnloadRoom();
             }
@@ -39,12 +45,13 @@ public class RoomLoader : MonoBehaviour
         {
             foreach (Collider2D collider in colliders)
             {
-                GameObject collidedObject = collider.gameObject;
-                if (_tags.CheckGameObjectTags(collidedObject, "RoomLoader"))
+                if (collider.gameObject.TryGetComponent<Tags>(out var _tags))
                 {
-                    return true;
+                    if (_tags.CheckTags(tag_roomLoader.name) == true)
+                    {
+                        return true;
+                    }
                 }
-
             }
         }
         return false;
@@ -52,18 +59,13 @@ public class RoomLoader : MonoBehaviour
 
     private void LoadRoom()
     {
-        if (sceneHasBeenLoaded == false)
-        {
-            sceneHasBeenLoaded = true;
-            //SceneManager.LoadScene(roomName, LoadSceneMode.Additive);
-            deloads.SetActive(true);
-        }
+        deloads.SetActive(true);
+        Manager_Cinemachine.instance.OnChangeCinemachine(cinemachine);
+        Manager_RespawnPoint.instance.respawnPointPosition = respawnPoint.transform.position;
     }
 
     private void UnloadRoom()
     {
-        //SceneManager.UnloadSceneAsync(roomName);
-        sceneHasBeenLoaded = false;
         deloads.SetActive(false);
     }
 }

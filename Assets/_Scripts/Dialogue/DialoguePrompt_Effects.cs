@@ -10,8 +10,6 @@ public class DialoguePrompt_Effects : MonoBehaviour
     [SerializeField] private GameObject activeDialoguePrompt;
     [SerializeField] private Collider2D _promptCollider;
 
-    [SerializeField] private bool isActive;
-
     [Header("LeanTween Settings")]
     [SerializeField] private Vector2 detectedScale;
     [SerializeField] private Vector2 undetectedScale;
@@ -79,8 +77,6 @@ public class DialoguePrompt_Effects : MonoBehaviour
 
     private void OnEnterRadius()
     {
-        isActive = true;
-
         activeDialoguePrompt.SetActive(true);
 
         projectedYOffset = 0f;
@@ -89,8 +85,6 @@ public class DialoguePrompt_Effects : MonoBehaviour
 
     private void OnLeaveRadius()
     {
-        isActive = false;
-
         activeDialoguePrompt.SetActive(false);
 
         projectedYOffset = -0.5f;

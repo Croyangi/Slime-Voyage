@@ -111,9 +111,9 @@ public class DialoguePrompt : MonoBehaviour, IDialogueCommunicator
     {
         Manager_DialogueHandler _handler = Manager_DialogueHandler.instance;
 
-        if (_handler.isDialogueActive == true && _handler.currentDialoguePrompt == gameObject)
+        if (_handler.currentDialoguePrompt == gameObject && _handler != null)
         {
-            _handler.EndDialogue();
+            _handler.ForceQuitDialogue();
         }
     }
 

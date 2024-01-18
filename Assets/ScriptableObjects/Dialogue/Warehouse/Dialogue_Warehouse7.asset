@@ -17,23 +17,37 @@ MonoBehaviour:
   isPlayerInputStall: 1
   _dialogues:
   - dialogueText: I just work here.
-    dialogueSpeed: 0.03
+    dialogueSpeed: 0.02
     dialogueStallTime: 0
     cleanText: 1
     stoppingFlag: 1
     profilePicture: {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
     profileName: Stepspike #31496
-  - dialogueText: Is it even called work if you don't get paid...?
-    dialogueSpeed: 0.03
-    dialogueStallTime: 0
+  - dialogueText: 'Hey, '
+    dialogueSpeed: 0.02
+    dialogueStallTime: 0.3
     cleanText: 1
-    stoppingFlag: 1
-    profilePicture: {fileID: 0}
+    stoppingFlag: 0
+    profilePicture: {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
     profileName: 
-  - dialogueText: What do you mean my textbox is weird???
-    dialogueSpeed: 0.03
+  - dialogueText: 'you look new, '
+    dialogueSpeed: 0.02
+    dialogueStallTime: 0.3
+    cleanText: 0
+    stoppingFlag: 0
+    profilePicture: {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
+    profileName: 
+  - dialogueText: and quite honestly very absorbant.
+    dialogueSpeed: 0.02
+    dialogueStallTime: 0
+    cleanText: 0
+    stoppingFlag: 1
+    profilePicture: {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
+    profileName: 
+  - dialogueText: These spills aren't going to mop themselves...
+    dialogueSpeed: 0.02
     dialogueStallTime: 0
     cleanText: 1
     stoppingFlag: 1
-    profilePicture: {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
+    profilePicture: {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
     profileName: 

@@ -48,7 +48,7 @@ public class UI_PauseButton : MonoBehaviour
             ResumeGame();
         } else
         {
-            Manager_DialogueHandler.instance.EndDialogue();
+            Manager_DialogueHandler.instance.ForceQuitDialogue();
             EnablePauseScreen();
             PauseGame();
         }

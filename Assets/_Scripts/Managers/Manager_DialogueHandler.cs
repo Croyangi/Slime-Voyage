@@ -311,7 +311,7 @@ public class Manager_DialogueHandler : MonoBehaviour
         ProcessThroughDialogue();
     }
 
-    public void EndDialogue()
+    private void EndDialogue()
     {
         StopAllCoroutines();
 
@@ -342,6 +342,14 @@ public class Manager_DialogueHandler : MonoBehaviour
 
         // To make sure no infinite dialogue loops occur
         StartCoroutine(DelayedDialogueEnd());
+    }
+
+    public void ForceQuitDialogue()
+    {
+        if (isDialogueActive)
+        {
+            EndDialogue();
+        }
     }
 
     private IEnumerator DelayedDialogueEnd()
