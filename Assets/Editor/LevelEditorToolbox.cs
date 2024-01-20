@@ -338,8 +338,11 @@ public class LevelEditorToolbox : EditorWindow
 
             // Get internal offset to align with visual aid
             Vector3 internalOffset = Vector3.zero;
-            internalOffset.x = cellCenter.x + prefab.GetComponent<Renderer>().bounds.extents.x - 0.5f;
-            internalOffset.y = cellCenter.y + prefab.GetComponent<Renderer>().bounds.extents.y - 0.5f;
+            if (prefab.TryGetComponent<Renderer>(out var renderer)) 
+            {
+                internalOffset.x = cellCenter.x + renderer.bounds.extents.x - 0.5f;
+                internalOffset.y = cellCenter.y + renderer.bounds.extents.y - 0.5f;
+            }
 
             // Apply offset
             instantiatedObject.transform.position = (Vector3) internalOffset;

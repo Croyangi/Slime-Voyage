@@ -600,7 +600,7 @@ Transform:
   m_GameObject: {fileID: 3816035411609345426}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.61, y: -2.82, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -723,7 +723,6 @@ MonoBehaviour:
   dialoguePrompt: {fileID: 4912441460299486851}
   activeDialoguePrompt: {fileID: 6835424511808952097}
   _promptCollider: {fileID: 5435463709706601536}
-  isActive: 0
   detectedScale: {x: 1, y: 1}
   undetectedScale: {x: 0.5, y: 0.5}
   detectedScaleTime: 0.1

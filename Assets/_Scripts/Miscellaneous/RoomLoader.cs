@@ -12,7 +12,6 @@ public class RoomLoader : MonoBehaviour
     [Header("Inside References")]
     [SerializeField] private GameObject deloads;
     [SerializeField] private GameObject cinemachine;
-    [SerializeField] private GameObject respawnPoint;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -61,7 +60,6 @@ public class RoomLoader : MonoBehaviour
     {
         deloads.SetActive(true);
         Manager_Cinemachine.instance.OnChangeCinemachine(cinemachine);
-        Manager_RespawnPoint.instance.respawnPointPosition = respawnPoint.transform.position;
     }
 
     private void UnloadRoom()

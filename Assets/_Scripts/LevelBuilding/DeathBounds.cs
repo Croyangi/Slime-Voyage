@@ -5,15 +5,13 @@ using UnityEngine;
 public class DeathBounds : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private Tags _tags;
+    [SerializeField] private TagsScriptObj tag_player;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        GameObject collidedObject = collision.gameObject;
-        if (collidedObject.GetComponent<Tags>() != null)
+        if (collision.gameObject.TryGetComponent<Tags>(out var _tags))
         {
-            _tags = collidedObject.GetComponent<Tags>();
-            if (_tags.CheckTags("Player") == true)
+            if (_tags.CheckTags(tag_player.name) == true)
             {
                 Manager_PlayerState.instance.InitiatePlayerDeath();
             }

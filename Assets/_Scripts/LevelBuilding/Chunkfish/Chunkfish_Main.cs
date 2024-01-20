@@ -13,11 +13,13 @@ public class Chunkfish_Main : MonoBehaviour
     [SerializeField] private float _frequency = 1;
     [SerializeField] private float _amplitudeRotate = 0;
     [SerializeField] private float _frequencyRotate = 1;
+    [SerializeField] private float time;
 
     private void FixedUpdate()
     {
-        float y = Mathf.Sin(Time.time * _frequency) * _amplitude;
-        float rotateZ = Mathf.Sin(Time.time * _frequencyRotate) * _amplitudeRotate;
+        time += Time.deltaTime;
+        float y = Mathf.Sin(time * _frequency) * _amplitude;
+        float rotateZ = Mathf.Sin(time * _frequencyRotate) * _amplitudeRotate;
         chunkfish.transform.position = new Vector2(chunkfish.transform.position.x, chunkfish.transform.position.y + y);
         chunkfish.transform.rotation = Quaternion.Euler(new Vector3(0, 0, rotateZ));
     }

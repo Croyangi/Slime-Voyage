@@ -83,6 +83,7 @@ public class Manager_PlayerState : MonoBehaviour, IDataPersistence
     {
         isDead = false;
         player.transform.position = Manager_RespawnPoint.instance.respawnPointPosition;
+        player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         this.deathCount++;
         DeathCount();
         DataPersistenceManager.instance.SaveGame();

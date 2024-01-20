@@ -15,7 +15,10 @@ public class LevelEditorObjectScriptObj : ScriptableObject
 
     private void OnValidate()
     {
-        levelEditorObjectSize = levelEditorObject.GetComponent<Renderer>().bounds.size;
+        if (levelEditorObject.GetComponent<Renderer>() != null)
+        {
+            levelEditorObjectSize = levelEditorObject.GetComponent<Renderer>().bounds.size;
+        }
         //objectOffset.x = levelEditorObjectSize.x - levelEditorObject.transform.localScale.x;
         //objectOffset.y = levelEditorObjectSize.y - levelEditorObject.transform.localScale.y;
     }

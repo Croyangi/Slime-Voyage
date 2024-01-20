@@ -5,6 +5,7 @@ using UnityEngine;
 public class Manager_RespawnPoint : MonoBehaviour
 {
     [Header("Variables")]
+    public Vector2 previousRespawnPointPosition;
     public Vector2 respawnPointPosition;
 
     public static Manager_RespawnPoint instance { get; private set; }
@@ -16,6 +17,12 @@ public class Manager_RespawnPoint : MonoBehaviour
             Debug.LogError("Found more than one Respawn Point Manager in the scene.");
         }
         instance = this;
+    }
+
+    public void SetNewRespawnPoint(Vector2 point)
+    {
+        previousRespawnPointPosition = respawnPointPosition;
+        respawnPointPosition = point;
     }
 
 
