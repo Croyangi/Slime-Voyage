@@ -243,6 +243,8 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
 
     private void FixedUpdate()
     {
+        rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, _movementVars.maxFallSpeed, 99999));
+
         MovementInputProcessor(); // Processes Raw Input to Processed Input
 
         DecellerationStallUpdate(); // Updates Decelleration Stall clock

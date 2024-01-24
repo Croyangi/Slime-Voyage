@@ -7,6 +7,7 @@ public class BaseSlime_StateHandler : MonoBehaviour
     [Header("General References")]
     [SerializeField] private GameObject baseSlime;
     [SerializeField] private Vector2 colliderBounds;
+    [SerializeField] private Rigidbody2D rb;
 
     [Header("Building Block References")]
     [SerializeField] private BaseSlime_MovementVariables _movementVars;
@@ -32,7 +33,7 @@ public class BaseSlime_StateHandler : MonoBehaviour
 
     private void Awake()
     {
-        colliderBounds = baseSlime.GetComponent<BoxCollider2D>().bounds.extents;
+        //colliderBounds = baseSlime.GetComponent<Collider2D>().bounds.extents;
     }
 
     private void FixedUpdate()
@@ -64,7 +65,7 @@ public class BaseSlime_StateHandler : MonoBehaviour
             if (temp.GetComponent<Tags>() != null)
             {
                 _tags = temp.GetComponent<Tags>();
-                if (_tags.CheckTags(IS_SOLID_GROUND) == true || _tags.CheckTags(IS_PLATFORM) == true)
+                if ((_tags.CheckTags(IS_SOLID_GROUND) == true || _tags.CheckTags(IS_PLATFORM) == true) && rb.velocity.y > -5 && rb.velocity.y < 5)
                 {
                     return true;
                 }

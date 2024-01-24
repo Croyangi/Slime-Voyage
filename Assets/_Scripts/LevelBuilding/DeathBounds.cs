@@ -7,7 +7,7 @@ public class DeathBounds : MonoBehaviour
     [Header("References")]
     [SerializeField] private TagsScriptObj tag_player;
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent<Tags>(out var _tags))
         {

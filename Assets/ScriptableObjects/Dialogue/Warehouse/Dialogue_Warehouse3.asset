@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e2d313d4c016d342bc276cb73a36214, type: 3}
   m_Name: Dialogue_Warehouse3
   m_EditorClassIdentifier: 
-  isDialogueOnTop: 0
+  isDialogueOnTop: 1
   isDialogueMini: 0
   isPlayerInputStall: 1
   _dialogues:

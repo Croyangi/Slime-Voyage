@@ -30,7 +30,7 @@ MonoBehaviour:
     stoppingFlag: 0
     profilePicture: {fileID: 0}
     profileName: 
-  - dialogueText: Several employees have already bounced themselves into the ceiling.
+  - dialogueText: Proceed with caution.
     dialogueSpeed: 0.02
     dialogueStallTime: 1.5
     cleanText: 1

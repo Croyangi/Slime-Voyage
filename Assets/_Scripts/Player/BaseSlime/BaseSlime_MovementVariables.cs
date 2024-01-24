@@ -23,6 +23,8 @@ public class BaseSlime_MovementVariables : MonoBehaviour
     public float movementSpeed;
     public float deccelerationTimer;
 
+    public float maxFallSpeed;
+
     [Header("General Movement")]
     public float jumpStrength;
     public Vector2 rawInputMovement;
