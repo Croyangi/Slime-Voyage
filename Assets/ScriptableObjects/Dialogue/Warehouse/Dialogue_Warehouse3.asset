@@ -23,3 +23,7 @@ MonoBehaviour:
     stoppingFlag: 1
     profilePicture: {fileID: 21300000, guid: 1e4e43a1d843c8b4985b9d0f0b9e7569, type: 3}
     profileName: Shock and Awed Stepspike
+    talkingProfilePictures:
+    - {fileID: 21300000, guid: db712b0bc4f9fe94a937cc60506ba35a, type: 3}
+    - {fileID: 21300000, guid: 1e4e43a1d843c8b4985b9d0f0b9e7569, type: 3}
+  talkingProfilePictures: []

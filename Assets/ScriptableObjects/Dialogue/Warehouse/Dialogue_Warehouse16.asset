@@ -14,47 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDialogueOnTop: 0
   isDialogueMini: 0
-  isPlayerInputStall: 1
+  isPlayerInputStall: 0
   _dialogues:
-  - dialogueText: 'We''re really not trying to hurt you, '
-    dialogueSpeed: 0.02
-    dialogueStallTime: 0.3
-    cleanText: 1
-    stoppingFlag: 0
-    profilePicture: {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
-    profileName: Stepspike #68932
-  - dialogueText: 'I mean, '
-    dialogueSpeed: 0.02
-    dialogueStallTime: 0.3
-    cleanText: 0
-    stoppingFlag: 0
-    profilePicture: {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
-    profileName: 
-  - dialogueText: you ARE the one jumping over us.
-    dialogueSpeed: 0.02
-    dialogueStallTime: 0
-    cleanText: 0
-    stoppingFlag: 1
-    profilePicture: {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
-    profileName: 
-  - dialogueText: That's what the hats are for.
-    dialogueSpeed: 0.02
-    dialogueStallTime: 0.3
-    cleanText: 1
-    stoppingFlag: 1
-    profilePicture: {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
-    profileName: 
-  - dialogueText: And how did you even get over here?
+  - dialogueText: Life's tough without opposable thumbs...
     dialogueSpeed: 0.02
     dialogueStallTime: 0
     cleanText: 1
     stoppingFlag: 1
-    profilePicture: {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
-    profileName: 
-  - dialogueText: I swear if you have some kinda comically long coyote time...
-    dialogueSpeed: 0.02
-    dialogueStallTime: 0
-    cleanText: 1
-    stoppingFlag: 1
-    profilePicture: {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
-    profileName: 
+    profilePicture: {fileID: 0}
+    profileName: Stepspike #15970
+    talkingProfilePictures:
+    - {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
+    - {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
+  talkingProfilePictures: []

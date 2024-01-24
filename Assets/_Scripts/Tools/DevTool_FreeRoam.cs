@@ -32,6 +32,11 @@ public class DevTool_FreeRoam : MonoBehaviour
         _devToolsInput.CardinalDirections.Movement.performed += OnMovementPerformed;
         _devToolsInput.CardinalDirections.Movement.canceled += OnMovementCancelled;
         _devToolsInput.Enable();
+
+        if (player != null)
+        {
+            _camera.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, _camera.transform.position.z);
+        }
     }
 
     private void OnDisable()

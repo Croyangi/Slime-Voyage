@@ -18,6 +18,8 @@ public class Dialogue
     public Sprite profilePicture;
     public string profileName;
 
+    public List<Sprite> talkingProfilePictures;
+
     public Dialogue(Dialogue other)
     {
         this.dialogueText = other.dialogueText;
@@ -27,5 +29,6 @@ public class Dialogue
         this.stoppingFlag = other.stoppingFlag;
         this.profilePicture = other.profilePicture;
         this.profileName = other.profileName;
+        this.talkingProfilePictures = other.talkingProfilePictures;
     }
 }

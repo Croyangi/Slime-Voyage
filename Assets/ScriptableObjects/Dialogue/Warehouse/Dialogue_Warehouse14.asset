@@ -23,6 +23,9 @@ MonoBehaviour:
     stoppingFlag: 0
     profilePicture: {fileID: 21300000, guid: 1e4e43a1d843c8b4985b9d0f0b9e7569, type: 3}
     profileName: Well Hatted Stepspike
+    talkingProfilePictures:
+    - {fileID: 21300000, guid: db712b0bc4f9fe94a937cc60506ba35a, type: 3}
+    - {fileID: 21300000, guid: 1e4e43a1d843c8b4985b9d0f0b9e7569, type: 3}
   - dialogueText: Do you know when the next SHS* meeting is?
     dialogueSpeed: 0.02
     dialogueStallTime: 0
@@ -30,6 +33,9 @@ MonoBehaviour:
     stoppingFlag: 1
     profilePicture: {fileID: 21300000, guid: db712b0bc4f9fe94a937cc60506ba35a, type: 3}
     profileName: 
+    talkingProfilePictures:
+    - {fileID: 21300000, guid: db712b0bc4f9fe94a937cc60506ba35a, type: 3}
+    - {fileID: 21300000, guid: 1e4e43a1d843c8b4985b9d0f0b9e7569, type: 3}
   - dialogueText: '*(Secret Hatted Society).'
     dialogueSpeed: 0.02
     dialogueStallTime: 0
@@ -37,27 +43,29 @@ MonoBehaviour:
     stoppingFlag: 1
     profilePicture: {fileID: 21300000, guid: db712b0bc4f9fe94a937cc60506ba35a, type: 3}
     profileName: 
-  - dialogueText: 'Keep it down,  '
+    talkingProfilePictures:
+    - {fileID: 21300000, guid: db712b0bc4f9fe94a937cc60506ba35a, type: 3}
+    - {fileID: 21300000, guid: 1e4e43a1d843c8b4985b9d0f0b9e7569, type: 3}
+  - dialogueText: 'Keep it down, '
     dialogueSpeed: 0.02
     dialogueStallTime: 0.3
     cleanText: 1
     stoppingFlag: 0
     profilePicture: {fileID: 21300000, guid: 9ceef754d63c46942b2c6d994059a1b2, type: 3}
     profileName: Well Hatted Chunkfish
-  - dialogueText: 'I know what SHS means, '
+    talkingProfilePictures:
+    - {fileID: 21300000, guid: 9ceef754d63c46942b2c6d994059a1b2, type: 3}
+    - {fileID: 21300000, guid: 40f66dbc189853043a29f615feeccb1d, type: 3}
+  - dialogueText: why are you speaking so loud?
     dialogueSpeed: 0.02
     dialogueStallTime: 0.3
     cleanText: 0
-    stoppingFlag: 0
+    stoppingFlag: 1
     profilePicture: {fileID: 21300000, guid: 40f66dbc189853043a29f615feeccb1d, type: 3}
     profileName: 
-  - dialogueText: why'd you have to explain it?
-    dialogueSpeed: 0.02
-    dialogueStallTime: 0
-    cleanText: 0
-    stoppingFlag: 1
-    profilePicture: {fileID: 21300000, guid: 9ceef754d63c46942b2c6d994059a1b2, type: 3}
-    profileName: 
+    talkingProfilePictures:
+    - {fileID: 21300000, guid: 9ceef754d63c46942b2c6d994059a1b2, type: 3}
+    - {fileID: 21300000, guid: 40f66dbc189853043a29f615feeccb1d, type: 3}
   - dialogueText: Oh for any eavesdroppers.
     dialogueSpeed: 0.02
     dialogueStallTime: 0
@@ -65,6 +73,9 @@ MonoBehaviour:
     stoppingFlag: 1
     profilePicture: {fileID: 21300000, guid: db712b0bc4f9fe94a937cc60506ba35a, type: 3}
     profileName: 
+    talkingProfilePictures:
+    - {fileID: 21300000, guid: db712b0bc4f9fe94a937cc60506ba35a, type: 3}
+    - {fileID: 21300000, guid: 1e4e43a1d843c8b4985b9d0f0b9e7569, type: 3}
   - dialogueText: What
     dialogueSpeed: 0.02
     dialogueStallTime: 0
@@ -72,3 +83,5 @@ MonoBehaviour:
     stoppingFlag: 1
     profilePicture: {fileID: 21300000, guid: 891db02c02116554a92c2722ffe868c2, type: 3}
     profileName: 
+    talkingProfilePictures: []
+  talkingProfilePictures: []

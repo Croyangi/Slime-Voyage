@@ -16,14 +16,17 @@ MonoBehaviour:
   isDialogueMini: 0
   isPlayerInputStall: 1
   _dialogues:
-  - dialogueText: 'Legends say that if you jump righttt when hitting a Chunkfish
-      on the ground, '
+  - dialogueText: 'Legends say that if you jump righttttt when hitting a Chunkfish
+      on the ground and hold the direction of the bounce, '
     dialogueSpeed: 0.02
     dialogueStallTime: 0.3
     cleanText: 1
     stoppingFlag: 0
     profilePicture: {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
     profileName: Stepspike #52137
+    talkingProfilePictures:
+    - {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
+    - {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
   - dialogueText: you'll do a low hanging dash...
     dialogueSpeed: 0.02
     dialogueStallTime: 0
@@ -31,6 +34,9 @@ MonoBehaviour:
     stoppingFlag: 1
     profilePicture: {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
     profileName: 
+    talkingProfilePictures:
+    - {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
+    - {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
   - dialogueText: 'Eh, '
     dialogueSpeed: 0.02
     dialogueStallTime: 0.3
@@ -38,6 +44,9 @@ MonoBehaviour:
     stoppingFlag: 0
     profilePicture: {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
     profileName: 
+    talkingProfilePictures:
+    - {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
+    - {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
   - dialogueText: but that's just an old folklore...
     dialogueSpeed: 0.02
     dialogueStallTime: 0
@@ -45,3 +54,7 @@ MonoBehaviour:
     stoppingFlag: 1
     profilePicture: {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
     profileName: 
+    talkingProfilePictures:
+    - {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
+    - {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
+  talkingProfilePictures: []

@@ -265,7 +265,7 @@ MonoBehaviour:
   processedInputMovement: {x: 0, y: 0}
   wallJumpStrengthHorizontal: 15
   wallJumpStrengthVerticle: 25
-  wallJumpStallTime: 0.3
+  wallJumpStallTime: 0.25
   stickingWallSpeed: 2
   stickingWallAcceleration: 7
   stickingWallDecceleration: 1

@@ -47,7 +47,7 @@ public class Manager_DialogueHandler : MonoBehaviour
     [SerializeField] public bool isDialogueWaiting;
 
     [Header("Tags")]
-    [SerializeField] private TagsScriptObj _isDialoguePromptTag;
+    [SerializeField] private TagsScriptObj tag_isDialoguePrompt;
 
 
     [Header("Technical References")]
@@ -104,7 +104,7 @@ public class Manager_DialogueHandler : MonoBehaviour
         {
             if (obj.TryGetComponent<Tags>(out var _tags))
             {
-                if (_tags.CheckTags(_isDialoguePromptTag.name) == true)
+                if (_tags.CheckTags(tag_isDialoguePrompt.name) == true)
                 {
                     allTransforms.Add(obj.transform);
                 }
@@ -281,12 +281,41 @@ public class Manager_DialogueHandler : MonoBehaviour
             if (_dialogues[currentDialogueIndex].cleanText) { current_dialogueBoxText.text = ""; }
 
             // Start typing next
+            StopCoroutine(TypeCharacters(_dialogues[currentDialogueIndex]));
             StartCoroutine(TypeCharacters(_dialogues[currentDialogueIndex]));
+
+            // Talking animation
+            if (currentDialogueIndex < _dialogues.Count)
+            {
+                if (_dialogues[currentDialogueIndex].talkingProfilePictures.Count != 0)
+                {
+                    StopCoroutine(IterateThroughTalkingProfilePictures(_dialogues[currentDialogueIndex]));
+                    StartCoroutine(IterateThroughTalkingProfilePictures(_dialogues[currentDialogueIndex]));
+                }
+            }
             currentDialogueIndex++;
         } else
         {
             EndDialogue();
         }
+    }
+
+    private IEnumerator IterateThroughTalkingProfilePictures(Dialogue dialogue)
+    {
+        int index = 0;
+        
+        while (isDialogueTyping)
+        {
+            if (index > dialogue.talkingProfilePictures.Count - 1)
+            {   
+                index = 0;
+            }
+            current_profilePictureImage.GetComponent<Image>().sprite = dialogue.talkingProfilePictures[index];
+            index++;
+            yield return new WaitForSeconds(0.15f);
+        }
+        current_profilePictureImage.GetComponent<Image>().sprite = dialogue.talkingProfilePictures[0];
+
     }
 
     private IEnumerator TypeCharacters(Dialogue dialogue)
