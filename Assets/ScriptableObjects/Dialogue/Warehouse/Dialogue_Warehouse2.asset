@@ -18,36 +18,15 @@ MonoBehaviour:
   _dialogues:
   - dialogueText: 'Man, '
     dialogueSpeed: 0.03
-    dialogueStallTime: 0.3
+    dialogueStallTime: 0.02
     cleanText: 1
     stoppingFlag: 0
-    profilePicture: {fileID: 21300000, guid: db712b0bc4f9fe94a937cc60506ba35a, type: 3}
     profileName: Decently Hatted Stepspike
-  - dialogueText: I wish I had a hat like that...
-    dialogueSpeed: 0.03
-    dialogueStallTime: 0
-    cleanText: 0
-    stoppingFlag: 1
-    profilePicture: {fileID: 21300000, guid: 1e4e43a1d843c8b4985b9d0f0b9e7569, type: 3}
-    profileName: 
-  - dialogueText: 'Oh yeah, '
-    dialogueSpeed: 0.03
-    dialogueStallTime: 0.3
-    cleanText: 1
-    stoppingFlag: 0
-    profilePicture: {fileID: 21300000, guid: 1e4e43a1d843c8b4985b9d0f0b9e7569, type: 3}
-    profileName: 
-  - dialogueText: looks like Croyangi finally added Chunkfish's dialogue...
-    dialogueSpeed: 0.03
-    dialogueStallTime: 0
-    cleanText: 0
-    stoppingFlag: 1
     profilePicture: {fileID: 21300000, guid: db712b0bc4f9fe94a937cc60506ba35a, type: 3}
-    profileName: 
-  - dialogueText: I wonder when's the next SHS meeting...
-    dialogueSpeed: 0.03
+  - dialogueText: I wish I had a hat like that...
+    dialogueSpeed: 0.02
     dialogueStallTime: 0
-    cleanText: 1
+    cleanText: 0
     stoppingFlag: 1
-    profilePicture: {fileID: 21300000, guid: 1e4e43a1d843c8b4985b9d0f0b9e7569, type: 3}
     profileName: 
+    profilePicture: {fileID: 21300000, guid: 1e4e43a1d843c8b4985b9d0f0b9e7569, type: 3}

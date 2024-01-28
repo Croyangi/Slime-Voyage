@@ -39,7 +39,7 @@ public class StepSpike_StateHandler : MonoBehaviour
         {
             GameObject temp = collider.gameObject;
 
-            if (collider.gameObject.TryGetComponent<Tags>(out var _tags) && temp != stepSpike_parentObject)
+            if (collider.gameObject.TryGetComponent<Tags>(out var _tags) && temp != stepSpike_parentObject && stepSpike_parentObject.transform.rotation.z < 45f && stepSpike_parentObject.transform.rotation.z > -45f)
             {
                 if (_tags.CheckTags(_isSolidGroundTag.name) == true || _tags.CheckTags(_isPlatformTag.name) == true)
                 {

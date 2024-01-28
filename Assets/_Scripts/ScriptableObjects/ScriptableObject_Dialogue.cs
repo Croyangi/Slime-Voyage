@@ -13,7 +13,4 @@ public class ScriptableObject_Dialogue : ScriptableObject
 
     [Header("Dialogue")]
     public List<Dialogue> _dialogues;
-
-    [Header("Saved Talking Profile Pictures")]
-    public List<Sprite> talkingProfilePictures;
 }

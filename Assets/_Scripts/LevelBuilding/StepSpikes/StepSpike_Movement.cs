@@ -45,7 +45,7 @@ public class StepSpike_Movement : MonoBehaviour
             { 
                 ApplyTorque(); 
             }
-            standUprightTimer = 5f;
+            standUprightTimer = 3f;
         }
     }
 

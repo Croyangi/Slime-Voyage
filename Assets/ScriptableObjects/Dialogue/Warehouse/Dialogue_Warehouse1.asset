@@ -16,17 +16,48 @@ MonoBehaviour:
   isDialogueMini: 0
   isPlayerInputStall: 1
   _dialogues:
-  - dialogueText: 'Sorry, '
-    dialogueSpeed: 0.03
+  - dialogueText: 'Alright men, '
+    dialogueSpeed: 0.02
     dialogueStallTime: 0.3
     cleanText: 1
     stoppingFlag: 0
-    profilePicture: {fileID: 21300000, guid: 701a420f0bf53fd4494016d9addd6dee, type: 3}
     profileName: Flamboyantly Hatted Stepspike
-  - dialogueText: I only talk to well hatted inviduals like myself.
-    dialogueSpeed: 0.03
+    profilePicture: {fileID: 21300000, guid: 701a420f0bf53fd4494016d9addd6dee, type: 3}
+  - dialogueText: we're surrounded.
+    dialogueSpeed: 0.02
     dialogueStallTime: 0
     cleanText: 0
     stoppingFlag: 1
-    profilePicture: {fileID: 21300000, guid: 7854b0c8be5671a459afcfd04c1d7f9d, type: 3}
     profileName: 
+    profilePicture: {fileID: 21300000, guid: 7854b0c8be5671a459afcfd04c1d7f9d, type: 3}
+  - dialogueText: 'The Chunkfishes have overtaken our base
+
+      (not you Smart
+      Chunkfish).'
+    dialogueSpeed: 0.02
+    dialogueStallTime: 0
+    cleanText: 1
+    stoppingFlag: 1
+    profileName: 
+    profilePicture: {fileID: 21300000, guid: 701a420f0bf53fd4494016d9addd6dee, type: 3}
+  - dialogueText: Thank you.
+    dialogueSpeed: 0.02
+    dialogueStallTime: 0
+    cleanText: 1
+    stoppingFlag: 1
+    profileName: Well Hatted Chunkfish
+    profilePicture: {fileID: 21300000, guid: 40f66dbc189853043a29f615feeccb1d, type: 3}
+  - dialogueText: 'It''s only a matter of time till our hat rations deplete, '
+    dialogueSpeed: 0.02
+    dialogueStallTime: 0.3
+    cleanText: 1
+    stoppingFlag: 0
+    profileName: Flamboyantly Hatted Stepspike
+    profilePicture: {fileID: 21300000, guid: 7854b0c8be5671a459afcfd04c1d7f9d, type: 3}
+  - dialogueText: any ideas?
+    dialogueSpeed: 0.02
+    dialogueStallTime: 0
+    cleanText: 0
+    stoppingFlag: 1
+    profileName: 
+    profilePicture: {fileID: 21300000, guid: 701a420f0bf53fd4494016d9addd6dee, type: 3}

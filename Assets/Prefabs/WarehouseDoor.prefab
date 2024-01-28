@@ -48,7 +48,7 @@ MonoBehaviour:
   tag_player: {fileID: 11400000, guid: 052214d19408f7a48bba66682f7001de, type: 2}
   originPoint: {fileID: 4112022215357923684}
   sr_door: {fileID: 1712083499319547130}
-  openDoor: {fileID: 21300000, guid: c8c91a4a2ddca874fa291bb1e2bee055, type: 3}
+  openDoor: {fileID: 21300000, guid: bd4de09a7ca1a6c42ae8e5ecd995da37, type: 3}
 --- !u!61 &459169582036296460
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -168,7 +168,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -20
-  m_Sprite: {fileID: 21300000, guid: 0d70f1b05550dc34aa7562e72727a214, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f58cc9c2f923cda4984c1fac2c98a653, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -87,7 +87,7 @@ public class Chunkfish_StateHandler : MonoBehaviour
         if (chunkfish_inflateTimer >= chunkfish_fullyInflatedSpeed)
         {
             isFullyInflated = true;
-        } else
+        } else if (chunkfish_inflateTimer <= 0)
         {
             isFullyInflated = false;
         }

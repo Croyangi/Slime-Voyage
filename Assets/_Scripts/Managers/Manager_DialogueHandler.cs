@@ -244,7 +244,8 @@ public class Manager_DialogueHandler : MonoBehaviour
     private void ProcessThroughDialogue(bool bypassStoppingFlag = false)
     {
         // Waits for user input if stopping flag is true
-        if (currentDialogueIndex > 0) {
+        if (currentDialogueIndex > 0)
+        {
             if (_dialogues[currentDialogueIndex - 1].stoppingFlag == true && bypassStoppingFlag == false)
             {
                 isDialogueWaiting = true;
@@ -281,41 +282,13 @@ public class Manager_DialogueHandler : MonoBehaviour
             if (_dialogues[currentDialogueIndex].cleanText) { current_dialogueBoxText.text = ""; }
 
             // Start typing next
-            StopCoroutine(TypeCharacters(_dialogues[currentDialogueIndex]));
             StartCoroutine(TypeCharacters(_dialogues[currentDialogueIndex]));
-
-            // Talking animation
-            if (currentDialogueIndex < _dialogues.Count)
-            {
-                if (_dialogues[currentDialogueIndex].talkingProfilePictures.Count != 0)
-                {
-                    StopCoroutine(IterateThroughTalkingProfilePictures(_dialogues[currentDialogueIndex]));
-                    StartCoroutine(IterateThroughTalkingProfilePictures(_dialogues[currentDialogueIndex]));
-                }
-            }
             currentDialogueIndex++;
-        } else
+        }
+        else
         {
             EndDialogue();
         }
-    }
-
-    private IEnumerator IterateThroughTalkingProfilePictures(Dialogue dialogue)
-    {
-        int index = 0;
-        
-        while (isDialogueTyping)
-        {
-            if (index > dialogue.talkingProfilePictures.Count - 1)
-            {   
-                index = 0;
-            }
-            current_profilePictureImage.GetComponent<Image>().sprite = dialogue.talkingProfilePictures[index];
-            index++;
-            yield return new WaitForSeconds(0.15f);
-        }
-        current_profilePictureImage.GetComponent<Image>().sprite = dialogue.talkingProfilePictures[0];
-
     }
 
     private IEnumerator TypeCharacters(Dialogue dialogue)

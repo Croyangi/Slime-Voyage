@@ -15,10 +15,9 @@ public class Dialogue
     public bool cleanText = false;
     public bool stoppingFlag = false;
 
-    public Sprite profilePicture;
     public string profileName;
 
-    public List<Sprite> talkingProfilePictures;
+    public Sprite profilePicture;
 
     public Dialogue(Dialogue other)
     {
@@ -27,8 +26,7 @@ public class Dialogue
         this.dialogueStallTime = other.dialogueStallTime;
         this.cleanText = other.cleanText;
         this.stoppingFlag = other.stoppingFlag;
-        this.profilePicture = other.profilePicture;
         this.profileName = other.profileName;
-        this.talkingProfilePictures = other.talkingProfilePictures;
+        this.profilePicture = other.profilePicture;
     }
 }

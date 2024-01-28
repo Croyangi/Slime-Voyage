@@ -16,59 +16,7 @@ MonoBehaviour:
   isDialogueMini: 0
   isPlayerInputStall: 1
   _dialogues:
-  - dialogueText: Hmmm...
-    dialogueSpeed: 0.02
-    dialogueStallTime: 0
-    cleanText: 1
-    stoppingFlag: 1
-    profilePicture: {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
-    profileName: Stepspike #98761
-    talkingProfilePictures:
-    - {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
-    - {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
-  - dialogueText: 'Welp, '
-    dialogueSpeed: 0.02
-    dialogueStallTime: 0.3
-    cleanText: 1
-    stoppingFlag: 0
-    profilePicture: {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
-    profileName: Stepspike #98761
-    talkingProfilePictures:
-    - {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
-    - {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
-  - dialogueText: 'I reallllyyy needed to take that elevator.
-
-'
-    dialogueSpeed: 0.02
-    dialogueStallTime: 0
-    cleanText: 0
-    stoppingFlag: 1
-    profilePicture: {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
-    profileName: Stepspike #98761
-    talkingProfilePictures:
-    - {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
-    - {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
-  - dialogueText: 'And... '
-    dialogueSpeed: 0.02
-    dialogueStallTime: 0.3
-    cleanText: 1
-    stoppingFlag: 0
-    profilePicture: {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
-    profileName: Stepspike #98761
-    talkingProfilePictures:
-    - {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
-    - {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
-  - dialogueText: I'm not dealing with whatever's happening upstairs...
-    dialogueSpeed: 0.02
-    dialogueStallTime: 0
-    cleanText: 0
-    stoppingFlag: 1
-    profilePicture: {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
-    profileName: Stepspike #98761
-    talkingProfilePictures:
-    - {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
-    - {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
-  - dialogueText: I'm going on break.
+  - dialogueText: Yeah I knew it too much weight hehe...
     dialogueSpeed: 0.02
     dialogueStallTime: 0
     cleanText: 1

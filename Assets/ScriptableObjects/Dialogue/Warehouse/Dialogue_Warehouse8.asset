@@ -21,47 +21,48 @@ MonoBehaviour:
     dialogueStallTime: 0
     cleanText: 1
     stoppingFlag: 0
-    profilePicture: {fileID: 21300000, guid: 9ceef754d63c46942b2c6d994059a1b2, type: 3}
     profileName: Well Hatted Chunkfish
+    profilePicture: {fileID: 21300000, guid: 9ceef754d63c46942b2c6d994059a1b2, type: 3}
   - dialogueText: 'hello strange amorphous blob. '
     dialogueSpeed: 0.03
     dialogueStallTime: 0.3
     cleanText: 0
     stoppingFlag: 1
-    profilePicture: {fileID: 21300000, guid: 40f66dbc189853043a29f615feeccb1d, type: 3}
     profileName: 
+    profilePicture: {fileID: 21300000, guid: 40f66dbc189853043a29f615feeccb1d, type: 3}
   - dialogueText: 'Let my appearance not fool you. '
     dialogueSpeed: 0.03
     dialogueStallTime: 0.3
     cleanText: 1
     stoppingFlag: 0
-    profilePicture: {fileID: 0}
     profileName: 
+    profilePicture: {fileID: 0}
   - dialogueText: I am no ordinary Chunkfish.
     dialogueSpeed: 0.03
     dialogueStallTime: 0
     cleanText: 0
     stoppingFlag: 1
-    profilePicture: {fileID: 21300000, guid: 9ceef754d63c46942b2c6d994059a1b2, type: 3}
     profileName: 
-  - dialogueText: 'For too long my kind was seen as thoughtless cushions, '
+    profilePicture: {fileID: 21300000, guid: 9ceef754d63c46942b2c6d994059a1b2, type: 3}
+  - dialogueText: 'For too long my kind was seen as thoughtless cushions like those
+      AIR BAGS out there, '
     dialogueSpeed: 0.03
     dialogueStallTime: 0.3
     cleanText: 1
     stoppingFlag: 0
-    profilePicture: {fileID: 21300000, guid: 9ceef754d63c46942b2c6d994059a1b2, type: 3}
     profileName: 
+    profilePicture: {fileID: 21300000, guid: 9ceef754d63c46942b2c6d994059a1b2, type: 3}
   - dialogueText: 'but as you can see, '
     dialogueSpeed: 0.03
     dialogueStallTime: 0.3
     cleanText: 0
     stoppingFlag: 0
-    profilePicture: {fileID: 21300000, guid: 9ceef754d63c46942b2c6d994059a1b2, type: 3}
     profileName: 
+    profilePicture: {fileID: 21300000, guid: 9ceef754d63c46942b2c6d994059a1b2, type: 3}
   - dialogueText: I am an exception.
     dialogueSpeed: 0.03
     dialogueStallTime: 0
     cleanText: 0
     stoppingFlag: 1
-    profilePicture: {fileID: 21300000, guid: 40f66dbc189853043a29f615feeccb1d, type: 3}
     profileName: 
+    profilePicture: {fileID: 21300000, guid: 40f66dbc189853043a29f615feeccb1d, type: 3}
