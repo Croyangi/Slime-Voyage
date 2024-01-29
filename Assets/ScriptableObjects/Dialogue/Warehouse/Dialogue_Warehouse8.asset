@@ -21,7 +21,7 @@ MonoBehaviour:
     dialogueStallTime: 0
     cleanText: 1
     stoppingFlag: 0
-    profileName: Well Hatted Chunkfish
+    profileName: Eugene
     profilePicture: {fileID: 21300000, guid: 9ceef754d63c46942b2c6d994059a1b2, type: 3}
   - dialogueText: 'hello strange amorphous blob. '
     dialogueSpeed: 0.03

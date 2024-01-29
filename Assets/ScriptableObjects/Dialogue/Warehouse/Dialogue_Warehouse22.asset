@@ -21,9 +21,5 @@ MonoBehaviour:
     dialogueStallTime: 0
     cleanText: 1
     stoppingFlag: 1
-    profilePicture: {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
     profileName: Stepspike #98761
-    talkingProfilePictures:
-    - {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
-    - {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
-  talkingProfilePictures: []
+    profilePicture: {fileID: 21300000, guid: e55b7a5619c85c34d88081c96047fe21, type: 3}

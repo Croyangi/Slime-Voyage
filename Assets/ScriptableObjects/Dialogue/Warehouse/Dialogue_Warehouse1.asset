@@ -21,15 +21,15 @@ MonoBehaviour:
     dialogueStallTime: 0.3
     cleanText: 1
     stoppingFlag: 0
-    profileName: Flamboyantly Hatted Stepspike
-    profilePicture: {fileID: 21300000, guid: 701a420f0bf53fd4494016d9addd6dee, type: 3}
+    profileName: Surintendante Stepspike
+    profilePicture: {fileID: 21300000, guid: b6c8446f20a8212468ee359b56af5fe9, type: 3}
   - dialogueText: we're surrounded.
     dialogueSpeed: 0.02
     dialogueStallTime: 0
     cleanText: 0
     stoppingFlag: 1
     profileName: 
-    profilePicture: {fileID: 21300000, guid: 7854b0c8be5671a459afcfd04c1d7f9d, type: 3}
+    profilePicture: {fileID: 21300000, guid: 2c0fef969d3cffd4ebc8f1d5b6566982, type: 3}
   - dialogueText: 'The Chunkfishes have overtaken our base
 
       (not you Smart
@@ -39,25 +39,25 @@ MonoBehaviour:
     cleanText: 1
     stoppingFlag: 1
     profileName: 
-    profilePicture: {fileID: 21300000, guid: 701a420f0bf53fd4494016d9addd6dee, type: 3}
+    profilePicture: {fileID: 21300000, guid: b6c8446f20a8212468ee359b56af5fe9, type: 3}
   - dialogueText: Thank you.
     dialogueSpeed: 0.02
     dialogueStallTime: 0
     cleanText: 1
     stoppingFlag: 1
-    profileName: Well Hatted Chunkfish
-    profilePicture: {fileID: 21300000, guid: 40f66dbc189853043a29f615feeccb1d, type: 3}
+    profileName: Eugene
+    profilePicture: {fileID: 21300000, guid: ffd2b0ef6e8c5014a95b912c0421e4e8, type: 3}
   - dialogueText: 'It''s only a matter of time till our hat rations deplete, '
     dialogueSpeed: 0.02
     dialogueStallTime: 0.3
     cleanText: 1
     stoppingFlag: 0
-    profileName: Flamboyantly Hatted Stepspike
-    profilePicture: {fileID: 21300000, guid: 7854b0c8be5671a459afcfd04c1d7f9d, type: 3}
+    profileName: Surintendante Stepspike
+    profilePicture: {fileID: 21300000, guid: b6c8446f20a8212468ee359b56af5fe9, type: 3}
   - dialogueText: any ideas?
     dialogueSpeed: 0.02
     dialogueStallTime: 0
     cleanText: 0
     stoppingFlag: 1
     profileName: 
-    profilePicture: {fileID: 21300000, guid: 701a420f0bf53fd4494016d9addd6dee, type: 3}
+    profilePicture: {fileID: 21300000, guid: 2c0fef969d3cffd4ebc8f1d5b6566982, type: 3}

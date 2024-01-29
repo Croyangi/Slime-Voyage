@@ -40,7 +40,7 @@ public class BaseSlime_StateHandler : MonoBehaviour
     {
         isGrounded = IsGroundedUpdate();
 
-        if (IsGroundedUpdate()) { isPermanentlySticking = false; }
+        if (IsTrueGroundedUpdate()) { isPermanentlySticking = false; }
 
         isOnEdge = OnEdgeUpdate();
 
@@ -49,6 +49,29 @@ public class BaseSlime_StateHandler : MonoBehaviour
         PermanentlyStickingUpdate();
 
         touchingDirection = TouchingDirectionUpdate();
+    }
+
+    private bool IsTrueGroundedUpdate()
+    {
+        List<Collider2D> colliders = new List<Collider2D>();
+        Physics2D.OverlapCollider(_isGroundedCollider, new ContactFilter2D(), colliders);
+
+        Tags _tags;
+
+        foreach (Collider2D collider in colliders)
+        {
+            GameObject temp = collider.gameObject;
+
+            if (temp.GetComponent<Tags>() != null)
+            {
+                _tags = temp.GetComponent<Tags>();
+                if ((_tags.CheckTags(IS_SOLID_GROUND) == true || _tags.CheckTags(IS_PLATFORM) == true) && rb.velocity.y > -2 && rb.velocity.y < 2)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     private bool IsGroundedUpdate()

@@ -21,59 +21,40 @@ MonoBehaviour:
     dialogueStallTime: 0
     cleanText: 1
     stoppingFlag: 1
-    profilePicture: {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
     profileName: Stepspike #61624
-    talkingProfilePictures:
-    - {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
-    - {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
+    profilePicture: {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
   - dialogueText: 'Boss said the old ones were '
     dialogueSpeed: 0.03
     dialogueStallTime: 0
     cleanText: 1
     stoppingFlag: 0
-    profilePicture: {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
     profileName: 
-    talkingProfilePictures:
-    - {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
-    - {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
+    profilePicture: {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
   - dialogueText: '"too sentimental" '
     dialogueSpeed: 0.1
     dialogueStallTime: 0
     cleanText: 0
     stoppingFlag: 0
-    profilePicture: {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
     profileName: 
-    talkingProfilePictures:
-    - {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
-    - {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
+    profilePicture: {fileID: 21300000, guid: 008c27e5d462fc14fa533e45120ae86c, type: 3}
   - dialogueText: to throw out.
     dialogueSpeed: 0.03
     dialogueStallTime: 0
     cleanText: 0
     stoppingFlag: 1
-    profilePicture: {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
     profileName: 
-    talkingProfilePictures:
-    - {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
-    - {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
+    profilePicture: {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
   - dialogueText: 'Oh well, '
     dialogueSpeed: 0.03
     dialogueStallTime: 0.3
     cleanText: 1
     stoppingFlag: 0
-    profilePicture: {fileID: 0}
     profileName: 
-    talkingProfilePictures:
-    - {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
-    - {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
+    profilePicture: {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
   - dialogueText: makes my job easier.
     dialogueSpeed: 0.03
     dialogueStallTime: 0
     cleanText: 0
     stoppingFlag: 1
-    profilePicture: {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
     profileName: 
-    talkingProfilePictures:
-    - {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
-    - {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
-  talkingProfilePictures: []
+    profilePicture: {fileID: 21300000, guid: e55b7a5619c85c34d88081c96047fe21, type: 3}
