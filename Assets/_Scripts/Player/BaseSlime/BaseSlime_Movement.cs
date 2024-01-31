@@ -183,7 +183,7 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
 
     private void DecellerationStall()
     {
-        _movementVars.decceleration = 1f;
+        _movementVars.groundedDeceleration = 1f;
         _movementVars.deccelerationTimer -= Time.deltaTime;
     }
 
@@ -217,16 +217,55 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
         }
         else
         {
-            _movementVars.decceleration = _movementVars.initialDecceleration;
+            _movementVars.groundedDeceleration = _movementVars.initialDeceleration;
         }
     }
 
     private void MainMovementMath()
     {
-        float targetSpeed = _movementVars.processedInputMovement.x * _movementVars.movementSpeed;
+        // Math.Sign is because Unity's input can give float values if diagonal movement
+        float targetSpeed = Math.Sign(_movementVars.processedInputMovement.x) * _movementVars.movementSpeed;
         float speedDif = targetSpeed - rb.velocity.x;
-        float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? _movementVars.acceleration : _movementVars.decceleration;
-        float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, _movementVars.velocityPower) * Mathf.Sign(speedDif);
+
+        //// Don't slow down if exceeding target speed in the same vector direction
+        //if ((Mathf.Abs(rb.velocity.x) > Mathf.Abs(targetSpeed)) && _stateHandler.isGrounded == false && (Math.Sign(_movementVars.processedInputMovement.x) == Math.Sign(rb.velocity.x)))
+        //{
+        //    Debug.Log("NMOW");
+        //    speedDif = 0f - rb.velocity.x;
+        //}
+
+        // Acceleration
+        float accelRate = 0f;
+        if (Mathf.Abs(targetSpeed) > 0.01f)
+        {
+            accelRate = _movementVars.acceleration;
+        }
+        else
+        {
+            accelRate = _movementVars.groundedDeceleration;
+        }
+
+        //// Airborne
+        //if (_stateHandler.isGrounded == false && _movementVars.processedInputMovement != Vector2.zero && (Math.Sign(_movementVars.processedInputMovement.x) == Math.Sign(rb.velocity.x)))
+        //{
+        //    accelRate = _movementVars.airborneDeceleration;
+        //}
+
+        // Don't slow down if exceeding target speed in the same vector direction
+        float movement = 0f;
+        if ((Mathf.Abs(rb.velocity.x) > Mathf.Abs(targetSpeed)) && _stateHandler.isGrounded == false && (Math.Sign(_movementVars.processedInputMovement.x) == Math.Sign(rb.velocity.x)))
+        {
+            //speedDif = 0f - rb.velocity.x;
+            accelRate = _movementVars.exceedDeceleration;
+            movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, _movementVars.velocityPower) * Mathf.Sign(speedDif);
+        } else if ((Mathf.Abs(rb.velocity.x) > Math.Abs(_movementVars.movementSpeed)) && _stateHandler.isGrounded == false && _movementVars.processedInputMovement.x == 0f)
+        {
+            accelRate = _movementVars.exceedDeceleration;
+            movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, _movementVars.velocityPower) * Mathf.Sign(speedDif);
+        } else
+        {
+            movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, _movementVars.velocityPower) * Mathf.Sign(speedDif);
+        }
 
         rb.AddForce(movement * Vector2.right);
     }
@@ -235,7 +274,7 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
     {
         float targetSpeed = _movementVars.stickingWallSpeed;
         float speedDif = targetSpeed - rb.velocity.y;
-        float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? _movementVars.stickingWallAcceleration : _movementVars.stickingWallDecceleration;
+        float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? _movementVars.stickingWallAcceleration : _movementVars.stickingWallDeceleration;
         float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, _movementVars.stickingWallVelocityPower) * Mathf.Sign(speedDif);
 
         rb.AddForce(movement * Vector2.up);

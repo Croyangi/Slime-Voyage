@@ -73,7 +73,6 @@ public class Chunkfish_Bounce : MonoBehaviour
     private void SetMovementStall()
     {
         IMovementProcessor movementStallComponent = collidedObject.GetComponent<IMovementProcessor>();
-        movementStallComponent.SetDecellerationStall(chunkfish_deccelerationStallTime);
 
         float increase = chunkfish_bounceStrength - 35f; // Original strength is 35, thus subtracting 35 from it
         float percentChange = (increase / chunkfish_bounceStrength) + 1;

@@ -21,14 +21,14 @@ MonoBehaviour:
     dialogueStallTime: 0
     cleanText: 1
     stoppingFlag: 1
-    profilePicture: {fileID: 21300000, guid: a14a0420d86c8f340872b8bf4f08e30d, type: 3}
     profileName: Artists
+    profilePicture: {fileID: 21300000, guid: a14a0420d86c8f340872b8bf4f08e30d, type: 3}
   - dialogueText: 'Jingles:
 
-      - General Art'
+      - Promotional Art'
     dialogueSpeed: 0.03
     dialogueStallTime: 0
     cleanText: 1
     stoppingFlag: 1
-    profilePicture: {fileID: 0}
     profileName: Jingles
+    profilePicture: {fileID: 0}

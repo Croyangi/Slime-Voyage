@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b878e7a330cac34b8fe4680311f2bd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialDecceleration: 7
+  initialDeceleration: 7
   movementStallTime: 0
   isMovementStalled: 0
   coyoteTime: 0.2
@@ -255,7 +255,8 @@ MonoBehaviour:
   jumpBuffer: 0.1
   jumpBufferTimer: 0
   acceleration: 7
-  decceleration: 1
+  groundedDeceleration: 7
+  exceedDeceleration: 2
   velocityPower: 1
   movementSpeed: 10
   deccelerationTimer: 0
@@ -268,7 +269,7 @@ MonoBehaviour:
   wallJumpStallTime: 0.25
   stickingWallSpeed: 2
   stickingWallAcceleration: 7
-  stickingWallDecceleration: 1
+  stickingWallDeceleration: 7
   stickingWallVelocityPower: 1
 --- !u!114 &9000577749444541093
 MonoBehaviour:

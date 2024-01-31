@@ -7,6 +7,10 @@ public class FanBreaking : MonoBehaviour
     [Header("Tags")]
     [SerializeField] private TagsScriptObj _playerTag;
 
+    [Header("References")]
+    [SerializeField] private float fadeOutSpeed;
+    [SerializeField] private SpriteRenderer sr_fan;
+    [SerializeField] private SpriteRenderer sr_fanBox;
     [SerializeField] private GameObject fan;
     [SerializeField] private bool isUsed = false;
 
@@ -30,8 +34,18 @@ public class FanBreaking : MonoBehaviour
                 float randomY = Random.Range(5f, 10f);
                 rb.AddForce(new Vector2(randomX, randomY), ForceMode2D.Impulse);
 
-                Destroy(gameObject, 3f);
+                StartCoroutine(FadeOut());
+                Destroy(gameObject, 2f);
             }
         }
+    }
+
+    private IEnumerator FadeOut()
+    {
+        float newAlpha = Mathf.MoveTowards(sr_fan.color.a, 0f, fadeOutSpeed * Time.deltaTime);
+        sr_fan.color = new Color(sr_fan.color.r, sr_fan.color.g, sr_fan.color.b, newAlpha);
+        sr_fanBox.color = new Color(sr_fanBox.color.r, sr_fanBox.color.g, sr_fanBox.color.b, newAlpha);
+        yield return new WaitForFixedUpdate();
+        StartCoroutine(FadeOut());
     }
 }

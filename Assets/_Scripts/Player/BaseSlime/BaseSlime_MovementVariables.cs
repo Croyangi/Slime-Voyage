@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BaseSlime_MovementVariables : MonoBehaviour
 {
-    public float initialDecceleration;
+    public float initialDeceleration;
     public float movementStallTime;
     public bool isMovementStalled;
 
@@ -18,7 +18,8 @@ public class BaseSlime_MovementVariables : MonoBehaviour
 
     [Header("Velocity")]
     public float acceleration;
-    public float decceleration;
+    public float groundedDeceleration;
+    public float exceedDeceleration;
     public float velocityPower;
     public float movementSpeed;
     public float deccelerationTimer;
@@ -37,6 +38,6 @@ public class BaseSlime_MovementVariables : MonoBehaviour
 
     public float stickingWallSpeed;
     public float stickingWallAcceleration;
-    public float stickingWallDecceleration;
+    public float stickingWallDeceleration;
     public float stickingWallVelocityPower;
 }

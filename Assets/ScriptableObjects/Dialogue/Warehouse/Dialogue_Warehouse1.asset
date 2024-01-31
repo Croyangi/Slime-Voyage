@@ -21,7 +21,7 @@ MonoBehaviour:
     dialogueStallTime: 0.3
     cleanText: 1
     stoppingFlag: 0
-    profileName: Surintendante Stepspike
+    profileName: Flamboyantly Hatted Stepspike
     profilePicture: {fileID: 21300000, guid: b6c8446f20a8212468ee359b56af5fe9, type: 3}
   - dialogueText: we're surrounded.
     dialogueSpeed: 0.02

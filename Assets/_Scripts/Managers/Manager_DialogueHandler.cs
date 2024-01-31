@@ -1,7 +1,6 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -15,27 +14,35 @@ public class Manager_DialogueHandler : MonoBehaviour
     [Header("Dialogue Pieces")]
     [SerializeField] private GameObject dialogueCanvas;
 
+    [Serializable]
+    public class DialogueSet
+    {
+        public GameObject set;
+        public Vector3 setScale;
+
+        public TextMeshProUGUI dialogueText;
+        public GameObject dialogue;
+        public Vector3 dialogueScale;
+
+        public GameObject image;
+        public GameObject dialogueImage;
+        public Vector3 dialogueImageScale;
+
+        public TextMeshProUGUI nameText;
+        public GameObject name;
+        public Vector3 nameScale;
+    }
+
+    [SerializeField] private List<DialogueSet> dialogueSets;
+    [SerializeField] private int dialogueSetIndex = 0;
+    // 0 is top set
+    // 1 is top mini set
+    // 2 is bottom set
+
     [SerializeField] private GameObject current_dialogueSet;
     [SerializeField] private TextMeshProUGUI current_dialogueBoxText;
     [SerializeField] private GameObject current_profilePictureImage;
     [SerializeField] private TextMeshProUGUI current_profileNameTextMesh;
-
-    // Top set
-    [SerializeField] private GameObject top_dialogueSet;
-    [SerializeField] private TextMeshProUGUI top_dialogueBoxText;
-    [SerializeField] private GameObject top_profilePictureImage;
-    [SerializeField] private TextMeshProUGUI top_profileNameTextMesh;
-
-    // Top mini set
-    [SerializeField] private GameObject topMini_dialogueSet;
-    [SerializeField] private TextMeshProUGUI topMini_dialogueBoxText;
-    [SerializeField] private GameObject topMini_profilePictureImage;
-
-    // Bottom set
-    [SerializeField] private GameObject bottom_dialogueSet;
-    [SerializeField] private TextMeshProUGUI bottom_dialogueBoxText;
-    [SerializeField] private GameObject bottom_profilePictureImage;
-    [SerializeField] private TextMeshProUGUI bottom_profileNameTextMesh;
 
     [Header("Dialogue References")]
     [SerializeField] public List<Dialogue> _dialogues;
@@ -63,10 +70,9 @@ public class Manager_DialogueHandler : MonoBehaviour
         }
         instance = this;
 
-        // Precaution
-        dialogueCanvas.SetActive(false);
-
         playerInput = new PlayerInput(); // Instantiate new Unity's Input System
+
+        GetDialogueSetScales();
     }
 
     private void OnEnable()
@@ -80,6 +86,17 @@ public class Manager_DialogueHandler : MonoBehaviour
         //// Unubscribes to Unity's input system
         playerInput.Interact.Interact1.performed -= OnInteractPerformed;
         playerInput.Disable();
+    }
+
+    private void GetDialogueSetScales()
+    {
+        foreach (DialogueSet d in dialogueSets)
+        {
+            if (d.set != null) { d.setScale = d.set.transform.localScale; }
+            if (d.dialogue != null) { d.dialogueScale = d.dialogue.transform.localScale; }
+            if (d.name != null) { d.nameScale = d.name.transform.localScale; }
+            if (d.dialogueImage != null) { d.dialogueImageScale = d.dialogueImage.transform.localScale; }
+        }
     }
 
     private void OnInteractPerformed(InputAction.CallbackContext value)
@@ -197,18 +214,84 @@ public class Manager_DialogueHandler : MonoBehaviour
             }
         }
 
-        // Format where the dialogues are
+        // Easily enable dialogue sets
         ProcessDialogueFormatting();
-
-        // Technicals
+        DialogueScaleUp();
         current_dialogueSet.SetActive(true);
+
+        // Technical starts
         isDialogueActive = true;
         isDialogueTyping = false;
         isDialogueWaiting = false;
-        dialogueCanvas.SetActive(true);
         currentDialogueIndex = 0;
 
         InteractPerformed();
+    }
+
+    private void DialogueScaleUp()
+    {
+        if (current_dialogueBoxText != null)
+        {
+            GameObject text = current_dialogueBoxText.transform.parent.gameObject;
+            text.transform.localScale = Vector3.zero;
+            LeanTween.scale(text, dialogueSets[dialogueSetIndex].dialogueScale, 0.1f);
+        }
+
+        if (current_profilePictureImage != null)
+        {
+            GameObject image = current_profilePictureImage.transform.parent.gameObject;
+            image.transform.localScale = Vector3.zero;
+            LeanTween.scale(image, dialogueSets[dialogueSetIndex].dialogueImageScale, 0.1f);
+        }
+
+        if (current_profileNameTextMesh != null)
+        {
+            GameObject name = current_profileNameTextMesh.transform.parent.gameObject;
+            name.transform.localScale = Vector3.zero;
+            LeanTween.scale(name, dialogueSets[dialogueSetIndex].nameScale, 0.1f);
+        }
+    }
+
+    private IEnumerator DialogueShrinkDown()
+    {
+        GameObject text = null;
+        if (current_dialogueBoxText != null)
+        {
+            text = current_dialogueBoxText.transform.parent.gameObject;
+            LeanTween.scale(text, Vector3.zero, 0.1f);
+        }
+
+        GameObject image = null;
+        if (current_profilePictureImage != null)
+        {
+            image = current_profilePictureImage.transform.parent.gameObject;
+            LeanTween.scale(image, Vector3.zero, 0.1f);
+        }
+
+        GameObject name = null;
+        if (current_profileNameTextMesh != null)
+        {
+            name = current_profileNameTextMesh.transform.parent.gameObject;
+            LeanTween.scale(name, Vector3.zero, 0.1f);
+        }
+
+        yield return new WaitForSeconds(0.2f);
+        current_dialogueSet.SetActive(false);
+
+        if (text != null)
+        {
+            text.transform.localScale = dialogueSets[dialogueSetIndex].dialogueScale;
+        }
+
+        if (image != null)
+        {
+            image.transform.localScale = dialogueSets[dialogueSetIndex].dialogueImageScale;
+        }
+
+        if (name != null)
+        {
+            name.transform.localScale = dialogueSets[dialogueSetIndex].nameScale;
+        }
     }
 
     private void ProcessDialogueFormatting()
@@ -216,28 +299,31 @@ public class Manager_DialogueHandler : MonoBehaviour
         // Normal top
         if (_dialoguePackage.isDialogueOnTop && _dialoguePackage.isDialogueMini == false)
         {
-            current_dialogueSet = top_dialogueSet;
-            current_dialogueBoxText = top_dialogueBoxText;
-            current_profilePictureImage = top_profilePictureImage;
-            current_profileNameTextMesh = top_profileNameTextMesh;
+            dialogueSetIndex = 0;
+            current_dialogueSet = dialogueSets[0].set;
+            current_dialogueBoxText = dialogueSets[0].dialogueText;
+            current_profilePictureImage = dialogueSets[0].image;
+            current_profileNameTextMesh = dialogueSets[0].nameText;
         }
 
         // Small top
         if (_dialoguePackage.isDialogueOnTop && _dialoguePackage.isDialogueMini == true)
         {
-            current_dialogueSet = topMini_dialogueSet;
-            current_dialogueBoxText = topMini_dialogueBoxText;
-            current_profilePictureImage = topMini_profilePictureImage;
+            dialogueSetIndex = 1;
+            current_dialogueSet = dialogueSets[1].set;
+            current_dialogueBoxText = dialogueSets[1].dialogueText;
+            current_profilePictureImage = dialogueSets[1].image;
             current_profileNameTextMesh = null;
         }
 
         // Normal bottom
         if (_dialoguePackage.isDialogueOnTop == false && _dialoguePackage.isDialogueMini == false)
         {
-            current_dialogueSet = bottom_dialogueSet;
-            current_dialogueBoxText = bottom_dialogueBoxText;
-            current_profilePictureImage = bottom_profilePictureImage;
-            current_profileNameTextMesh = bottom_profileNameTextMesh;
+            dialogueSetIndex = 2;
+            current_dialogueSet = dialogueSets[2].set;
+            current_dialogueBoxText = dialogueSets[2].dialogueText;
+            current_profilePictureImage = dialogueSets[2].image;
+            current_profileNameTextMesh = dialogueSets[2].nameText;
         }
     }
 
@@ -335,11 +421,12 @@ public class Manager_DialogueHandler : MonoBehaviour
         // End relay signal
         currentDialoguePrompt = null;
 
+        // UI Smooth Stuff
+        StartCoroutine(DialogueShrinkDown());
+
         // Technicals
-        current_dialogueSet.SetActive(false);
         isDialogueWaiting = false;
         isDialogueTyping = false;
-        dialogueCanvas.SetActive(false);
         currentDialogueIndex = 0;
 
         // To make sure no infinite dialogue loops occur
