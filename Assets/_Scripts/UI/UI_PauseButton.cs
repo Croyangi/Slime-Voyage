@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class UI_PauseButton : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject pauseMenuCanvas;
+    [SerializeField] private Image image_pauseButton;
 
     [Header("Technical References")]
     [SerializeField] private PlayerInput playerInput = null;
@@ -17,6 +17,8 @@ public class UI_PauseButton : MonoBehaviour
     private void Awake()
     {
         playerInput = new PlayerInput(); // Instantiate new Unity's Input System
+        //image_pauseButton.color = new Color(image_pauseButton.color.r, image_pauseButton.color.g, image_pauseButton.color.b, 0.5f);
+
     }
 
     private void OnEnable()
@@ -40,6 +42,16 @@ public class UI_PauseButton : MonoBehaviour
         TogglePauseButtonPress();
     }
 
+    private void OnMouseEnter()
+    {
+        //image_pauseButton.color = new Color(image_pauseButton.color.r, image_pauseButton.color.g, image_pauseButton.color.b, 1f);
+    }
+
+    private void OnMouseExit()
+    {
+        //image_pauseButton.color = new Color(image_pauseButton.color.r, image_pauseButton.color.g, image_pauseButton.color.b, 0.5f);
+    }
+
     public void TogglePauseButtonPress()
     {
         if (pauseMenuCanvas.activeSelf == true) 
@@ -49,6 +61,7 @@ public class UI_PauseButton : MonoBehaviour
         } else
         {
             Manager_DialogueHandler.instance.ForceQuitDialogue();
+            //image_pauseButton.color = new Color(image_pauseButton.color.r, image_pauseButton.color.g, image_pauseButton.color.b, 1f);
             EnablePauseScreen();
             PauseGame();
         }
@@ -57,6 +70,7 @@ public class UI_PauseButton : MonoBehaviour
     private void ResumeGame()
     {
         Time.timeScale = 1;
+
     }
 
     private void PauseGame()

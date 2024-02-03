@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 891687577154523105}
   - component: {fileID: 891687577154523106}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 891687577164317126}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,9 +126,9 @@ GameObject:
   m_Component:
   - component: {fileID: 891687577173294104}
   - component: {fileID: 4047929707142215518}
-  - component: {fileID: 891687577173294105}
-  m_Layer: 7
-  m_Name: StepSpike_Loader
+  - component: {fileID: 357810471994668905}
+  m_Layer: 10
+  m_Name: Culler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -162,12 +162,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadedObjects: {fileID: 891687577356256595}
-  _checkExistingObjectsCollider: {fileID: 891687577173294105}
   _rb: {fileID: 891687578245934461}
-  _tagsToCheck:
-  - {fileID: 11400000, guid: 052214d19408f7a48bba66682f7001de, type: 2}
---- !u!58 &891687577173294105
-CircleCollider2D:
+--- !u!61 &357810471994668905
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -199,8 +196,18 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 40
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &891687577174508055
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,7 +218,7 @@ GameObject:
   m_Component:
   - component: {fileID: 891687577174508056}
   - component: {fileID: 891687577174508057}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: StepSpike_StateHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +284,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 891687577356256596}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: LoadedObjects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -315,7 +322,7 @@ GameObject:
   m_Component:
   - component: {fileID: 891687577380842761}
   - component: {fileID: 891687577380842762}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: IsGrounded
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,7 +399,7 @@ GameObject:
   m_Component:
   - component: {fileID: 891687577407312586}
   - component: {fileID: 891687577407312587}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: StepSpike_Animator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -445,7 +452,7 @@ GameObject:
   m_Component:
   - component: {fileID: 891687577932789816}
   - component: {fileID: 891687577932789817}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: StepSpike_Movement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -482,6 +489,7 @@ MonoBehaviour:
   _rigidbody2D: {fileID: 891687578245934461}
   _stateHandler: {fileID: 891687577174508057}
   standUprightTimer: 3
+  standUprightSetTime: 3
   horizontalMovement: 1
   movementSpeed: 2
   setMovementSpeed: 2
@@ -498,7 +506,7 @@ GameObject:
   m_Component:
   - component: {fileID: 891687578141034514}
   - component: {fileID: 891687578141034515}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: TouchingLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -781,7 +789,7 @@ GameObject:
   - component: {fileID: 891687578478419817}
   - component: {fileID: 891687578478419818}
   - component: {fileID: 891687578478419819}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: StepSpike_Detect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -875,7 +883,7 @@ GameObject:
   m_Component:
   - component: {fileID: 891687578830436975}
   - component: {fileID: 891687578830436944}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: TouchingRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}

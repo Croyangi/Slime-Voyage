@@ -14,8 +14,8 @@ TagManager:
   - Platform
   - Entities
   - IgnoreEntities
-  - 
-  - 
+  - Player
+  - IsPlayerCullable
   - 
   - 
   - 

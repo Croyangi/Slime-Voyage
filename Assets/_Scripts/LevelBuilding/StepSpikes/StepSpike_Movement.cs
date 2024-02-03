@@ -12,6 +12,7 @@ public class StepSpike_Movement : MonoBehaviour
 
     [Header("Variables")]
     [SerializeField] private float standUprightTimer;
+    [SerializeField] private float standUprightSetTime;
     [SerializeField] public float horizontalMovement;
 
     [Header("Movement Variables")]
@@ -45,7 +46,7 @@ public class StepSpike_Movement : MonoBehaviour
             { 
                 ApplyTorque(); 
             }
-            standUprightTimer = 3f;
+            standUprightTimer = standUprightSetTime;
         }
     }
 
@@ -87,7 +88,7 @@ public class StepSpike_Movement : MonoBehaviour
             movementSpeed = 0;
         } else
         {
-            standUprightTimer = 5f;
+            standUprightTimer = standUprightSetTime;
             movementSpeed = setMovementSpeed;
         }
 
@@ -95,6 +96,11 @@ public class StepSpike_Movement : MonoBehaviour
         float targetSpeed = horizontalMovement * movementSpeed;
         float speedDif = targetSpeed - _rigidbody2D.velocity.x;
         float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : decceleration;
+
+        if (_stateHandler.isGrounded == false)
+        {
+            accelRate = 3f;
+        }
         float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velocityPower) * Mathf.Sign(speedDif);
         _rigidbody2D.AddForce(movement * Vector2.right);
 
