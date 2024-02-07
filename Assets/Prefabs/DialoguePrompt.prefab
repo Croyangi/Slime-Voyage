@@ -351,7 +351,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 101
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 0.21226418, g: 0.58914196, b: 1, a: 1}
+  m_Color: {r: 0.9058824, g: 0.8000001, b: 0.23529413, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -663,7 +663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 565ca1549e68e134ba7df4f45c635fc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dialoguePackage: {fileID: 11400000, guid: d5a1594fa131d25429fb61b633446dd8, type: 2}
+  _dialoguePackage: {fileID: 11400000, guid: dacb53c7112517e4e812ec21ebc72867, type: 2}
   _promptCollider: {fileID: 5435463709706601536}
   _dialoguePrompt_Effects: {fileID: 2117292860217059764}
   _playerTag: {fileID: 11400000, guid: 052214d19408f7a48bba66682f7001de, type: 2}
@@ -775,7 +775,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 5
 --- !u!1 &4912441460299486851
 GameObject:
   m_ObjectHideFlags: 0

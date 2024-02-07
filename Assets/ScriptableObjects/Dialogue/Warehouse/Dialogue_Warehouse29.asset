@@ -41,7 +41,7 @@ MonoBehaviour:
       Rowing hat? Turban? Been needing a new visor? Sir you want a cowboy? Boy we
       got beanies!
     dialogueSpeed: 0.03
-    dialogueStallTime: 0
+    dialogueStallTime: 0.3
     cleanText: 1
     stoppingFlag: 0
     profileName: 

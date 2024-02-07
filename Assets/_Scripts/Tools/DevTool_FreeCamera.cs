@@ -15,7 +15,7 @@ public class DevTool_FreeCamera : MonoBehaviour
     [SerializeField] private Vector3 playerPosition;
 
     [Header("Camera References")]
-    [SerializeField] private GameObject _camera;
+    [SerializeField] private Camera _camera;
     [SerializeField] private float movementSpeed;
 
     [Header("Tags")]
@@ -92,7 +92,7 @@ public class DevTool_FreeCamera : MonoBehaviour
     private void OnDisableFreeCamera()
     {
         isFreeCameraEnabled = false;
-        _camera.SetActive(false);
+        _camera.enabled = false;
     }
 
     private void OnEnableFreeCamera()
@@ -103,7 +103,7 @@ public class DevTool_FreeCamera : MonoBehaviour
         }
 
         isFreeCameraEnabled = true;
-        _camera.SetActive(true);
+        _camera.enabled = true;
         _camera.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, _camera.transform.position.z);
 
         // Keeps the player still, Vector2.zero does not prevent gravity

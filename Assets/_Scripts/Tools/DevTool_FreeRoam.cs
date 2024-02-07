@@ -13,7 +13,7 @@ public class DevTool_FreeRoam : MonoBehaviour
     [SerializeField] private bool isFreeRoamEnabled;
 
     [Header("Camera References")]
-    [SerializeField] private GameObject _camera;
+    [SerializeField] private Camera _camera;
     [SerializeField] private float movementSpeed;
     [SerializeField] private float cameraSize;
 
@@ -90,7 +90,7 @@ public class DevTool_FreeRoam : MonoBehaviour
     private void OnDisableFreeRoam()
     {
         isFreeRoamEnabled = false;
-        _camera.SetActive(false);
+        _camera.enabled = false;
     }
 
     private void OnEnableFreeRoam()
@@ -101,7 +101,7 @@ public class DevTool_FreeRoam : MonoBehaviour
         }
 
         isFreeRoamEnabled = true;
-        _camera.SetActive(true);
+        _camera.enabled = true;
         _camera.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, _camera.transform.position.z);
     }
 

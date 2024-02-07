@@ -41,6 +41,7 @@ public class BaseSlime_StateHandler : MonoBehaviour
         isGrounded = IsGroundedUpdate();
 
         if (IsTrueGroundedUpdate()) { isPermanentlySticking = false; }
+        if (_movementVars.processedInputMovement.y < 0) { isPermanentlySticking = false; }
 
         isOnEdge = OnEdgeUpdate();
 
@@ -65,7 +66,7 @@ public class BaseSlime_StateHandler : MonoBehaviour
             if (temp.GetComponent<Tags>() != null)
             {
                 _tags = temp.GetComponent<Tags>();
-                if ((_tags.CheckTags(IS_SOLID_GROUND) == true || _tags.CheckTags(IS_PLATFORM) == true) && rb.velocity.y > -2 && rb.velocity.y < 2)
+                if ((_tags.CheckTags(IS_SOLID_GROUND) == true || _tags.CheckTags(IS_PLATFORM) == true) && rb.velocity.y > -0.1 && rb.velocity.y < 0.1)
                 {
                     return true;
                 }

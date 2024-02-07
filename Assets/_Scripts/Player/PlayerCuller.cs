@@ -7,10 +7,11 @@ public class PlayerCuller : MonoBehaviour
 {
     [SerializeField] private LayerMask layer_isCullable;
     [SerializeField] private float activationDistance = 40f;
+    [SerializeField] private float totalDistance = 50f;
 
-    private void FixedUpdate()
+    private void Update()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, activationDistance, layer_isCullable);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, totalDistance, layer_isCullable);
         foreach (var collider in colliders)
         {
             GameObject obj = collider.gameObject;
@@ -31,10 +32,11 @@ public class PlayerCuller : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red; // Set the color for the Gizmos line
-
-        // Draw a line to visualize the raycast in the Scene view
+        Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, activationDistance);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, totalDistance);
     }
 }
 

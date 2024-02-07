@@ -28,6 +28,7 @@ public class StepSpike_StateHandler : MonoBehaviour
         isGrounded = IsGrounded();
         isTouchingLeft = IsTouchingLeft();
         isTouchingRight = IsTouchingRight();
+
     }
 
     private bool IsGrounded()
@@ -39,7 +40,10 @@ public class StepSpike_StateHandler : MonoBehaviour
         {
             GameObject temp = collider.gameObject;
 
-            if (collider.gameObject.TryGetComponent<Tags>(out var _tags) && temp != stepSpike_parentObject && stepSpike_parentObject.transform.rotation.z < 45f && stepSpike_parentObject.transform.rotation.z > -45f)
+            float angle = stepSpike_parentObject.transform.rotation.eulerAngles.z;
+            if (angle > 180) { angle -= 360; } // Convert to the range -180 to 180 degrees
+
+            if (collider.gameObject.TryGetComponent<Tags>(out var _tags) && temp != stepSpike_parentObject && Mathf.Abs(angle) < 15f)
             {
                 if (_tags.CheckTags(_isSolidGroundTag.name) == true || _tags.CheckTags(_isPlatformTag.name) == true)
                 {

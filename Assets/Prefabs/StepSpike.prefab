@@ -206,7 +206,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.1, y: 0.1}
   m_EdgeRadius: 0
 --- !u!1 &891687577174508055
 GameObject:
@@ -651,7 +651,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: -744500188, guid: b11ed1d9883ff3847b9c8e2e16c6f067, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -736,8 +736,8 @@ PolygonCollider2D:
     m_Paths:
     - - {x: 0.011833191, y: 0.533226}
       - {x: -0.5068274, y: -0.030956477}
-      - {x: -0.50282425, y: -0.5436591}
-      - {x: 0.49949038, y: -0.5426061}
+      - {x: -0.50645584, y: -0.5883521}
+      - {x: 0.5031067, y: -0.5843084}
       - {x: 0.5056753, y: -0.037387908}
   m_UseDelaunayMesh: 0
 --- !u!95 &891687578245934460

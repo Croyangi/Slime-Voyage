@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layer_isCullable:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   activationDistance: 40
 --- !u!1 &9000577749113367539
 GameObject:
