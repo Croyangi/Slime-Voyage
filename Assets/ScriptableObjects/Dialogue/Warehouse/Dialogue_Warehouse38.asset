@@ -16,7 +16,7 @@ MonoBehaviour:
   isDialogueMini: 1
   isPlayerInputStall: 0
   _dialogues:
-  - dialogueText: Houuughhhhhh mimimimimimimimimimi
+  - dialogueText: Houuughhhhhh mimimimimimimimimimi...
     dialogueSpeed: 0.04
     dialogueStallTime: 2
     cleanText: 1

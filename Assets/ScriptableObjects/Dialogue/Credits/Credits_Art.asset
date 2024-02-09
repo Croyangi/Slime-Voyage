@@ -16,17 +16,22 @@ MonoBehaviour:
   isDialogueMini: 0
   isPlayerInputStall: 0
   _dialogues:
-  - dialogueText: 'Credits for Artists:'
-    dialogueSpeed: 0.03
+  - dialogueText: 'Credits for Artists:
+
+      - Jingles'
+    dialogueSpeed: 0.02
     dialogueStallTime: 0
     cleanText: 1
     stoppingFlag: 1
     profileName: Artists
     profilePicture: {fileID: 21300000, guid: a14a0420d86c8f340872b8bf4f08e30d, type: 3}
-  - dialogueText: 'Jingles:
+  - dialogueText: 'Jingles (She/Her):
 
-      - Promotional Art'
-    dialogueSpeed: 0.03
+      - Promotional Art
+
+      ~ A family
+      guy. ~'
+    dialogueSpeed: 0.02
     dialogueStallTime: 0
     cleanText: 1
     stoppingFlag: 1

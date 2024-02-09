@@ -16,19 +16,24 @@ MonoBehaviour:
   isDialogueMini: 0
   isPlayerInputStall: 0
   _dialogues:
-  - dialogueText: 'Credits for Composers:'
-    dialogueSpeed: 0.03
-    dialogueStallTime: 0
-    cleanText: 1
-    stoppingFlag: 1
-    profilePicture: {fileID: 21300000, guid: a8b80d9900cfd8645b0e8566458351cd, type: 3}
-    profileName: Composers
-  - dialogueText: 'josef:
+  - dialogueText: 'Credits for Composers:
 
-      - Music Composition and SFX'
-    dialogueSpeed: 0.03
+      - josef'
+    dialogueSpeed: 0.02
     dialogueStallTime: 0
     cleanText: 1
     stoppingFlag: 1
-    profilePicture: {fileID: 0}
+    profileName: Composers
+    profilePicture: {fileID: 21300000, guid: a8b80d9900cfd8645b0e8566458351cd, type: 3}
+  - dialogueText: 'josef (He/Him):
+
+      - Music Composition, SFX
+
+      ~ <flavor
+      text> ~'
+    dialogueSpeed: 0.02
+    dialogueStallTime: 0
+    cleanText: 1
+    stoppingFlag: 1
     profileName: josef
+    profilePicture: {fileID: 0}

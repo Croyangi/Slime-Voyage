@@ -16,12 +16,15 @@ MonoBehaviour:
   isDialogueMini: 0
   isPlayerInputStall: 0
   _dialogues:
-  - dialogueText: 'Jely:
+  - dialogueText: 'Jely (They/Them):
 
-      - Lead Creative Director and Lead Artist'
-    dialogueSpeed: 0.03
+      - Head of Design, Artist
+
+      ~ <Flavor
+      Text> ~'
+    dialogueSpeed: 0.02
     dialogueStallTime: 0
     cleanText: 1
     stoppingFlag: 1
-    profilePicture: {fileID: 21300000, guid: c554412db3aa1404c82889a52fcc871b, type: 3}
     profileName: Jely
+    profilePicture: {fileID: 21300000, guid: c554412db3aa1404c82889a52fcc871b, type: 3}

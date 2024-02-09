@@ -16,6 +16,7 @@ public class NPC_AmbientMovement : MonoBehaviour
 
     private IEnumerator AmbientMovementRandomChance()
     {
+        yield return new WaitForSeconds(1);
         JumpAround();
 
         float random = Random.Range(1f, 5f);

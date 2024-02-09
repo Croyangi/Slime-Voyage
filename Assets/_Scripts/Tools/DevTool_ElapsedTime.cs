@@ -11,7 +11,7 @@ public class DevTool_ElapsedTime : MonoBehaviour
 
     private void FixedUpdate()
     {
-        string timeText = System.TimeSpan.FromSeconds(Time.realtimeSinceStartup).ToString("hh':'mm':'ss");
+        string timeText = System.TimeSpan.FromSeconds(Time.timeSinceLevelLoad).ToString("hh':'mm':'ss");
         tmp_time.text = timeText;
     }
 }
