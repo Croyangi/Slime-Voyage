@@ -140,7 +140,7 @@ MonoBehaviour:
   collidedObject_rb: {fileID: 0}
   chunkfish_bounceStrength: 35
   chunkfish_additionalVerticleBounceStrength: 0
-  chunkfish_movementStallTime: 0.1
+  chunkfish_movementStallTime: 0.15
   chunkfish_deccelerationStallTime: 0.4
 --- !u!70 &4138953574212744164
 CapsuleCollider2D:

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UI_GeneralButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class UI_GeneralButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [Header("References")]
     [SerializeField] private GameObject button;
@@ -34,6 +34,16 @@ public class UI_GeneralButton : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 
         // LeanTween scale
         LeanTween.scale(button, unpressedScale, scaleSpeed).setIgnoreTimeScale(true);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+
     }
 
     private void ChangeButtonColor(Color color)

@@ -45,9 +45,13 @@ public class DevTool_FreeTools : MonoBehaviour
 
     private void OnDisable()
     {
+        Manager_PlayerState.instance.isInvincible = false;
         _devToolsInput.CardinalDirections.Movement.performed -= OnMovementPerformed;
         _devToolsInput.CardinalDirections.Movement.canceled -= OnMovementCancelled;
         _devToolsInput.Disable();
+
+        OnDisableFreeRoam();
+        OnDisableFreeCamera();
     }
 
     private void OnMovementPerformed(InputAction.CallbackContext value)
@@ -92,6 +96,7 @@ public class DevTool_FreeTools : MonoBehaviour
         _camera.orthographicSize = cameraSize;
     }
 
+
     private void FindPlayer()
     {
         Tags _tags;
@@ -124,6 +129,7 @@ public class DevTool_FreeTools : MonoBehaviour
 
     private void OnDisableFreeRoam()
     {
+        Manager_PlayerState.instance.isInvincible = false;
         isFreeRoamEnabled = false;
         _camera.enabled = false;
     }
@@ -136,6 +142,7 @@ public class DevTool_FreeTools : MonoBehaviour
         }
 
         OnDisableFreeCamera();
+        Manager_PlayerState.instance.isInvincible = true;
         isFreeRoamEnabled = true;
         _camera.enabled = true;
         _camera.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, _camera.transform.position.z);
@@ -179,6 +186,7 @@ public class DevTool_FreeTools : MonoBehaviour
 
     private void OnDisableFreeCamera()
     {
+        Manager_PlayerState.instance.isInvincible = false;
         isFreeCameraEnabled = false;
         _camera.enabled = false;
     }
@@ -191,6 +199,7 @@ public class DevTool_FreeTools : MonoBehaviour
         }
 
         OnDisableFreeRoam();
+        Manager_PlayerState.instance.isInvincible = true;
         isFreeCameraEnabled = true;
         _camera.enabled = true;
         _camera.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, _camera.transform.position.z);

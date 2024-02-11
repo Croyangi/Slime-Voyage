@@ -30,8 +30,7 @@ MonoBehaviour:
     stoppingFlag: 0
     profileName: 
     profilePicture: {fileID: 0}
-  - dialogueText: Multiple incidents of employees being launched have already been
-      reported.
+  - dialogueText: They are NOT for RECREATIONAL purposes, thank you.
     dialogueSpeed: 0.02
     dialogueStallTime: 1.5
     cleanText: 1

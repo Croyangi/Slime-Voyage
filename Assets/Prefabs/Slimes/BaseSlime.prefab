@@ -48,6 +48,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   activationDistance: 40
+  totalDistance: 50
 --- !u!1 &9000577749113367539
 GameObject:
   m_ObjectHideFlags: 0
@@ -58,12 +59,12 @@ GameObject:
   m_Component:
   - component: {fileID: 9000577749113367536}
   - component: {fileID: 9000577749113367537}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OnEdgeColliderLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &9000577749113367536
 Transform:
@@ -182,7 +183,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 5
   m_Material: {fileID: 6200000, guid: 6ced73b7c8564ef4a946894a3c4f9999, type: 2}
   m_IncludeLayers:
@@ -314,7 +315,7 @@ MonoBehaviour:
   rawInputMovement: {x: 0, y: 0}
   processedInputMovement: {x: 0, y: 0}
   wallJumpStrengthHorizontal: 15
-  wallJumpStrengthVerticle: 25
+  wallJumpStrengthVerticle: 28
   wallJumpStallTime: 0.25
   stickingWallSpeed: 2
   stickingWallAcceleration: 7
@@ -451,12 +452,12 @@ GameObject:
   m_Component:
   - component: {fileID: 9000577749828830519}
   - component: {fileID: 9000577749828830516}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: TouchingColliderLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &9000577749828830519
 Transform:
@@ -528,12 +529,12 @@ GameObject:
   m_Component:
   - component: {fileID: 9000577749889750475}
   - component: {fileID: 9000577749889750472}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GroundedCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &9000577749889750475
 Transform:
@@ -686,12 +687,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9000577750278357470}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &9000577750278357470
 Transform:
@@ -723,12 +724,12 @@ GameObject:
   m_Component:
   - component: {fileID: 9000577750354525226}
   - component: {fileID: 9000577750354525227}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OnEdgeColliderRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &9000577750354525226
 Transform:
@@ -800,12 +801,12 @@ GameObject:
   m_Component:
   - component: {fileID: 9000577750380317697}
   - component: {fileID: 9000577750380317726}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: TouchingColliderRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &9000577750380317697
 Transform:

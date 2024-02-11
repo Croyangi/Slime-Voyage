@@ -37,27 +37,20 @@ MonoBehaviour:
     stoppingFlag: 1
     profileName: 
     profilePicture: {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
-  - dialogueText: 'Are you new? '
+  - dialogueText: Are you new? Doesn't look like you belong here...
     dialogueSpeed: 0.02
     dialogueStallTime: 0.3
     cleanText: 1
     stoppingFlag: 1
     profileName: 
     profilePicture: {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
-  - dialogueText: Well, if you're looking for a way o ut, there's an elevator upstairs.
+  - dialogueText: Well, if you're looking for a way out, there's an elevator upstairs.
     dialogueSpeed: 0.02
     dialogueStallTime: 0
     cleanText: 1
     stoppingFlag: 1
     profileName: 
     profilePicture: {fileID: 0}
-  - dialogueText: Well I suppose there's an elevator out if you go up a few floors.
-    dialogueSpeed: 0.02
-    dialogueStallTime: 0
-    cleanText: 1
-    stoppingFlag: 1
-    profileName: 
-    profilePicture: {fileID: 21300000, guid: 008c27e5d462fc14fa533e45120ae86c, type: 3}
   - dialogueText: 'Alright now quit bugging me, '
     dialogueSpeed: 0.02
     dialogueStallTime: 0.3

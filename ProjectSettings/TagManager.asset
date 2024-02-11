@@ -16,7 +16,7 @@ TagManager:
   - IgnoreEntities
   - Player
   - IsPlayerCullable
-  - 
+  - IgnorePlayer
   - 
   - 
   - 

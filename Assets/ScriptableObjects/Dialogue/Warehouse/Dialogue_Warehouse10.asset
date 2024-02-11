@@ -17,38 +17,44 @@ MonoBehaviour:
   isPlayerInputStall: 0
   _dialogues:
   - dialogueText: Good morning, Floor 98, Sector 21A.
-    dialogueSpeed: 0.03
+    dialogueSpeed: 0.02
     dialogueStallTime: 1
     cleanText: 1
     stoppingFlag: 0
-    profilePicture: {fileID: 21300000, guid: 2cb13f40bb128e14c99c2865e731a3e0, type: 3}
     profileName: 
+    profilePicture: {fileID: 21300000, guid: 2cb13f40bb128e14c99c2865e731a3e0, type: 3}
   - dialogueText: 'This is a formal notice regarding Employee Protocol #244: '
-    dialogueSpeed: 0.03
+    dialogueSpeed: 0.02
     dialogueStallTime: 0.3
     cleanText: 1
     stoppingFlag: 0
-    profilePicture: {fileID: 21300000, guid: 2cb13f40bb128e14c99c2865e731a3e0, type: 3}
     profileName: 
+    profilePicture: {fileID: 21300000, guid: 2cb13f40bb128e14c99c2865e731a3e0, type: 3}
   - dialogueText: Basic Manuevering.
-    dialogueSpeed: 0.03
+    dialogueSpeed: 0.02
     dialogueStallTime: 1
     cleanText: 0
     stoppingFlag: 0
-    profilePicture: {fileID: 21300000, guid: 2cb13f40bb128e14c99c2865e731a3e0, type: 3}
     profileName: 
-  - dialogueText: Utilize [WASD] or the [Arrow Keys] to efficiently move around.
+    profilePicture: {fileID: 21300000, guid: 2cb13f40bb128e14c99c2865e731a3e0, type: 3}
+  - dialogueText: Utilize [WASD] or the [Arrow Keys] to move around.
     dialogueSpeed: 0.03
     dialogueStallTime: 3
     cleanText: 1
     stoppingFlag: 0
-    profilePicture: {fileID: 21300000, guid: 2cb13f40bb128e14c99c2865e731a3e0, type: 3}
     profileName: 
-  - dialogueText: Your compliance is expected and repercussions will be addressed
-      for negligence.
-    dialogueSpeed: 0.03
-    dialogueStallTime: 2
+    profilePicture: {fileID: 21300000, guid: 2cb13f40bb128e14c99c2865e731a3e0, type: 3}
+  - dialogueText: 'And most importantly, '
+    dialogueSpeed: 0.02
+    dialogueStallTime: 0.3
     cleanText: 1
     stoppingFlag: 0
-    profilePicture: {fileID: 21300000, guid: 2cb13f40bb128e14c99c2865e731a3e0, type: 3}
     profileName: 
+    profilePicture: {fileID: 21300000, guid: 2cb13f40bb128e14c99c2865e731a3e0, type: 3}
+  - dialogueText: have fun! *(Having fun will deduct from your paycheck).
+    dialogueSpeed: 0.02
+    dialogueStallTime: 2
+    cleanText: 0
+    stoppingFlag: 0
+    profileName: 
+    profilePicture: {fileID: 21300000, guid: 2cb13f40bb128e14c99c2865e731a3e0, type: 3}

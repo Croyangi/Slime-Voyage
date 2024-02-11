@@ -788,7 +788,7 @@ GameObject:
   m_Component:
   - component: {fileID: 891687578478419817}
   - component: {fileID: 891687578478419818}
-  - component: {fileID: 891687578478419819}
+  - component: {fileID: 3555719255869871733}
   m_Layer: 0
   m_Name: StepSpike_Detect
   m_TagString: Untagged
@@ -825,8 +825,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stepSpike_stateHandler: {fileID: 891687577174508057}
   _playerTag: {fileID: 11400000, guid: 052214d19408f7a48bba66682f7001de, type: 2}
---- !u!60 &891687578478419819
-PolygonCollider2D:
+--- !u!61 &3555719255869871733
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -857,7 +857,7 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.47}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -867,12 +867,9 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.381485, y: -0.030359268}
-      - {x: 0.00088590384, y: 0.6026056}
-      - {x: -0.37426132, y: -0.029079318}
-  m_UseDelaunayMesh: 0
+  serializedVersion: 2
+  m_Size: {x: 0.16, y: 0.27}
+  m_EdgeRadius: 0
 --- !u!1 &891687578830436974
 GameObject:
   m_ObjectHideFlags: 0

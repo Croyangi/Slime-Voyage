@@ -8,7 +8,8 @@ public class DialoguePrompt_Effects : MonoBehaviour
     [SerializeField] private Vector2 initialDialoguePromptPosition;
     [SerializeField] private GameObject dialoguePrompt;
     [SerializeField] private GameObject activeDialoguePrompt;
-    [SerializeField] private Collider2D _promptCollider;
+    [SerializeField] private CircleCollider2D col_prompt;
+    [SerializeField] private CircleCollider2D col_promptEffects;
 
     [Header("LeanTween Settings")]
     [SerializeField] private Vector2 detectedScale;
@@ -33,6 +34,9 @@ public class DialoguePrompt_Effects : MonoBehaviour
     private void Awake()
     {
         initialDialoguePromptPosition = dialoguePrompt.transform.position;
+
+        col_promptEffects.radius = col_prompt.radius;
+        col_promptEffects.offset = col_prompt.offset;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -60,7 +64,7 @@ public class DialoguePrompt_Effects : MonoBehaviour
     private bool CheckExistingObjects()
     {
         List<Collider2D> colliders = new List<Collider2D>();
-        Physics2D.OverlapCollider(_promptCollider, new ContactFilter2D(), colliders);
+        Physics2D.OverlapCollider(col_prompt, new ContactFilter2D(), colliders);
 
         foreach (Collider2D collider in colliders)
         {

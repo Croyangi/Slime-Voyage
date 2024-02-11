@@ -60,7 +60,6 @@ public class UI_PauseButton : MonoBehaviour
             ResumeGame();
         } else
         {
-            Manager_DialogueHandler.instance.ForceQuitDialogue();
             //image_pauseButton.color = new Color(image_pauseButton.color.r, image_pauseButton.color.g, image_pauseButton.color.b, 1f);
             EnablePauseScreen();
             PauseGame();

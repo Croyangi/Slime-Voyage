@@ -729,7 +729,8 @@ MonoBehaviour:
   initialDialoguePromptPosition: {x: 0, y: 0}
   dialoguePrompt: {fileID: 4912441460299486851}
   activeDialoguePrompt: {fileID: 6835424511808952097}
-  _promptCollider: {fileID: 5435463709706601536}
+  col_prompt: {fileID: 5435463709706601536}
+  col_promptEffects: {fileID: 6797954347613764600}
   detectedScale: {x: 1, y: 1}
   undetectedScale: {x: 0.5, y: 0.5}
   detectedScaleTime: 0.1

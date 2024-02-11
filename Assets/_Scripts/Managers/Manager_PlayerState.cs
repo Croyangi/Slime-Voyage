@@ -9,9 +9,11 @@ public class Manager_PlayerState : MonoBehaviour, IDataPersistence
 {
     [Header("References")]
     [SerializeField] public GameObject player;
+    [SerializeField] private GameObject prefab_baseSlime;
 
     [Header("Variables")]
     public bool isDead;
+    public bool isInvincible;
 
     [Header("Death Count Test")]
     [SerializeField] private TMP_Text test;
@@ -19,6 +21,9 @@ public class Manager_PlayerState : MonoBehaviour, IDataPersistence
 
     [Header("Actions")]
     [SerializeField] public Action onPlayerMoldChanged;
+
+    [Header("Building Blocks")]
+    [SerializeField] private Warehouse_DeathTransition_Animator deathTransition_animator;
 
     public static Manager_PlayerState instance { get; private set; }
 
@@ -30,6 +35,7 @@ public class Manager_PlayerState : MonoBehaviour, IDataPersistence
         }
         instance = this;
 
+        GameObject baseSlimeInstance = Instantiate(prefab_baseSlime, new Vector3(-32, -4, 0f), Quaternion.identity);
         FindPlayer();
     }
 
@@ -75,15 +81,37 @@ public class Manager_PlayerState : MonoBehaviour, IDataPersistence
 
     public void InitiatePlayerDeath()
     {
-        isDead = true;
-        PlayerDeath();
+        if (!isInvincible)
+        {
+            isDead = true;
+            Destroy(player);
+            deathTransition_animator.PlayDeathTransitionClose();
+            StartCoroutine(WaitForDeathTransition());
+        }
     }
 
-    private void PlayerDeath()
+    private IEnumerator WaitForDeathTransition()
     {
+        yield return new WaitForSeconds(0.5f);
+        if (isDead)
+        {
+            EndPlayerDeath();
+        }
+    }
+
+    private void EndPlayerDeath()
+    {
+        deathTransition_animator.PlayDeathTransitionOpen();
         isDead = false;
+
+        // Re-instantiate player
+        GameObject baseSlimeInstance = Instantiate(prefab_baseSlime, new Vector3(transform.position.x, transform.position.y, 0f), Quaternion.identity);
+        player = baseSlimeInstance;
+
         player.transform.position = Manager_RespawnPoint.instance.respawnPointPosition;
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+
+        // Data save
         this.deathCount++;
         DeathCount();
         DataPersistenceManager.instance.SaveGame();
