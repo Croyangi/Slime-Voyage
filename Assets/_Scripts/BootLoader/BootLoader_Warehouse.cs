@@ -1,29 +1,15 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class BootLoader_Warehouse : MonoBehaviour
 {
-    [SerializeField] private string currentRoom;
-    [SerializeField] private string scenesPath = "Scenes";
-    [SerializeField] public List<string> warehouseSceneNames = new List<string>();
+    [SerializeField] private Image closingTransition;
 
     private void Awake()
     {
-        scenesPath = "Assets/Scenes/Rooms/Warehouse/";
-
-        LoadAllWarehouseScenes();
-    }
-
-    private void LoadAllWarehouseScenes()
-    {
-        string[] scenePaths = Directory.GetFiles(scenesPath, "*.unity");
-
-        foreach (string scenePath in scenePaths)
-        {
-            string sceneName = Path.GetFileNameWithoutExtension(scenePath);
-            warehouseSceneNames.Add(sceneName);
-        }
+        closingTransition.color = new Color(0f, 0f, 0f, 1f);
+        LeanTween.color(closingTransition.rectTransform, new Color(0f, 0f, 0f, 0f), 1f).setEaseInCubic();
     }
 }

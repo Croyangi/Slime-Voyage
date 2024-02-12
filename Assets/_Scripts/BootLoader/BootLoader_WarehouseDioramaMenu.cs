@@ -7,6 +7,7 @@ public class BootLoader_WarehouseDioramaMenu : MonoBehaviour
 {
     [Header("General References")]
     [SerializeField] private GameObject _camera;
+    [SerializeField] private Image closingTransition;
 
     [Header("Screen Transition")]
     [SerializeField] private float screenTransitionTimer;
@@ -25,6 +26,9 @@ public class BootLoader_WarehouseDioramaMenu : MonoBehaviour
 
     private void Awake()
     {
+        closingTransition.color = new Color(0f, 0f, 0f, 1f);
+        LeanTween.color(closingTransition.rectTransform, new Color(0f, 0f, 0f, 0f), 1f).setEaseInCubic();
+
         parallaxOriginPoint = new Vector2(Screen.width / 2, Screen.height / 2);
     }
 
@@ -39,6 +43,7 @@ public class BootLoader_WarehouseDioramaMenu : MonoBehaviour
         if (pressedTicketButton)
         {
             screenTransitionTimer -= Time.deltaTime;
+
             if (screenTransitionTimer < 0)
             {
                 LoadWarehouseBootloader();
@@ -81,6 +86,9 @@ public class BootLoader_WarehouseDioramaMenu : MonoBehaviour
             ApplyForceTicketButton();
         }
 
+        closingTransition.color = new Color(0f, 0f, 0f, 0f);
+        LeanTween.color(closingTransition.rectTransform, new Color(0f, 0f, 0f, 1f), 2f).setEaseInCubic();
+
         pressedTicketButton = true;
         ticketButton.sprite = playTicketHolePunched;
     }
@@ -99,6 +107,6 @@ public class BootLoader_WarehouseDioramaMenu : MonoBehaviour
 
     private void LoadWarehouseBootloader()
     {
-        _roomQueue.LoadRoom("BootLoader_Warehouse");
+        _roomQueue.LoadRoom("WarehousePrologue");
     }
 }

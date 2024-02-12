@@ -18,7 +18,7 @@ MonoBehaviour:
   _dialogues:
   - dialogueText: Good morning, Floor 98, Sector 21A.
     dialogueSpeed: 0.02
-    dialogueStallTime: 1
+    dialogueStallTime: 3
     cleanText: 1
     stoppingFlag: 0
     profileName: 
