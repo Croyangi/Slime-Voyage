@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/WarehousePrologue.unity
     guid: af352c08bd9bf1840839ef79d27cd0ae
   - enabled: 1
-    path: Assets/Scenes/Technical/BootLoader/BootLoader_Gameplay.unity
+    path: Assets/Scenes/Technical/BootLoader/BootLoader_Pause.unity
     guid: b8e65e54f6d8ae04881852bb15feb2ad
   - enabled: 1
     path: Assets/Scenes/Technical/BootLoader/BootLoader_Warehouse.unity
@@ -41,4 +41,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DemoEnd.unity
     guid: d827808a0f754dc4fa848d7dab0496a9
+  - enabled: 1
+    path: Assets/Scenes/Technical/BootLoader/BootLoader_DevTools.unity
+    guid: bc61c97a7ae1b084588795ac46bc965d
+  - enabled: 1
+    path: Assets/Scenes/Technical/BootLoader/BootLoader_MovementGym.unity
+    guid: 010a1e3d5887734429975bb7c85a4919
   m_configObjects: {}

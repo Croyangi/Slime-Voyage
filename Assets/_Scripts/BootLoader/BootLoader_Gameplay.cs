@@ -5,6 +5,6 @@ public class BootLoader_Gameplay : MonoBehaviour
 {
     private void Awake()
     {
-        SceneManager.LoadScene("Bootloader_Gameplay", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Bootloader_Pause", LoadSceneMode.Additive);
     }
 }
