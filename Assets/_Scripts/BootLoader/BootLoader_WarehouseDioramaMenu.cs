@@ -87,7 +87,7 @@ public class BootLoader_WarehouseDioramaMenu : MonoBehaviour
         }
 
         closingTransition.color = new Color(0f, 0f, 0f, 0f);
-        LeanTween.color(closingTransition.rectTransform, new Color(0f, 0f, 0f, 1f), 2f).setEaseInCubic();
+        LeanTween.color(closingTransition.rectTransform, new Color(0f, 0f, 0f, 1f), 1f).setEaseInCubic();
 
         pressedTicketButton = true;
         ticketButton.sprite = playTicketHolePunched;

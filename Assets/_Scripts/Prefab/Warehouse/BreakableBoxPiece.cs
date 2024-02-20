@@ -7,7 +7,7 @@ public class BreakableBoxPiece : MonoBehaviour
     [Header("References")]
     [SerializeField] private SpriteRenderer sr;
     [SerializeField] private float alpha;
-    [SerializeField] private float fadeOutTime = 1;
+    [SerializeField] private float fadeOutTime = 3;
     [SerializeField] private float time = 0f;
 
     private void Awake()

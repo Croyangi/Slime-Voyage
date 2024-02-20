@@ -179,5 +179,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sr: {fileID: 0}
   alpha: 0
-  fadeOutTime: 3
+  fadeOutTime: 2
   time: 0

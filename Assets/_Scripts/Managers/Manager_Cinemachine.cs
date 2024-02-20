@@ -6,7 +6,7 @@ using UnityEngine;
 public class Manager_Cinemachine : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private GameObject currentCinemachine;
+    [SerializeField] public GameObject currentCinemachine;
 
     public static Manager_Cinemachine instance { get; private set; }
 

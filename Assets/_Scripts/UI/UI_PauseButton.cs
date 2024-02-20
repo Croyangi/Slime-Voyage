@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class UI_PauseButton : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private GameObject pauseMenuCanvas;
+    [SerializeField] private GameObject enabledGroup;
     [SerializeField] private Image image_pauseButton;
 
     [Header("Technical References")]
@@ -54,15 +54,17 @@ public class UI_PauseButton : MonoBehaviour
 
     public void TogglePauseButtonPress()
     {
-        if (pauseMenuCanvas.activeSelf == true) 
+        if (enabledGroup.activeSelf == true) 
         { 
             DisablePauseScreen();
             ResumeGame();
+            //Manager_PauseMenu.instance.EndPauseMenu();
         } else
         {
             //image_pauseButton.color = new Color(image_pauseButton.color.r, image_pauseButton.color.g, image_pauseButton.color.b, 1f);
             EnablePauseScreen();
             PauseGame();
+            //Manager_PauseMenu.instance.InitiatePauseMenu();
         }
     }
 
@@ -79,11 +81,11 @@ public class UI_PauseButton : MonoBehaviour
 
     private void EnablePauseScreen()
     {
-        pauseMenuCanvas.SetActive(true);
+        enabledGroup.SetActive(true);
     }
 
     private void DisablePauseScreen()
     {
-        pauseMenuCanvas.SetActive(false);
+        enabledGroup.SetActive(false);
     }
 }

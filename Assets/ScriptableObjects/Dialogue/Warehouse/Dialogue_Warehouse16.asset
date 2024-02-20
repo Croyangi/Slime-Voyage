@@ -12,14 +12,71 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e2d313d4c016d342bc276cb73a36214, type: 3}
   m_Name: Dialogue_Warehouse16
   m_EditorClassIdentifier: 
-  isDialogueOnTop: 0
+  isDialogueOnTop: 1
   isDialogueMini: 0
-  isPlayerInputStall: 0
+  isPlayerInputStall: 1
   _dialogues:
-  - dialogueText: Life's tough without opposable thumbs...
+  - dialogueText: 'Hey nice jump kid, '
+    dialogueSpeed: 0.02
+    dialogueStallTime: 0.3
+    cleanText: 1
+    stoppingFlag: 0
+    profileName: Stepspike #15970
+    profilePicture: {fileID: 21300000, guid: e55b7a5619c85c34d88081c96047fe21, type: 3}
+  - dialogueText: I see you sure know your coyote time.
+    dialogueSpeed: 0.02
+    dialogueStallTime: 0
+    cleanText: 0
+    stoppingFlag: 1
+    profileName: 
+    profilePicture: {fileID: 21300000, guid: e55b7a5619c85c34d88081c96047fe21, type: 3}
+  - dialogueText: (...)
+    dialogueSpeed: 0.02
+    dialogueStallTime: 0
+    cleanText: 1
+    stoppingFlag: 1
+    profileName: Slime
+    profilePicture: {fileID: 21300000, guid: 7e0a11206bd8d0d4795a64b87adcda67, type: 3}
+  - dialogueText: 'Coyote time, no? '
+    dialogueSpeed: 0.02
+    dialogueStallTime: 0.3
+    cleanText: 1
+    stoppingFlag: 0
+    profileName: Stepspike #15970
+    profilePicture: {fileID: 21300000, guid: 008c27e5d462fc14fa533e45120ae86c, type: 3}
+  - dialogueText: The thing where you can still jump a little after falling?
+    dialogueSpeed: 0.02
+    dialogueStallTime: 0
+    cleanText: 0
+    stoppingFlag: 1
+    profileName: 
+    profilePicture: {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
+  - dialogueText: (...)
+    dialogueSpeed: 0.02
+    dialogueStallTime: 0
+    cleanText: 1
+    stoppingFlag: 1
+    profileName: Slime
+    profilePicture: {fileID: 21300000, guid: 5811f364de272ab4eb0178bdbcc62ee3, type: 3}
+  - dialogueText: No wonder people think I'm crazy...
     dialogueSpeed: 0.02
     dialogueStallTime: 0
     cleanText: 1
     stoppingFlag: 1
     profileName: Stepspike #15970
-    profilePicture: {fileID: 21300000, guid: 008c27e5d462fc14fa533e45120ae86c, type: 3}
+    profilePicture: {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
+  - dialogueText: 'Crazy? '
+    dialogueSpeed: 0.02
+    dialogueStallTime: 0.3
+    cleanText: 1
+    stoppingFlag: 0
+    profileName: 
+    profilePicture: {fileID: 0}
+  - dialogueText: I was crazy once. They locked me in a room. A wooden room. A wooden
+      room with Chunkfish. And Chunkfish make me crazy. Cra-
+    dialogueSpeed: 0.02
+    dialogueStallTime: 0
+    cleanText: 0
+    stoppingFlag: 0
+    profileName: 
+    profilePicture: {fileID: 0}

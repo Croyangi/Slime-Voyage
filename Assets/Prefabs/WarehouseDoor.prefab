@@ -1,5 +1,52 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2073361310943153018
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5347843069769221829}
+  - component: {fileID: 3797297473020165593}
+  m_Layer: 0
+  m_Name: DialoguePrompt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5347843069769221829
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073361310943153018}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4112022215357923684}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3797297473020165593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073361310943153018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bba55b850c73a541834ac76312a5537, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dialoguePackage: {fileID: 11400000, guid: cc09c5280a3d1f94ba21b6df008b9d22, type: 2}
+  col_prompt: {fileID: 459169582036296460}
+  tag_player: {fileID: 11400000, guid: 052214d19408f7a48bba66682f7001de, type: 2}
 --- !u!1 &2135829137862862905
 GameObject:
   m_ObjectHideFlags: 0
@@ -51,9 +98,12 @@ MonoBehaviour:
   sr_door: {fileID: 1712083499319547130}
   openDoor: {fileID: 21300000, guid: bd4de09a7ca1a6c42ae8e5ecd995da37, type: 3}
   col_lockedDoor: {fileID: 8435684063342762235}
+  audioClip_open: {fileID: 8300000, guid: a2d8a2918fcf3bc46bcc8640940b81ed, type: 3}
+  audioClip_locked: {fileID: 8300000, guid: 882bbf59e5c7e034dbe5d2c21becb665, type: 3}
   isLocked: 0
   isUnlockableLeft: 0
   isUnlockableRight: 0
+  _prompt: {fileID: 3797297473020165593}
 --- !u!61 &459169582036296460
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -97,7 +147,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 3}
+  m_Size: {x: 1.5, y: 3}
   m_EdgeRadius: 0
 --- !u!61 &8435684063342762235
 BoxCollider2D:
@@ -175,6 +225,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7253419329678299672}
+  - {fileID: 5347843069769221829}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1712083499319547130

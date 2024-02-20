@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &234548003264612192
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 984689660503461843}
+  m_Layer: 0
+  m_Name: PivotPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &984689660503461843
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234548003264612192}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4410819144646147873}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8808167659292371390
 GameObject:
   m_ObjectHideFlags: 0
@@ -31,7 +62,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 984689660503461843}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6966874258084819915
@@ -99,13 +131,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tag_player: {fileID: 11400000, guid: 052214d19408f7a48bba66682f7001de, type: 2}
-  originPoint: {fileID: 0}
+  pivotPoint: {fileID: 234548003264612192}
   velocityBreakingPoint: 20
   xVelocityWeight: 1
   yVelocityWeight: 0.7
+  currentPlayerVelocity: {x: 0, y: 0}
   brokenBoxPieces:
   - {fileID: 8388530168780798048, guid: b7e5f466a216f9247a4965552fe6ef79, type: 3}
   - {fileID: 8388530168780798048, guid: 559892cf3211ef64e8222e3e5bf4c6c4, type: 3}
+  brokenBoxSounds:
+  - {fileID: 8300000, guid: 44093663db7fb52498708586863c321a, type: 3}
+  - {fileID: 8300000, guid: 89cf07571eaa110409ed4dae3601bb72, type: 3}
+  - {fileID: 8300000, guid: 9fd71082f91302c48a6f24509bee4b7d, type: 3}
+  minWarehouseJunk: 0
+  maxWarehouseJunk: 2
+  junkData:
+  - junkObject: {fileID: 8388530168780798048, guid: e64b5f9edf3d16842a93cd9b577a71ad, type: 3}
+    weight: 9
+  - junkObject: {fileID: 8388530168780798048, guid: e378847fd7a70894985bbed48e6670ef, type: 3}
+    weight: 1
 --- !u!61 &771296748236642616
 BoxCollider2D:
   m_ObjectHideFlags: 0
