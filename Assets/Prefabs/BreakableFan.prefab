@@ -293,3 +293,8 @@ MonoBehaviour:
   sr_fanBox: {fileID: 7392593562890039973}
   fan: {fileID: 4031755444724014722}
   isUsed: 0
+  sfxData:
+  - sfxClip: {fileID: 8300000, guid: 90c7423a0c0f3de49887ba3d02722447, type: 3}
+    weight: 99
+  - sfxClip: {fileID: 8300000, guid: f8304ecbeacf3744a9d0b138392ae393, type: 3}
+    weight: 1

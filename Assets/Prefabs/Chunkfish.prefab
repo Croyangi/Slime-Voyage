@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chunkfish: {fileID: 8634834376494189654}
+  sfx_chunkfishBounce: {fileID: 8300000, guid: 04e28bc57f045f24db0f4a9b32b66d25, type: 3}
   _playerTag: {fileID: 11400000, guid: 052214d19408f7a48bba66682f7001de, type: 2}
   collidedObject: {fileID: 0}
   collidedObject_rb: {fileID: 0}

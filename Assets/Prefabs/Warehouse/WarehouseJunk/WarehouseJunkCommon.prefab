@@ -132,5 +132,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8183
   alpha: 0
-  fadeOutTime: 4
+  fadeOutTime: 6
   time: 0

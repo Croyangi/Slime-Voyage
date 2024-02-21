@@ -26,13 +26,18 @@ public class Manager_SFXPlayer : MonoBehaviour
     }
 
 
-    public void PlaySFXClip(AudioClip audioClip, Transform spawnTransform, float volume = 1f, bool isLooping = false, AudioMixerGroup mixerGroup = null, bool isPitchShifted = false, float pitchShift = 0f)
+    public void PlaySFXClip(AudioClip audioClip, Transform spawnTransform, float volume = 1f, bool isLooping = false, AudioMixerGroup mixerGroup = null, bool isPitchShifted = false, float pitchShift = 0f, float spatialBlend = 0, float minDistance = 1, float maxDistance = 500)
     {
         AudioSource audioSource = Instantiate(sfxObject, spawnTransform.position, Quaternion.identity);
 
         audioSource.clip = audioClip;
         audioSource.volume = volume;
         audioSource.loop = isLooping;
+
+        audioSource.minDistance = minDistance;
+        audioSource.maxDistance = maxDistance;
+
+        audioSource.spatialBlend = spatialBlend;
 
         // Pitch Shift
         if (isPitchShifted)
@@ -57,13 +62,18 @@ public class Manager_SFXPlayer : MonoBehaviour
         }
     }
 
-    public void PlayRandomSFXClip(AudioClip[] audioClips, Transform spawnTransform, float volume = 1f, bool isLooping = false, AudioMixerGroup mixerGroup = null, bool isPitchShifted = false, float pitchShift = 0f)
+    public void PlayRandomSFXClip(AudioClip[] audioClips, Transform spawnTransform, float volume = 1f, bool isLooping = false, AudioMixerGroup mixerGroup = null, bool isPitchShifted = false, float pitchShift = 0f, float spatialBlend = 0, float minDistance = 1, float maxDistance = 500)
     {
         AudioSource audioSource = Instantiate(sfxObject, spawnTransform.position, Quaternion.identity);
 
         audioSource.clip = audioClips[Random.Range(0, audioClips.Length - 1)];
         audioSource.volume = volume;
         audioSource.loop = isLooping;
+
+        audioSource.minDistance = minDistance;
+        audioSource.maxDistance = maxDistance;
+
+        audioSource.spatialBlend = spatialBlend;
 
         // Pitch Shift
         if (isPitchShifted)

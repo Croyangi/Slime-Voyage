@@ -6,6 +6,7 @@ public class Chunkfish_Bounce : MonoBehaviour
 {
     [Header("General References")]
     [SerializeField] private GameObject chunkfish;
+    [SerializeField] private AudioClip sfx_chunkfishBounce;
 
     [Header("Tags")]
     [SerializeField] private TagsScriptObj _playerTag;
@@ -19,6 +20,7 @@ public class Chunkfish_Bounce : MonoBehaviour
     [SerializeField] private float chunkfish_additionalVerticleBounceStrength;
     [SerializeField] private float chunkfish_movementStallTime;
     [SerializeField] private float chunkfish_deccelerationStallTime;
+    [SerializeField] private float chunkfish_sfxMaxRange = 30f;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -27,6 +29,7 @@ public class Chunkfish_Bounce : MonoBehaviour
         {
             collidedObject_rb = collision.GetComponent<Rigidbody2D>();
             OnChunkfishBounce();
+            Manager_SFXPlayer.instance.PlaySFXClip(sfx_chunkfishBounce, transform, 0.4f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.2f, 1f, 1f, chunkfish_sfxMaxRange);
         }
 
 

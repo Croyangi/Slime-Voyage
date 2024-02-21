@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static BreakableWarehouseBox;
+using Random = UnityEngine.Random;
 
 public class FanBreaking : MonoBehaviour
 {
@@ -13,6 +16,15 @@ public class FanBreaking : MonoBehaviour
     [SerializeField] private SpriteRenderer sr_fanBox;
     [SerializeField] private GameObject fan;
     [SerializeField] private bool isUsed = false;
+
+    [Serializable]
+    public class SFXData
+    {
+        public AudioClip sfxClip;
+        public int weight;
+    }
+
+    [SerializeField] private SFXData[] sfxData;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -36,6 +48,9 @@ public class FanBreaking : MonoBehaviour
 
                 StartCoroutine(FadeOut());
                 Destroy(gameObject, 2f);
+
+                // SFX
+                GenerateWeightPoolSFX();
             }
         }
     }
@@ -47,5 +62,26 @@ public class FanBreaking : MonoBehaviour
         sr_fanBox.color = new Color(sr_fanBox.color.r, sr_fanBox.color.g, sr_fanBox.color.b, newAlpha);
         yield return new WaitForFixedUpdate();
         StartCoroutine(FadeOut());
+    }
+
+    private void GenerateWeightPoolSFX()
+    {
+        int sfxWeightTotal = 0;
+        foreach (SFXData sfx in sfxData)
+        {
+            sfxWeightTotal += sfx.weight;
+        }
+
+        int random = Random.Range(0, sfxWeightTotal);
+
+        foreach (SFXData sfx in sfxData)
+        {
+            if (random < sfx.weight)
+            {
+                Manager_SFXPlayer.instance.PlaySFXClip(sfx.sfxClip, transform, 0.3f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.2f);
+                return;
+            }
+            random -= sfx.weight;
+        }
     }
 }

@@ -147,7 +147,9 @@ MonoBehaviour:
   maxWarehouseJunk: 2
   junkData:
   - junkObject: {fileID: 8388530168780798048, guid: e64b5f9edf3d16842a93cd9b577a71ad, type: 3}
-    weight: 9
+    weight: 85
+  - junkObject: {fileID: 8388530168780798048, guid: 432af8813c9f19f47a06e36df26b23f2, type: 3}
+    weight: 14
   - junkObject: {fileID: 8388530168780798048, guid: e378847fd7a70894985bbed48e6670ef, type: 3}
     weight: 1
 --- !u!61 &771296748236642616
