@@ -23,6 +23,8 @@ MonoBehaviour:
     stoppingFlag: 0
     profileName: Stepspike #15970
     profilePicture: {fileID: 21300000, guid: e55b7a5619c85c34d88081c96047fe21, type: 3}
+    sfx_speaking: {fileID: 8300000, guid: b45f90f4db75d15479068d5168b17415, type: 3}
+    sfxSpeakingSpacing: 0
   - dialogueText: I see you sure know your coyote time.
     dialogueSpeed: 0.02
     dialogueStallTime: 0
@@ -30,6 +32,8 @@ MonoBehaviour:
     stoppingFlag: 1
     profileName: 
     profilePicture: {fileID: 21300000, guid: e55b7a5619c85c34d88081c96047fe21, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
   - dialogueText: (...)
     dialogueSpeed: 0.02
     dialogueStallTime: 0
@@ -37,6 +41,8 @@ MonoBehaviour:
     stoppingFlag: 1
     profileName: Slime
     profilePicture: {fileID: 21300000, guid: 7e0a11206bd8d0d4795a64b87adcda67, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
   - dialogueText: 'Coyote time, no? '
     dialogueSpeed: 0.02
     dialogueStallTime: 0.3
@@ -44,6 +50,8 @@ MonoBehaviour:
     stoppingFlag: 0
     profileName: Stepspike #15970
     profilePicture: {fileID: 21300000, guid: 008c27e5d462fc14fa533e45120ae86c, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
   - dialogueText: The thing where you can still jump a little after falling?
     dialogueSpeed: 0.02
     dialogueStallTime: 0
@@ -51,6 +59,8 @@ MonoBehaviour:
     stoppingFlag: 1
     profileName: 
     profilePicture: {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
   - dialogueText: (...)
     dialogueSpeed: 0.02
     dialogueStallTime: 0
@@ -58,6 +68,8 @@ MonoBehaviour:
     stoppingFlag: 1
     profileName: Slime
     profilePicture: {fileID: 21300000, guid: 5811f364de272ab4eb0178bdbcc62ee3, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
   - dialogueText: No wonder people think I'm crazy...
     dialogueSpeed: 0.02
     dialogueStallTime: 0
@@ -65,3 +77,5 @@ MonoBehaviour:
     stoppingFlag: 1
     profileName: Stepspike #15970
     profilePicture: {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0

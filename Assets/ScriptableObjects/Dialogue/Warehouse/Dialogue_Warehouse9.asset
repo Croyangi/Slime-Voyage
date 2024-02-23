@@ -23,6 +23,8 @@ MonoBehaviour:
     stoppingFlag: 0
     profileName: Stepspike #314159
     profilePicture: {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
+    sfx_speaking: {fileID: 8300000, guid: b45f90f4db75d15479068d5168b17415, type: 3}
+    sfxSpeakingSpacing: 0
   - dialogueText: 'but frankly, '
     dialogueSpeed: 0.02
     dialogueStallTime: 0.3
@@ -30,6 +32,8 @@ MonoBehaviour:
     stoppingFlag: 0
     profileName: 
     profilePicture: {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
   - dialogueText: they cause more trouble than they prevent.
     dialogueSpeed: 0.02
     dialogueStallTime: 0
@@ -37,6 +41,8 @@ MonoBehaviour:
     stoppingFlag: 1
     profileName: 
     profilePicture: {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
   - dialogueText: 'Not their fault, '
     dialogueSpeed: 0.02
     dialogueStallTime: 0.3
@@ -44,6 +50,8 @@ MonoBehaviour:
     stoppingFlag: 0
     profileName: 
     profilePicture: {fileID: 21300000, guid: 008c27e5d462fc14fa533e45120ae86c, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
   - dialogueText: 'they''re just so... '
     dialogueSpeed: 0.02
     dialogueStallTime: 0.3
@@ -51,6 +59,8 @@ MonoBehaviour:
     stoppingFlag: 0
     profileName: 
     profilePicture: {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
   - dialogueText: voluptuous...
     dialogueSpeed: 0.1
     dialogueStallTime: 0
@@ -58,3 +68,5 @@ MonoBehaviour:
     stoppingFlag: 1
     profileName: 
     profilePicture: {fileID: 21300000, guid: 008c27e5d462fc14fa533e45120ae86c, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0

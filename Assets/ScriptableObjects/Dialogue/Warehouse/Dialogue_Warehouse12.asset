@@ -21,5 +21,7 @@ MonoBehaviour:
     dialogueStallTime: 1
     cleanText: 1
     stoppingFlag: 0
-    profilePicture: {fileID: 21300000, guid: 2cb13f40bb128e14c99c2865e731a3e0, type: 3}
     profileName: 
+    profilePicture: {fileID: 21300000, guid: 2cb13f40bb128e14c99c2865e731a3e0, type: 3}
+    sfx_speaking: {fileID: 8300000, guid: b45f90f4db75d15479068d5168b17415, type: 3}
+    sfxSpeakingSpacing: 0

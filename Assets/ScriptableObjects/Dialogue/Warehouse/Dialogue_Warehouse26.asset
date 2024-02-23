@@ -23,6 +23,8 @@ MonoBehaviour:
     stoppingFlag: 1
     profileName: Well Hatted Bouncer
     profilePicture: {fileID: 21300000, guid: fbf7b3e161140944c9c23e4ec4c818be, type: 3}
+    sfx_speaking: {fileID: 8300000, guid: b45f90f4db75d15479068d5168b17415, type: 3}
+    sfxSpeakingSpacing: 0
   - dialogueText: Ehhh... I can't be bothered...
     dialogueSpeed: 0.04
     dialogueStallTime: 0
@@ -30,3 +32,5 @@ MonoBehaviour:
     stoppingFlag: 1
     profileName: 
     profilePicture: {fileID: 21300000, guid: 56791b9d24f74ce449485757b4dbefee, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0

@@ -125,10 +125,11 @@ public class Manager_PauseMenu : MonoBehaviour
 
     private void ChunkfishDiskInitiate()
     {
-        chunkfishDisk.transform.Rotate(Vector3.zero);
-        chunkfishDiskNeedle.transform.Rotate(Vector3.zero);
-        LeanTween.rotateAround(chunkfishDisk, Vector3.forward, -360, 4f).setLoopClamp().setIgnoreTimeScale(true);
-        LeanTween.rotateAround(chunkfishDiskNeedle, Vector3.forward, 4, 1f).setLoopClamp().setIgnoreTimeScale(true).setEaseInBounce();
+        LeanTween.rotateZ(chunkfishDisk, 0, 0).setIgnoreTimeScale(true);
+        LeanTween.rotateZ(chunkfishDiskNeedle, 0, 0).setIgnoreTimeScale(true);
+        LeanTween.rotateAroundLocal(chunkfishDisk, Vector3.forward, -360, 4f).setLoopClamp().setIgnoreTimeScale(true).setDelay(0.1f);
+        LeanTween.rotateAroundLocal(chunkfishDiskNeedle, Vector3.forward, 4, 1f).setLoopClamp().setIgnoreTimeScale(true).setEaseInBounce().setDelay(0.1f);
+
     }
 
     private void ChunkfishDiskEnd()

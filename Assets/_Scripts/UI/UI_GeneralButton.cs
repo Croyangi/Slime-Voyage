@@ -41,7 +41,7 @@ public class UI_GeneralButton : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (generalUIHover != null) 
+        if (generalUIHover != null && Manager_SFXPlayer.instance != null) 
         {
             Manager_SFXPlayer.instance.PlaySFXClip(generalUIHover, transform, 0.3f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.3f);
         }

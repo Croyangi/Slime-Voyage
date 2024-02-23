@@ -19,6 +19,9 @@ public class Dialogue
 
     public Sprite profilePicture;
 
+    public AudioClip sfx_speaking;
+    public int sfxSpeakingSpacing = 1;
+
     public Dialogue(Dialogue other)
     {
         this.dialogueText = other.dialogueText;
@@ -28,5 +31,7 @@ public class Dialogue
         this.stoppingFlag = other.stoppingFlag;
         this.profileName = other.profileName;
         this.profilePicture = other.profilePicture;
+        this.sfx_speaking = other.sfx_speaking;
+        this.sfxSpeakingSpacing = other.sfxSpeakingSpacing;
     }
 }

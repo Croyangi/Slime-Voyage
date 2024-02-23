@@ -23,6 +23,8 @@ MonoBehaviour:
     stoppingFlag: 0
     profileName: 
     profilePicture: {fileID: 21300000, guid: 2cb13f40bb128e14c99c2865e731a3e0, type: 3}
+    sfx_speaking: {fileID: 8300000, guid: b45f90f4db75d15479068d5168b17415, type: 3}
+    sfxSpeakingSpacing: 0
   - dialogueText: THE CHUNKFISH HAVE SEIZED FLOOR 102, SECTOR 22A.
     dialogueSpeed: 0.02
     dialogueStallTime: 1.5
@@ -30,6 +32,8 @@ MonoBehaviour:
     stoppingFlag: 0
     profileName: 
     profilePicture: {fileID: 0}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
   - dialogueText: PLEASE EVACUATE THE PREMISES.
     dialogueSpeed: 0.02
     dialogueStallTime: 2
@@ -37,6 +41,8 @@ MonoBehaviour:
     stoppingFlag: 0
     profileName: 
     profilePicture: {fileID: 0}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
   - dialogueText: 'Huh? '
     dialogueSpeed: 0.04
     dialogueStallTime: 0.5
@@ -44,6 +50,8 @@ MonoBehaviour:
     stoppingFlag: 0
     profileName: 
     profilePicture: {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
   - dialogueText: 'Wait, '
     dialogueSpeed: 0.04
     dialogueStallTime: 0.5
@@ -51,6 +59,8 @@ MonoBehaviour:
     stoppingFlag: 0
     profileName: 
     profilePicture: {fileID: 0}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
   - dialogueText: 'no stop '
     dialogueSpeed: 0.04
     dialogueStallTime: 0.5
@@ -58,6 +68,8 @@ MonoBehaviour:
     stoppingFlag: 0
     profileName: 
     profilePicture: {fileID: 0}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
   - dialogueText: 'AHHH '
     dialogueSpeed: 0.04
     dialogueStallTime: 0.5
@@ -65,6 +77,8 @@ MonoBehaviour:
     stoppingFlag: 0
     profileName: 
     profilePicture: {fileID: 0}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
   - dialogueText: HELLLLPPPPP-
     dialogueSpeed: 0.04
     dialogueStallTime: 0
@@ -72,6 +86,8 @@ MonoBehaviour:
     stoppingFlag: 0
     profileName: 
     profilePicture: {fileID: 0}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
   - dialogueText: '*click*'
     dialogueSpeed: 0
     dialogueStallTime: 2
@@ -79,3 +95,5 @@ MonoBehaviour:
     stoppingFlag: 0
     profileName: 
     profilePicture: {fileID: 21300000, guid: 2cb13f40bb128e14c99c2865e731a3e0, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0

@@ -23,6 +23,8 @@ MonoBehaviour:
     stoppingFlag: 0
     profileName: Stepspike #97433
     profilePicture: {fileID: 21300000, guid: e55b7a5619c85c34d88081c96047fe21, type: 3}
+    sfx_speaking: {fileID: 8300000, guid: b45f90f4db75d15479068d5168b17415, type: 3}
+    sfxSpeakingSpacing: 0
   - dialogueText: I see you fell victim to the Chunkfish too...
     dialogueSpeed: 0.02
     dialogueStallTime: 0
@@ -30,6 +32,8 @@ MonoBehaviour:
     stoppingFlag: 1
     profileName: 
     profilePicture: {fileID: 21300000, guid: e55b7a5619c85c34d88081c96047fe21, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
   - dialogueText: I suppose it's our fault for letting the Chunkfish do all the work...
     dialogueSpeed: 0.02
     dialogueStallTime: 0
@@ -37,6 +41,8 @@ MonoBehaviour:
     stoppingFlag: 1
     profileName: 
     profilePicture: {fileID: 21300000, guid: 008c27e5d462fc14fa533e45120ae86c, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
   - dialogueText: You gotta hold the direction of the Chunkfish bounce to get launched
       even further!
     dialogueSpeed: 0.02
@@ -45,6 +51,8 @@ MonoBehaviour:
     stoppingFlag: 1
     profileName: 
     profilePicture: {fileID: 21300000, guid: e55b7a5619c85c34d88081c96047fe21, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
   - dialogueText: 'We Stepspi- '
     dialogueSpeed: 0.02
     dialogueStallTime: 0.5
@@ -52,6 +60,8 @@ MonoBehaviour:
     stoppingFlag: 0
     profileName: 
     profilePicture: {fileID: 21300000, guid: e55b7a5619c85c34d88081c96047fe21, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
   - dialogueText: errr... workers gotta stick together and share these tips y'know?
     dialogueSpeed: 0.02
     dialogueStallTime: 0.3
@@ -59,3 +69,5 @@ MonoBehaviour:
     stoppingFlag: 1
     profileName: 
     profilePicture: {fileID: 21300000, guid: e55b7a5619c85c34d88081c96047fe21, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0

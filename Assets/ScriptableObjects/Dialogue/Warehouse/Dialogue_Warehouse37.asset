@@ -23,6 +23,8 @@ MonoBehaviour:
     stoppingFlag: 1
     profileName: Stepspike #51057
     profilePicture: {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
+    sfx_speaking: {fileID: 8300000, guid: b45f90f4db75d15479068d5168b17415, type: 3}
+    sfxSpeakingSpacing: 0
   - dialogueText: Chunked.
     dialogueSpeed: 0.02
     dialogueStallTime: 0
@@ -30,6 +32,8 @@ MonoBehaviour:
     stoppingFlag: 1
     profileName: Dr. S. Spike
     profilePicture: {fileID: 21300000, guid: db712b0bc4f9fe94a937cc60506ba35a, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
   - dialogueText: 'Is... '
     dialogueSpeed: 0.02
     dialogueStallTime: 0.3
@@ -37,6 +41,8 @@ MonoBehaviour:
     stoppingFlag: 0
     profileName: Stepspike #51057
     profilePicture: {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
   - dialogueText: there anything we can do...?
     dialogueSpeed: 0.02
     dialogueStallTime: 0
@@ -44,6 +50,8 @@ MonoBehaviour:
     stoppingFlag: 1
     profileName: 
     profilePicture: {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
   - dialogueText: Ehhh probably a 0.07% payroll increase should be fine.
     dialogueSpeed: 0.02
     dialogueStallTime: 0
@@ -51,3 +59,5 @@ MonoBehaviour:
     stoppingFlag: 1
     profileName: Dr. S. Spike
     profilePicture: {fileID: 21300000, guid: 56791b9d24f74ce449485757b4dbefee, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0

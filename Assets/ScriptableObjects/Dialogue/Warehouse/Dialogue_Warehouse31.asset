@@ -23,6 +23,8 @@ MonoBehaviour:
     stoppingFlag: 1
     profileName: Thousand Spike Stare
     profilePicture: {fileID: 21300000, guid: 812e36609c0b68a42afa138f8686d2bf, type: 3}
+    sfx_speaking: {fileID: 8300000, guid: b45f90f4db75d15479068d5168b17415, type: 3}
+    sfxSpeakingSpacing: 0
   - dialogueText: Chunkfish never changes.
     dialogueSpeed: 0.02
     dialogueStallTime: 0
@@ -30,6 +32,8 @@ MonoBehaviour:
     stoppingFlag: 1
     profileName: 
     profilePicture: {fileID: 21300000, guid: 812e36609c0b68a42afa138f8686d2bf, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
   - dialogueText: Hope the other branch is ok...
     dialogueSpeed: 0.02
     dialogueStallTime: 0
@@ -37,3 +41,5 @@ MonoBehaviour:
     stoppingFlag: 1
     profileName: 
     profilePicture: {fileID: 21300000, guid: fb114a570f5f59344b475d69a4c15f2e, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0

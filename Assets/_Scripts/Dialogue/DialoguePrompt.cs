@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -7,7 +8,9 @@ using UnityEngine.InputSystem;
 public class DialoguePrompt : MonoBehaviour, IDialogueCommunicator
 {
     [Header("References")]
-    [SerializeField] private ScriptableObject_Dialogue _dialoguePackage;
+    [SerializeField] public List<ScriptableObject_Dialogue> _dialoguePackages;
+    [SerializeField] public int dialoguePackageIteration = 0;
+    [SerializeField] private ScriptableObject_Dialogue _oldDialoguePackage;
     [SerializeField] private Collider2D _promptCollider;
 
     [Header("Technical References")]
@@ -19,9 +22,13 @@ public class DialoguePrompt : MonoBehaviour, IDialogueCommunicator
     [Header("Tags")]
     [SerializeField] private TagsScriptObj _playerTag;
 
+    [Header("Actions")]
+    [SerializeField] public Action onDialoguePackageSent;
+
     private void Awake()
     {
         playerInput = new PlayerInput(); // Instantiate new Unity's Input System
+        _oldDialoguePackage = _dialoguePackages[dialoguePackageIteration];
     }
 
     private void OnEnable()
@@ -58,6 +65,15 @@ public class DialoguePrompt : MonoBehaviour, IDialogueCommunicator
 
         if (_handler.isDialogueActive == false)
         {
+            // For unique interactions
+            onDialoguePackageSent?.Invoke();
+
+            // Gray out dialogue if no more dialogue
+            if (_dialoguePackages[dialoguePackageIteration] == _oldDialoguePackage)
+            {
+                _dialoguePrompt_Effects.GrayOutInnerCircle();
+            }
+
             // Find nearest dialogue
             _handler.SetCorrectDialoguePrompt();
 
@@ -66,22 +82,33 @@ public class DialoguePrompt : MonoBehaviour, IDialogueCommunicator
                 // Safety net
                 _handler.currentDialoguePrompt = gameObject;
 
-                // Create a new list with deep copy of elements
-                List<Dialogue> _newDialogues = new List<Dialogue>();
-                foreach (Dialogue dialogue in _dialoguePackage._dialogues)
-                {
-                    // Dialogue class has a copy method to create a deep copy
-                    Dialogue newDialogue = new Dialogue(dialogue);
-                    _newDialogues.Add(newDialogue);
-                }
-
-                // Stupid referenced memory >:(
-                _handler._dialogues = _newDialogues;
-                _handler._dialoguePackage = _dialoguePackage;
+                // Copy it over
+                _handler._dialogues = CopyDialoguePrompt();
+                _handler._dialoguePackage = _dialoguePackages[dialoguePackageIteration];
                 _handler.InitiateDialogue();
+
+            }
+
+            // Next dialogue interaction
+            if (dialoguePackageIteration < _dialoguePackages.Count - 1)
+            {
+                dialoguePackageIteration++;
             }
         }
 
+    }
+
+    private List<Dialogue> CopyDialoguePrompt()
+    {
+        // Create a new list with deep copy of elements
+        List<Dialogue> _newDialogues = new List<Dialogue>();
+        foreach (Dialogue dialogue in _dialoguePackages[dialoguePackageIteration]._dialogues)
+        {
+            // Dialogue class has a copy method to create a deep copy
+            Dialogue newDialogue = new Dialogue(dialogue);
+            _newDialogues.Add(newDialogue);
+        }
+        return _newDialogues;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -8,6 +8,8 @@ public class DialoguePrompt_Effects : MonoBehaviour
     [SerializeField] private Vector2 initialDialoguePromptPosition;
     [SerializeField] private GameObject dialoguePrompt;
     [SerializeField] private GameObject activeDialoguePrompt;
+    [SerializeField] private GameObject innerCircle;
+    [SerializeField] private Color innerCircleInitialColor;
     [SerializeField] private CircleCollider2D col_prompt;
     [SerializeField] private CircleCollider2D col_promptEffects;
 
@@ -37,6 +39,8 @@ public class DialoguePrompt_Effects : MonoBehaviour
 
         col_promptEffects.radius = col_prompt.radius;
         col_promptEffects.offset = col_prompt.offset;
+
+        innerCircleInitialColor = innerCircle.GetComponent<SpriteRenderer>().color;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -124,6 +128,16 @@ public class DialoguePrompt_Effects : MonoBehaviour
         float newY = initialDialoguePromptPosition.y + y + yOffset;
 
         dialoguePrompt.transform.position = new Vector2(dialoguePrompt.transform.position.x, newY);
+    }
+
+    public void GrayOutInnerCircle()
+    {
+        innerCircle.GetComponent<SpriteRenderer>().color = Color.gray;
+    }
+
+    public void ColorInnerCircle()
+    {
+        innerCircle.GetComponent<SpriteRenderer>().color = innerCircleInitialColor;
     }
 
 }

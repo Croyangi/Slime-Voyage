@@ -48,6 +48,7 @@ public class Manager_DialogueHandler : MonoBehaviour
     [SerializeField] public List<Dialogue> _dialogues;
     [SerializeField] public ScriptableObject_Dialogue _dialoguePackage;
     [SerializeField] private int currentDialogueIndex;
+    [SerializeField] private AudioClip currentDialogueSpeakingSFX;
 
     [SerializeField] public bool isDialogueActive;
     [SerializeField] private bool isDialogueTyping;
@@ -357,6 +358,15 @@ public class Manager_DialogueHandler : MonoBehaviour
             }
         }
 
+        // Changes speaking sfx
+        if (currentDialogueIndex < _dialogues.Count)
+        {
+            if (_dialogues[currentDialogueIndex].sfx_speaking != null)
+            {
+                currentDialogueSpeakingSFX = _dialogues[currentDialogueIndex].sfx_speaking;
+            }
+        }
+
         IterateThroughDialogue();
     }
 
@@ -380,12 +390,26 @@ public class Manager_DialogueHandler : MonoBehaviour
     private IEnumerator TypeCharacters(Dialogue dialogue)
     {
         isDialogueTyping = true;
+        int sfxSpeakingSpacing = _dialogues[currentDialogueIndex].sfxSpeakingSpacing;
+        int sfxSpeakingIteration = 0;
 
         char[] characters = dialogue.dialogueText.ToCharArray();
 
         foreach (char c in characters)
         {
             current_dialogueBoxText.text += c;
+
+            // SFX for speaking
+            if (currentDialogueSpeakingSFX != null && sfxSpeakingIteration > sfxSpeakingSpacing)
+            {
+                Manager_SFXPlayer.instance.PlaySFXClip(currentDialogueSpeakingSFX, transform, 0.3f, false, Manager_AudioMixer.instance.mixer_sfx);
+                sfxSpeakingIteration = 0;
+            } else
+            {
+                sfxSpeakingIteration++;
+            }
+
+            // Dialogue spacing
             if (dialogue.dialogueSpeed > 0)
             {
                 yield return new WaitForSeconds(dialogue.dialogueSpeed);

@@ -23,6 +23,8 @@ MonoBehaviour:
     stoppingFlag: 0
     profileName: Eugene
     profilePicture: {fileID: 21300000, guid: 9ceef754d63c46942b2c6d994059a1b2, type: 3}
+    sfx_speaking: {fileID: 8300000, guid: 88ec61b4f026dd747be95c5c0e0d0cd4, type: 3}
+    sfxSpeakingSpacing: 0
   - dialogueText: 'hello strange amorphous blob. '
     dialogueSpeed: 0.03
     dialogueStallTime: 0.3
@@ -30,6 +32,8 @@ MonoBehaviour:
     stoppingFlag: 1
     profileName: 
     profilePicture: {fileID: 21300000, guid: 40f66dbc189853043a29f615feeccb1d, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
   - dialogueText: 'Let my appearance not fool you. '
     dialogueSpeed: 0.03
     dialogueStallTime: 0.3
@@ -37,6 +41,8 @@ MonoBehaviour:
     stoppingFlag: 0
     profileName: 
     profilePicture: {fileID: 0}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
   - dialogueText: I am no ordinary Chunkfish.
     dialogueSpeed: 0.03
     dialogueStallTime: 0
@@ -44,6 +50,8 @@ MonoBehaviour:
     stoppingFlag: 1
     profileName: 
     profilePicture: {fileID: 21300000, guid: 9ceef754d63c46942b2c6d994059a1b2, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
   - dialogueText: 'For too long my kind was seen as thoughtless cushions like those
       AIR BAGS out there, '
     dialogueSpeed: 0.03
@@ -52,6 +60,8 @@ MonoBehaviour:
     stoppingFlag: 0
     profileName: 
     profilePicture: {fileID: 21300000, guid: 9ceef754d63c46942b2c6d994059a1b2, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
   - dialogueText: 'but as you can see, '
     dialogueSpeed: 0.03
     dialogueStallTime: 0.3
@@ -59,6 +69,8 @@ MonoBehaviour:
     stoppingFlag: 0
     profileName: 
     profilePicture: {fileID: 21300000, guid: 9ceef754d63c46942b2c6d994059a1b2, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
   - dialogueText: I am an exception.
     dialogueSpeed: 0.03
     dialogueStallTime: 0
@@ -66,3 +78,5 @@ MonoBehaviour:
     stoppingFlag: 1
     profileName: 
     profilePicture: {fileID: 21300000, guid: 40f66dbc189853043a29f615feeccb1d, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0

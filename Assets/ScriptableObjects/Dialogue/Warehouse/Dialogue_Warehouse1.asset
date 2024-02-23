@@ -23,6 +23,8 @@ MonoBehaviour:
     stoppingFlag: 0
     profileName: Flamboyantly Hatted Stepspike
     profilePicture: {fileID: 21300000, guid: b6c8446f20a8212468ee359b56af5fe9, type: 3}
+    sfx_speaking: {fileID: 8300000, guid: b45f90f4db75d15479068d5168b17415, type: 3}
+    sfxSpeakingSpacing: 0
   - dialogueText: we're surrounded.
     dialogueSpeed: 0.02
     dialogueStallTime: 0
@@ -30,6 +32,8 @@ MonoBehaviour:
     stoppingFlag: 1
     profileName: 
     profilePicture: {fileID: 21300000, guid: 2c0fef969d3cffd4ebc8f1d5b6566982, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
   - dialogueText: 'The Chunkfishes have overtaken our base
 
       (not you Smart
@@ -40,6 +44,8 @@ MonoBehaviour:
     stoppingFlag: 1
     profileName: 
     profilePicture: {fileID: 21300000, guid: b6c8446f20a8212468ee359b56af5fe9, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
   - dialogueText: Thank you.
     dialogueSpeed: 0.02
     dialogueStallTime: 0
@@ -47,6 +53,8 @@ MonoBehaviour:
     stoppingFlag: 1
     profileName: Eugene
     profilePicture: {fileID: 21300000, guid: ffd2b0ef6e8c5014a95b912c0421e4e8, type: 3}
+    sfx_speaking: {fileID: 8300000, guid: 88ec61b4f026dd747be95c5c0e0d0cd4, type: 3}
+    sfxSpeakingSpacing: 0
   - dialogueText: 'It''s only a matter of time till our hat rations deplete, '
     dialogueSpeed: 0.02
     dialogueStallTime: 0.3
@@ -54,6 +62,8 @@ MonoBehaviour:
     stoppingFlag: 0
     profileName: Surintendante Stepspike
     profilePicture: {fileID: 21300000, guid: b6c8446f20a8212468ee359b56af5fe9, type: 3}
+    sfx_speaking: {fileID: 8300000, guid: b45f90f4db75d15479068d5168b17415, type: 3}
+    sfxSpeakingSpacing: 0
   - dialogueText: any ideas?
     dialogueSpeed: 0.02
     dialogueStallTime: 0
@@ -61,3 +71,5 @@ MonoBehaviour:
     stoppingFlag: 1
     profileName: 
     profilePicture: {fileID: 21300000, guid: 2c0fef969d3cffd4ebc8f1d5b6566982, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0

@@ -8,6 +8,9 @@ using UnityEngine.EventSystems;
 
 public class Chunkfish_StateHandler : MonoBehaviour
 {
+    [SerializeField] private AudioClip sfx_chunkfishFullyInflated;
+    [SerializeField] private float chunkfish_sfxMaxRange = 30f;
+
     [Header("Current Detected Object")]
     public GameObject detectedObject;
 
@@ -18,6 +21,7 @@ public class Chunkfish_StateHandler : MonoBehaviour
     public bool isDetecting;
     public bool isInflated;
     public bool isFullyInflated;
+    private bool isStayingFullyInflated; // just for controlling sfx, to trigger this bool once
 
     [Header("Inflation Variables")]
     [SerializeField] public float chunkfish_inflateTimer;
@@ -26,6 +30,7 @@ public class Chunkfish_StateHandler : MonoBehaviour
 
     [Header("Tags")]
     [SerializeField] private TagsScriptObj _isChunkfishDetectable;
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -87,6 +92,11 @@ public class Chunkfish_StateHandler : MonoBehaviour
         if (chunkfish_inflateTimer >= chunkfish_fullyInflatedSpeed)
         {
             isFullyInflated = true;
+            if (isStayingFullyInflated == false)
+            {
+                PlayFullyInflatedSFX();
+            }
+
         } else if (chunkfish_inflateTimer <= 0)
         {
             isFullyInflated = false;
@@ -98,10 +108,17 @@ public class Chunkfish_StateHandler : MonoBehaviour
             if (chunkfish_inflateTimer <= 0)
             {
                 isInflated = false;
+                isStayingFullyInflated = false;
             }
         } else
         {
             chunkfish_inflateTimer = Mathf.Clamp(chunkfish_inflateTimer + Time.deltaTime, 0, 9999);
         }
+    }
+
+    private void PlayFullyInflatedSFX()
+    {
+        isStayingFullyInflated = true;
+        Manager_SFXPlayer.instance.PlaySFXClip(sfx_chunkfishFullyInflated, transform, 0.3f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.2f, 1f, 1f, chunkfish_sfxMaxRange);
     }
 }

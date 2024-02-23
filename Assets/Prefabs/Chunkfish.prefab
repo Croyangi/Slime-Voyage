@@ -143,6 +143,7 @@ MonoBehaviour:
   chunkfish_additionalVerticleBounceStrength: 0
   chunkfish_movementStallTime: 0.15
   chunkfish_deccelerationStallTime: 0.4
+  chunkfish_sfxMaxRange: 30
 --- !u!70 &4138953574212744164
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -423,6 +424,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b137878a4099c284c9133cf02ebbf0c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfx_chunkfishFullyInflated: {fileID: 8300000, guid: 9a3d7a2a6ef1f77428586d9e0e493fb6, type: 3}
+  chunkfish_sfxMaxRange: 30
   detectedObject: {fileID: 0}
   _chunkfishDetectionCollider: {fileID: 6233621834012938454}
   isDetecting: 0

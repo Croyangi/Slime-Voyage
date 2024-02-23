@@ -23,3 +23,5 @@ MonoBehaviour:
     stoppingFlag: 0
     profileName: 
     profilePicture: {fileID: 21300000, guid: 61f0c2bc53eee2d468f426b95936b1ad, type: 3}
+    sfx_speaking: {fileID: 8300000, guid: b45f90f4db75d15479068d5168b17415, type: 3}
+    sfxSpeakingSpacing: 0
