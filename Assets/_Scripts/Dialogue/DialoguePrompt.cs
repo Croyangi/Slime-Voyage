@@ -69,10 +69,11 @@ public class DialoguePrompt : MonoBehaviour, IDialogueCommunicator
             onDialoguePackageSent?.Invoke();
 
             // Gray out dialogue if no more dialogue
-            if (_dialoguePackages[dialoguePackageIteration] == _oldDialoguePackage)
-            {
-                _dialoguePrompt_Effects.GrayOutInnerCircle();
-            }
+            //if (_dialoguePackages[dialoguePackageIteration] == _oldDialoguePackage)
+            //{
+            //    _dialoguePrompt_Effects.GrayOutInnerCircle();
+            //}
+            //_oldDialoguePackage = _dialoguePackages[dialoguePackageIteration];
 
             // Find nearest dialogue
             _handler.SetCorrectDialoguePrompt();
@@ -93,6 +94,9 @@ public class DialoguePrompt : MonoBehaviour, IDialogueCommunicator
             if (dialoguePackageIteration < _dialoguePackages.Count - 1)
             {
                 dialoguePackageIteration++;
+            } else
+            {
+                _dialoguePrompt_Effects.GrayOutInnerCircle();
             }
         }
 
