@@ -663,7 +663,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   col_prompt: {fileID: 5435463709706601536}
-  _dialoguePrompt_Effects: {fileID: 2117292860217059764}
+  canvas_elevator: {fileID: 0}
+  elevatorPanel: {fileID: 0}
+  _WarehouseElevator: {fileID: 0}
   tag_player: {fileID: 11400000, guid: 052214d19408f7a48bba66682f7001de, type: 2}
 --- !u!1 &4245450798885943515
 GameObject:
@@ -713,6 +715,8 @@ MonoBehaviour:
   initialDialoguePromptPosition: {x: 0, y: 0}
   dialoguePrompt: {fileID: 4912441460299486851}
   activeDialoguePrompt: {fileID: 6835424511808952097}
+  innerCircle: {fileID: 2871306602235970038}
+  innerCircleInitialColor: {r: 0, g: 0, b: 0, a: 0}
   col_prompt: {fileID: 5435463709706601536}
   col_promptEffects: {fileID: 6797954347613764600}
   detectedScale: {x: 1, y: 1}

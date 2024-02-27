@@ -87,6 +87,7 @@ public class DialogueInteraction_DestroyWarehouseBoxes : MonoBehaviour
                 _dialoguePrompt._dialoguePackages.Add(_newDialoguePackage);
                 _dialoguePrompt_Effects.ColorInnerCircle();
                 isDetected = false;
+                gameObject.SetActive(false);
                 yield break;
             }
         }

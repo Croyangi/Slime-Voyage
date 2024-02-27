@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,48 +7,22 @@ using UnityEngine.InputSystem;
 public class Checkpoint : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private Animator checkpointAnimator;
+    [SerializeField] private Sprite activeCheckpoint;
     [SerializeField] private SpriteRenderer sr;
 
-    [Header("Variables")]
-    public bool isCheckpointEnabled;
-    [SerializeField] private bool isHidden;
-    [SerializeField] private bool isUninteractable;
-
-    private void Start()
-    {
-        ChangeCheckPoint();
-        if (isHidden)
-        {
-            sr.enabled = false;
-        }
-    }
+    [Header("Tags")]
+    [SerializeField] private TagsScriptObj tag_player;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == ("Player") && !isUninteractable)
+        if (collision.gameObject.TryGetComponent<Tags>(out var _tags))
         {
-            SetCheckPoint();
+            if (_tags.CheckTags(tag_player.name) == true)
+            {
+                sr.sprite = activeCheckpoint;
+            }
         }
     }
 
-    private void SetCheckPoint()
-    {
 
-        GameObject[] checkpoints = GameObject.FindGameObjectsWithTag("Respawn");
-        foreach (GameObject checkpoint in checkpoints)
-        {
-            Checkpoint tempScript = checkpoint.GetComponent<Checkpoint>();
-            tempScript.isCheckpointEnabled = false;
-            tempScript.ChangeCheckPoint();
-        }
-
-        isCheckpointEnabled = true;
-        ChangeCheckPoint();
-    }
-
-    private void ChangeCheckPoint()
-    {
-        checkpointAnimator.SetBool("IsEnabled", isCheckpointEnabled);
-    }
 }
