@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UI_ReturnToMenuButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    [Header("References")]
-    [SerializeField] private RoomQueue _roomQueue;
+    [Header("Scene")]
+    [SerializeField] private SceneQueue _sceneQueue;
+    [SerializeField] private SceneAsset scene_warehouseDioramaMenu;
 
     [Header("UI References")]
     [SerializeField] private GameObject button;
@@ -80,6 +82,6 @@ public class UI_ReturnToMenuButton : MonoBehaviour, IPointerDownHandler, IPointe
 
     private void ReturnToMenu()
     {
-        _roomQueue.LoadRoom("WarehouseDioramaMenu");
+        _sceneQueue.LoadSceneWithAsset(scene_warehouseDioramaMenu);
     }
 }

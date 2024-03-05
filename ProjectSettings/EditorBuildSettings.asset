@@ -47,4 +47,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Technical/BootLoader/BootLoader_MovementGym.unity
     guid: 010a1e3d5887734429975bb7c85a4919
+  - enabled: 1
+    path: Assets/Scenes/WorldSelectMenu.unity
+    guid: fab5e185130d88c4388216fd5f884c14
+  - enabled: 1
+    path: Assets/Scenes/Technical/BootLoader/LoadingScreen.unity
+    guid: c86b52ed3cee42d4abeff067a5f515f1
+  - enabled: 1
+    path: Assets/Scenes/Technical/BootLoader/OverlayLoadingScreen.unity
+    guid: cdbfba7bb5ad33247980a0612b64f2e6
   m_configObjects: {}

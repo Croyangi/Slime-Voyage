@@ -227,6 +227,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1328548554}
   - {fileID: 1869411274}
   - {fileID: 1802997197}
   m_Father: {fileID: 0}
@@ -2884,6 +2885,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1248561696}
   m_CullTransparentMesh: 1
+--- !u!1 &1328548553
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1328548554}
+  - component: {fileID: 1328548555}
+  m_Layer: 0
+  m_Name: Manager_DataPersistence
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1328548554
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328548553}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -74.86828, y: -45.333405, z: 1.2686671}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 116002551}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1328548555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328548553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ba5f65c93f0f264bab83c3ad6cc889e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fileName: data.game
 --- !u!1 &1364056531
 GameObject:
   m_ObjectHideFlags: 0
@@ -3618,7 +3664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c78f05c0a28e50c49a2280e918a74e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _roomQueueScriptObj: {fileID: 11400000, guid: 39e61c9ccf114d3478bff034412c95c7, type: 2}
+  scriptObj_roomQueue: {fileID: 11400000, guid: 80ad70a95fdaeea46a9fd9f61a896206, type: 2}
 --- !u!114 &1612170332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3631,7 +3677,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72076955811992d4ca31eee919537094, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _roomQueue: {fileID: 1612170331}
+  _sceneQueue: {fileID: 1612170331}
+  scene_warehouseDioramaMenu: {fileID: 102900000, guid: 10693c52df8c5424aa4c78996877d1d3, type: 3}
   button: {fileID: 1612170329}
   sr_icon: {fileID: 1884385862}
   unpressedColor: {r: 1, g: 1, b: 1, a: 1}
@@ -4144,6 +4191,9 @@ MonoBehaviour:
   mixer_master: {fileID: 24300002, guid: 9230e92806392014abf4f707843afb7b, type: 2}
   mixer_sfx: {fileID: -5108172681642937467, guid: 9230e92806392014abf4f707843afb7b, type: 2}
   mixer_music: {fileID: 3637054094149109581, guid: 9230e92806392014abf4f707843afb7b, type: 2}
+  slider_master: {fileID: 155145837}
+  slider_music: {fileID: 1915383225}
+  slider_sfx: {fileID: 721458071}
 --- !u!4 &1869411274
 Transform:
   m_ObjectHideFlags: 0
@@ -4557,7 +4607,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 396c7a7ea1396e64e9a0dc805e43be06, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c5563b327f88e104999298820e048fd4, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

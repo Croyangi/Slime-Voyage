@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GeneralLevelManager : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private RoomQueue _roomQueue;
     [SerializeField] private float startingTransitionCutoff; // Determines how far along the transition is
     [SerializeField] private float startingTransitionTarget;
     [SerializeField] private float startingTransitionSpeed;
@@ -29,6 +29,10 @@ public class GeneralLevelManager : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private bool isStartingTransitionDisabled;
     [SerializeField] private bool isEndingTransitionDisabled;
+
+    [Header("Scene")]
+    [SerializeField] private SceneQueue _sceneQueue;
+    [SerializeField] private SceneAsset scene_warehouseDioramaMenu;
 
     private void Awake()
     {
@@ -80,6 +84,6 @@ public class GeneralLevelManager : MonoBehaviour
 
     private void NextLevel(string roomName)
     {
-        _roomQueue.LoadRoom(roomName);
+        _sceneQueue.LoadSceneWithAsset(scene_warehouseDioramaMenu);
     }
 }

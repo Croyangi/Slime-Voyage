@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -13,7 +14,10 @@ public class ChunkedLogo : MonoBehaviour
     [SerializeField] private float mainMenuTimer;
 
     [SerializeField] private GameObject whiteSquareTransition;
-    [SerializeField] private RoomQueue _roomQueue;
+
+    [Header("Scene")]
+    [SerializeField] private SceneQueue _sceneQueue;
+    [SerializeField] private SceneAsset scene_logoMenu;
 
     private void Start()
     {
@@ -47,7 +51,7 @@ public class ChunkedLogo : MonoBehaviour
 
     private void LoadLogoMenu()
     {
-        _roomQueue.LoadRoom("LogoMenu");
+        _sceneQueue.LoadSceneWithAsset(scene_logoMenu);
     }
 
 }

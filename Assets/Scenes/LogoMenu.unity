@@ -1945,7 +1945,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1277104125}
   - component: {fileID: 1277104123}
-  - component: {fileID: 1277104124}
+  - component: {fileID: 1277104126}
   m_Layer: 0
   m_Name: BootLoader_LogoMenu
   m_TagString: Untagged
@@ -1965,20 +1965,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c2e87913ebd1414fa42d1ebf9c6cd20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _roomQueue: {fileID: 1277104124}
---- !u!114 &1277104124
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1277104122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c78f05c0a28e50c49a2280e918a74e5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _roomQueueScriptObj: {fileID: 11400000, guid: 39e61c9ccf114d3478bff034412c95c7, type: 2}
+  _sceneQueue: {fileID: 1277104126}
+  scene_warehouseDioramaMenu: {fileID: 102900000, guid: 10693c52df8c5424aa4c78996877d1d3, type: 3}
 --- !u!4 &1277104125
 Transform:
   m_ObjectHideFlags: 0
@@ -1994,6 +1982,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 420491976}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1277104126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277104122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c78f05c0a28e50c49a2280e918a74e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptObj_roomQueue: {fileID: 11400000, guid: 80ad70a95fdaeea46a9fd9f61a896206, type: 2}
 --- !u!1 &1294473966
 GameObject:
   m_ObjectHideFlags: 0

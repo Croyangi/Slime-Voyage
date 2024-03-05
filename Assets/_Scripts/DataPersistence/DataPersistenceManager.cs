@@ -74,4 +74,9 @@ public class DataPersistenceManager : MonoBehaviour
     {
         SaveGame();
     }
+
+    private void OnDestroy()
+    {
+        SaveGame();
+    }
 }

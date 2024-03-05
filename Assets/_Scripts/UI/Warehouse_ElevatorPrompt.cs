@@ -15,7 +15,7 @@ public class Warehouse_ElevatorPrompt : MonoBehaviour
     [SerializeField] private PlayerInput playerInput = null;
 
     [Header("Building Block References")]
-    [SerializeField] private Warehouse_Elevator _WarehouseElevator;
+    [SerializeField] private Handler_WarehouseElevator _WarehouseElevator;
 
     [Header("Tags")]
     [SerializeField] private TagsScriptObj tag_player;

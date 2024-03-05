@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,73 +11,28 @@ public class BootLoader_WarehouseDioramaMenu : MonoBehaviour
     [SerializeField] private Image closingTransition;
 
     [Header("Screen Transition")]
-    [SerializeField] private float screenTransitionTimer;
+    [SerializeField] private float screenTransitionDelay;
     [SerializeField] private bool pressedTicketButton;
+
     [SerializeField] private Image ticketButton;
     [SerializeField] private Sprite playTicketHolePunched;
     [SerializeField] private GameObject ticketButtonHolePunch;
 
-    [Header("Screen Follow Mouse References")]
-    [SerializeField] private Vector3 cameraRotationOffset;
-    [SerializeField] private Vector2 parallaxOriginPoint;
-    [SerializeField] private float parallaxScale;
-    [SerializeField] private float slerpScale;
-    [SerializeField] private Vector2 offset;
-    [SerializeField] private RoomQueue _roomQueue;
+    [Header("Scene")]
+    [SerializeField] private SceneQueue _sceneQueue;
+    [SerializeField] private SceneAsset scene_warehousePrologue;
+    [SerializeField] private SceneAsset scene_overlayLoadingScreen;
 
     private void Awake()
     {
-        closingTransition.color = new Color(0f, 0f, 0f, 1f);
-        LeanTween.color(closingTransition.rectTransform, new Color(0f, 0f, 0f, 0f), 1f).setEaseInCubic();
-
-        parallaxOriginPoint = new Vector2(Screen.width / 2, Screen.height / 2);
+        _sceneQueue.LoadSceneWithAsset(scene_overlayLoadingScreen, true);
+        StartCoroutine(DelayedAwake());
     }
 
-    private void FixedUpdate()
+    private IEnumerator DelayedAwake()
     {
-        PressTicketButtonUpdate();
-        ScreenFollowMouseUpdate();
-    }
-
-    private void PressTicketButtonUpdate()
-    {
-        if (pressedTicketButton)
-        {
-            screenTransitionTimer -= Time.deltaTime;
-
-            if (screenTransitionTimer < 0)
-            {
-                LoadWarehouseBootloader();
-            }
-        }
-    }
-
-    private void ScreenFollowMouseUpdate()
-    {
-        GetParallax();
-
-        float rotationX = offset.y * parallaxScale * -1;
-        float rotationY = offset.x * parallaxScale;
-        Vector3 parallaxRotation = new Vector3(rotationX + cameraRotationOffset.x, rotationY + cameraRotationOffset.y, cameraRotationOffset.z);
-
-        Quaternion desiredRotation = Quaternion.Slerp(Quaternion.Euler(parallaxRotation), _camera.transform.rotation, slerpScale);
-
-        _camera.transform.rotation = desiredRotation;
-    }
-
-    private void GetParallax()
-    {
-        Vector3 mousePosition = Input.mousePosition;
-        offset = GetOffsetFromCenterScreen(parallaxOriginPoint, mousePosition);
-    }
-
-    private Vector2 GetOffsetFromCenterScreen(Vector2 pos1, Vector2 pos2)
-    {
-        float distanceX = pos2.x - pos1.x;
-        float distanceY = pos2.y - pos1.y;
-        Vector2 distance = new Vector2(distanceX, distanceY);
-
-        return distance;
+        yield return new WaitForFixedUpdate();
+        Manager_LoadingScreen.instance.OpenLoadingScreen();
     }
 
     public void PressTicketButton()
@@ -86,9 +42,7 @@ public class BootLoader_WarehouseDioramaMenu : MonoBehaviour
             ApplyForceTicketButton();
         }
 
-        closingTransition.color = new Color(0f, 0f, 0f, 0f);
-        LeanTween.color(closingTransition.rectTransform, new Color(0f, 0f, 0f, 1f), 1f).setEaseInCubic();
-
+        StartCoroutine(PressTicketButtonVFX());
         pressedTicketButton = true;
         ticketButton.sprite = playTicketHolePunched;
     }
@@ -105,8 +59,44 @@ public class BootLoader_WarehouseDioramaMenu : MonoBehaviour
         rb.AddTorque(randomTorque);
     }
 
-    private void LoadWarehouseBootloader()
+    private IEnumerator PressTicketButtonVFX()
     {
-        _roomQueue.LoadRoom("WarehousePrologue");
+        yield return new WaitForSeconds(screenTransitionDelay);
+        StartCoroutine(LoadWarehousePrologue());
     }
+
+    private IEnumerator LoadWarehousePrologue()
+    {
+        Manager_LoadingScreen.instance.CloseLoadingScreen();
+        yield return new WaitForSeconds(3);
+        Manager_LoadingScreen.instance.LoadTrueLoadingScreen(scene_warehousePrologue);
+    }
+
+    //private void ScreenFollowMouseUpdate()
+    //{
+    //    GetParallax();
+
+    //    float rotationX = offset.y * parallaxScale * -1;
+    //    float rotationY = offset.x * parallaxScale;
+    //    Vector3 parallaxRotation = new Vector3(rotationX + cameraRotationOffset.x, rotationY + cameraRotationOffset.y, cameraRotationOffset.z);
+
+    //    Quaternion desiredRotation = Quaternion.Slerp(Quaternion.Euler(parallaxRotation), _camera.transform.rotation, slerpScale);
+
+    //    _camera.transform.rotation = desiredRotation;
+    //}
+
+    //private void GetParallax()
+    //{
+    //    Vector3 mousePosition = Input.mousePosition;
+    //    offset = GetOffsetFromCenterScreen(parallaxOriginPoint, mousePosition);
+    //}
+
+    //private Vector2 GetOffsetFromCenterScreen(Vector2 pos1, Vector2 pos2)
+    //{
+    //    float distanceX = pos2.x - pos1.x;
+    //    float distanceY = pos2.y - pos1.y;
+    //    Vector2 distance = new Vector2(distanceX, distanceY);
+
+    //    return distance;
+    //}
 }
