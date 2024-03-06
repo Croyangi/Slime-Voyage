@@ -431,8 +431,8 @@ MonoBehaviour:
   playTicketHolePunched: {fileID: 21300000, guid: b7f8e69fb1607154aacb067ecc7223ad, type: 3}
   ticketButtonHolePunch: {fileID: 1425780881}
   _sceneQueue: {fileID: 225792226}
-  scene_warehousePrologue: {fileID: 102900000, guid: af352c08bd9bf1840839ef79d27cd0ae, type: 3}
-  scene_overlayLoadingScreen: {fileID: 102900000, guid: cdbfba7bb5ad33247980a0612b64f2e6, type: 3}
+  scene_warehousePrologue: WarehousePrologue
+  scene_overlayLoadingScreen: OverlayLoadingScreen
 --- !u!4 &225792225
 Transform:
   m_ObjectHideFlags: 0
@@ -1145,6 +1145,9 @@ MonoBehaviour:
   mixer_master: {fileID: 24300002, guid: 9230e92806392014abf4f707843afb7b, type: 2}
   mixer_sfx: {fileID: -5108172681642937467, guid: 9230e92806392014abf4f707843afb7b, type: 2}
   mixer_music: {fileID: 3637054094149109581, guid: 9230e92806392014abf4f707843afb7b, type: 2}
+  slider_master: {fileID: 0}
+  slider_music: {fileID: 0}
+  slider_sfx: {fileID: 0}
 --- !u!1 &1197508380
 GameObject:
   m_ObjectHideFlags: 0

@@ -3678,7 +3678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneQueue: {fileID: 1612170331}
-  scene_warehouseDioramaMenu: {fileID: 102900000, guid: 10693c52df8c5424aa4c78996877d1d3, type: 3}
+  scene_warehouseDioramaMenu: WarehouseDioramaMenu
   button: {fileID: 1612170329}
   sr_icon: {fileID: 1884385862}
   unpressedColor: {r: 1, g: 1, b: 1, a: 1}

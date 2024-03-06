@@ -2535,8 +2535,8 @@ MonoBehaviour:
   closingTransition: {fileID: 835924909}
   isClosing: 0
   _sceneQueue: {fileID: 999093811}
-  scene_warehouse: {fileID: 102900000, guid: 91994eee321abe147bbefba1c35cc795, type: 3}
-  scene_overlayLoadingScreen: {fileID: 102900000, guid: cdbfba7bb5ad33247980a0612b64f2e6, type: 3}
+  scene_theWarehouse: TheWarehouse
+  scene_overlayLoadingScreen: OverlayLoadingScreen
 --- !u!4 &999093810
 Transform:
   m_ObjectHideFlags: 0
@@ -3150,7 +3150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneQueue: {fileID: 1378778616}
-  scene_warehouseDioramaMenu: {fileID: 102900000, guid: 10693c52df8c5424aa4c78996877d1d3, type: 3}
+  scene_warehouseDioramaMenu: 
   button: {fileID: 1378778614}
   sr_icon: {fileID: 1324725046}
   unpressedColor: {r: 1, g: 1, b: 1, a: 1}

@@ -35,7 +35,6 @@ public class Manager_PlayerState : MonoBehaviour, IDataPersistence
         }
         instance = this;
 
-        GameObject baseSlimeInstance = Instantiate(prefab_baseSlime, new Vector3(-32, -4, 0f), Quaternion.identity);
         FindPlayer();
     }
 
@@ -64,6 +63,7 @@ public class Manager_PlayerState : MonoBehaviour, IDataPersistence
                 {
                     player = obj;
                     onPlayerMoldChanged?.Invoke();
+                    return;
                 }
             }
         }

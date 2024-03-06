@@ -24,11 +24,11 @@ public class StepSpike_Movement : MonoBehaviour
 
     private void Awake()
     {
-        if (GetRandomBool())
-        {
-            horizontalMovement *= -1;
-            //FlipSprite();
-        }
+        //if (GetRandomBool())
+        //{
+        //    horizontalMovement *= -1;
+        //    //FlipSprite();
+        //}
     }
 
     private bool GetRandomBool()

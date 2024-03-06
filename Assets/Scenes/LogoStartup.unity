@@ -174,7 +174,7 @@ MonoBehaviour:
   mainMenuTimer: 8
   whiteSquareTransition: {fileID: 1803722324}
   _sceneQueue: {fileID: 35310012}
-  scene_logoMenu: {fileID: 102900000, guid: c866cd93aa0484240aaf04e0b129990e, type: 3}
+  scene_logoMenu: LogoMenu
 --- !u!114 &35310012
 MonoBehaviour:
   m_ObjectHideFlags: 0

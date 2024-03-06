@@ -578,7 +578,9 @@ MonoBehaviour:
   blackScreen: {fileID: 1118846051}
   loadingGraphics: {fileID: 217796176}
   _sceneQueue: {fileID: 1172204781}
-  scene_trueLoadingScreen: {fileID: 102900000, guid: c86b52ed3cee42d4abeff067a5f515f1, type: 3}
+  scene_trueLoadingScreen: LoadingScreen
+  isLoadingQueuedScenes: 0
+  transitionSpeedMultiplier: 1
 --- !u!114 &1172204781
 MonoBehaviour:
   m_ObjectHideFlags: 0

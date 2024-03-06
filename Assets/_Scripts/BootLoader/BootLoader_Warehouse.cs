@@ -13,15 +13,15 @@ public class BootLoader_Warehouse : MonoBehaviour
 
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
-    [SerializeField] private SceneAsset scene_overlayLoadingScreen;
-    [SerializeField] private SceneAsset scene_bootloaderDevTools;
-    [SerializeField] private SceneAsset scene_bootloaderGlobal;
+    [SerializeField] private string scene_overlayLoadingScreen;
+    [SerializeField] private string scene_bootloaderDevTools;
+    [SerializeField] private string scene_bootloaderGlobal;
 
     private void Awake()
     {
-        _sceneQueue.LoadSceneWithAsset(scene_bootloaderDevTools, true);
-        _sceneQueue.LoadSceneWithAsset(scene_bootloaderGlobal, true);
-        _sceneQueue.LoadSceneWithAsset(scene_overlayLoadingScreen, true);
+        _sceneQueue.LoadScene(scene_bootloaderDevTools, true);
+        _sceneQueue.LoadScene(scene_bootloaderGlobal, true);
+        _sceneQueue.LoadScene(scene_overlayLoadingScreen, true);
         StartCoroutine(DelayedAwake());
 
         StartCoroutine(InitiateWarehouseIntro());

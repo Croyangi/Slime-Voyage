@@ -1966,7 +1966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneQueue: {fileID: 1277104126}
-  scene_warehouseDioramaMenu: {fileID: 102900000, guid: 10693c52df8c5424aa4c78996877d1d3, type: 3}
+  scene_warehouseDioramaMenu: WarehouseDioramaMenu
 --- !u!4 &1277104125
 Transform:
   m_ObjectHideFlags: 0

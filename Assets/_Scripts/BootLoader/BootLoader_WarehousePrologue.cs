@@ -14,12 +14,12 @@ public class BootLoader_WarehousePrologue : MonoBehaviour
 
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
-    [SerializeField] private SceneAsset scene_warehouse;
-    [SerializeField] private SceneAsset scene_overlayLoadingScreen;
+    [SerializeField] private string scene_theWarehouse;
+    [SerializeField] private string scene_overlayLoadingScreen;
 
     private void Awake()
     {
-        _sceneQueue.LoadSceneWithAsset(scene_overlayLoadingScreen, true);
+        _sceneQueue.LoadScene(scene_overlayLoadingScreen, true);
         StartCoroutine(DelayedAwake());
 
         LeanTween.color(closingTransition.rectTransform, new Color(0f, 0f, 0f, 0f), 3f).setEaseInCubic();
@@ -63,7 +63,7 @@ public class BootLoader_WarehousePrologue : MonoBehaviour
     {
         Manager_LoadingScreen.instance.CloseLoadingScreen();
         yield return new WaitForSeconds(4);
-        _sceneQueue.LoadSceneWithAsset(scene_warehouse);
+        _sceneQueue.LoadScene(scene_theWarehouse);
     }
 
     private void Update()

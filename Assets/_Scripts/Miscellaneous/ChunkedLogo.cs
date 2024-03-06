@@ -17,7 +17,7 @@ public class ChunkedLogo : MonoBehaviour
 
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
-    [SerializeField] private SceneAsset scene_logoMenu;
+    [SerializeField] private string scene_logoMenu;
 
     private void Start()
     {
@@ -51,7 +51,7 @@ public class ChunkedLogo : MonoBehaviour
 
     private void LoadLogoMenu()
     {
-        _sceneQueue.LoadSceneWithAsset(scene_logoMenu);
+        _sceneQueue.LoadScene(scene_logoMenu);
     }
 
 }

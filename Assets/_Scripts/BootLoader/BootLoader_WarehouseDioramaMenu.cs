@@ -20,12 +20,12 @@ public class BootLoader_WarehouseDioramaMenu : MonoBehaviour
 
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
-    [SerializeField] private SceneAsset scene_warehousePrologue;
-    [SerializeField] private SceneAsset scene_overlayLoadingScreen;
+    [SerializeField] private string scene_warehousePrologue;
+    [SerializeField] private string scene_overlayLoadingScreen;
 
     private void Awake()
     {
-        _sceneQueue.LoadSceneWithAsset(scene_overlayLoadingScreen, true);
+        _sceneQueue.LoadScene(scene_overlayLoadingScreen, true);
         StartCoroutine(DelayedAwake());
     }
 

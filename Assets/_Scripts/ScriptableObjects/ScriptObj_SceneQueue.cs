@@ -10,7 +10,7 @@ public class ScriptObj_SceneQueue : ScriptableObject
     [Serializable]
     public class QueuedScenes
     {
-        public SceneAsset scene;
+        public string scene;
         public bool isAdditive;
     }
 

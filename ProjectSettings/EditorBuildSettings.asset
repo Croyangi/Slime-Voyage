@@ -12,10 +12,10 @@ EditorBuildSettings:
     path: Assets/Scenes/WarehousePrologue.unity
     guid: af352c08bd9bf1840839ef79d27cd0ae
   - enabled: 1
-    path: Assets/Scenes/Technical/BootLoader/BootLoader_Pause.unity
+    path: Assets/Scenes/Technical/BootLoader/PauseScreen.unity
     guid: b8e65e54f6d8ae04881852bb15feb2ad
   - enabled: 1
-    path: Assets/Scenes/Technical/BootLoader/BootLoader_Warehouse.unity
+    path: Assets/Scenes/Technical/BootLoader/TheWarehouse.unity
     guid: 91994eee321abe147bbefba1c35cc795
   - enabled: 1
     path: Assets/Scenes/Discontinued/MainMenu0.4.0.unity

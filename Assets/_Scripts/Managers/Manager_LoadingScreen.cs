@@ -12,7 +12,7 @@ public class Manager_LoadingScreen : MonoBehaviour
 
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
-    [SerializeField] private SceneAsset scene_trueLoadingScreen;
+    [SerializeField] private string scene_trueLoadingScreen;
     [SerializeField] private bool isLoadingQueuedScenes = false;
     [SerializeField] public float transitionSpeedMultiplier = 1f;
 
@@ -62,11 +62,11 @@ public class Manager_LoadingScreen : MonoBehaviour
         LeanTween.moveY(loadingGraphics.GetComponent<RectTransform>(), -250, 0);
     }
 
-    public void LoadTrueLoadingScreen(SceneAsset scene)
+    public void LoadTrueLoadingScreen(string sceneName)
     {
         _sceneQueue.UnqueueAllScenes();
-        _sceneQueue.QueueScene(scene);
-        _sceneQueue.LoadSceneWithAsset(scene_trueLoadingScreen);
+        _sceneQueue.QueueScene(sceneName);
+        _sceneQueue.LoadScene(scene_trueLoadingScreen);
     }
 
     public IEnumerator LoadQueuedScene()

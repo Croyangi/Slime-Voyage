@@ -32,7 +32,7 @@ public class GeneralLevelManager : MonoBehaviour
 
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
-    [SerializeField] private SceneAsset scene_warehouseDioramaMenu;
+    [SerializeField] private string scene_warehouseDioramaMenu;
 
     private void Awake()
     {
@@ -84,6 +84,6 @@ public class GeneralLevelManager : MonoBehaviour
 
     private void NextLevel(string roomName)
     {
-        _sceneQueue.LoadSceneWithAsset(scene_warehouseDioramaMenu);
+        _sceneQueue.LoadScene(scene_warehouseDioramaMenu);
     }
 }

@@ -9,7 +9,7 @@ public class UI_ReturnToMenuButton : MonoBehaviour, IPointerDownHandler, IPointe
 {
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
-    [SerializeField] private SceneAsset scene_warehouseDioramaMenu;
+    [SerializeField] private string scene_warehouseDioramaMenu;
 
     [Header("UI References")]
     [SerializeField] private GameObject button;
@@ -82,6 +82,6 @@ public class UI_ReturnToMenuButton : MonoBehaviour, IPointerDownHandler, IPointe
 
     private void ReturnToMenu()
     {
-        _sceneQueue.LoadSceneWithAsset(scene_warehouseDioramaMenu);
+        _sceneQueue.LoadScene(scene_warehouseDioramaMenu);
     }
 }
