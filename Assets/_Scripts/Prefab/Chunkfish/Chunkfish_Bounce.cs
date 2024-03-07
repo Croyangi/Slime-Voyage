@@ -21,6 +21,7 @@ public class Chunkfish_Bounce : MonoBehaviour
     [SerializeField] private float chunkfish_movementStallTime;
     [SerializeField] private float chunkfish_deccelerationStallTime;
     [SerializeField] private float chunkfish_sfxMaxRange = 30f;
+    [SerializeField] private bool isSilent = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -29,9 +30,12 @@ public class Chunkfish_Bounce : MonoBehaviour
         {
             collidedObject_rb = collision.GetComponent<Rigidbody2D>();
             OnChunkfishBounce();
-            Manager_SFXPlayer.instance.PlaySFXClip(sfx_chunkfishBounce, transform, 0.3f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.2f, 1f, 1f, chunkfish_sfxMaxRange);
-            LeanTween.scale(chunkfish, new Vector3(0.9f, 0.9f, 0.9f), 0.1f);
-            LeanTween.scale(chunkfish, new Vector3(1.1f, 1.1f, 1.1f), 0.1f).setDelay(0.1f);
+            if (!isSilent)
+            {
+                Manager_SFXPlayer.instance.PlaySFXClip(sfx_chunkfishBounce, transform, 0.3f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.2f, 1f, 1f, chunkfish_sfxMaxRange);
+            }
+            LeanTween.scale(chunkfish, new Vector3(1.2f, 1.2f, 1.2f), 0.1f);
+            LeanTween.scale(chunkfish, new Vector3(0.9f, 0.9f, 0.9f), 0.1f).setDelay(0.1f);
             LeanTween.scale(chunkfish, new Vector3(1f, 1f, 1f), 0.5f).setDelay(0.2f).setEaseOutBounce();
         }
 

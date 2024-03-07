@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class BootLoader_Warehouse : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private AudioClip audioClip_music;
     [SerializeField] private Handler_WarehouseIntro _warehouseIntro;
 
     [Header("Scene")]
@@ -25,8 +24,6 @@ public class BootLoader_Warehouse : MonoBehaviour
         StartCoroutine(DelayedAwake());
 
         StartCoroutine(InitiateWarehouseIntro());
-
-        Manager_SFXPlayer.instance.PlaySFXClip(audioClip_music, transform, 1, true, Manager_AudioMixer.instance.mixer_music);
     }
 
     private IEnumerator DelayedAwake()

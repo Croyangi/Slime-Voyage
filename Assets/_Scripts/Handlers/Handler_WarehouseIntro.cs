@@ -20,6 +20,10 @@ public class Handler_WarehouseIntro : MonoBehaviour
     [SerializeField] private GameObject cinemachine;
     [SerializeField] private float zoomInTransitionMultiplier = 1;
 
+    [SerializeField] private AudioClip audioClip_breakingProtocol;
+
+    [SerializeField] private GameObject lamp;
+
     [ContextMenu("Open Garage Door")]
     private void OpenGarageDoor()
     {
@@ -114,18 +118,23 @@ public class Handler_WarehouseIntro : MonoBehaviour
     {
         if (baseSlime.GetComponent<Rigidbody2D>().velocity != Vector2.zero)
         {
-            EndWarehouseIntro();
+            StopAllCoroutines();
+            StartCoroutine(EndWarehouseIntro());
         }
         yield return new WaitForFixedUpdate();
         StartCoroutine(WaitForSlimeEscape());
     }
 
-    private void EndWarehouseIntro()
+    private IEnumerator EndWarehouseIntro()
     {
-        StopAllCoroutines();
         cinemachine.SetActive(false);
         baseSlime.transform.position = slimeBox.transform.position;
         baseSlime.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        baseSlime.GetComponent<Rigidbody2D>().AddForce(new Vector2(20, 25f), ForceMode2D.Impulse);
+        baseSlime.GetComponent<Rigidbody2D>().AddForce(new Vector2(15, 25f), ForceMode2D.Impulse);
+
+        Manager_SFXPlayer.instance.PlaySFXClip(audioClip_breakingProtocol, transform, 0.5f, true, Manager_AudioMixer.instance.mixer_music);
+
+        yield return new WaitForSeconds(1f);
+        lamp.GetComponent<WarehouseLamp>().FlickerOn();
     }
 }

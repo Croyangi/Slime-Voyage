@@ -144,6 +144,7 @@ MonoBehaviour:
   chunkfish_movementStallTime: 0.15
   chunkfish_deccelerationStallTime: 0.4
   chunkfish_sfxMaxRange: 30
+  isSilent: 0
 --- !u!70 &4138953574212744164
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -581,8 +582,8 @@ MonoBehaviour:
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
   m_UseNormalMap: 0
-  m_ShadowIntensityEnabled: 0
-  m_ShadowIntensity: 0.75
+  m_ShadowIntensityEnabled: 1
+  m_ShadowIntensity: 0.5
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:

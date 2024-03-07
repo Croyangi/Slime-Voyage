@@ -10,7 +10,6 @@ public class DialoguePrompt : MonoBehaviour, IDialogueCommunicator
     [Header("References")]
     [SerializeField] public List<ScriptableObject_Dialogue> _dialoguePackages;
     [SerializeField] public int dialoguePackageIteration = 0;
-    [SerializeField] private ScriptableObject_Dialogue _oldDialoguePackage;
     [SerializeField] private Collider2D _promptCollider;
 
     [Header("Technical References")]
@@ -28,7 +27,6 @@ public class DialoguePrompt : MonoBehaviour, IDialogueCommunicator
     private void Awake()
     {
         playerInput = new PlayerInput(); // Instantiate new Unity's Input System
-        _oldDialoguePackage = _dialoguePackages[dialoguePackageIteration];
     }
 
     private void OnEnable()
@@ -67,13 +65,6 @@ public class DialoguePrompt : MonoBehaviour, IDialogueCommunicator
         {
             // For unique interactions
             onDialoguePackageSent?.Invoke();
-
-            // Gray out dialogue if no more dialogue
-            //if (_dialoguePackages[dialoguePackageIteration] == _oldDialoguePackage)
-            //{
-            //    _dialoguePrompt_Effects.GrayOutInnerCircle();
-            //}
-            //_oldDialoguePackage = _dialoguePackages[dialoguePackageIteration];
 
             // Find nearest dialogue
             _handler.SetCorrectDialoguePrompt();

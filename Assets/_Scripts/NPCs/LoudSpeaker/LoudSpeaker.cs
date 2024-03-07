@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,20 +7,48 @@ using UnityEngine.InputSystem;
 public class LoudSpeaker : MonoBehaviour, IDialogueCommunicator
 {
     [Header("References")]
-    [SerializeField] private ScriptableObject_Dialogue _dialoguePackage;
+    [SerializeField] public List<ScriptableObject_Dialogue> _dialoguePackages;
+    [SerializeField] public int dialoguePackageIteration = 0;
+    [SerializeField] private Collider2D _promptCollider;
     [SerializeField] private bool isSpeaking;
 
     [Header("Building Block References")]
     [SerializeField] private LoudSpeaker_Animator _loudSpeaker_Animator;
 
     [Header("Tags")]
-    [SerializeField] private TagsScriptObj _playerTag;
+    [SerializeField] private TagsScriptObj tag_player;
+
+    [Header("Actions")]
+    [SerializeField] public Action onDialoguePackageSent;
+
+    public void OnDialogueStart()
+    {
+        _loudSpeaker_Animator.ChangeToSpeaking();
+    }
+
+    public void OnDialogueEnd()
+    {
+        _loudSpeaker_Animator.ChangeToIdle();
+    }
+
+    private List<Dialogue> CopyDialoguePrompt()
+    {
+        // Create a new list with deep copy of elements
+        List<Dialogue> _newDialogues = new List<Dialogue>();
+        foreach (Dialogue dialogue in _dialoguePackages[dialoguePackageIteration]._dialogues)
+        {
+            // Dialogue class has a copy method to create a deep copy
+            Dialogue newDialogue = new Dialogue(dialogue);
+            _newDialogues.Add(newDialogue);
+        }
+        return _newDialogues;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent<Tags>(out var _tags))
         {
-            if (_tags.CheckTags(_playerTag.name) == true)
+            if (_tags.CheckTags(tag_player.name) == true)
             {
                 SendInteraction();
             }
@@ -30,7 +59,7 @@ public class LoudSpeaker : MonoBehaviour, IDialogueCommunicator
     {
         if (collision.gameObject.TryGetComponent<Tags>(out var _tags))
         {
-            if (_tags.CheckTags(_playerTag.name) == true)
+            if (_tags.CheckTags(tag_player.name) == true)
             {
                 ForceQuitOutOfRange();
             }
@@ -47,37 +76,28 @@ public class LoudSpeaker : MonoBehaviour, IDialogueCommunicator
         }
     }
 
-    public void OnDialogueStart()
-    {
-        _loudSpeaker_Animator.ChangeToSpeaking();
-    }
-
-    public void OnDialogueEnd()
-    {
-        _loudSpeaker_Animator.ChangeToIdle();
-    }
-
     private void SendInteraction()
     {
         Manager_DialogueHandler _handler = Manager_DialogueHandler.instance;
 
         if (_handler.isDialogueActive == false)
         {
+            // For unique interactions
+            onDialoguePackageSent?.Invoke();
+
+            // Safety net
             _handler.currentDialoguePrompt = gameObject;
 
-            // Create a new list with deep copy of elements
-            List<Dialogue> _newDialogues = new List<Dialogue>();
-            foreach (Dialogue dialogue in _dialoguePackage._dialogues)
-            {
-                // Dialogue class has a copy method to create a deep copy
-                Dialogue newDialogue = new Dialogue(dialogue);
-                _newDialogues.Add(newDialogue);
-            }
-
-            // Stupid referenced memory >:(
-            _handler._dialogues = _newDialogues;
-            _handler._dialoguePackage = _dialoguePackage;
+            // Copy it over
+            _handler._dialogues = CopyDialoguePrompt();
+            _handler._dialoguePackage = _dialoguePackages[dialoguePackageIteration];
             _handler.InitiateDialogue();
+
+            // Next dialogue interaction
+            if (dialoguePackageIteration < _dialoguePackages.Count - 1)
+            {
+                dialoguePackageIteration++;
+            }
         }
 
     }

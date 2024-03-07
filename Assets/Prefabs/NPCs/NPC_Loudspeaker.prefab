@@ -153,10 +153,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a967618ff38e18c4cbc4420205ecb801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dialoguePackage: {fileID: 11400000, guid: d5a1594fa131d25429fb61b633446dd8, type: 2}
+  _dialoguePackages:
+  - {fileID: 11400000, guid: d5a1594fa131d25429fb61b633446dd8, type: 2}
+  dialoguePackageIteration: 0
+  _promptCollider: {fileID: 149470947829004499}
   isSpeaking: 0
   _loudSpeaker_Animator: {fileID: 1394935278432408640}
-  _playerTag: {fileID: 11400000, guid: 052214d19408f7a48bba66682f7001de, type: 2}
+  tag_player: {fileID: 11400000, guid: 052214d19408f7a48bba66682f7001de, type: 2}
 --- !u!61 &149470947829004499
 BoxCollider2D:
   m_ObjectHideFlags: 0

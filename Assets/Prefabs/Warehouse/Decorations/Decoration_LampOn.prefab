@@ -148,8 +148,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.00080001354, y: -0.65585005, z: 0}
-    m_Extent: {x: 0.9085, y: 0.59375, z: 0}
+    m_Center: {x: -0.0009499788, y: -0.65505, z: 0}
+    m_Extent: {x: 0.90845, y: 0.59425, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -174,6 +174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6566731291680425277}
   - component: {fileID: 3445508371877596849}
+  - component: {fileID: 6716215838399646795}
   m_Layer: 0
   m_Name: Decoration_LampOn
   m_TagString: Untagged
@@ -250,3 +251,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6716215838399646795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5636012647670824389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9d3d50161f15bf42b8638031147a470, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sr: {fileID: 3445508371877596849}
+  lampOn: {fileID: 426065754, guid: 673e84a539260ec4a9be9c2937d78490, type: 3}
+  lampOff: {fileID: -1295175747, guid: 673e84a539260ec4a9be9c2937d78490, type: 3}
+  lights:
+  - {fileID: 2418770615064812393}
+  - {fileID: 3574631146162260099}
+  isOn: 1

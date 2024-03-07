@@ -132,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tag_player: {fileID: 11400000, guid: 052214d19408f7a48bba66682f7001de, type: 2}
   pivotPoint: {fileID: 234548003264612192}
-  velocityBreakingPoint: 20
+  velocityBreakingPoint: 17
   xVelocityWeight: 1
   yVelocityWeight: 0.7
   currentPlayerVelocity: {x: 0, y: 0}
