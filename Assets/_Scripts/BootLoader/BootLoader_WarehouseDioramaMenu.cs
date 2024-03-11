@@ -8,7 +8,6 @@ public class BootLoader_WarehouseDioramaMenu : MonoBehaviour
 {
     [Header("General References")]
     [SerializeField] private GameObject _camera;
-    [SerializeField] private Image closingTransition;
 
     [Header("Screen Transition")]
     [SerializeField] private float screenTransitionDelay;
@@ -35,14 +34,14 @@ public class BootLoader_WarehouseDioramaMenu : MonoBehaviour
         Manager_LoadingScreen.instance.OpenLoadingScreen();
     }
 
-    public void PressTicketButton()
+    public void OnPressTicketButton()
     {
         if (!pressedTicketButton)
         {
             ApplyForceTicketButton();
         }
 
-        StartCoroutine(PressTicketButtonVFX());
+        StartCoroutine(OnPressTicketButtonVFX());
         pressedTicketButton = true;
         ticketButton.sprite = playTicketHolePunched;
     }
@@ -59,7 +58,7 @@ public class BootLoader_WarehouseDioramaMenu : MonoBehaviour
         rb.AddTorque(randomTorque);
     }
 
-    private IEnumerator PressTicketButtonVFX()
+    private IEnumerator OnPressTicketButtonVFX()
     {
         yield return new WaitForSeconds(screenTransitionDelay);
         StartCoroutine(LoadWarehousePrologue());

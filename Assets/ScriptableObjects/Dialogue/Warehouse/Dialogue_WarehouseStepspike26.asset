@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e2d313d4c016d342bc276cb73a36214, type: 3}
+  m_Name: Dialogue_WarehouseStepspike26
+  m_EditorClassIdentifier: 
+  isDialogueOnTop: 1
+  isDialogueMini: 0
+  isPlayerInputStall: 1
+  _dialogues:
+  - dialogueText: 'These fans... '
+    dialogueSpeed: 0.02
+    dialogueStallTime: 0.3
+    cleanText: 1
+    stoppingFlag: 0
+    profileName: 
+    profilePicture: {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
+  - dialogueText: 'the higher-ups never put any budget into this place, '
+    dialogueSpeed: 0.02
+    dialogueStallTime: 0.3
+    cleanText: 0
+    stoppingFlag: 0
+    profileName: 
+    profilePicture: {fileID: 21300000, guid: 008c27e5d462fc14fa533e45120ae86c, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
+  - dialogueText: some of em' you can actually bust right on through.
+    dialogueSpeed: 0.02
+    dialogueStallTime: 0
+    cleanText: 0
+    stoppingFlag: 1
+    profileName: 
+    profilePicture: {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0

@@ -6,6 +6,14 @@ public class Handler_CheckpointLoader : MonoBehaviour, IDataPersistence
 {
     [SerializeField] private string[] ids;
     [SerializeField] private GameObject[] checkpoints;
+    [SerializeField] private ScriptObj_CheckpointQueue _checkpointQueue;
+
+    private void Awake()
+    {
+        // Reset
+        _checkpointQueue.checkpointId = "";
+        Debug.Log("RESSSETTTING");
+    }
 
     public void LoadData(GameData data)
     {
@@ -20,5 +28,11 @@ public class Handler_CheckpointLoader : MonoBehaviour, IDataPersistence
 
     public void SaveData(ref GameData data)
     {
+    }
+
+    public void OnCheckpointButtonClicked(int id)
+    {
+        _checkpointQueue.checkpointId = ids[id];
+        Debug.Log(_checkpointQueue.checkpointId);
     }
 }

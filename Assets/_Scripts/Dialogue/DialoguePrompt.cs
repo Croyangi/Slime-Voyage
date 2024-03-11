@@ -61,7 +61,7 @@ public class DialoguePrompt : MonoBehaviour, IDialogueCommunicator
     {
         Manager_DialogueHandler _handler = Manager_DialogueHandler.instance;
 
-        if (_handler.isDialogueActive == false)
+        if (_handler.isDialogueActive == false) ///////////
         {
             // For unique interactions
             onDialoguePackageSent?.Invoke();
@@ -79,17 +79,18 @@ public class DialoguePrompt : MonoBehaviour, IDialogueCommunicator
                 _handler._dialoguePackage = _dialoguePackages[dialoguePackageIteration];
                 _handler.InitiateDialogue();
 
-            }
 
-            // Next dialogue interaction
-            if (dialoguePackageIteration < _dialoguePackages.Count - 1)
-            {
-                dialoguePackageIteration++;
-            } else
-            {
-                _dialoguePrompt_Effects.GrayOutInnerCircle();
+                // Next dialogue interaction
+                if (dialoguePackageIteration < _dialoguePackages.Count - 1)
+                {
+                    dialoguePackageIteration++;
+                }
+                else
+                {
+                    _dialoguePrompt_Effects.GrayOutInnerCircle();
+                }
             }
-        }
+        } ///////////
 
     }
 

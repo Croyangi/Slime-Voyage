@@ -24,6 +24,17 @@ public class Handler_WarehouseIntro : MonoBehaviour
 
     [SerializeField] private GameObject lamp;
 
+    public IEnumerator InitiateWarehouseIntro()
+    {
+        yield return new WaitForSeconds(4f);
+        InitiateOpenGarageDoor();
+    }
+
+    public void AbortWarehouseIntro()
+    {
+        cinemachine.SetActive(false);
+    }
+
     [ContextMenu("Open Garage Door")]
     private void OpenGarageDoor()
     {

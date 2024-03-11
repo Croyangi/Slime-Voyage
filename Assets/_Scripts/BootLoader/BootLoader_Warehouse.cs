@@ -9,6 +9,7 @@ public class BootLoader_Warehouse : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Handler_WarehouseIntro _warehouseIntro;
+    [SerializeField] private Handler_Checkpoint _checkpoint;
 
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
@@ -22,20 +23,25 @@ public class BootLoader_Warehouse : MonoBehaviour
         _sceneQueue.LoadScene(scene_bootloaderGlobal, true);
         _sceneQueue.LoadScene(scene_overlayLoadingScreen, true);
         StartCoroutine(DelayedAwake());
-
-        StartCoroutine(InitiateWarehouseIntro());
     }
 
     private IEnumerator DelayedAwake()
     {
         yield return new WaitForFixedUpdate();
         Manager_LoadingScreen.instance.OpenLoadingScreen();
-    }
 
-    private IEnumerator InitiateWarehouseIntro()
-    {
-        yield return new WaitForSeconds(4f);
-        _warehouseIntro.InitiateOpenGarageDoor();
+        if (_checkpoint._checkpointQueue.checkpointId == "")
+        {
+            Debug.Log("HEYA KIDS, NO CHECKPOINTS FOUND");
+            StartCoroutine(_warehouseIntro.InitiateWarehouseIntro());
+        } else
+        {
+            Debug.Log("HEYA KIDS, aborttt");
+            _warehouseIntro.AbortWarehouseIntro();
+            _checkpoint.InitiateCheckpointHandling();
+        }
+
+        Debug.Log(_checkpoint._checkpointQueue.checkpointId);
     }
 
 
