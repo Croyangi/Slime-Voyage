@@ -40,9 +40,11 @@ public class Handler_ChunkshipCutscene : MonoBehaviour
     [ContextMenu("Initiate Checkscene")]
     public void InitiateCheckpointCutscene(GameObject checkpoint)
     {
+        cinemachine.SetActive(true);
+
         dropOffPoint = checkpoint.transform;
 
-        cinemachine.transform.position = new Vector3(checkpoint.transform.position.x, checkpoint.transform.position.y, cinemachine.transform.position.z);
+        cinemachine.transform.position = new Vector3(checkpoint.transform.position.x, checkpoint.transform.position.y + 4f, cinemachine.transform.position.z);
         cinemachine.SetActive(true);
 
         InitiateChunkshipVFX();
@@ -77,7 +79,7 @@ public class Handler_ChunkshipCutscene : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         LeanTween.moveX(chunkship, dropOffPoint.position.x - 1f, 5f).setEaseInOutSine();
-        LeanTween.moveY(chunkship, dropOffPoint.position.y + 4f, 5f).setEaseInOutSine();
+        LeanTween.moveY(chunkship, dropOffPoint.position.y + 5.5f, 5f).setEaseInOutSine();
 
         yield return new WaitForSeconds(2f);
         StartCoroutine(ChunkshipDockingLoop());
@@ -118,6 +120,7 @@ public class Handler_ChunkshipCutscene : MonoBehaviour
         stepspike.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         stepspike.GetComponent<Rigidbody2D>().AddForce(new Vector2(-7, 15f), ForceMode2D.Impulse);
         stepspike.GetComponent<Rigidbody2D>().angularVelocity = Random.Range(-300f, -200f);
+        Destroy(stepspike, 5f);
 
         // Base Slime stuff
         GameObject baseSlime = Manager_PlayerState.instance.player;

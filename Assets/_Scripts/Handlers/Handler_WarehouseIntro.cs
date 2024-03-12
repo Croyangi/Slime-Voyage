@@ -26,6 +26,7 @@ public class Handler_WarehouseIntro : MonoBehaviour
 
     public IEnumerator InitiateWarehouseIntro()
     {
+        cinemachine.SetActive(true);
         yield return new WaitForSeconds(4f);
         InitiateOpenGarageDoor();
     }

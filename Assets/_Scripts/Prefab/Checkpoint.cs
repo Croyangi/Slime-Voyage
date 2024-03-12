@@ -7,14 +7,18 @@ using UnityEngine.InputSystem;
 public class Checkpoint : MonoBehaviour, IDataPersistence
 {
     [Header("References")]
-    [SerializeField] private Sprite activeCheckpoint;
-    [SerializeField] private SpriteRenderer sr;
+    [SerializeField] private Animator _animator;
     [SerializeField] private bool isReached;
+    [SerializeField] private GameObject lightTip;
 
     [Header("Tags")]
     [SerializeField] private TagsScriptObj tag_player;
 
     [SerializeField] private string id;
+
+    [Header("Animation Clips")]
+    const string CHECKPOINT_ON = "Checkpoint_On";
+    const string CHECKPOINT_OFF = "Checkpoint_Off";
 
     [ContextMenu("Generate GUID for ID")]
     private void GenerateGuid()
@@ -41,6 +45,17 @@ public class Checkpoint : MonoBehaviour, IDataPersistence
         data.checkpointsReached.Add(id, isReached);
     }
 
+    private void Awake()
+    {
+        if (isReached)
+        {
+            _animator.Play(CHECKPOINT_ON);
+        } else
+        {
+            _animator.Play(CHECKPOINT_OFF);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent<Tags>(out var _tags))
@@ -55,7 +70,8 @@ public class Checkpoint : MonoBehaviour, IDataPersistence
 
     private void ReachedCheckpoint()
     {
-        sr.sprite = activeCheckpoint;
+        lightTip.SetActive(true);
+        _animator.Play(CHECKPOINT_ON);
         isReached = true;
     }
 
