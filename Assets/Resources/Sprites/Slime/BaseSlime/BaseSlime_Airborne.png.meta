@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 511de2dd422045446a9a03cd629d6204
+guid: 11bb42b35f87f4640af85e141c23ae9a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,76 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BaseSlime_Falling_0
+      name: BaseSlime_Airborne_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 10
+        x: 0
+        y: 0
+        width: 33
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7b70659f52b85f41ac420016ec0e7c8
+      internalID: -1483859541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BaseSlime_Airborne_1
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 7
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3e89c64f8f0d7c44aac4d594fbc6b60
+      internalID: 1514741360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BaseSlime_Airborne_2
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 6
+        width: 33
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bbc36c7c58397942aaae75805730d73
+      internalID: -718867166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BaseSlime_Airborne_3
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 16
         width: 38
-        height: 31
+        height: 25
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7cdcb96953984d6498612598802ea3d9
-      internalID: -1397158821
+      spriteID: d15b4b809dd17af4a94c756b0e26190b
+      internalID: 78964754
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BaseSlime_Falling_1
+      name: BaseSlime_Airborne_4
       rect:
         serializedVersion: 2
-        x: 91
-        y: 2
-        width: 28
-        height: 37
+        x: 199
+        y: 6
+        width: 32
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +221,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec3bd85c5cb1d5449ab855fb56a28a75
-      internalID: 798423875
+      spriteID: 3b462f5d189fa5a4c9d312c4995067d7
+      internalID: -1057519357
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BaseSlime_Falling_2
+      name: BaseSlime_Airborne_5
       rect:
         serializedVersion: 2
-        x: 155
-        y: 1
-        width: 28
-        height: 39
+        x: 246
+        y: 6
+        width: 33
+        height: 33
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,17 +242,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f39a49195fa90254099ceec0e0453f09
-      internalID: -1188262008
+      spriteID: 4b9b5eb7c0599594eb4858a56f47eed9
+      internalID: 983183816
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BaseSlime_Falling_3
+      name: BaseSlime_Airborne_6
       rect:
         serializedVersion: 2
-        x: 221
+        x: 301
         y: 0
         width: 31
         height: 27
@@ -200,8 +263,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 545a684570f955c4d82081ab27de409d
-      internalID: -2029427435
+      spriteID: 0afb6b8596cb73b4eb4e9d8d966ead6c
+      internalID: 903547366
       vertices: []
       indices: 
       edges: []
@@ -217,10 +280,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      BaseSlime_Falling_0: -1397158821
-      BaseSlime_Falling_1: 798423875
-      BaseSlime_Falling_2: -1188262008
-      BaseSlime_Falling_3: -2029427435
+      BaseSlime_Airborne_0: -1483859541
+      BaseSlime_Airborne_1: 1514741360
+      BaseSlime_Airborne_2: -718867166
+      BaseSlime_Airborne_3: 78964754
+      BaseSlime_Airborne_4: -1057519357
+      BaseSlime_Airborne_5: 983183816
+      BaseSlime_Airborne_6: 903547366
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

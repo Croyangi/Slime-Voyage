@@ -1,10 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class BaseSlime_MovingState : State
+public class BaseSlime_LookingUp : State
 {
     [Header("State References")]
     [SerializeField] private BaseSlime_StateMachine _stateMachine;
@@ -14,17 +12,9 @@ public class BaseSlime_MovingState : State
 
     public override void UpdateState()
     {
-        if (_helper._movementVars.processedInputMovement.x == 0 && _helper.isGrounded && !isTransitioning)
+        if ((!_helper.isGrounded || _helper._movementVars.processedInputMovement.y < 1f) && !isTransitioning)
         {
             if (_stateMachine.PlayerStatesDictionary.TryGetValue(BaseSlime_StateMachine.PlayerStates.Idle, out State state))
-            {
-                TransitionToState(state);
-            }
-        }
-
-        if (!_helper.isGrounded && !isTransitioning)
-        {
-            if (_stateMachine.PlayerStatesDictionary.TryGetValue(BaseSlime_StateMachine.PlayerStates.Airborne, out State state))
             {
                 TransitionToState(state);
             }
@@ -35,7 +25,7 @@ public class BaseSlime_MovingState : State
     {
         ModifyStateKey(this);
 
-        _animator.ChangeAnimationState(_animator.BASESLIME_MOVING);
+        _animator.ChangeAnimationState(_animator.BASESLIME_LOOKINGUP);
     }
 
 

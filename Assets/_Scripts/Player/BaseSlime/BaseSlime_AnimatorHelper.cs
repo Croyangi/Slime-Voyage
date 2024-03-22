@@ -26,14 +26,14 @@ public class BaseSlime_AnimatorHelper : MonoBehaviour
     public string BASESLIME_IDLE_SPIN = "BaseSlime_Idle_Spin";
     public string BASESLIME_IDLE_STRETCH = "BaseSlime_Idle_Stretch";
     public string BASESLIME_LIGHTSPLAT = "BaseSlime_LightSplat";
-    public string BASESLIME_LOOKUP = "BaseSlime_LookUp";
+    public string BASESLIME_LOOKINGUP = "BaseSlime_LookingUp";
     public string BASESLIME_MIDAIR = "BaseSlime_Midair";
     public string BASESLIME_MOVING = "BaseSlime_Moving";
     public string BASESLIME_FALLING = "BaseSlime_Falling";
     public string BASESLIME_RISING = "BaseSlime_Rising";
     public string BASESLIME_SPLAT = "BaseSlime_Splat";
     public string BASESLIME_STICK = "BaseSlime_Stick";
-    public string BASESLIME_TEETER = "BaseSlime_Teeter";
+    public string BASESLIME_ONEDGE = "BaseSlime_OnEdge";
 
 
 

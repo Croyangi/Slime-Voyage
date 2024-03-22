@@ -8,7 +8,7 @@ public class BaseSlime_IdleState : State
 {
     public enum PlayerStates
     {
-        Moving, Jumping, Airborne, OnEdge, Compressed, LookingUp
+        Moving, Jumping, Airborne, Compressed, LookingUp
     }
 
     [Header("State References")]
@@ -20,7 +20,7 @@ public class BaseSlime_IdleState : State
     public override void UpdateState()
     {
         //_movementVars.processedInputMovement == Vector2.zero && _stateHandler.isGrounded && _rigidBody2D.velocity.y < 0.1 && _stateHandler.isOnEdge == 0
-        if (_helper._movementVars.rawInputMovement != Vector2.zero && _helper.isGrounded && Mathf.Abs(_helper.rb.velocity.x) > 0.1f && !isTransitioning)
+        if (_helper._movementVars.processedInputMovement.x != 0 && _helper.isGrounded && Mathf.Abs(_helper.rb.velocity.x) > 0.1f && !isTransitioning)
         {
             if (_stateMachine.PlayerStatesDictionary.TryGetValue(BaseSlime_StateMachine.PlayerStates.Moving, out State state))
             {
@@ -34,6 +34,38 @@ public class BaseSlime_IdleState : State
             {
                 TransitionToState(state);
             }
+        }
+
+        if (_helper.isGrounded && _helper._movementVars.processedInputMovement.x == 0 && _helper._movementVars.processedInputMovement.y == -1 && !isTransitioning)
+        {
+            if (_stateMachine.PlayerStatesDictionary.TryGetValue(BaseSlime_StateMachine.PlayerStates.Compressed, out State state))
+            {
+                TransitionToState(state);
+            }
+        }
+
+        if (_helper.isGrounded && _helper._movementVars.processedInputMovement.x == 0 && _helper._movementVars.processedInputMovement.y == 1 && !isTransitioning)
+        {
+            if (_stateMachine.PlayerStatesDictionary.TryGetValue(BaseSlime_StateMachine.PlayerStates.LookingUp, out State state))
+            {
+                TransitionToState(state);
+            }
+        }
+
+        if (_helper.isOnEdge != 0)
+        {
+            _animator.ChangeAnimationState(_animator.BASESLIME_ONEDGE);
+
+            if (_helper.isOnEdge == 1)
+            {
+                _animator.FlipSprite(true);
+            } else
+            {
+                _animator.FlipSprite(false);
+            }
+        } else
+        {
+            _animator.ChangeAnimationState(_animator.BASESLIME_IDLE);
         }
     }
 

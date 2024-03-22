@@ -14,7 +14,7 @@ public class BaseSlime_AirborneState : State
     public override void UpdateState()
     {
 
-        if (_helper._movementVars.rawInputMovement == Vector2.zero && _helper.isGrounded && !isTransitioning)
+        if (_helper._movementVars.processedInputMovement == Vector2.zero && _helper.isGrounded && !isTransitioning)
         {
             if (_stateMachine.PlayerStatesDictionary.TryGetValue(BaseSlime_StateMachine.PlayerStates.Idle, out State state))
             {
@@ -22,7 +22,7 @@ public class BaseSlime_AirborneState : State
             }
         }
 
-        if (_helper._movementVars.rawInputMovement != Vector2.zero && _helper.isGrounded && !isTransitioning)
+        if (_helper._movementVars.processedInputMovement != Vector2.zero && _helper.isGrounded && !isTransitioning)
         {
             if (_stateMachine.PlayerStatesDictionary.TryGetValue(BaseSlime_StateMachine.PlayerStates.Moving, out State state))
             {
