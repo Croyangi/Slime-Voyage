@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class Handler_CheckpointLoader : MonoBehaviour, IDataPersistence
 {
+    [SerializeField] private bool isClicked = false;
     [SerializeField] private string[] ids;
     [SerializeField] private GameObject[] checkpoints;
     [SerializeField] private ScriptObj_CheckpointQueue _checkpointQueue;
 
-    private void Awake()
+    [Header("Scene")]
+    [SerializeField] private SceneQueue _sceneQueue;
+    [SerializeField] private string scene_theWarehouse;
+    [SerializeField] private string scene_overlayLoadingScreen;
+
+    private void Start()
     {
         // Reset
         _checkpointQueue.checkpointId = "";
         Debug.Log("RESSSETTTING");
+        Debug.Log("Checkpoint ID: " + _checkpointQueue.checkpointId);
     }
 
     public void LoadData(GameData data)
@@ -32,7 +39,21 @@ public class Handler_CheckpointLoader : MonoBehaviour, IDataPersistence
 
     public void OnCheckpointButtonClicked(int id)
     {
-        _checkpointQueue.checkpointId = ids[id];
-        Debug.Log(_checkpointQueue.checkpointId);
+        if (isClicked == false)
+        {
+            isClicked = true;
+            _checkpointQueue.checkpointId = ids[id];
+            Debug.Log(_checkpointQueue.checkpointId);
+
+            StartCoroutine(LoadTheWarehouse());
+        }
+
+    }
+
+    private IEnumerator LoadTheWarehouse()
+    {
+        Manager_LoadingScreen.instance.CloseLoadingScreen();
+        yield return new WaitForSeconds(3);
+        Manager_LoadingScreen.instance.LoadTrueLoadingScreen(scene_theWarehouse);
     }
 }

@@ -5,9 +5,6 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
 
-
-#if UNITY_EDITOR
-
 [RequireComponent(typeof(CompositeCollider2D))]
 public class ShadowCaster2DCreator : MonoBehaviour
 {
@@ -23,7 +20,6 @@ public class ShadowCaster2DCreator : MonoBehaviour
                                     .Assembly
                                     .GetType("UnityEngine.Rendering.Universal.ShadowUtility")
                                     .GetMethod("GenerateShadowMesh", BindingFlags.Public | BindingFlags.Static);
-
     public void Create()
     {
         DestroyOldShadowCasters();
@@ -62,6 +58,8 @@ public class ShadowCaster2DCreator : MonoBehaviour
     }
 }
 
+#if UNITY_EDITOR
+
 [CustomEditor(typeof(ShadowCaster2DCreator))]
 public class ShadowCaster2DTileMapEditor : Editor
 {
@@ -86,4 +84,4 @@ public class ShadowCaster2DTileMapEditor : Editor
 
 }
 
-# endif
+#endif

@@ -18,10 +18,6 @@ public class Handler_Checkpoint : MonoBehaviour
         {
             if (ids[i] == _checkpointQueue.checkpointId)
             {
-                if (_checkpointQueue.checkpointId == null)
-                {
-                    Debug.Log("HELPPPP ITS NULLLL");
-                }
                 Debug.Log("HELPPPP WE FOUND A CHECKPOINTTTT");
                 _chunkshipCutscene.InitiateCheckpointCutscene(checkpoints[i]);
             }

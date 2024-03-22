@@ -431,7 +431,7 @@ MonoBehaviour:
   playTicketHolePunched: {fileID: 21300000, guid: b7f8e69fb1607154aacb067ecc7223ad, type: 3}
   ticketButtonHolePunch: {fileID: 1425780881}
   _sceneQueue: {fileID: 225792226}
-  scene_warehousePrologue: TheWarehouse
+  scene_warehousePrologue: WarehousePrologue
   scene_overlayLoadingScreen: OverlayLoadingScreen
 --- !u!4 &225792225
 Transform:
@@ -1496,6 +1496,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1276324429}
   - component: {fileID: 1276324430}
+  - component: {fileID: 1276324431}
   m_Layer: 0
   m_Name: Handler_CheckpointLoader
   m_TagString: Untagged
@@ -1530,6 +1531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3b07e0f9967e249b1586d7d5532bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isClicked: 0
   ids:
   - WarehouseCheckpoint0
   - WarehouseCheckpoint1
@@ -1539,6 +1541,22 @@ MonoBehaviour:
   - {fileID: 648794776}
   - {fileID: 268379322}
   _checkpointQueue: {fileID: 11400000, guid: f62e9aa05a7f43d4db12f999ce1b7ca1, type: 2}
+  _sceneQueue: {fileID: 1276324431}
+  scene_theWarehouse: TheWarehouse
+  scene_overlayLoadingScreen: OverlayLoadingScreen
+--- !u!114 &1276324431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276324428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c78f05c0a28e50c49a2280e918a74e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptObj_roomQueue: {fileID: 11400000, guid: 80ad70a95fdaeea46a9fd9f61a896206, type: 2}
 --- !u!1 &1319329123
 GameObject:
   m_ObjectHideFlags: 0

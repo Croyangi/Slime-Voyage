@@ -62,7 +62,7 @@ public class BootLoader_WarehousePrologue : MonoBehaviour
     private IEnumerator LoadWarehouse()
     {
         Manager_LoadingScreen.instance.CloseLoadingScreen();
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(2);
         _sceneQueue.LoadScene(scene_theWarehouse);
     }
 

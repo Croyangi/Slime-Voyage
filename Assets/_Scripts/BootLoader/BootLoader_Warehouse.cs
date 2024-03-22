@@ -30,7 +30,7 @@ public class BootLoader_Warehouse : MonoBehaviour
         yield return new WaitForFixedUpdate();
         Manager_LoadingScreen.instance.OpenLoadingScreen();
 
-        if (_checkpoint._checkpointQueue.checkpointId == "")
+        if (_checkpoint._checkpointQueue.checkpointId == "" || _checkpoint._checkpointQueue.checkpointId == "0")
         {
             Debug.Log("HEYA KIDS, NO CHECKPOINTS FOUND");
             StartCoroutine(_warehouseIntro.InitiateWarehouseIntro());
@@ -41,8 +41,6 @@ public class BootLoader_Warehouse : MonoBehaviour
             _checkpoint.InitiateCheckpointHandling();
         }
 
-        Debug.Log(_checkpoint._checkpointQueue.checkpointId);
+        Debug.Log("Checkpoint ID: " + _checkpoint._checkpointQueue.checkpointId);
     }
-
-
 }
