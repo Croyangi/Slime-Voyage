@@ -73,7 +73,8 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
             jumpMovement = jump;
 
             rb.velocity = new Vector2(rb.velocity.x, 0f);
-            rb.AddForce(Vector2.up * _movementVars.jumpStrength, ForceMode2D.Impulse);
+            Vector2 jumpVelocity = new Vector2(_movementVars.jumpVelocityXAdd * Mathf.Sign(_helper.facingDirection), _movementVars.jumpStrength);
+            rb.AddForce(jumpVelocity, ForceMode2D.Impulse);
         }
 
         if (_movementVars.coyoteJumpTimer == 0 && _helper.stickingDirection != Vector2.zero)
@@ -98,6 +99,7 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
     private void ApplyWallJumpForce()
     {
         rb.velocity = new Vector2(_movementVars.wallJumpStrengthHorizontal * -(_helper.stickingDirection.x), _movementVars.wallJumpStrengthVerticle);
+        _helper.facingDirection = (int) -(_helper.stickingDirection.x);
     }
 
     private void CoyoteTimeUpdate()

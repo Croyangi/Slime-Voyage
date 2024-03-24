@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,7 +15,7 @@ public class BaseSlime_MovingState : State
 
     public override void UpdateState()
     {
-        if (_helper._movementVars.processedInputMovement.x == 0 && _helper.isGrounded && !isTransitioning)
+        if ((_helper._movementVars.processedInputMovement.x == 0 || _helper._movementVars.processedInputMovement.x == _helper.touchingDirection.x) && _helper.isGrounded && !isTransitioning)
         {
             if (_stateMachine.PlayerStatesDictionary.TryGetValue(BaseSlime_StateMachine.PlayerStates.Idle, out State state))
             {
@@ -35,12 +36,19 @@ public class BaseSlime_MovingState : State
     {
         ModifyStateKey(this);
 
-        _animator.ChangeAnimationState(_animator.BASESLIME_MOVING);
+        _animator.ChangeAnimationState(_animator.BASESLIME_MOVING, _animator.baseSlime_animator);
+        _animator.SetEyesActive(true);
+        _animator.ChangeAnimationState(_animator.EYES_MOVING, _animator.eyes_animator);
+        _animator.SetEyesOffset(new Vector2(0f, -0.112f));
+
+        _helper.col_slime.offset = new Vector2(0, -0.058f);
+        _helper.col_slime.size = new Vector2(1.8f, 1.37f);
     }
 
 
     public override void ExitState()
     {
+        _animator.SetEyesActive(false);
     }
 
     public override void TransitionToState(State state)

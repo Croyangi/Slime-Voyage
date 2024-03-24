@@ -12,9 +12,10 @@ public class BaseSlime_MovementVariables : MonoBehaviour
     public float coyoteTime;
     public float coyoteJumpTimer;
 
-    [Header("Jump Buffer Time")]
+    [Header("Jump")]
     public float jumpBuffer;
     public float jumpBufferTimer;
+    public float jumpVelocityXAdd;
 
     [Header("Velocity")]
     public float acceleration;

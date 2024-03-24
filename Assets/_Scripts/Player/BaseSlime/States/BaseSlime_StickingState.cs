@@ -36,24 +36,59 @@ public class BaseSlime_StickingState : State
 
         if (_helper.stickingDirection.x == 1)
         {
+            _helper.col_slime.offset = new Vector2(0.11f, 0.5f);
             _animator.FlipSprite(true);
         }
         else if (_helper.stickingDirection.x == -1)
         {
+            _helper.col_slime.offset = new Vector2(-0.11f, 0.5f);
             _animator.FlipSprite(false);
         }
+
+        _helper._movementVars.coyoteJumpTimer = 0f;
     }
 
     public override void EnterState()
     {
         ModifyStateKey(this);
 
-        _animator.ChangeAnimationState(_animator.BASESLIME_STICK);
+        // Delay because Jely just LOVEEEESSS TRANSITIONS HUH
+        _animator.ChangeAnimationState(_animator.BASESLIME_STICKINGTRANSITION, _animator.baseSlime_animator);
+        StartCoroutine(StickingTransitionDelay());
+
+        // Set hitbox
+        _helper.col_slime.offset = new Vector2(0.13f, 0.5f);
+        _helper.col_slime.size = new Vector2(1.5f, 2.5f);
+
+        // Edging and sticky ironically doesn't go together
+        _helper.col_onEdgeLeft.gameObject.SetActive(false);
+        _helper.col_onEdgeRight.gameObject.SetActive(false);
+
+        // A little bit of help sticking to the wall
+        Vector2 appliedVelocity = new Vector2(5f * Mathf.Sign(_helper.stickingDirection.x), 0f);
+        _helper.rb.AddForce(appliedVelocity, ForceMode2D.Impulse);
+
+        // Flip sprite before you even know you sticked, smooooth, and flip X offsets
+        if (_helper.stickingDirection.x == 1)
+        {
+            _helper.col_slime.offset = new Vector2(0.11f, 0.5f);
+            _animator.FlipSprite(true);
+        }
+        else if (_helper.stickingDirection.x == -1)
+        {
+            _helper.col_slime.offset = new Vector2(-0.11f, 0.5f);
+            _animator.FlipSprite(false);
+        }
     }
 
 
     public override void ExitState()
     {
+        StopAllCoroutines();
+
+        _helper.col_onEdgeLeft.gameObject.SetActive(true);
+        _helper.col_onEdgeRight.gameObject.SetActive(true);
+        _animator.SetEyesActive(false);
     }
 
     public override void TransitionToState(State state)
@@ -62,5 +97,15 @@ public class BaseSlime_StickingState : State
         ExitState();
         ModifyStateKey(state);
         isTransitioning = false;
+    }
+
+    private IEnumerator StickingTransitionDelay()
+    {
+        yield return new WaitForSeconds(0.1f);
+        _animator.ChangeAnimationState(_animator.BASESLIME_STICKING, _animator.baseSlime_animator);
+        _animator.SetEyesActive(true);
+        _animator.ChangeAnimationState(_animator.EYES_STICKING, _animator.eyes_animator);
+        _animator.SetEyesOffset(new Vector2(0f, -0.016f));
+
     }
 }

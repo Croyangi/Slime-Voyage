@@ -5,8 +5,13 @@ using UnityEngine;
 public class BaseSlime_AnimatorHelper : MonoBehaviour
 {
     [Header("General References")]
-    [SerializeField] private Animator animator;
-    [SerializeField] private SpriteRenderer sr;
+    public Animator baseSlime_animator;
+    public Animator eyes_animator;
+    [SerializeField] private SpriteRenderer baseSlime_sr;
+    [SerializeField] private SpriteRenderer eyes_sr;
+    [SerializeField] private GameObject eyes;
+    [SerializeField] private GameObject baseSlime;
+    public Vector2 eyesOffset { get; private set; }
 
     [Header("Technical References")]
     //[SerializeField] private float currentHighestImpactVelocityY;
@@ -32,10 +37,16 @@ public class BaseSlime_AnimatorHelper : MonoBehaviour
     public string BASESLIME_FALLING = "BaseSlime_Falling";
     public string BASESLIME_RISING = "BaseSlime_Rising";
     public string BASESLIME_SPLAT = "BaseSlime_Splat";
-    public string BASESLIME_STICK = "BaseSlime_Stick";
+    public string BASESLIME_STICKING = "BaseSlime_Sticking";
+    public string BASESLIME_STICKINGTRANSITION = "BaseSlime_StickingTransition";
     public string BASESLIME_ONEDGE = "BaseSlime_OnEdge";
 
-
+    public string EYES_MOVING = "BaseSlime_Eyes_Moving";
+    public string EYES_IDLE = "BaseSlime_Eyes_Idle";
+    public string EYES_STICKING = "BaseSlime_Eyes_Sticking";
+    public string EYES_LOOKINGUP = "BaseSlime_Eyes_LookingUp";
+    public string EYES_ONEDGE = "BaseSlime_Eyes_OnEdge";
+    public string EYES_COMPRESSED = "BaseSlime_Eyes_Compressed";
 
     [Header("Building Block References")]
     [SerializeField] private BaseSlime_StateMachine _stateMachine;
@@ -46,7 +57,7 @@ public class BaseSlime_AnimatorHelper : MonoBehaviour
         //isSpriteFlippedX = sr.flipX;
     }
 
-    public void ChangeAnimationState(string newState, int newPriority = 0)
+    public void ChangeAnimationState(string newState, Animator controller, int newPriority = 0)
     {
         if (currentState == newState)
         {
@@ -58,14 +69,15 @@ public class BaseSlime_AnimatorHelper : MonoBehaviour
             return;
         }*/
 
-        animator.Play(newState);
+        controller.Play(newState);
         currentState = newState;
         //currentPriority = newPriority;
     }
 
     public void FlipSprite(bool flipDirection)
     {
-        sr.flipX = flipDirection;
+        baseSlime_sr.flipX = flipDirection;
+        eyes_sr.flipX = flipDirection;
     }
 
     private void FixedUpdate()
@@ -84,13 +96,23 @@ public class BaseSlime_AnimatorHelper : MonoBehaviour
             FlipSprite(true);
         }
 
-        if (_helper._movementVars.processedInputMovement.x == 1)
+        if (_helper.facingDirection == 1)
         {
             FlipSprite(false);
         }
-        else if (_helper._movementVars.processedInputMovement.x == -1)
+        else if (_helper.facingDirection == -1)
         {
             FlipSprite(true);
         }
+    }
+
+    public void SetEyesActive(bool isActive)
+    {
+        eyes_sr.enabled = isActive;
+    }
+
+    public void SetEyesOffset(Vector2 offset)
+    {
+        eyesOffset = offset;
     }
 }

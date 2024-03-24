@@ -19,6 +19,9 @@ public class BaseSlime_IdleState : State
 
     public override void UpdateState()
     {
+
+
+
         //_movementVars.processedInputMovement == Vector2.zero && _stateHandler.isGrounded && _rigidBody2D.velocity.y < 0.1 && _stateHandler.isOnEdge == 0
         if (_helper._movementVars.processedInputMovement.x != 0 && _helper.isGrounded && Mathf.Abs(_helper.rb.velocity.x) > 0.1f && !isTransitioning)
         {
@@ -35,7 +38,7 @@ public class BaseSlime_IdleState : State
                 TransitionToState(state);
             }
         }
-
+        
         if (_helper.isGrounded && _helper._movementVars.processedInputMovement.x == 0 && _helper._movementVars.processedInputMovement.y == -1 && !isTransitioning)
         {
             if (_stateMachine.PlayerStatesDictionary.TryGetValue(BaseSlime_StateMachine.PlayerStates.Compressed, out State state))
@@ -52,9 +55,11 @@ public class BaseSlime_IdleState : State
             }
         }
 
-        if (_helper.isOnEdge != 0)
+        if (_helper.isOnEdge != 0 && _helper.isGrounded)
         {
-            _animator.ChangeAnimationState(_animator.BASESLIME_ONEDGE);
+            _animator.ChangeAnimationState(_animator.BASESLIME_ONEDGE, _animator.baseSlime_animator);
+            _animator.ChangeAnimationState(_animator.EYES_ONEDGE, _animator.eyes_animator);
+            _animator.SetEyesOffset(new Vector2(0f, -0.058f));
 
             if (_helper.isOnEdge == 1)
             {
@@ -65,7 +70,9 @@ public class BaseSlime_IdleState : State
             }
         } else
         {
-            _animator.ChangeAnimationState(_animator.BASESLIME_IDLE);
+            _animator.ChangeAnimationState(_animator.BASESLIME_IDLE, _animator.baseSlime_animator);
+            _animator.ChangeAnimationState(_animator.EYES_IDLE, _animator.eyes_animator);
+            _animator.SetEyesOffset(new Vector2(0f, -0.112f));
         }
     }
 
@@ -73,12 +80,22 @@ public class BaseSlime_IdleState : State
     {
         ModifyStateKey(this);
 
-        _animator.ChangeAnimationState(_animator.BASESLIME_IDLE);
+        _animator.ChangeAnimationState(_animator.BASESLIME_IDLE, _animator.baseSlime_animator);
+        _animator.SetEyesActive(true);
+        _animator.ChangeAnimationState(_animator.EYES_IDLE, _animator.eyes_animator);
+        _animator.SetEyesOffset(new Vector2(0f, -0.112f));
+
+        _helper.col_slime.offset = new Vector2(0, -0.058f);
+        _helper.col_slime.size = new Vector2(1.8f, 1.37f);
+
+        _helper._movementVars.movementSpeed = 10f;
+        _helper._movementVars.jumpVelocityXAdd = 0f;
     }
 
 
     public override void ExitState()
     {
+        _animator.SetEyesActive(false);
     }
 
     public override void TransitionToState(State state)

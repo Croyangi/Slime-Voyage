@@ -40,10 +40,10 @@ public class BaseSlime_AirborneState : State
 
         if (_helper.rb.velocity.y > 3f)
         {
-            _animator.ChangeAnimationState(_animator.BASESLIME_RISING);
+            _animator.ChangeAnimationState(_animator.BASESLIME_RISING, _animator.baseSlime_animator);
         } else if (_helper.rb.velocity.y < -3f)
         {
-            _animator.ChangeAnimationState(_animator.BASESLIME_FALLING);
+            _animator.ChangeAnimationState(_animator.BASESLIME_FALLING, _animator.baseSlime_animator);
         } else
         {
             //_animator.ChangeAnimationState(_animator.BASESLIME_MIDAIR);
@@ -53,11 +53,19 @@ public class BaseSlime_AirborneState : State
     public override void EnterState()
     {
         ModifyStateKey(this);
+
+        _helper.col_slime.offset = new Vector2(0, 0.174f);
+        _helper.col_slime.size = new Vector2(1.6f, 1.753f);
+
+        _helper.col_onEdgeLeft.gameObject.SetActive(false);
+        _helper.col_onEdgeRight.gameObject.SetActive(false);
     }
 
 
     public override void ExitState()
     {
+        _helper.col_onEdgeLeft.gameObject.SetActive(true);
+        _helper.col_onEdgeRight.gameObject.SetActive(true);
     }
 
     public override void TransitionToState(State state)

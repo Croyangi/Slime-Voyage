@@ -8,16 +8,17 @@ public class BaseSlime_StateMachineHelper : MonoBehaviour
     [SerializeField] public GameObject baseSlime;
     [SerializeField] public Vector2 colliderBounds;
     [SerializeField] public Rigidbody2D rb;
+    [SerializeField] public BoxCollider2D col_slime;
 
     [Header("Building Block References")]
     [SerializeField] public BaseSlime_MovementVariables _movementVars;
 
     [Header("Collider References")]
-    [SerializeField] private Collider2D col_isGrounded;
-    [SerializeField] private Collider2D col_touchingLeft;
-    [SerializeField] private Collider2D col_touchingRight;
-    [SerializeField] private Collider2D col_onEdgeLeft;
-    [SerializeField] private Collider2D col_onEdgeRight;
+    public Collider2D col_isGrounded;
+    public Collider2D col_touchingLeft;
+    public Collider2D col_touchingRight;
+    public Collider2D col_onEdgeLeft;
+    public Collider2D col_onEdgeRight;
 
     [Header("Tags")]
     [SerializeField] private TagsScriptObj tag_isSolidGround;
@@ -30,10 +31,12 @@ public class BaseSlime_StateMachineHelper : MonoBehaviour
     public Vector2 touchingDirection;
     public Vector2 stickingDirection;
     public bool isPermanentlySticking; // Disables after touching ground again
+    public int facingDirection;
 
     private void Awake()
     {
         //colliderBounds = baseSlime.GetComponent<Collider2D>().bounds.extents;
+        facingDirection = 1;
     }
 
     private void FixedUpdate()
@@ -50,6 +53,14 @@ public class BaseSlime_StateMachineHelper : MonoBehaviour
         PermanentlyStickingUpdate();
 
         touchingDirection = TouchingDirectionUpdate();
+
+        if (_movementVars.processedInputMovement.x == 1)
+        {
+            facingDirection = 1;
+        } else if (_movementVars.processedInputMovement.x == -1)
+        {
+            facingDirection = -1;
+        }
     }
 
     private bool IsTrueGroundedUpdate()
