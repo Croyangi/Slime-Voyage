@@ -208,6 +208,34 @@
             ]
         },
         {
+            "name": "Emote",
+            "id": "6226e9b6-364b-420d-b52b-2988cd89fa70",
+            "actions": [
+                {
+                    "name": "RandomEmote",
+                    "type": "Value",
+                    "id": "bb62057a-dd18-43fd-a956-c6a0f3b4afda",
+                    "expectedControlType": "Integer",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5884784d-fe9c-4f00-8673-aa433884b6b4",
+                    "path": "<Keyboard>/E",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RandomEmote",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
             "name": "GhostSlime",
             "id": "81386914-8f61-44dc-b462-e7fc35bae6ff",
             "actions": [

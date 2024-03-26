@@ -14,7 +14,6 @@ public class BaseSlime_AnimatorHelper : MonoBehaviour
     public Vector2 eyesOffset { get; private set; }
 
     [Header("Technical References")]
-    //[SerializeField] private float currentHighestImpactVelocityY;
     //[SerializeField] private float uniqueIdleAnimationTimer;
     //[SerializeField] private float uniqueIdleAnimationCooldown;
 
@@ -27,9 +26,6 @@ public class BaseSlime_AnimatorHelper : MonoBehaviour
 
     public string BASESLIME_COMPRESS = "BaseSlime_Compress";
     public string BASESLIME_IDLE = "BaseSlime_Idle";
-    public string BASESLIME_IDLE_SLIMEPILLED = "BaseSlime_Idle_SlimePilled";
-    public string BASESLIME_IDLE_SPIN = "BaseSlime_Idle_Spin";
-    public string BASESLIME_IDLE_STRETCH = "BaseSlime_Idle_Stretch";
     public string BASESLIME_LIGHTSPLAT = "BaseSlime_LightSplat";
     public string BASESLIME_LOOKINGUP = "BaseSlime_LookingUp";
     public string BASESLIME_MIDAIR = "BaseSlime_Midair";
@@ -47,6 +43,11 @@ public class BaseSlime_AnimatorHelper : MonoBehaviour
     public string EYES_LOOKINGUP = "BaseSlime_Eyes_LookingUp";
     public string EYES_ONEDGE = "BaseSlime_Eyes_OnEdge";
     public string EYES_COMPRESSED = "BaseSlime_Eyes_Compressed";
+    public string EYES_AIRBORNE = "BaseSlime_Eyes_Airborne";
+
+    public string BASESLIME_UNIQUEIDLE_SLIMEPILLED = "BaseSlime_UniqueIdle_SlimePilled";
+    public string BASESLIME_UNIQUEIDLE_SPIN = "BaseSlime_UniqueIdle_Spin";
+    public string BASESLIME_UNIQUEIDLE_STRETCH = "BaseSlime_UniqueIdle_Stretch";
 
     [Header("Building Block References")]
     [SerializeField] private BaseSlime_StateMachine _stateMachine;

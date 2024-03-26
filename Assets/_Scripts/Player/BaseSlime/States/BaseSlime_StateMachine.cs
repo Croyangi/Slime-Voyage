@@ -6,7 +6,7 @@ public class BaseSlime_StateMachine : MonoBehaviour
 {
     public enum PlayerStates
     {
-        Idle, Moving, Jumping, Airborne, Sticking, Compressed, LookingUp
+        Idle, Moving, Jumping, Airborne, Sticking, Compressed, LookingUp, UniqueIdle, OnEdge
     }
 
     [SerializeField] public PlayerStates playerStates;
@@ -17,6 +17,8 @@ public class BaseSlime_StateMachine : MonoBehaviour
     [SerializeField] private BaseSlime_StickingState sticking;
     [SerializeField] private BaseSlime_CompressedState compressed;
     [SerializeField] private BaseSlime_LookingUp lookingUp;
+    [SerializeField] private BaseSlime_UniqueIdle uniqueIdle;
+    [SerializeField] private BaseSlime_OnEdge onEdge;
     public Dictionary<PlayerStates, State> PlayerStatesDictionary = new Dictionary<PlayerStates, State>();
 
     private void Awake()
@@ -27,7 +29,8 @@ public class BaseSlime_StateMachine : MonoBehaviour
         PlayerStatesDictionary.Add(PlayerStates.Sticking, sticking);
         PlayerStatesDictionary.Add(PlayerStates.Compressed, compressed);
         PlayerStatesDictionary.Add(PlayerStates.LookingUp, lookingUp);
-
+        PlayerStatesDictionary.Add(PlayerStates.UniqueIdle, uniqueIdle);
+        PlayerStatesDictionary.Add(PlayerStates.OnEdge, onEdge);
 
         if (PlayerStatesDictionary.TryGetValue(PlayerStates.Idle, out State state))
         {
@@ -71,6 +74,9 @@ public class BaseSlime_StateMachine : MonoBehaviour
                 break;
             case BaseSlime_LookingUp:
                 playerStates = PlayerStates.LookingUp;
+                break;
+            case BaseSlime_UniqueIdle:
+                playerStates = PlayerStates.UniqueIdle;
                 break;
         }
     }

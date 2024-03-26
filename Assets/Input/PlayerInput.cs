@@ -230,6 +230,34 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             ]
         },
         {
+            ""name"": ""Emote"",
+            ""id"": ""6226e9b6-364b-420d-b52b-2988cd89fa70"",
+            ""actions"": [
+                {
+                    ""name"": ""RandomEmote"",
+                    ""type"": ""Value"",
+                    ""id"": ""bb62057a-dd18-43fd-a956-c6a0f3b4afda"",
+                    ""expectedControlType"": ""Integer"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""5884784d-fe9c-4f00-8673-aa433884b6b4"",
+                    ""path"": ""<Keyboard>/E"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RandomEmote"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
             ""name"": ""GhostSlime"",
             ""id"": ""81386914-8f61-44dc-b462-e7fc35bae6ff"",
             ""actions"": [
@@ -398,6 +426,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Interact = asset.FindActionMap("Interact", throwIfNotFound: true);
         m_Interact_Interact1 = m_Interact.FindAction("Interact1", throwIfNotFound: true);
         m_Interact_Pause = m_Interact.FindAction("Pause", throwIfNotFound: true);
+        // Emote
+        m_Emote = asset.FindActionMap("Emote", throwIfNotFound: true);
+        m_Emote_RandomEmote = m_Emote.FindAction("RandomEmote", throwIfNotFound: true);
         // GhostSlime
         m_GhostSlime = asset.FindActionMap("GhostSlime", throwIfNotFound: true);
         m_GhostSlime_Movement = m_GhostSlime.FindAction("Movement", throwIfNotFound: true);
@@ -568,6 +599,52 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     }
     public InteractActions @Interact => new InteractActions(this);
 
+    // Emote
+    private readonly InputActionMap m_Emote;
+    private List<IEmoteActions> m_EmoteActionsCallbackInterfaces = new List<IEmoteActions>();
+    private readonly InputAction m_Emote_RandomEmote;
+    public struct EmoteActions
+    {
+        private @PlayerInput m_Wrapper;
+        public EmoteActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @RandomEmote => m_Wrapper.m_Emote_RandomEmote;
+        public InputActionMap Get() { return m_Wrapper.m_Emote; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(EmoteActions set) { return set.Get(); }
+        public void AddCallbacks(IEmoteActions instance)
+        {
+            if (instance == null || m_Wrapper.m_EmoteActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_EmoteActionsCallbackInterfaces.Add(instance);
+            @RandomEmote.started += instance.OnRandomEmote;
+            @RandomEmote.performed += instance.OnRandomEmote;
+            @RandomEmote.canceled += instance.OnRandomEmote;
+        }
+
+        private void UnregisterCallbacks(IEmoteActions instance)
+        {
+            @RandomEmote.started -= instance.OnRandomEmote;
+            @RandomEmote.performed -= instance.OnRandomEmote;
+            @RandomEmote.canceled -= instance.OnRandomEmote;
+        }
+
+        public void RemoveCallbacks(IEmoteActions instance)
+        {
+            if (m_Wrapper.m_EmoteActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IEmoteActions instance)
+        {
+            foreach (var item in m_Wrapper.m_EmoteActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_EmoteActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public EmoteActions @Emote => new EmoteActions(this);
+
     // GhostSlime
     private readonly InputActionMap m_GhostSlime;
     private List<IGhostSlimeActions> m_GhostSlimeActionsCallbackInterfaces = new List<IGhostSlimeActions>();
@@ -630,6 +707,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     {
         void OnInteract1(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+    }
+    public interface IEmoteActions
+    {
+        void OnRandomEmote(InputAction.CallbackContext context);
     }
     public interface IGhostSlimeActions
     {

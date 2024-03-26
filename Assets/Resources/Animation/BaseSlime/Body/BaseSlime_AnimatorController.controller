@@ -59,8 +59,8 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BaseSlime_Idle_Spin
-  m_Speed: 1
+  m_Name: BaseSlime_UniqueIdle_Spin
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -163,7 +163,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BaseSlime_Idle_Stretch
+  m_Name: BaseSlime_UniqueIdle_Stretch
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -331,40 +331,40 @@ AnimatorStateMachine:
     m_Position: {x: 690, y: -40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7164060827289709990}
-    m_Position: {x: 900, y: 10, z: 0}
+    m_Position: {x: 1150, y: -40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6246594241558401622}
-    m_Position: {x: 690, y: 60, z: 0}
+    m_Position: {x: 1150, y: 60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1206561383040336944}
-    m_Position: {x: 900, y: 60, z: 0}
+    m_Position: {x: 1150, y: 10, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5872270899357398687}
-    m_Position: {x: 690, y: 110, z: 0}
+    m_Position: {x: 690, y: 60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1040711726158074693}
-    m_Position: {x: 900, y: 110, z: 0}
+    m_Position: {x: 900, y: 60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3393745350750500033}
-    m_Position: {x: 690, y: 160, z: 0}
+    m_Position: {x: 690, y: 110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2601893302030196360}
-    m_Position: {x: 900, y: 160, z: 0}
+    m_Position: {x: 900, y: 110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5670095665382572777}
-    m_Position: {x: 690, y: 210, z: 0}
+    m_Position: {x: 690, y: 160, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 779409522692951209}
-    m_Position: {x: 900, y: 210, z: 0}
+    m_Position: {x: 900, y: 160, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1065472248689729071}
-    m_Position: {x: 690, y: 260, z: 0}
+    m_Position: {x: 690, y: 210, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3183960780037174257}
-    m_Position: {x: 900, y: 260, z: 0}
+    m_Position: {x: 900, y: 210, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8403395504350955856}
-    m_Position: {x: 690, y: 310, z: 0}
+    m_Position: {x: 900, y: 10, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -372,7 +372,7 @@ AnimatorStateMachine:
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 240, y: 30, z: 0}
   m_EntryPosition: {x: 220, y: 130, z: 0}
-  m_ExitPosition: {x: 1310, y: 130, z: 0}
+  m_ExitPosition: {x: 1180, y: 230, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 5103572528177425891}
 --- !u!1102 &5103572528177425891
@@ -434,7 +434,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BaseSlime_Idle_SlimePilled
+  m_Name: BaseSlime_UniqueIdle_SlimePilled
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []

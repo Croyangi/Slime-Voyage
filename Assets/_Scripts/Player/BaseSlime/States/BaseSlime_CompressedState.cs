@@ -35,7 +35,7 @@ public class BaseSlime_CompressedState : State
         _animator.SetEyesOffset(new Vector2(0f, -0.344f));
 
         _helper.col_slime.offset = new Vector2(-0.03f, -0.333f);
-        _helper.col_slime.size = new Vector2(3.45f, 0.817f);
+        _helper.col_slime.size = new Vector2(1.8f, 0.817f);
 
         _helper._movementVars.movementSpeed = 0f;
         _helper._movementVars.jumpVelocityXAdd = 5f;

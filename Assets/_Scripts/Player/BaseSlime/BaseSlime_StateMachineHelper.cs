@@ -5,13 +5,15 @@ using UnityEngine;
 public class BaseSlime_StateMachineHelper : MonoBehaviour
 {
     [Header("General References")]
-    [SerializeField] public GameObject baseSlime;
-    [SerializeField] public Vector2 colliderBounds;
-    [SerializeField] public Rigidbody2D rb;
-    [SerializeField] public BoxCollider2D col_slime;
+    public GameObject baseSlime;
+    public Vector2 colliderBounds;
+    public Rigidbody2D rb;
+    public BoxCollider2D col_slime;
+
+    public float currentHighestImpactVelocityY;
 
     [Header("Building Block References")]
-    [SerializeField] public BaseSlime_MovementVariables _movementVars;
+    public BaseSlime_MovementVariables _movementVars;
 
     [Header("Collider References")]
     public Collider2D col_isGrounded;
@@ -60,6 +62,16 @@ public class BaseSlime_StateMachineHelper : MonoBehaviour
         } else if (_movementVars.processedInputMovement.x == -1)
         {
             facingDirection = -1;
+        }
+
+        SplatCheckUpdate(rb.velocity.y);
+    }
+
+    private void SplatCheckUpdate(float newImpactVelocity = 0)
+    {
+        if (newImpactVelocity < currentHighestImpactVelocityY)
+        {
+            currentHighestImpactVelocityY = newImpactVelocity;
         }
     }
 

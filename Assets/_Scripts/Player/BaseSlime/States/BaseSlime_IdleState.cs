@@ -17,12 +17,30 @@ public class BaseSlime_IdleState : State
     [SerializeField] private BaseSlime_AnimatorHelper _animator;
     [SerializeField] private bool isTransitioning;
 
+    [Header("Technical References")]
+    [SerializeField] private PlayerInput playerInput = null;
+
+    private void Awake()
+    {
+        playerInput = new PlayerInput(); // Instantiate new Unity's Input System
+    }
+
+    private void OnEnable()
+    {
+        //// Subscribes to Unity's input system
+        playerInput.Emote.RandomEmote.performed += OnRandomEmote;
+        playerInput.Enable();
+    }
+
+    private void OnDisable()
+    {
+        //// Unubscribes to Unity's input system
+        playerInput.Emote.RandomEmote.performed -= OnRandomEmote;
+        playerInput.Disable();
+    }
+
     public override void UpdateState()
     {
-
-
-
-        //_movementVars.processedInputMovement == Vector2.zero && _stateHandler.isGrounded && _rigidBody2D.velocity.y < 0.1 && _stateHandler.isOnEdge == 0
         if (_helper._movementVars.processedInputMovement.x != 0 && _helper.isGrounded && Mathf.Abs(_helper.rb.velocity.x) > 0.1f && !isTransitioning)
         {
             if (_stateMachine.PlayerStatesDictionary.TryGetValue(BaseSlime_StateMachine.PlayerStates.Moving, out State state))
@@ -57,22 +75,10 @@ public class BaseSlime_IdleState : State
 
         if (_helper.isOnEdge != 0 && _helper.isGrounded)
         {
-            _animator.ChangeAnimationState(_animator.BASESLIME_ONEDGE, _animator.baseSlime_animator);
-            _animator.ChangeAnimationState(_animator.EYES_ONEDGE, _animator.eyes_animator);
-            _animator.SetEyesOffset(new Vector2(0f, -0.058f));
-
-            if (_helper.isOnEdge == 1)
+            if (_stateMachine.PlayerStatesDictionary.TryGetValue(BaseSlime_StateMachine.PlayerStates.OnEdge, out State state))
             {
-                _animator.FlipSprite(true);
-            } else
-            {
-                _animator.FlipSprite(false);
+                TransitionToState(state);
             }
-        } else
-        {
-            _animator.ChangeAnimationState(_animator.BASESLIME_IDLE, _animator.baseSlime_animator);
-            _animator.ChangeAnimationState(_animator.EYES_IDLE, _animator.eyes_animator);
-            _animator.SetEyesOffset(new Vector2(0f, -0.112f));
         }
     }
 
@@ -80,10 +86,7 @@ public class BaseSlime_IdleState : State
     {
         ModifyStateKey(this);
 
-        _animator.ChangeAnimationState(_animator.BASESLIME_IDLE, _animator.baseSlime_animator);
-        _animator.SetEyesActive(true);
-        _animator.ChangeAnimationState(_animator.EYES_IDLE, _animator.eyes_animator);
-        _animator.SetEyesOffset(new Vector2(0f, -0.112f));
+        OnLandingAnimation();
 
         _helper.col_slime.offset = new Vector2(0, -0.058f);
         _helper.col_slime.size = new Vector2(1.8f, 1.37f);
@@ -104,5 +107,51 @@ public class BaseSlime_IdleState : State
         ExitState();
         ModifyStateKey(state);
         isTransitioning = false;
+    }
+
+    private void OnLandingAnimation()
+    {
+        StopAllCoroutines();
+
+        if (_helper.currentHighestImpactVelocityY < -1 && _helper.currentHighestImpactVelocityY > -30)
+        {
+            Debug.Log("LIGHT SPLAT");
+            _animator.ChangeAnimationState(_animator.BASESLIME_LOOKINGUP, _animator.baseSlime_animator);
+            StartCoroutine(ReturnToIdleAnimation(1f));
+            _helper.currentHighestImpactVelocityY = 0;
+        }
+        else if (_helper.currentHighestImpactVelocityY <= -30)
+        {
+            Debug.Log("HEAVY SPLAT");
+            _animator.ChangeAnimationState(_animator.BASESLIME_COMPRESS, _animator.baseSlime_animator);
+            StartCoroutine(ReturnToIdleAnimation(3f));
+            _helper.currentHighestImpactVelocityY = 0;
+        } else
+        {
+            _animator.ChangeAnimationState(_animator.BASESLIME_IDLE, _animator.baseSlime_animator);
+            _animator.SetEyesActive(true);
+            _animator.ChangeAnimationState(_animator.EYES_IDLE, _animator.eyes_animator);
+            _animator.SetEyesOffset(new Vector2(0f, -0.112f));
+        }
+    }
+
+    private IEnumerator ReturnToIdleAnimation(float time)
+    {
+        yield return new WaitForSeconds(time);
+        _animator.ChangeAnimationState(_animator.BASESLIME_IDLE, _animator.baseSlime_animator);
+        _animator.SetEyesActive(true);
+        _animator.ChangeAnimationState(_animator.EYES_IDLE, _animator.eyes_animator);
+        _animator.SetEyesOffset(new Vector2(0f, -0.112f));
+    }
+
+    private void OnRandomEmote(InputAction.CallbackContext value)
+    {
+        if (_helper.isGrounded && !isTransitioning)
+        {
+            if (_stateMachine.PlayerStatesDictionary.TryGetValue(BaseSlime_StateMachine.PlayerStates.UniqueIdle, out State state))
+            {
+                TransitionToState(state);
+            }
+        }
     }
 }
