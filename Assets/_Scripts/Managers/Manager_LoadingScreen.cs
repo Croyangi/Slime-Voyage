@@ -1,14 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Manager_LoadingScreen : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private GameObject blackScreen;
     [SerializeField] private GameObject loadingGraphics;
+    [SerializeField] private GameObject chunkfishDisc;
+    [SerializeField] private ScriptObj_FlavorText _flavorText;
+    [SerializeField] private TextMeshProUGUI tmp_flavorText;
 
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
@@ -29,8 +34,23 @@ public class Manager_LoadingScreen : MonoBehaviour
         {
             StartCoroutine(LoadQueuedScene());
         }
+
+        GenerateRandomFlavorText();
+        RotateChunkfishDisc();
     }
 
+    [ContextMenu("Generate Random Flavor Text")]
+    private void GenerateRandomFlavorText()
+    {
+        int random = Random.Range(0, _flavorText.flavorText.Count);
+        tmp_flavorText.text = _flavorText.flavorText[random];
+    }
+
+    private void RotateChunkfishDisc()
+    {
+        LeanTween.rotateZ(chunkfishDisc, 0, 0).setIgnoreTimeScale(true);
+        LeanTween.rotateAroundLocal(chunkfishDisc, Vector3.forward, -360, 4f).setLoopClamp().setIgnoreTimeScale(true).setDelay(0.1f);
+    }
 
     [ContextMenu("Close Loading Screen")]
     public void OpenLoadingScreen()

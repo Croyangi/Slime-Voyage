@@ -32,11 +32,9 @@ public class BootLoader_Warehouse : MonoBehaviour
 
         if (_checkpoint._checkpointQueue.checkpointId == "" || _checkpoint._checkpointQueue.checkpointId == "0")
         {
-            Debug.Log("HEYA KIDS, NO CHECKPOINTS FOUND");
             StartCoroutine(_warehouseIntro.InitiateWarehouseIntro());
         } else
         {
-            Debug.Log("HEYA KIDS, aborttt");
             _warehouseIntro.AbortWarehouseIntro();
             _checkpoint.InitiateCheckpointHandling();
         }

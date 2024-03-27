@@ -432,7 +432,7 @@ MonoBehaviour:
   ticketButtonHolePunch: {fileID: 1425780881}
   _sceneQueue: {fileID: 225792226}
   scene_warehousePrologue: WarehousePrologue
-  scene_overlayLoadingScreen: OverlayLoadingScreen
+  scene_overlayLoadingScreen: LoadingScreen
 --- !u!4 &225792225
 Transform:
   m_ObjectHideFlags: 0

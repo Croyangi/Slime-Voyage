@@ -46,7 +46,7 @@ public class BaseSlime_AirborneState : State
         {
             _animator.ChangeAnimationState(_animator.BASESLIME_FALLING, _animator.baseSlime_animator);
             _animator.SetEyesOffset(new Vector2(0f, -0.112f));
-        } else
+        } else if (Mathf.Abs(_helper.rb.velocity.y) < 3f && Mathf.Abs(_helper.rb.velocity.y) > 0.1f)
         {
             _animator.ChangeAnimationState(_animator.BASESLIME_MIDAIR, _animator.baseSlime_animator);
             _animator.SetEyesOffset(new Vector2(0f, -0.051f));

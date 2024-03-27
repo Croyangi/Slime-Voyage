@@ -238,7 +238,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: BaseSlime_Splat
-  m_Speed: 1
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -340,7 +340,7 @@ AnimatorStateMachine:
     m_Position: {x: 1150, y: 10, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5872270899357398687}
-    m_Position: {x: 690, y: 60, z: 0}
+    m_Position: {x: 690, y: 240, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1040711726158074693}
     m_Position: {x: 900, y: 60, z: 0}
@@ -355,13 +355,13 @@ AnimatorStateMachine:
     m_Position: {x: 690, y: 160, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 779409522692951209}
-    m_Position: {x: 900, y: 160, z: 0}
+    m_Position: {x: 900, y: 240, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1065472248689729071}
-    m_Position: {x: 690, y: 210, z: 0}
+    m_Position: {x: 690, y: 60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3183960780037174257}
-    m_Position: {x: 900, y: 210, z: 0}
+    m_Position: {x: 900, y: 160, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8403395504350955856}
     m_Position: {x: 900, y: 10, z: 0}

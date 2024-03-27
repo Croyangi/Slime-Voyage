@@ -13,6 +13,8 @@ public class Handler_WarehouseElevator : MonoBehaviour
     [SerializeField] private GameObject prompt;
     [SerializeField] private Image closingTransition;
 
+    [SerializeField] private Handler_SpeedrunTimer _speedrunTimer;
+
     [Header("Elevator Pieces")]
     [SerializeField] private GameObject chainedGear;
     [SerializeField] private GameObject elevator;
@@ -46,11 +48,13 @@ public class Handler_WarehouseElevator : MonoBehaviour
 
     public void OnElevatorUpButton()
     {
+        _speedrunTimer.EndSpeedrunTimer();
         StartCoroutine(OnElevatorButtonUpInitiate());
     }
 
     public void OnElevatorDownButton()
     {
+        _speedrunTimer.EndSpeedrunTimer();
         StartCoroutine(OnElevatorButtonDownInitiate());
     }
 

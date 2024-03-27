@@ -99,6 +99,7 @@ public class BaseSlime_IdleState : State
     public override void ExitState()
     {
         _animator.SetEyesActive(false);
+        StopAllCoroutines();
     }
 
     public override void TransitionToState(State state)
@@ -115,16 +116,14 @@ public class BaseSlime_IdleState : State
 
         if (_helper.currentHighestImpactVelocityY < -1 && _helper.currentHighestImpactVelocityY > -30)
         {
-            Debug.Log("LIGHT SPLAT");
-            _animator.ChangeAnimationState(_animator.BASESLIME_LOOKINGUP, _animator.baseSlime_animator);
-            StartCoroutine(ReturnToIdleAnimation(1f));
+            _animator.ChangeAnimationState(_animator.BASESLIME_LIGHTSPLAT, _animator.baseSlime_animator);
+            StartCoroutine(ReturnToIdleAnimation(0.05f));
             _helper.currentHighestImpactVelocityY = 0;
         }
         else if (_helper.currentHighestImpactVelocityY <= -30)
         {
-            Debug.Log("HEAVY SPLAT");
-            _animator.ChangeAnimationState(_animator.BASESLIME_COMPRESS, _animator.baseSlime_animator);
-            StartCoroutine(ReturnToIdleAnimation(3f));
+            _animator.ChangeAnimationState(_animator.BASESLIME_SPLAT, _animator.baseSlime_animator);
+            StartCoroutine(ReturnToIdleAnimation(0.5f));
             _helper.currentHighestImpactVelocityY = 0;
         } else
         {
