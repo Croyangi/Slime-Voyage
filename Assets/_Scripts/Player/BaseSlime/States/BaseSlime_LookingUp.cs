@@ -32,6 +32,8 @@ public class BaseSlime_LookingUp : State
 
         _helper.col_slime.offset = new Vector2(0, -0.058f);
         _helper.col_slime.size = new Vector2(1.8f, 1.37f);
+
+        _helper._movementVars.movementSpeed = 0f;
     }
 
 

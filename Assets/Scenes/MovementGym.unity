@@ -717,7 +717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneQueue: {fileID: 155383477}
-  scene_overlayLoadingScreen: OverlayLoadingScreen
+  scene_loadingScreen: 
   scene_bootloaderDevTools: BootLoader_DevTools
   scene_bootloaderGlobal: BootLoader_Global
 --- !u!1 &169729600
@@ -31401,6 +31401,14 @@ PrefabInstance:
     - target: {fileID: 2918270612944670021, guid: 0cfdd656a03e61a40a17192b71767b25, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6338366257579092545, guid: 0cfdd656a03e61a40a17192b71767b25, type: 3}
+      propertyPath: m_Size.y
+      value: 0.71301806
+      objectReference: {fileID: 0}
+    - target: {fileID: 6338366257579092545, guid: 0cfdd656a03e61a40a17192b71767b25, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.52176267
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

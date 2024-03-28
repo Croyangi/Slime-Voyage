@@ -191,7 +191,8 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
 
     private void MovementInputProcessor()
     {
-        _movementVars.processedInputMovement = _movementVars.rawInputMovement;
+        
+        _movementVars.processedInputMovement = new Vector2(Mathf.RoundToInt(_movementVars.rawInputMovement.x), Mathf.RoundToInt(_movementVars.rawInputMovement.y));
 
         if (_movementVars.isMovementStalled)
         {

@@ -8,7 +8,7 @@ public class BootLoader_MovementGym : MonoBehaviour
 
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
-    [SerializeField] private string scene_overlayLoadingScreen;
+    [SerializeField] private string scene_loadingScreen;
     [SerializeField] private string scene_bootloaderDevTools;
     [SerializeField] private string scene_bootloaderGlobal;
 
@@ -16,8 +16,8 @@ public class BootLoader_MovementGym : MonoBehaviour
     {
         _sceneQueue.LoadScene(scene_bootloaderDevTools, true);
         _sceneQueue.LoadScene(scene_bootloaderGlobal, true);
-        _sceneQueue.LoadScene(scene_overlayLoadingScreen, true);
-        StartCoroutine(DelayedAwake());
+        //_sceneQueue.LoadScene(scene_loadingScreen, true);
+        //StartCoroutine(DelayedAwake());
     }
 
     private IEnumerator DelayedAwake()

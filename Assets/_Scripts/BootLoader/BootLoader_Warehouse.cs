@@ -1,4 +1,5 @@
 using Cinemachine;
+using System;
 using System.Collections;
 using UnityEditor;
 using UnityEngine;
@@ -13,7 +14,6 @@ public class BootLoader_Warehouse : MonoBehaviour
 
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
-    [SerializeField] private string scene_overlayLoadingScreen;
     [SerializeField] private string scene_bootloaderDevTools;
     [SerializeField] private string scene_bootloaderGlobal;
 
@@ -21,14 +21,17 @@ public class BootLoader_Warehouse : MonoBehaviour
     {
         _sceneQueue.LoadScene(scene_bootloaderDevTools, true);
         _sceneQueue.LoadScene(scene_bootloaderGlobal, true);
-        _sceneQueue.LoadScene(scene_overlayLoadingScreen, true);
         StartCoroutine(DelayedAwake());
     }
 
     private IEnumerator DelayedAwake()
     {
         yield return new WaitForFixedUpdate();
-        Manager_LoadingScreen.instance.OpenLoadingScreen();
+
+        if (Manager_LoadingScreen.instance != null)
+        {
+            Manager_LoadingScreen.instance.OpenLoadingScreen();
+        }
 
         if (_checkpoint._checkpointQueue.checkpointId == "" || _checkpoint._checkpointQueue.checkpointId == "0")
         {

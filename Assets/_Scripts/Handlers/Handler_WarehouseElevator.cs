@@ -13,8 +13,6 @@ public class Handler_WarehouseElevator : MonoBehaviour
     [SerializeField] private GameObject prompt;
     [SerializeField] private Image closingTransition;
 
-    [SerializeField] private Handler_SpeedrunTimer _speedrunTimer;
-
     [Header("Elevator Pieces")]
     [SerializeField] private GameObject chainedGear;
     [SerializeField] private GameObject elevator;
@@ -48,13 +46,13 @@ public class Handler_WarehouseElevator : MonoBehaviour
 
     public void OnElevatorUpButton()
     {
-        _speedrunTimer.EndSpeedrunTimer();
+        Manager_SpeedrunTimer.instance.EndSpeedrunTimer();
         StartCoroutine(OnElevatorButtonUpInitiate());
     }
 
     public void OnElevatorDownButton()
     {
-        _speedrunTimer.EndSpeedrunTimer();
+        Manager_SpeedrunTimer.instance.EndSpeedrunTimer();
         StartCoroutine(OnElevatorButtonDownInitiate());
     }
 
@@ -63,6 +61,7 @@ public class Handler_WarehouseElevator : MonoBehaviour
         prompt.SetActive(false);
         canvas_elevator.SetActive(false);
         Manager_PlayerState.instance.SetInputStall(false);
+
         LeanTween.moveLocalY(elevator, elevator.transform.position.y - 0.5f, 1f).setEaseInBounce();
         yield return new WaitForSeconds(2f);
         //StartCoroutine(ElevatorUpButtonAnimation());
@@ -80,6 +79,7 @@ public class Handler_WarehouseElevator : MonoBehaviour
         prompt.SetActive(false);
         canvas_elevator.SetActive(false);
         Manager_PlayerState.instance.SetInputStall(false);
+
         LeanTween.moveLocalY(elevator, elevator.transform.position.y - 0.5f, 0.3f).setEaseInBounce();
         yield return new WaitForSeconds(2f);
         //StartCoroutine(ElevatorDownButtonAnimation());

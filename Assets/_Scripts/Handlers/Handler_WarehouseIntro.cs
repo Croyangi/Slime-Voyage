@@ -24,8 +24,6 @@ public class Handler_WarehouseIntro : MonoBehaviour
 
     [SerializeField] private GameObject lamp;
 
-    [SerializeField] private Handler_SpeedrunTimer _speedrunTimer;
-
     public IEnumerator InitiateWarehouseIntro()
     {
         cinemachine.SetActive(true);
@@ -134,7 +132,7 @@ public class Handler_WarehouseIntro : MonoBehaviour
         {
             StopAllCoroutines();
             StartCoroutine(EndWarehouseIntro());
-            _speedrunTimer.SetSpeedrunTimer(true);
+            Manager_SpeedrunTimer.instance.StartSpeedrunTimer();
         }
         yield return new WaitForFixedUpdate();
         StartCoroutine(WaitForSlimeEscape());

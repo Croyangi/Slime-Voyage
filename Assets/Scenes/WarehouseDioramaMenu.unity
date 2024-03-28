@@ -432,7 +432,8 @@ MonoBehaviour:
   ticketButtonHolePunch: {fileID: 1425780881}
   _sceneQueue: {fileID: 225792226}
   scene_warehousePrologue: WarehousePrologue
-  scene_overlayLoadingScreen: LoadingScreen
+  scene_loadingScreen: LoadingScreen
+  scene_warehouseDioramaMenu: WarehouseDioramaMenu
 --- !u!4 &225792225
 Transform:
   m_ObjectHideFlags: 0
@@ -1543,7 +1544,7 @@ MonoBehaviour:
   _checkpointQueue: {fileID: 11400000, guid: f62e9aa05a7f43d4db12f999ce1b7ca1, type: 2}
   _sceneQueue: {fileID: 1276324431}
   scene_theWarehouse: TheWarehouse
-  scene_overlayLoadingScreen: OverlayLoadingScreen
+  scene_deloadedScene: WarehouseDioramaMenu
 --- !u!114 &1276324431
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ public class Handler_CheckpointLoader : MonoBehaviour, IDataPersistence
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
     [SerializeField] private string scene_theWarehouse;
-    [SerializeField] private string scene_overlayLoadingScreen;
+    [SerializeField] private string scene_deloadedScene;
 
     private void Start()
     {
@@ -54,6 +54,6 @@ public class Handler_CheckpointLoader : MonoBehaviour, IDataPersistence
     {
         Manager_LoadingScreen.instance.CloseLoadingScreen();
         yield return new WaitForSeconds(3);
-        Manager_LoadingScreen.instance.LoadTrueLoadingScreen(scene_theWarehouse);
+        Manager_LoadingScreen.instance.OnLoadSceneTransfer(scene_theWarehouse, scene_deloadedScene);
     }
 }

@@ -20,11 +20,12 @@ public class BootLoader_WarehouseDioramaMenu : MonoBehaviour
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
     [SerializeField] private string scene_warehousePrologue;
-    [SerializeField] private string scene_overlayLoadingScreen;
+    [SerializeField] private string scene_loadingScreen;
+    [SerializeField] private string scene_warehouseDioramaMenu;
 
     private void Awake()
     {
-        _sceneQueue.LoadScene(scene_overlayLoadingScreen, true);
+        _sceneQueue.LoadScene(scene_loadingScreen, true);
         StartCoroutine(DelayedAwake());
     }
 
@@ -68,7 +69,7 @@ public class BootLoader_WarehouseDioramaMenu : MonoBehaviour
     {
         Manager_LoadingScreen.instance.CloseLoadingScreen();
         yield return new WaitForSeconds(3);
-        Manager_LoadingScreen.instance.LoadTrueLoadingScreen(scene_warehousePrologue);
+        Manager_LoadingScreen.instance.OnLoadSceneTransfer(scene_warehousePrologue, scene_warehouseDioramaMenu);
     }
 
     //private void ScreenFollowMouseUpdate()

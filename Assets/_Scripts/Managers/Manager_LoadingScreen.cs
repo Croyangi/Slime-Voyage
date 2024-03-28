@@ -5,20 +5,19 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Manager_LoadingScreen : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject blackScreen;
-    [SerializeField] private GameObject loadingGraphics;
+    [SerializeField] private GameObject flavorGraphics;
     [SerializeField] private GameObject chunkfishDisc;
     [SerializeField] private ScriptObj_FlavorText _flavorText;
     [SerializeField] private TextMeshProUGUI tmp_flavorText;
 
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
-    [SerializeField] private string scene_trueLoadingScreen;
-    [SerializeField] private bool isLoadingQueuedScenes = false;
     [SerializeField] public float transitionSpeedMultiplier = 1f;
 
     public static Manager_LoadingScreen instance { get; private set; }
@@ -30,11 +29,6 @@ public class Manager_LoadingScreen : MonoBehaviour
         }
         instance = this;
 
-        if (isLoadingQueuedScenes)
-        {
-            StartCoroutine(LoadQueuedScene());
-        }
-
         GenerateRandomFlavorText();
         RotateChunkfishDisc();
     }
@@ -43,6 +37,7 @@ public class Manager_LoadingScreen : MonoBehaviour
     private void GenerateRandomFlavorText()
     {
         int random = Random.Range(0, _flavorText.flavorText.Count);
+        Debug.Log(random);
         tmp_flavorText.text = _flavorText.flavorText[random];
     }
 
@@ -56,14 +51,14 @@ public class Manager_LoadingScreen : MonoBehaviour
     public void OpenLoadingScreen()
     {
         PrepareOpenLoadingScreen();
-        LeanTween.moveY(loadingGraphics.GetComponent<RectTransform>(), -250, 1f * transitionSpeedMultiplier).setEaseInOutBack().setDelay(1 * transitionSpeedMultiplier);
+        LeanTween.moveY(flavorGraphics.GetComponent<RectTransform>(), -250, 1f * transitionSpeedMultiplier).setEaseInOutBack().setDelay(1 * transitionSpeedMultiplier);
         LeanTween.moveX(blackScreen.GetComponent<RectTransform>(), -2500f, 1.2f * transitionSpeedMultiplier).setEaseInQuart().setDelay(1.5f * transitionSpeedMultiplier);
     }
 
     [ContextMenu("Prepare Close Loading Screen")]
     public void PrepareOpenLoadingScreen()
     {
-        LeanTween.moveY(loadingGraphics.GetComponent<RectTransform>(), 0, 0);
+        LeanTween.moveY(flavorGraphics.GetComponent<RectTransform>(), 0, 0);
         LeanTween.moveX(blackScreen.GetComponent<RectTransform>(), 0, 0);
     }
 
@@ -71,27 +66,29 @@ public class Manager_LoadingScreen : MonoBehaviour
     public void CloseLoadingScreen()
     {
         PrepareCloseLoadingScreen();
+        GenerateRandomFlavorText();
         LeanTween.moveX(blackScreen.GetComponent<RectTransform>(), 0f, 1.2f * transitionSpeedMultiplier).setEaseInQuart().setDelay(1f * transitionSpeedMultiplier);
-        LeanTween.moveY(loadingGraphics.GetComponent<RectTransform>(), 0, 1f * transitionSpeedMultiplier).setEaseInOutBack().setDelay(1.8f * transitionSpeedMultiplier);
+        LeanTween.moveY(flavorGraphics.GetComponent<RectTransform>(), 0, 1f * transitionSpeedMultiplier).setEaseInOutBack().setDelay(1.8f * transitionSpeedMultiplier);
     }
 
     [ContextMenu("Prepare Open Loading Screen")]
     public void PrepareCloseLoadingScreen()
     {
         LeanTween.moveX(blackScreen.GetComponent<RectTransform>(), -2500, 0);
-        LeanTween.moveY(loadingGraphics.GetComponent<RectTransform>(), -250, 0);
+        LeanTween.moveY(flavorGraphics.GetComponent<RectTransform>(), -250, 0);
     }
 
-    public void LoadTrueLoadingScreen(string sceneName)
+    public void OnLoadSceneTransfer(string sceneName, string unloadedSceneName)
     {
+        SceneManager.UnloadSceneAsync(unloadedSceneName);
         _sceneQueue.UnqueueAllScenes();
-        _sceneQueue.QueueScene(sceneName);
-        _sceneQueue.LoadScene(scene_trueLoadingScreen);
+        _sceneQueue.QueueScene(sceneName, true);
+        StartCoroutine(ProcessLoadSceneTransfer());
     }
 
-    public IEnumerator LoadQueuedScene()
+    private IEnumerator ProcessLoadSceneTransfer()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3f);
         _sceneQueue.LoadQueuedScenes();
     }
 }

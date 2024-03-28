@@ -124,7 +124,7 @@ public class Handler_ChunkshipCutscene : MonoBehaviour
 
         // Base Slime stuff
         GameObject baseSlime = Manager_PlayerState.instance.player;
-        baseSlime.transform.position = fakeBaseSlime.transform.position;
+        baseSlime.transform.position = fakeBaseSlime.transform.position + (Vector3.up * 1f);
         baseSlime.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         baseSlime.GetComponent<Rigidbody2D>().AddForce(new Vector2(10, 20f), ForceMode2D.Impulse);
 

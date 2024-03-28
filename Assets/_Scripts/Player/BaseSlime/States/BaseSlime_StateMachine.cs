@@ -55,6 +55,8 @@ public class BaseSlime_StateMachine : MonoBehaviour
 
     private void UpdatePlayerState(State state)
     {
+        //Debug.Log(state);
+
         switch (state)
         {
             case BaseSlime_IdleState:

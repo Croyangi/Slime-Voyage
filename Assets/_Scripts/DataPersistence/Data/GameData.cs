@@ -7,6 +7,7 @@ public class GameData
     public int deathCount;
     public SerializableDictionary<string, bool> checkpointsReached;
     public float recordSpeedrunTime;
+    public bool isSpeedrunModeOn;
 
     public float masterVolume;
     public float musicVolume;
@@ -18,6 +19,7 @@ public class GameData
         deathCount = 0;
         checkpointsReached = new SerializableDictionary<string, bool>();
         recordSpeedrunTime = 0f;
+        isSpeedrunModeOn = false;
 
         masterVolume = 1;
         musicVolume = 1;

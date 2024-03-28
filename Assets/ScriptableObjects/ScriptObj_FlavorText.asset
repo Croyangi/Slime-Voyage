@@ -13,10 +13,26 @@ MonoBehaviour:
   m_Name: ScriptObj_FlavorText
   m_EditorClassIdentifier: 
   flavorText:
-  - When in Normal Slime, press down while sticking to detatch early!
+  - "When in Normal Slime, \npress down while sticking to detatch early!"
   - 'Secrets are hidden in every nook and cranny...
 
     Keep looking!'
   - The fog is coming and you can't hide.
-  - The Warehouse was initially suppose to be just a tutorial area!
+  - The Warehouse was initially supposed to be just a tutorial area!
   - Try More Slime+!
+  - Stepspikes can't eat or breathe. Not only do they not need to - they just can't.
+  - Chunkfish are what have kept the massive hull of the Warehouse afloat all these
+    years.
+  - The brain of a Chunkfish just kinda bounces around in their hollow body. They
+    form a thought when it hits a corner.
+  - Bottomless pits in the Warehouse aren't actually endless; but we don't talk about
+    what's down there.
+  - "Higher ups at Hugehaul are fully aware of the SHS and its uprising. \nThey just
+    don't really care."
+  - Thanks to Hugehaul's patented premium box-packing expertise, no padding is required
+    for cargo.
+  - Though Slime can squash and stretch however he wants, any significant puncture
+    is a death sentence.
+  - Every 8th day of the week is when The Warehouse accepts complaints!
+  - The very secretive Secret Hatted Society makes sure all members publicly wear
+    flamboyant hats...

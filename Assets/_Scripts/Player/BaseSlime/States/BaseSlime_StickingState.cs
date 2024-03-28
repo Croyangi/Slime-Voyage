@@ -18,7 +18,7 @@ public class BaseSlime_StickingState : State
     public override void UpdateState()
     {
         //_movementVars.processedInputMovement == Vector2.zero && _stateHandler.isGrounded && _rigidBody2D.velocity.y < 0.1 && _stateHandler.isOnEdge == 0
-        if ( _helper.isGrounded && !isTransitioning)
+        if (_helper.isGrounded && _helper.stickingDirection.x == 0 && !isTransitioning)
         {
             if (_stateMachine.PlayerStatesDictionary.TryGetValue(BaseSlime_StateMachine.PlayerStates.Idle, out State state))
             {
@@ -26,7 +26,7 @@ public class BaseSlime_StickingState : State
             }
         }
 
-        if (!_helper.isGrounded && _helper.stickingDirection == Vector2.zero && !isTransitioning)
+        if (!_helper.isGrounded && _helper.stickingDirection.x == 0 && !isTransitioning)
         {
             if (_stateMachine.PlayerStatesDictionary.TryGetValue(BaseSlime_StateMachine.PlayerStates.Airborne, out State state))
             {
@@ -65,7 +65,7 @@ public class BaseSlime_StickingState : State
         _helper.col_onEdgeRight.gameObject.SetActive(false);
 
         // A little bit of help sticking to the wall
-        Vector2 appliedVelocity = new Vector2(5f * Mathf.Sign(_helper.stickingDirection.x), 0f);
+        Vector2 appliedVelocity = new Vector2(10f * Mathf.Sign(_helper.stickingDirection.x), 0f);
         _helper.rb.AddForce(appliedVelocity, ForceMode2D.Impulse);
 
         // Flip sprite before you even know you sticked, smooooth, and flip X offsets

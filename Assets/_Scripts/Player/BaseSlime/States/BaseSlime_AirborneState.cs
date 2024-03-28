@@ -42,14 +42,34 @@ public class BaseSlime_AirborneState : State
         {
             _animator.ChangeAnimationState(_animator.BASESLIME_RISING, _animator.baseSlime_animator);
             _animator.SetEyesOffset(new Vector2(0f, 0.6f));
+
+            if (_helper.facingDirection == 1)
+            {
+                _helper.col_slime.offset = new Vector2(0.3f, 0.64f);
+            }
+            else if (_helper.facingDirection == 1)
+            {
+                _helper.col_slime.offset = new Vector2(-0.3f, 0.64f);
+            }
         } else if (_helper.rb.velocity.y < -3f)
         {
             _animator.ChangeAnimationState(_animator.BASESLIME_FALLING, _animator.baseSlime_animator);
             _animator.SetEyesOffset(new Vector2(0f, -0.112f));
+
+            if (_helper.facingDirection == 1)
+            {
+                _helper.col_slime.offset = new Vector2(0.3f, -0.15f);
+            }
+            else if (_helper.facingDirection == 1)
+            {
+                _helper.col_slime.offset = new Vector2(-0.3f, -0.15f);
+            }
         } else if (Mathf.Abs(_helper.rb.velocity.y) < 3f && Mathf.Abs(_helper.rb.velocity.y) > 0.1f)
         {
             _animator.ChangeAnimationState(_animator.BASESLIME_MIDAIR, _animator.baseSlime_animator);
             _animator.SetEyesOffset(new Vector2(0f, -0.051f));
+
+            _helper.col_slime.offset = new Vector2(0f, 0f);
         }
     }
 
@@ -58,8 +78,8 @@ public class BaseSlime_AirborneState : State
         ModifyStateKey(this);
 
         // Hitboxes
-        _helper.col_slime.offset = new Vector2(0, 0.174f);
-        _helper.col_slime.size = new Vector2(1.6f, 1.753f);
+        _helper.col_slime.offset = new Vector2(0.3f, -0.15f);
+        _helper.col_slime.size = new Vector2(1.2f, 1.2f);
 
         // No edge detection whilst airborne
         _helper.col_onEdgeLeft.gameObject.SetActive(false);
@@ -70,15 +90,34 @@ public class BaseSlime_AirborneState : State
         {
             _animator.ChangeAnimationState(_animator.BASESLIME_RISING, _animator.baseSlime_animator);
             _animator.SetEyesOffset(new Vector2(0f, 0.6f));
+
+            if (_helper.facingDirection == 1)
+            {
+                _helper.col_slime.offset = new Vector2(0.3f, 0.64f);
+            }
+            else if (_helper.facingDirection == 1)
+            {
+                _helper.col_slime.offset = new Vector2(-0.3f, 0.64f);
+            }
         }
         else if (_helper.rb.velocity.y < -3f)
         {
             _animator.ChangeAnimationState(_animator.BASESLIME_FALLING, _animator.baseSlime_animator);
             _animator.SetEyesOffset(new Vector2(0f, -0.112f));
+
+            if (_helper.facingDirection == 1)
+            {
+                _helper.col_slime.offset = new Vector2(0.3f, -0.15f);
+            }
+            else if (_helper.facingDirection == 1)
+            {
+                _helper.col_slime.offset = new Vector2(-0.3f, -0.15f);
+            }
         } else
         {
             _animator.ChangeAnimationState(_animator.BASESLIME_MIDAIR, _animator.baseSlime_animator);
             _animator.SetEyesOffset(new Vector2(0f, -0.051f));
+            _helper.col_slime.offset = new Vector2(0f, 0f);
         }
 
         _animator.SetEyesActive(true);
