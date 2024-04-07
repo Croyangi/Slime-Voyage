@@ -6,10 +6,6 @@ using UnityEngine.InputSystem;
 
 public class BaseSlime_IdleState : State
 {
-    public enum PlayerStates
-    {
-        Moving, Jumping, Airborne, Compressed, LookingUp
-    }
 
     [Header("State References")]
     [SerializeField] private BaseSlime_StateMachine _stateMachine;
@@ -73,7 +69,7 @@ public class BaseSlime_IdleState : State
             }
         }
 
-        if (_helper.isOnEdge != 0 && _helper.isGrounded)
+        if (_helper.isOnEdge != 0 && _helper._movementVars.processedInputMovement == Vector2.zero && _helper.isGrounded)
         {
             if (_stateMachine.PlayerStatesDictionary.TryGetValue(BaseSlime_StateMachine.PlayerStates.OnEdge, out State state))
             {
@@ -116,9 +112,14 @@ public class BaseSlime_IdleState : State
 
         if (_helper.currentHighestImpactVelocityY < -1 && _helper.currentHighestImpactVelocityY > -30)
         {
-            _animator.ChangeAnimationState(_animator.BASESLIME_LIGHTSPLAT, _animator.baseSlime_animator);
-            StartCoroutine(ReturnToIdleAnimation(0.05f));
+            //_animator.ChangeAnimationState(_animator.BASESLIME_LIGHTSPLAT, _animator.baseSlime_animator);
+            //StartCoroutine(ReturnToIdleAnimation(0.05f));
             _helper.currentHighestImpactVelocityY = 0;
+
+            _animator.ChangeAnimationState(_animator.BASESLIME_IDLE, _animator.baseSlime_animator);
+            _animator.SetEyesActive(true);
+            _animator.ChangeAnimationState(_animator.EYES_IDLE, _animator.eyes_animator);
+            _animator.SetEyesOffset(new Vector2(0f, -0.112f));
         }
         else if (_helper.currentHighestImpactVelocityY <= -30)
         {

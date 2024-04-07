@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class BaseSlime_StickingState : State
 {
-    public enum PlayerStates
-    {
-        Moving, Jumping, Airborne, OnEdge, Compressed, LookingUp
-    }
-
     [Header("State References")]
     [SerializeField] private BaseSlime_StateMachine _stateMachine;
     [SerializeField] private BaseSlime_StateMachineHelper _helper;
@@ -65,7 +60,7 @@ public class BaseSlime_StickingState : State
         _helper.col_onEdgeRight.gameObject.SetActive(false);
 
         // A little bit of help sticking to the wall
-        Vector2 appliedVelocity = new Vector2(10f * Mathf.Sign(_helper.stickingDirection.x), 0f);
+        Vector2 appliedVelocity = new Vector2(1f * Mathf.Sign(_helper.stickingDirection.x), 0f);
         _helper.rb.AddForce(appliedVelocity, ForceMode2D.Impulse);
 
         // Flip sprite before you even know you sticked, smooooth, and flip X offsets

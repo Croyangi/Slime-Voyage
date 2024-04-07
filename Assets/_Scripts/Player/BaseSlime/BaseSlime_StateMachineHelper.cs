@@ -8,7 +8,6 @@ public class BaseSlime_StateMachineHelper : MonoBehaviour
     public GameObject baseSlime;
     public Vector2 colliderBounds;
     public Rigidbody2D rb;
-    public BoxCollider2D col_slime;
 
     public float currentHighestImpactVelocityY;
 
@@ -16,11 +15,12 @@ public class BaseSlime_StateMachineHelper : MonoBehaviour
     public BaseSlime_MovementVariables _movementVars;
 
     [Header("Collider References")]
-    public Collider2D col_isGrounded;
-    public Collider2D col_touchingLeft;
-    public Collider2D col_touchingRight;
-    public Collider2D col_onEdgeLeft;
-    public Collider2D col_onEdgeRight;
+    public BoxCollider2D col_slime;
+    public BoxCollider2D col_isGrounded;
+    public BoxCollider2D col_touchingLeft;
+    public BoxCollider2D col_touchingRight;
+    public BoxCollider2D col_onEdgeLeft;
+    public BoxCollider2D col_onEdgeRight;
 
     [Header("Tags")]
     [SerializeField] private TagsScriptObj tag_isSolidGround;
@@ -41,7 +41,7 @@ public class BaseSlime_StateMachineHelper : MonoBehaviour
         facingDirection = 1;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         isGrounded = IsGroundedUpdate();
 

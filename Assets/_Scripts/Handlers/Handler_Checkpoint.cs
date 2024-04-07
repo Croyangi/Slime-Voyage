@@ -14,6 +14,12 @@ public class Handler_Checkpoint : MonoBehaviour
 
     public void InitiateCheckpointHandling()
     {
+        if (_checkpointQueue.checkpointId == "dev")
+        {
+            Debug.Log("Dev Checkpoint Enabled");
+            return;
+        }
+
         for (int i = 0; i < ids.Length; i++)
         {
             if (ids[i] == _checkpointQueue.checkpointId)

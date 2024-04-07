@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8211586892632240723}
   - component: {fileID: 6247658888402504099}
   - component: {fileID: 860998991554364034}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1213303814465276157}
   - component: {fileID: 4960313551948976253}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Moving
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3431511130912380065}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sprites
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,12 +197,12 @@ GameObject:
   m_Component:
   - component: {fileID: 6043440594957871926}
   - component: {fileID: 2999585691048241924}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: TouchingColliderRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &6043440594957871926
 Transform:
@@ -231,10 +231,10 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -274,7 +274,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6025745731466173955}
   - component: {fileID: 6215609891221251295}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Idle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 7038440154281907218}
   - component: {fileID: 6402195889049545755}
   - component: {fileID: 2910236976104758534}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BaseSlime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -469,7 +469,7 @@ GameObject:
   - component: {fileID: 7057753750981938407}
   - component: {fileID: 8091542098001190097}
   - component: {fileID: 2600077780234073638}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -574,7 +574,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7003403177856964662}
   - component: {fileID: 1136664628612004824}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Airborne
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -622,7 +622,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6093448852284796332}
   - component: {fileID: 2830461652921632834}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Compressed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -674,7 +674,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3061496718463102262}
   - component: {fileID: 4652497119187947723}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: UniqueIdle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -722,7 +722,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8771650556991504024}
   - component: {fileID: 4927742622075562303}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HeadCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -799,12 +799,12 @@ GameObject:
   m_Component:
   - component: {fileID: 6483053457117782084}
   - component: {fileID: 6338366257579092545}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: GroundedCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &6483053457117782084
 Transform:
@@ -833,10 +833,10 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -853,7 +853,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.76}
+  m_Offset: {x: 0, y: -0.52176267}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -864,7 +864,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.6, y: 0.23654342}
+  m_Size: {x: 1.6, y: 0.71301806}
   m_EdgeRadius: 0
 --- !u!1 &3735167291916367843
 GameObject:
@@ -876,7 +876,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1256961037823142318}
   - component: {fileID: 7452189745000719927}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EyeJiggler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -913,7 +913,7 @@ MonoBehaviour:
   anchorPoint: {fileID: 2918270612944670021}
   eyes: {fileID: 116768756361240530}
   lerpScale: 0.5
-  velocityXScale: 0.01
+  velocityXScale: -0.01
   velocityYScale: 0.01
   _helper: {fileID: 9029656406374692392}
   _animator: {fileID: 4564319859956447544}
@@ -930,7 +930,7 @@ GameObject:
   - component: {fileID: 9029656406374692392}
   - component: {fileID: 4564319859956447544}
   - component: {fileID: 6232816610152640318}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: StateMachine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -997,9 +997,9 @@ MonoBehaviour:
   baseSlime: {fileID: 2317627284233952323}
   colliderBounds: {x: 0, y: 0}
   rb: {fileID: 5020864478455618518}
-  col_slime: {fileID: 7038440154281907218}
   currentHighestImpactVelocityY: 0
   _movementVars: {fileID: 6232816610152640318}
+  col_slime: {fileID: 7038440154281907218}
   col_isGrounded: {fileID: 6338366257579092545}
   col_touchingLeft: {fileID: 2911381771255685479}
   col_touchingRight: {fileID: 2999585691048241924}
@@ -1104,12 +1104,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1000980344642940885}
   - component: {fileID: 2911381771255685479}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: TouchingColliderLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1000980344642940885
 Transform:
@@ -1138,10 +1138,10 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -1230,7 +1230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 789638108455589342}
   - component: {fileID: 6835852636510005233}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: OnEdge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1278,7 +1278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4574618595907083745}
   - component: {fileID: 3239574050434285627}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LookingUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1326,12 +1326,12 @@ GameObject:
   m_Component:
   - component: {fileID: 6426587208233147861}
   - component: {fileID: 3925440230822131639}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: OnEdgeColliderRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &6426587208233147861
 Transform:
@@ -1360,10 +1360,10 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -1402,12 +1402,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4910725806688262230}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4910725806688262230
 Transform:
@@ -1439,12 +1439,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4000176036647243450}
   - component: {fileID: 835504673759941993}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: OnEdgeColliderLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4000176036647243450
 Transform:
@@ -1473,10 +1473,10 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -1516,7 +1516,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7615332190999038737}
   - component: {fileID: 4723098239746164499}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sticking
   m_TagString: Untagged
   m_Icon: {fileID: 0}
