@@ -11,11 +11,6 @@ public class BootLoader_WarehouseDioramaMenu : MonoBehaviour
 
     [Header("Screen Transition")]
     [SerializeField] private float screenTransitionDelay;
-    [SerializeField] private bool pressedTicketButton;
-
-    [SerializeField] private Image ticketButton;
-    [SerializeField] private Sprite playTicketHolePunched;
-    [SerializeField] private GameObject ticketButtonHolePunch;
 
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
@@ -35,38 +30,14 @@ public class BootLoader_WarehouseDioramaMenu : MonoBehaviour
         Manager_LoadingScreen.instance.OpenLoadingScreen();
     }
 
-    public void OnPressTicketButton()
+    public void StartScreenTransition()
     {
-        if (!pressedTicketButton)
-        {
-            ApplyForceTicketButton();
-        }
-
-        StartCoroutine(OnPressTicketButtonVFX());
-        pressedTicketButton = true;
-        ticketButton.sprite = playTicketHolePunched;
-    }
-
-    private void ApplyForceTicketButton()
-    {
-        ticketButtonHolePunch.SetActive(true);
-        Rigidbody2D rb = ticketButtonHolePunch.GetComponent<Rigidbody2D>();
-        float randomX = Random.Range(-20, 20);
-        float randomY = Random.Range(40, 60);
-        float randomTorque = Random.Range(-200, 200);
-
-        rb.AddForce(new Vector2(randomX, randomY), ForceMode2D.Impulse);
-        rb.AddTorque(randomTorque);
-    }
-
-    private IEnumerator OnPressTicketButtonVFX()
-    {
-        yield return new WaitForSeconds(screenTransitionDelay);
         StartCoroutine(LoadWarehousePrologue());
     }
 
     private IEnumerator LoadWarehousePrologue()
     {
+        yield return new WaitForSeconds(screenTransitionDelay);
         Manager_LoadingScreen.instance.CloseLoadingScreen();
         yield return new WaitForSeconds(3);
         Manager_LoadingScreen.instance.OnLoadSceneTransfer(scene_warehousePrologue, scene_warehouseDioramaMenu);

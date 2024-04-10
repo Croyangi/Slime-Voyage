@@ -37,7 +37,6 @@ public class Manager_LoadingScreen : MonoBehaviour
     private void GenerateRandomFlavorText()
     {
         int random = Random.Range(0, _flavorText.flavorText.Count);
-        Debug.Log(random);
         tmp_flavorText.text = _flavorText.flavorText[random];
     }
 
@@ -51,7 +50,7 @@ public class Manager_LoadingScreen : MonoBehaviour
     public void OpenLoadingScreen()
     {
         PrepareOpenLoadingScreen();
-        LeanTween.moveY(flavorGraphics.GetComponent<RectTransform>(), -250, 1f * transitionSpeedMultiplier).setEaseInOutBack().setDelay(1 * transitionSpeedMultiplier);
+        LeanTween.moveY(flavorGraphics.GetComponent<RectTransform>(), -350, 1f * transitionSpeedMultiplier).setEaseInOutBack().setDelay(1 * transitionSpeedMultiplier);
         LeanTween.moveX(blackScreen.GetComponent<RectTransform>(), -2500f, 1.2f * transitionSpeedMultiplier).setEaseInQuart().setDelay(1.5f * transitionSpeedMultiplier);
     }
 
@@ -75,7 +74,7 @@ public class Manager_LoadingScreen : MonoBehaviour
     public void PrepareCloseLoadingScreen()
     {
         LeanTween.moveX(blackScreen.GetComponent<RectTransform>(), -2500, 0);
-        LeanTween.moveY(flavorGraphics.GetComponent<RectTransform>(), -250, 0);
+        LeanTween.moveY(flavorGraphics.GetComponent<RectTransform>(), -350, 0);
     }
 
     public void OnLoadSceneTransfer(string sceneName, string unloadedSceneName)

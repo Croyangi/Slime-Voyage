@@ -30,7 +30,7 @@ MonoBehaviour:
     dialogueStallTime: 0
     cleanText: 1
     stoppingFlag: 1
-    profileName: Dr. S. Spike
+    profileName: Dr. S. Pike
     profilePicture: {fileID: 21300000, guid: db712b0bc4f9fe94a937cc60506ba35a, type: 3}
     sfx_speaking: {fileID: 0}
     sfxSpeakingSpacing: 0
@@ -57,7 +57,7 @@ MonoBehaviour:
     dialogueStallTime: 0
     cleanText: 1
     stoppingFlag: 1
-    profileName: Dr. S. Spike
+    profileName: Dr. S. Pike
     profilePicture: {fileID: 21300000, guid: 56791b9d24f74ce449485757b4dbefee, type: 3}
     sfx_speaking: {fileID: 0}
     sfxSpeakingSpacing: 0
