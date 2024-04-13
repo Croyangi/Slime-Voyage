@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: c866cd93aa0484240aaf04e0b129990e
+  - enabled: 1
     path: Assets/Scenes/LogoStartup.unity
     guid: 55b7cff092af796439576dbef1bd7a27
   - enabled: 1
@@ -32,9 +35,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WarehouseDioramaMenu.unity
     guid: 10693c52df8c5424aa4c78996877d1d3
-  - enabled: 1
-    path: Assets/Scenes/LogoMenu.unity
-    guid: c866cd93aa0484240aaf04e0b129990e
   - enabled: 1
     path: Assets/Scenes/Rooms/Warehouse/WarehouseRoom2.unity
     guid: 41f6c3da61e5cb2468b87db4cf423140

@@ -13,6 +13,8 @@ public class BaseSlime_IdleState : State
     [SerializeField] private BaseSlime_AnimatorHelper _animator;
     [SerializeField] private bool isTransitioning;
 
+    [SerializeField] private bool canEmote = false;
+
     [Header("Technical References")]
     [SerializeField] private PlayerInput playerInput = null;
 
@@ -84,11 +86,14 @@ public class BaseSlime_IdleState : State
 
         OnLandingAnimation();
 
+
         _helper.col_slime.offset = new Vector2(0, -0.058f);
         _helper.col_slime.size = new Vector2(1.8f, 1.37f);
 
         _helper._movementVars.movementSpeed = 10f;
         _helper._movementVars.jumpVelocityXAdd = 0f;
+
+        canEmote = true;
     }
 
 
@@ -96,6 +101,8 @@ public class BaseSlime_IdleState : State
     {
         _animator.SetEyesActive(false);
         StopAllCoroutines();
+
+        canEmote = false;
     }
 
     public override void TransitionToState(State state)
@@ -146,7 +153,7 @@ public class BaseSlime_IdleState : State
 
     private void OnRandomEmote(InputAction.CallbackContext value)
     {
-        if (_helper.isGrounded && !isTransitioning)
+        if (_helper.isGrounded && !isTransitioning && canEmote == true)
         {
             if (_stateMachine.PlayerStatesDictionary.TryGetValue(BaseSlime_StateMachine.PlayerStates.UniqueIdle, out State state))
             {

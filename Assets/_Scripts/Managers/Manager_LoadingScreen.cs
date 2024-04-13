@@ -16,6 +16,8 @@ public class Manager_LoadingScreen : MonoBehaviour
     [SerializeField] private ScriptObj_FlavorText _flavorText;
     [SerializeField] private TextMeshProUGUI tmp_flavorText;
 
+    [SerializeField] private GameObject mainCamera;
+
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
     [SerializeField] public float transitionSpeedMultiplier = 1f;
@@ -79,7 +81,10 @@ public class Manager_LoadingScreen : MonoBehaviour
 
     public void OnLoadSceneTransfer(string sceneName, string unloadedSceneName)
     {
+        Debug.Log("hello");
         SceneManager.UnloadSceneAsync(unloadedSceneName);
+        mainCamera.SetActive(true);
+
         _sceneQueue.UnqueueAllScenes();
         _sceneQueue.QueueScene(sceneName, true);
         StartCoroutine(ProcessLoadSceneTransfer());
@@ -89,5 +94,6 @@ public class Manager_LoadingScreen : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         _sceneQueue.LoadQueuedScenes();
+        mainCamera.SetActive(false);
     }
 }

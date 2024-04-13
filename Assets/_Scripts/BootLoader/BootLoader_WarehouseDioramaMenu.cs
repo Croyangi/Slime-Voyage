@@ -20,7 +20,10 @@ public class BootLoader_WarehouseDioramaMenu : MonoBehaviour
 
     private void Awake()
     {
-        _sceneQueue.LoadScene(scene_loadingScreen, true);
+        if (Manager_LoadingScreen.instance == null)
+        {
+            _sceneQueue.LoadScene(scene_loadingScreen, true);
+        }
         StartCoroutine(DelayedAwake());
     }
 

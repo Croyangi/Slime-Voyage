@@ -312,6 +312,7 @@ MonoBehaviour:
   _helper: {fileID: 9029656406374692392}
   _animator: {fileID: 4564319859956447544}
   isTransitioning: 0
+  canEmote: 0
 --- !u!1 &2317627284233952323
 GameObject:
   m_ObjectHideFlags: 0
@@ -712,6 +713,7 @@ MonoBehaviour:
   _helper: {fileID: 9029656406374692392}
   _animator: {fileID: 4564319859956447544}
   isTransitioning: 0
+  canEmote: 0
 --- !u!1 &3044217293546073241
 GameObject:
   m_ObjectHideFlags: 0
@@ -1087,8 +1089,8 @@ MonoBehaviour:
   jumpStrength: 21
   rawInputMovement: {x: 0, y: 0}
   processedInputMovement: {x: 0, y: 0}
-  wallJumpStrengthHorizontal: 15
-  wallJumpStrengthVerticle: 28
+  wallJumpStrengthHorizontal: 17
+  wallJumpStrengthVerticle: 26
   wallJumpStallTime: 0.25
   stickingWallSpeed: 2
   stickingWallAcceleration: 7
