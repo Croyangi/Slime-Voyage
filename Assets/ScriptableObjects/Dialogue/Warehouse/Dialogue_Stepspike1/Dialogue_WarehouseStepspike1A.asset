@@ -17,7 +17,7 @@ MonoBehaviour:
   isPlayerInputStall: 1
   _dialogues:
   - dialogueText: 'Hmrrgghmm... '
-    dialogueSpeed: 0.1
+    dialogueSpeed: 0.02
     dialogueStallTime: 0.3
     cleanText: 1
     stoppingFlag: 0

@@ -73,6 +73,11 @@ public class BaseSlime_StateMachineHelper : MonoBehaviour
         {
             currentHighestImpactVelocityY = newImpactVelocity;
         }
+
+        if (newImpactVelocity > 0.1f)
+        {
+            currentHighestImpactVelocityY = 0f;
+        }
     }
 
     private bool IsTrueGroundedUpdate()

@@ -380,8 +380,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.027699977, y: 0.062649995, z: 0}
-    m_Extent: {x: 1.0029, y: 0.62495005, z: 0}
+    m_Center: {x: 0.02789998, y: 0.063550025, z: 0}
+    m_Extent: {x: 1.0022, y: 0.62444997, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -544,8 +544,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.010800004, y: 0.057850003, z: 0}
-    m_Extent: {x: 0.7838, y: 0.62235, z: 0}
+    m_Center: {x: -0.010100007, y: 0.057850003, z: 0}
+    m_Extent: {x: 0.7838, y: 0.62135, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -857,8 +857,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.016550004, y: 0.058750004, z: 0}
-    m_Extent: {x: 0.71945, y: 0.62275004, z: 0}
+    m_Center: {x: 0.016149998, y: 0.059249997, z: 0}
+    m_Extent: {x: 0.71925, y: 0.62275, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -1061,6 +1061,7 @@ MonoBehaviour:
   _animator: {fileID: 8874824695339216384}
   isReached: 0
   lightTip: {fileID: 6449221035861273238}
+  audioClip_checkpointLightOn: {fileID: 8300000, guid: 0c895ae39c031fb4ca89fd105f7be8ef, type: 3}
   tag_player: {fileID: 11400000, guid: 052214d19408f7a48bba66682f7001de, type: 2}
   id: 
 --- !u!50 &147400462892201949

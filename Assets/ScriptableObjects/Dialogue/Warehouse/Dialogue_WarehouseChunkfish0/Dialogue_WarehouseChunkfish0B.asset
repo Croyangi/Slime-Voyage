@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e2d313d4c016d342bc276cb73a36214, type: 3}
+  m_Name: Dialogue_WarehouseChunkfish0B
+  m_EditorClassIdentifier: 
+  isDialogueOnTop: 1
+  isDialogueMini: 0
+  isPlayerInputStall: 1
+  _dialogues:
+  - dialogueText: HOW'D YOU GET IN HERE.
+    dialogueSpeed: 0.02
+    dialogueStallTime: 0
+    cleanText: 1
+    stoppingFlag: 1
+    profileName: Hatted Chunkfish Bouncer
+    profilePicture: {fileID: 21300000, guid: 18c8254a678b0ae4e8a55796c373172e, type: 3}
+    sfx_speaking: {fileID: 8300000, guid: 88ec61b4f026dd747be95c5c0e0d0cd4, type: 3}
+    sfxSpeakingSpacing: 0
+  - dialogueText: 'Well you''re not a Chunkfish soo... '
+    dialogueSpeed: 0.02
+    dialogueStallTime: 0.3
+    cleanText: 1
+    stoppingFlag: 0
+    profileName: Hatted Chunkfish Bouncer
+    profilePicture: {fileID: 0}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
+  - dialogueText: I suppose I can allow it just this once.
+    dialogueSpeed: 0.02
+    dialogueStallTime: 0
+    cleanText: 0
+    stoppingFlag: 1
+    profileName: Hatted Chunkfish Bouncer
+    profilePicture: {fileID: 0}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
+  - dialogueText: Also don't spook me like that again, I have very bad memory.
+    dialogueSpeed: 0.02
+    dialogueStallTime: 0
+    cleanText: 1
+    stoppingFlag: 1
+    profileName: Hatted Chunkfish Bouncer
+    profilePicture: {fileID: 21300000, guid: 9dbb647d34752af478b12bbbda679e28, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0

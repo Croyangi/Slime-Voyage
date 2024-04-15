@@ -128,7 +128,7 @@ public class Handler_ChunkshipCutscene : MonoBehaviour
         baseSlime.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         baseSlime.GetComponent<Rigidbody2D>().AddForce(new Vector2(10, 20f), ForceMode2D.Impulse);
 
-        Manager_SFXPlayer.instance.PlaySFXClip(audioClip_breakingProtocol, transform, 0.5f, true, Manager_AudioMixer.instance.mixer_music);
+        Manager_SFXPlayer.instance.PlaySFXClip(audioClip_breakingProtocol, transform, 0.4f, true, Manager_AudioMixer.instance.mixer_music);
 
         // Cleanup
         cinemachine.SetActive(false);

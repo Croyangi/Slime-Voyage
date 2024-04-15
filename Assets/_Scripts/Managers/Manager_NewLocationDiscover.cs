@@ -38,7 +38,6 @@ public class Manager_NewLocationDiscover : MonoBehaviour
     [ContextMenu("New Location Discover VFX")]
     public void NewLocationDiscoverVFX()
     {
-        Debug.Log("NEW");
         PlayAnimationState(NLC_AREANAMEOPENCLOSE, animator_areaName);
         PlayAnimationState(NLC_FLAVORTEXTOPENCLOSE, animator_flavorText);
         PlayAnimationState(NLC_EXTENDEROPENCLOSE, animator_extender);
@@ -46,7 +45,6 @@ public class Manager_NewLocationDiscover : MonoBehaviour
 
     public void EnterLocationVFX()
     {
-        Debug.Log("ENTER");
         PlayAnimationState(NLC_AREANAMEOPENCLOSE, animator_areaName);
         PlayAnimationState(NLC_EXTENDEROPENCLOSE, animator_extender);
     }

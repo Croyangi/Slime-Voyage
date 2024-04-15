@@ -41,6 +41,6 @@ public class Handler_Checkpoint : MonoBehaviour
     {
         GameObject baseSlime = Manager_PlayerState.instance.player;
         baseSlime.transform.position = checkpoints[0].transform.position;
-        Manager_SFXPlayer.instance.PlaySFXClip(audioClip_breakingProtocol, transform, 0.5f, true, Manager_AudioMixer.instance.mixer_music);
+        Manager_SFXPlayer.instance.PlaySFXClip(audioClip_breakingProtocol, transform, 0.4f, true, Manager_AudioMixer.instance.mixer_music);
     }
 }

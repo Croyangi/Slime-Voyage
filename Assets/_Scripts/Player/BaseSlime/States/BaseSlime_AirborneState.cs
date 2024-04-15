@@ -131,7 +131,7 @@ public class BaseSlime_AirborneState : State
         _animator.SetEyesActive(false);
 
         //
-        if (_helper.currentHighestImpactVelocityY < -3f)
+        if (_helper.currentHighestImpactVelocityY < -5f)
         {
             _helper.baseSlime.transform.position = new Vector2(_helper.baseSlime.transform.position.x, _helper.baseSlime.transform.position.y + 0.427f);
         }

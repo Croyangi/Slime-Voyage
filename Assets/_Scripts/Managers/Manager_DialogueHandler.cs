@@ -53,6 +53,10 @@ public class Manager_DialogueHandler : MonoBehaviour
     [SerializeField] public bool isDialogueActive;
     [SerializeField] private bool isDialogueTyping;
     [SerializeField] public bool isDialogueWaiting;
+    [SerializeField] private bool isDialogueSkipping;
+
+    [SerializeField] private float currentDialogueSpeed;
+    [SerializeField] private float currentDialogueStallTime;
 
     [Header("Tags")]
     [SerializeField] private TagsScriptObj tag_isDialoguePrompt;
@@ -172,10 +176,11 @@ public class Manager_DialogueHandler : MonoBehaviour
     public void SkipDialogue()
     {
         int i = currentDialogueIndex - 1;
+        isDialogueSkipping = true;
 
         while (i < _dialogues.Count)
         {
-            _dialogues[i].dialogueSpeed = 0.001f;
+            _dialogues[i].dialogueSpeed = 0f;
             _dialogues[i].dialogueStallTime = 0f;
 
             // Only skip text up to a stopping flag
@@ -336,6 +341,7 @@ public class Manager_DialogueHandler : MonoBehaviour
             if (_dialogues[currentDialogueIndex - 1].stoppingFlag == true && bypassStoppingFlag == false)
             {
                 isDialogueWaiting = true;
+                isDialogueSkipping = false;
                 return;
             }
         }
@@ -370,7 +376,7 @@ public class Manager_DialogueHandler : MonoBehaviour
         IterateThroughDialogue();
     }
 
-    private void IterateThroughDialogue(bool bypassStoppingFlag = false)
+    private void IterateThroughDialogue()
     {
         if (currentDialogueIndex < _dialogues.Count)
         {
@@ -400,11 +406,11 @@ public class Manager_DialogueHandler : MonoBehaviour
             current_dialogueBoxText.text += c;
 
             // SFX for speaking
-            if (currentDialogueSpeakingSFX != null && sfxSpeakingIteration > sfxSpeakingSpacing)
+            if (currentDialogueSpeakingSFX != null && sfxSpeakingIteration > sfxSpeakingSpacing && isDialogueSkipping == false)
             {
                 Manager_SFXPlayer.instance.PlaySFXClip(currentDialogueSpeakingSFX, transform, 0.3f, false, Manager_AudioMixer.instance.mixer_sfx);
                 sfxSpeakingIteration = 0;
-            } else
+            } else if (isDialogueSkipping == false)
             {
                 sfxSpeakingIteration++;
             }
@@ -412,10 +418,12 @@ public class Manager_DialogueHandler : MonoBehaviour
             // Dialogue spacing
             if (dialogue.dialogueSpeed > 0)
             {
+                currentDialogueSpeed = dialogue.dialogueSpeed;
                 yield return new WaitForSeconds(dialogue.dialogueSpeed);
             }
         }
 
+        currentDialogueStallTime = dialogue.dialogueStallTime;
         yield return new WaitForSeconds(dialogue.dialogueStallTime);
 
         isDialogueTyping = false;

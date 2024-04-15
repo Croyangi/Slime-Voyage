@@ -145,7 +145,7 @@ public class Handler_WarehouseIntro : MonoBehaviour
         baseSlime.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         baseSlime.GetComponent<Rigidbody2D>().AddForce(new Vector2(15, 25f), ForceMode2D.Impulse);
 
-        Manager_SFXPlayer.instance.PlaySFXClip(audioClip_breakingProtocol, transform, 0.5f, true, Manager_AudioMixer.instance.mixer_music);
+        Manager_SFXPlayer.instance.PlaySFXClip(audioClip_breakingProtocol, transform, 0.4f, true, Manager_AudioMixer.instance.mixer_music);
 
         yield return new WaitForSeconds(1f);
         lamp.GetComponent<WarehouseLamp>().FlickerOn();

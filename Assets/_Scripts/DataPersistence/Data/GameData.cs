@@ -6,6 +6,9 @@ public class GameData
 {
     public int deathCount;
     public SerializableDictionary<string, bool> checkpointsReached;
+    public SerializableDictionary<string, bool> warehouseAreasDiscovered;
+    public SerializableDictionary<string, bool> warehouseDoorsUnlocked;
+
     public float recordSpeedrunTime;
     public bool isSpeedrunModeOn;
 

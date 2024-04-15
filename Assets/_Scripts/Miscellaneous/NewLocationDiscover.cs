@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewLocationDiscover : MonoBehaviour
+public class NewLocationDiscover : MonoBehaviour, IDataPersistence
 {
     [Header("References")]
     [SerializeField] private TagsScriptObj tag_player;
     [SerializeField] private BoxCollider2D col_discoverBounds;
     [SerializeField] private bool isDiscovered;
+    [SerializeField] private bool isDisplayed;
+    [SerializeField] private string id;
 
     [Header("Area Discovery")]
     [SerializeField] private string areaName;
@@ -17,12 +19,11 @@ public class NewLocationDiscover : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<Tags>(out var _tags))
         {
-            if (_tags.CheckTags(tag_player.name) == true && isDiscovered == false)
+            if (_tags.CheckTags(tag_player.name) == true && isDisplayed == false)
             {
 
                 Manager_NewLocationDiscover.instance.ChangeAreaName(areaName);
-                Manager_NewLocationDiscover.instance.NewLocationDiscoverVFX();
-                /*
+
                 if (isDiscovered == true)
                 {
                     Manager_NewLocationDiscover.instance.EnterLocationVFX();
@@ -30,10 +31,25 @@ public class NewLocationDiscover : MonoBehaviour
                 {
                     Manager_NewLocationDiscover.instance.NewLocationDiscoverVFX();
                 }
-                */
+                
                 isDiscovered = true;
+                isDisplayed = true;
             }
         }
+    }
+
+    public void LoadData(GameData data)
+    {
+        data.warehouseAreasDiscovered.TryGetValue(id, out isDiscovered);
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        if (data.warehouseAreasDiscovered.ContainsKey(id))
+        {
+            data.warehouseAreasDiscovered.Remove(id);
+        }
+        data.warehouseAreasDiscovered.Add(id, isDiscovered);
     }
 
     private void OnDrawGizmos()

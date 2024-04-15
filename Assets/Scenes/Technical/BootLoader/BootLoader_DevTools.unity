@@ -745,7 +745,9 @@ MonoBehaviour:
   pressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
   unpressedScale: {x: 1, y: 1, z: 0}
   pressedScale: {x: 0.9, y: 0.9, z: 0}
+  hoverScale: {x: 1.05, y: 1.05, z: 1.05}
   scaleSpeed: 0.1
+  generalUIHover: {fileID: 0}
 --- !u!114 &166735306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1484,7 +1486,9 @@ MonoBehaviour:
   pressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
   unpressedScale: {x: 1, y: 1, z: 0}
   pressedScale: {x: 0.95, y: 0.95, z: 0}
+  hoverScale: {x: 1.05, y: 1.05, z: 1.05}
   scaleSpeed: 0.1
+  generalUIHover: {fileID: 0}
 --- !u!114 &280420510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4304,7 +4308,9 @@ MonoBehaviour:
   pressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
   unpressedScale: {x: 1, y: 1, z: 0}
   pressedScale: {x: 0.9, y: 0.9, z: 0}
+  hoverScale: {x: 1.05, y: 1.05, z: 1.05}
   scaleSpeed: 0.1
+  generalUIHover: {fileID: 0}
 --- !u!114 &689301334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4565,7 +4571,9 @@ MonoBehaviour:
   pressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
   unpressedScale: {x: 1, y: 1, z: 0}
   pressedScale: {x: 0.95, y: 0.95, z: 0}
+  hoverScale: {x: 1.05, y: 1.05, z: 1.05}
   scaleSpeed: 0.1
+  generalUIHover: {fileID: 0}
 --- !u!1 &703219510
 GameObject:
   m_ObjectHideFlags: 0
@@ -6018,7 +6026,9 @@ MonoBehaviour:
   pressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
   unpressedScale: {x: 1, y: 1, z: 0}
   pressedScale: {x: 0.9, y: 0.9, z: 0}
+  hoverScale: {x: 1.05, y: 1.05, z: 1.05}
   scaleSpeed: 0.1
+  generalUIHover: {fileID: 0}
 --- !u!114 &977511232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6435,7 +6445,9 @@ MonoBehaviour:
   pressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
   unpressedScale: {x: 1, y: 1, z: 0}
   pressedScale: {x: 0.95, y: 0.95, z: 0}
+  hoverScale: {x: 1.05, y: 1.05, z: 1.05}
   scaleSpeed: 0.1
+  generalUIHover: {fileID: 0}
 --- !u!114 &1003061453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7004,7 +7016,9 @@ MonoBehaviour:
   pressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
   unpressedScale: {x: 1, y: 1, z: 0}
   pressedScale: {x: 0.9, y: 0.9, z: 0}
+  hoverScale: {x: 1.05, y: 1.05, z: 1.05}
   scaleSpeed: 0.1
+  generalUIHover: {fileID: 0}
 --- !u!114 &1146894080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7214,7 +7228,9 @@ MonoBehaviour:
   pressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
   unpressedScale: {x: 1, y: 1, z: 0}
   pressedScale: {x: 0.9, y: 0.9, z: 0}
+  hoverScale: {x: 1.05, y: 1.05, z: 1.05}
   scaleSpeed: 0.1
+  generalUIHover: {fileID: 0}
 --- !u!114 &1248809420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8393,7 +8409,9 @@ MonoBehaviour:
   pressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
   unpressedScale: {x: 1, y: 1, z: 0}
   pressedScale: {x: 0.9, y: 0.9, z: 0}
+  hoverScale: {x: 1.05, y: 1.05, z: 1.05}
   scaleSpeed: 0.1
+  generalUIHover: {fileID: 0}
 --- !u!114 &1443716634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8635,7 +8653,9 @@ MonoBehaviour:
   pressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
   unpressedScale: {x: 1, y: 1, z: 0}
   pressedScale: {x: 0.95, y: 0.95, z: 0}
+  hoverScale: {x: 1.05, y: 1.05, z: 1.05}
   scaleSpeed: 0.1
+  generalUIHover: {fileID: 0}
 --- !u!114 &1520252418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9132,7 +9152,9 @@ MonoBehaviour:
   pressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
   unpressedScale: {x: 1, y: 1, z: 0}
   pressedScale: {x: 0.95, y: 0.95, z: 0}
+  hoverScale: {x: 1.05, y: 1.05, z: 1.05}
   scaleSpeed: 0.1
+  generalUIHover: {fileID: 0}
 --- !u!114 &1683215650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9488,7 +9510,9 @@ MonoBehaviour:
   pressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
   unpressedScale: {x: 1, y: 1, z: 0}
   pressedScale: {x: 0.9, y: 0.9, z: 0}
+  hoverScale: {x: 1.05, y: 1.05, z: 1.05}
   scaleSpeed: 0.1
+  generalUIHover: {fileID: 0}
 --- !u!114 &1735378925
 MonoBehaviour:
   m_ObjectHideFlags: 0
