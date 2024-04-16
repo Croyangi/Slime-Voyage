@@ -24,8 +24,6 @@ public class Handler_ChunkshipCutscene : MonoBehaviour
     [SerializeField] private GameObject chunkship_bottom;
     [SerializeField] private Vector2 chunkship_offset;
 
-    [SerializeField] private AudioClip audioClip_breakingProtocol;
-
     [Header("Rise/Fall Visual Settings")]
     [SerializeField] private float amplitudeY = 0;
     [SerializeField] private float frequencyY = 1;
@@ -128,7 +126,7 @@ public class Handler_ChunkshipCutscene : MonoBehaviour
         baseSlime.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         baseSlime.GetComponent<Rigidbody2D>().AddForce(new Vector2(10, 20f), ForceMode2D.Impulse);
 
-        Manager_SFXPlayer.instance.PlaySFXClip(audioClip_breakingProtocol, transform, 0.4f, true, Manager_AudioMixer.instance.mixer_music);
+        Manager_Jukebox.instance.PlayBreakingProtocol();
 
         // Cleanup
         cinemachine.SetActive(false);

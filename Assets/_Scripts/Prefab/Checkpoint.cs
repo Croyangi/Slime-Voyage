@@ -74,7 +74,7 @@ public class Checkpoint : MonoBehaviour, IDataPersistence
         lightTip.SetActive(true);
         _animator.Play(CHECKPOINT_ON);
         isReached = true;
-        Manager_SFXPlayer.instance.PlaySFXClip(audioClip_checkpointLightOn, transform, 0.3f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.1f, 1f, 1f, 30f);
+        Manager_SFXPlayer.instance.PlaySFXClip(audioClip_checkpointLightOn, transform, 0.3f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.1f, 1f, 1f, 10f);
     }
 
 

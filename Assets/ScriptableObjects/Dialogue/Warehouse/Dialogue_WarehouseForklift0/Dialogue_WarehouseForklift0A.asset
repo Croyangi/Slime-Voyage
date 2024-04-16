@@ -1,0 +1,128 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e2d313d4c016d342bc276cb73a36214, type: 3}
+  m_Name: Dialogue_WarehouseForklift0A
+  m_EditorClassIdentifier: 
+  isDialogueOnTop: 1
+  isDialogueMini: 0
+  isPlayerInputStall: 1
+  _dialogues:
+  - dialogueText: Hey loser! Yeah you!
+    dialogueSpeed: 0.03
+    dialogueStallTime: 0.3
+    cleanText: 1
+    stoppingFlag: 1
+    profileName: Cool Forklift Stepspike
+    profilePicture: {fileID: 21300000, guid: 61f0c2bc53eee2d468f426b95936b1ad, type: 3}
+    sfx_speaking: {fileID: 8300000, guid: b45f90f4db75d15479068d5168b17415, type: 3}
+    sfxSpeakingSpacing: 0
+  - dialogueText: (...?)
+    dialogueSpeed: 0.03
+    dialogueStallTime: 0
+    cleanText: 1
+    stoppingFlag: 1
+    profileName: Slime
+    profilePicture: {fileID: 21300000, guid: 62c9201c9710e9246b4ab41a25a7482a, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
+  - dialogueText: Never seen you around here LOSER, where'd you come from LOSERVILLE
+      LOSER?
+    dialogueSpeed: 0.03
+    dialogueStallTime: 0
+    cleanText: 1
+    stoppingFlag: 1
+    profileName: Rad Forklift Stepspike
+    profilePicture: {fileID: 21300000, guid: 61f0c2bc53eee2d468f426b95936b1ad, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
+  - dialogueText: (...)
+    dialogueSpeed: 0.03
+    dialogueStallTime: 0
+    cleanText: 1
+    stoppingFlag: 1
+    profileName: Slime
+    profilePicture: {fileID: 21300000, guid: 1930adbe6060f2c4b80e007582bf770a, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
+  - dialogueText: That's right you don't even have this sweet ride!
+    dialogueSpeed: 0.03
+    dialogueStallTime: 0.3
+    cleanText: 1
+    stoppingFlag: 1
+    profileName: Tubular Forklift Stepspike
+    profilePicture: {fileID: 21300000, guid: 61f0c2bc53eee2d468f426b95936b1ad, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
+  - dialogueText: Stole this puppy from the Industrial Sector, and I'm NOT EVEN WEARING
+      A SAFETY HAT.
+    dialogueSpeed: 0.03
+    dialogueStallTime: 0
+    cleanText: 1
+    stoppingFlag: 1
+    profileName: Awesome Forklift Stepspike
+    profilePicture: {fileID: 0}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
+  - dialogueText: (Wait, are you even forklift certified?)
+    dialogueSpeed: 0.03
+    dialogueStallTime: 0
+    cleanText: 1
+    stoppingFlag: 1
+    profileName: Slime
+    profilePicture: {fileID: 21300000, guid: 62c9201c9710e9246b4ab41a25a7482a, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
+  - dialogueText: I- uh...
+    dialogueSpeed: 0.03
+    dialogueStallTime: 1
+    cleanText: 1
+    stoppingFlag: 0
+    profileName: Chic Forklift Stepspike
+    profilePicture: {fileID: 21300000, guid: 61f0c2bc53eee2d468f426b95936b1ad, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
+  - dialogueText: Hmm, well no.
+    dialogueSpeed: 0.03
+    dialogueStallTime: 0
+    cleanText: 1
+    stoppingFlag: 1
+    profileName: Crisp Forklift Stepspike
+    profilePicture: {fileID: 21300000, guid: 211ec46b11332e1469bb6a15626bb8cd, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
+  - dialogueText: (...)
+    dialogueSpeed: 0.03
+    dialogueStallTime: 0
+    cleanText: 1
+    stoppingFlag: 1
+    profileName: Slime
+    profilePicture: {fileID: 21300000, guid: 7e0a11206bd8d0d4795a64b87adcda67, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
+  - dialogueText: (...)
+    dialogueSpeed: 0.03
+    dialogueStallTime: 0
+    cleanText: 1
+    stoppingFlag: 1
+    profileName: Unsure Forklift Stepspike
+    profilePicture: {fileID: 21300000, guid: 211ec46b11332e1469bb6a15626bb8cd, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
+  - dialogueText: (...)
+    dialogueSpeed: 0.03
+    dialogueStallTime: 0
+    cleanText: 1
+    stoppingFlag: 1
+    profileName: Slime
+    profilePicture: {fileID: 21300000, guid: 94dfc02494ff3aa40b48e73f6a3b6d1d, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0

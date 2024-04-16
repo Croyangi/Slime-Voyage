@@ -47,7 +47,7 @@ public class Manager_DialogueHandler : MonoBehaviour
     [Header("Dialogue References")]
     [SerializeField] public List<Dialogue> _dialogues;
     [SerializeField] public ScriptableObject_Dialogue _dialoguePackage;
-    [SerializeField] private int currentDialogueIndex;
+    [SerializeField] public int currentDialogueIndex;
     [SerializeField] private AudioClip currentDialogueSpeakingSFX;
 
     [SerializeField] public bool isDialogueActive;

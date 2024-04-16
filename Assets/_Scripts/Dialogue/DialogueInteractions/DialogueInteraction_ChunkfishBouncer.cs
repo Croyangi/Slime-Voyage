@@ -8,7 +8,6 @@ public class DialogueInteraction_ChunkfishBouncer : MonoBehaviour
     [SerializeField] private DialoguePrompt _dialoguePrompt;
     [SerializeField] private DialoguePrompt_Effects _dialoguePrompt_Effects;
     [SerializeField] private ScriptableObject_Dialogue _newDialoguePackage;
-    [SerializeField] private bool isDetected;
 
     [Header("Tags")]
     [SerializeField] private TagsScriptObj tag_player;
@@ -19,7 +18,6 @@ public class DialogueInteraction_ChunkfishBouncer : MonoBehaviour
         {
             if (_tags.CheckTags(tag_player.name) == true)
             {
-                isDetected = true;
                 TriggerDialogueInteraction();
             }
         }
@@ -30,7 +28,6 @@ public class DialogueInteraction_ChunkfishBouncer : MonoBehaviour
         _dialoguePrompt._dialoguePackages.Clear();
         _dialoguePrompt._dialoguePackages.Add(_newDialoguePackage);
         _dialoguePrompt_Effects.ColorInnerCircle();
-        isDetected = false;
         gameObject.SetActive(false);
     }
 }

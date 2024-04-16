@@ -11,7 +11,6 @@ public class Handler_Checkpoint : MonoBehaviour
     [SerializeField] private Handler_ChunkshipCutscene _chunkshipCutscene;
     [SerializeField] private string[] ids;
     [SerializeField] private GameObject[] checkpoints;
-    [SerializeField] private AudioClip audioClip_breakingProtocol;
 
     public void InitiateCheckpointHandling()
     {
@@ -25,6 +24,11 @@ public class Handler_Checkpoint : MonoBehaviour
         {
             InitiateWarehouseBeginningCheckpoint();
             return;
+        }
+
+        if (_checkpointQueue.checkpointId == "WarehouseCheckpoint3")
+        {
+            Manager_Jukebox.instance.SetVolume(0f);
         }
 
         for (int i = 0; i < ids.Length; i++)
@@ -41,6 +45,6 @@ public class Handler_Checkpoint : MonoBehaviour
     {
         GameObject baseSlime = Manager_PlayerState.instance.player;
         baseSlime.transform.position = checkpoints[0].transform.position;
-        Manager_SFXPlayer.instance.PlaySFXClip(audioClip_breakingProtocol, transform, 0.4f, true, Manager_AudioMixer.instance.mixer_music);
+        Manager_Jukebox.instance.PlayBreakingProtocol();
     }
 }
