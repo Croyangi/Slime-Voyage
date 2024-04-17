@@ -49,7 +49,7 @@ public class SceneQueue : MonoBehaviour
         } else
         {
             Debug.Log("Couldn't access scene.");
-            SceneManager.LoadScene("LogoMenu");
+            SceneManager.LoadScene("MainMenu");
         }
     }
 }

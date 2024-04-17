@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpeedrunModeButtonTest : MonoBehaviour, IDataPersistence
 {
@@ -12,6 +13,12 @@ public class SpeedrunModeButtonTest : MonoBehaviour, IDataPersistence
     {
         isSpeedrunModeOn = !isSpeedrunModeOn;
         ChangeSpeedrunModeText();
+    }
+
+    public void OnToggleResetDataClicked()
+    {
+        DataPersistenceManager.instance.NewGame();
+        SceneManager.LoadScene("MainMenu");
     }
 
     private void ChangeSpeedrunModeText()

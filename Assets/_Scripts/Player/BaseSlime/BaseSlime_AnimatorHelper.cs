@@ -20,7 +20,7 @@ public class BaseSlime_AnimatorHelper : MonoBehaviour
     [Header("State References")]
 
     //[SerializeField] private bool isSpriteFlippedX;
-    [SerializeField] private string currentState;
+    public string currentState;
     //[SerializeField] private int currentPriority;
     //[SerializeField] private float currentPriorityTime;
 

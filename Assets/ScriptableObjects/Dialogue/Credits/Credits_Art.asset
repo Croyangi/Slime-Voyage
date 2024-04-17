@@ -18,13 +18,15 @@ MonoBehaviour:
   _dialogues:
   - dialogueText: 'Credits for Artists:
 
-      - Jingles'
+      - Jingles, Skitty4554, Nyx'
     dialogueSpeed: 0.02
     dialogueStallTime: 0
     cleanText: 1
     stoppingFlag: 1
     profileName: Artists
     profilePicture: {fileID: 21300000, guid: a14a0420d86c8f340872b8bf4f08e30d, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
   - dialogueText: 'Jingles (She/Her):
 
       - Promotional Art
@@ -36,3 +38,19 @@ MonoBehaviour:
     stoppingFlag: 1
     profileName: Jingles
     profilePicture: {fileID: 0}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
+  - dialogueText: 'Skitty4554, Nyx:
+
+      - Fanart used in-game
+
+      ~ Much love
+      from Croyangi and the team ~'
+    dialogueSpeed: 0.02
+    dialogueStallTime: 0
+    cleanText: 1
+    stoppingFlag: 1
+    profileName: Fanartists
+    profilePicture: {fileID: 0}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0

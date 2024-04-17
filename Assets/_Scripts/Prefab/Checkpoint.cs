@@ -64,6 +64,7 @@ public class Checkpoint : MonoBehaviour, IDataPersistence
             if (_tags.CheckTags(tag_player.name) == true && isReached == false)
             {
                 ReachedCheckpoint();
+                Manager_SFXPlayer.instance.PlaySFXClip(audioClip_checkpointLightOn, transform, 0.3f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.1f, 1f, 1f, 30f);
                 DataPersistenceManager.instance.SaveGame();
             }
         }
@@ -74,7 +75,6 @@ public class Checkpoint : MonoBehaviour, IDataPersistence
         lightTip.SetActive(true);
         _animator.Play(CHECKPOINT_ON);
         isReached = true;
-        Manager_SFXPlayer.instance.PlaySFXClip(audioClip_checkpointLightOn, transform, 0.3f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.1f, 1f, 1f, 10f);
     }
 
 
