@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class Handler_CheckpointLoader : MonoBehaviour, IDataPersistence
 {
-    [SerializeField] private bool isClicked = false;
     [SerializeField] private string[] ids;
     [SerializeField] private GameObject[] checkpoints;
     [SerializeField] private GameObject[] checkpointIcons;
     [SerializeField] private ScriptObj_CheckpointQueue _checkpointQueue;
+    [SerializeField] private Handler_WarehouseDioramaMenu _warehouseDioramaMenu;
     [SerializeField] private Sprite activeCheckpoint;
 
     [Header("Scene")]
@@ -43,14 +43,14 @@ public class Handler_CheckpointLoader : MonoBehaviour, IDataPersistence
 
     public void OnCheckpointButtonClicked(int id)
     {
-        if (isClicked == false)
+        if (_warehouseDioramaMenu.isTransitioning == false)
         {
             _checkpointQueue.checkpointId = ids[id];
             Debug.Log(_checkpointQueue.checkpointId);
 
             StartCoroutine(LoadTheWarehouse());
         }
-        isClicked = true;
+        _warehouseDioramaMenu.isTransitioning = true;
 
     }
 

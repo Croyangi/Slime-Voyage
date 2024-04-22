@@ -24,6 +24,12 @@ public class BaseSlime_AirborneState : State
             if (_stateMachine.PlayerStatesDictionary.TryGetValue(BaseSlime_StateMachine.PlayerStates.Idle, out State state))
             {
                 TransitionToState(state);
+
+                // Readjust Hitbox from Airborne
+                if (_helper.currentHighestImpactVelocityY < -5f)
+                {
+                    _helper.baseSlime.transform.position = new Vector2(_helper.baseSlime.transform.position.x, _helper.baseSlime.transform.position.y + 0.427f);
+                }
             }
         }
 
@@ -32,6 +38,12 @@ public class BaseSlime_AirborneState : State
             if (_stateMachine.PlayerStatesDictionary.TryGetValue(BaseSlime_StateMachine.PlayerStates.Moving, out State state))
             {
                 TransitionToState(state);
+
+                // Readjust Hitbox from Airborne
+                if (_helper.currentHighestImpactVelocityY < -5f)
+                {
+                    _helper.baseSlime.transform.position = new Vector2(_helper.baseSlime.transform.position.x, _helper.baseSlime.transform.position.y + 0.427f);
+                }
             }
         }
 
@@ -129,12 +141,6 @@ public class BaseSlime_AirborneState : State
         _helper.col_touchingRight.size = prev_touchingRight_size;
 
         _animator.SetEyesActive(false);
-
-        //
-        if (_helper.currentHighestImpactVelocityY < -5f)
-        {
-            _helper.baseSlime.transform.position = new Vector2(_helper.baseSlime.transform.position.x, _helper.baseSlime.transform.position.y + 0.427f);
-        }
     }
 
     public override void TransitionToState(State state)

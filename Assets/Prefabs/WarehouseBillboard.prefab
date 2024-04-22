@@ -411,7 +411,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 12.087294
   m_PointLightOuterAngle: 72.27459
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 12
+  m_PointLightOuterRadius: 17
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -488,8 +488,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.00009995699, y: -0.017250001, z: 0}
-    m_Extent: {x: 1.2200999, y: 0.63195, z: 0}
+    m_Center: {x: -0.00020003319, y: -0.0176, z: 0}
+    m_Extent: {x: 1.2213, y: 0.6314, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -575,7 +575,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 12.087294
   m_PointLightOuterAngle: 72.27459
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 12
+  m_PointLightOuterRadius: 17
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -652,8 +652,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.00055003166, y: -0.017350018, z: 0}
-    m_Extent: {x: 1.22095, y: 0.63035, z: 0}
+    m_Center: {x: 0.00064998865, y: -0.017850012, z: 0}
+    m_Extent: {x: 1.2204499, y: 0.63135004, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -734,8 +734,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.00025004148, y: -0.016949981, z: 0}
-    m_Extent: {x: 1.2205501, y: 0.63165, z: 0}
+    m_Center: {x: -0.00090003014, y: -0.017399997, z: 0}
+    m_Extent: {x: 1.2206, y: 0.63100004, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -821,7 +821,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 12.087294
   m_PointLightOuterAngle: 72.27459
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 12
+  m_PointLightOuterRadius: 17
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1

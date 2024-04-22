@@ -21,6 +21,7 @@ public class Manager_Jukebox : MonoBehaviour
         instance = this;
 
         initialVolume = audioSource_song.volume;
+        audioSource_song.ignoreListenerPause = true;
     }
 
     public void PlayBreakingProtocol()

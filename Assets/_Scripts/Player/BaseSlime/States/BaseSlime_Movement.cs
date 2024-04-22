@@ -67,7 +67,7 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
             _movementVars.jumpBufferTimer = _movementVars.jumpBuffer;
         }
 
-        if ((_helper.isGrounded && _helper.stickingDirection == Vector2.zero) || (!_helper.isGrounded && _movementVars.coyoteJumpTimer != 0 && _movementVars.coyoteJumpTimer < _movementVars.coyoteTime))
+        if ((_helper.isGrounded && _helper.stickingDirection == Vector2.zero && Mathf.Abs(_helper.rb.velocity.y) < 3f) || (!_helper.isGrounded && _movementVars.coyoteJumpTimer != 0 && _movementVars.coyoteJumpTimer < _movementVars.coyoteTime))
         {
             float jump = value.ReadValue<float>();
             jumpMovement = jump;

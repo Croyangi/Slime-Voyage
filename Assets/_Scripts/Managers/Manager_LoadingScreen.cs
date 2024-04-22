@@ -81,7 +81,6 @@ public class Manager_LoadingScreen : MonoBehaviour
 
     public void OnLoadSceneTransfer(string sceneName, string unloadedSceneName)
     {
-        Debug.Log("hello");
         SceneManager.UnloadSceneAsync(unloadedSceneName);
         mainCamera.SetActive(true);
 

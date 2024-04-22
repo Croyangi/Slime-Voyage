@@ -13,6 +13,8 @@ public class Manager_PauseMenu : MonoBehaviour
     [SerializeField] private GameObject chunkfishDisk;
     [SerializeField] private GameObject chunkfishDiskNeedle;
 
+    public bool isUnpausable;
+
     [Header("Screen Follow Mouse References")]
     [SerializeField] private Vector2 parallaxOriginPoint;
     [SerializeField] private float parallaxScale;
@@ -49,24 +51,35 @@ public class Manager_PauseMenu : MonoBehaviour
         playerInput.Disable();
 
         Time.timeScale = 1;
+        AudioListener.pause = false;
     }
 
     private void OnInteractPerformed(InputAction.CallbackContext value)
     {
-        TogglePauseButtonPress();
+        OnPause();
     }
 
-    public void TogglePauseButtonPress()
+    public void OnPause() 
+    {
+        if (!isUnpausable)
+        {
+            TogglePauseButtonPress();
+        }
+    }
+
+    private void TogglePauseButtonPress()
     {
         if (enabledGroup.activeSelf == true)
         {
             Time.timeScale = 1;
+            AudioListener.pause = false;
             EndPauseMenu();
         }
         else
         {
             enabledGroup.SetActive(true);
             Time.timeScale = 0;
+            AudioListener.pause = true;
             InitiatePauseMenu();
         }
     }

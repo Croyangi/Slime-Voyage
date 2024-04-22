@@ -7,7 +7,7 @@ public class Handler_WarehouseDioramaMenu : MonoBehaviour
 {
     [SerializeField] private BootLoader_WarehouseDioramaMenu _bootLoader;
 
-    [SerializeField] private bool pressedTicketButton;
+    public bool isTransitioning = false;
     [SerializeField] private Image ticketButton;
     [SerializeField] private Sprite playTicketHolePunched;
     [SerializeField] private GameObject ticketButtonHolePunch;
@@ -25,13 +25,13 @@ public class Handler_WarehouseDioramaMenu : MonoBehaviour
 
     public void OnPressTicketButton()
     {
-        if (!pressedTicketButton)
+        if (!isTransitioning)
         {
             ApplyForceTicketButton();
         }
 
         _bootLoader.StartScreenTransition();
-        pressedTicketButton = true;
+        isTransitioning = true;
         ticketButton.sprite = playTicketHolePunched;
     }
 

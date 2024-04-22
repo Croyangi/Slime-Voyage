@@ -844,6 +844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 1375208221}
+  audioClip_employeesLament: {fileID: 8300000, guid: 02ac23d55f63f6b4d992aaa49766f670, type: 3}
   screenTransitionDelay: 0
   _sceneQueue: {fileID: 225792226}
   scene_warehousePrologue: WarehousePrologue
@@ -1571,7 +1572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bootLoader: {fileID: 225792224}
-  pressedTicketButton: 0
+  isTransitioning: 0
   ticketButton: {fileID: 367871846}
   playTicketHolePunched: {fileID: 21300000, guid: b7f8e69fb1607154aacb067ecc7223ad, type: 3}
   ticketButtonHolePunch: {fileID: 1425780881}
@@ -3640,7 +3641,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3b07e0f9967e249b1586d7d5532bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isClicked: 0
   ids:
   - WarehouseCheckpoint0
   - WarehouseCheckpoint1
@@ -3657,6 +3657,7 @@ MonoBehaviour:
   - {fileID: 903159519}
   - {fileID: 1042211637}
   _checkpointQueue: {fileID: 11400000, guid: f62e9aa05a7f43d4db12f999ce1b7ca1, type: 2}
+  _warehouseDioramaMenu: {fileID: 445615765}
   activeCheckpoint: {fileID: 21300000, guid: 22208de5d25eb4a409ad0c9f2c5b6024, type: 3}
   _sceneQueue: {fileID: 1276324431}
   scene_theWarehouse: TheWarehouse

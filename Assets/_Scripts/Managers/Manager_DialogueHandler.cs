@@ -58,6 +58,10 @@ public class Manager_DialogueHandler : MonoBehaviour
     [SerializeField] private float currentDialogueSpeed;
     [SerializeField] private float currentDialogueStallTime;
 
+    [Header("Actions")]
+    [SerializeField] public Action onDialogueStart;
+    [SerializeField] public Action onDialogueEnd;
+
     [Header("Tags")]
     [SerializeField] private TagsScriptObj tag_isDialoguePrompt;
 
@@ -212,6 +216,7 @@ public class Manager_DialogueHandler : MonoBehaviour
         }
 
         // Relay signal
+        onDialogueStart?.Invoke();
         if (currentDialoguePrompt != null)
         {
             if (currentDialoguePrompt.GetComponent<IDialogueCommunicator>() != null)
@@ -442,6 +447,8 @@ public class Manager_DialogueHandler : MonoBehaviour
         Manager_PlayerState.instance.SetInputStall(true);
 
         // Relay signal
+        onDialogueEnd?.Invoke();
+
         if (currentDialoguePrompt != null)
         {
             if (currentDialoguePrompt.GetComponent<IDialogueCommunicator>() != null)

@@ -94,6 +94,12 @@ public class BaseSlime_IdleState : State
         _helper._movementVars.jumpVelocityXAdd = 0f;
 
         canEmote = true;
+
+        // Readjust Hitbox from Airborne
+        if (_helper.currentHighestImpactVelocityY < -5f)
+        {
+            _helper.baseSlime.transform.position = new Vector2(_helper.baseSlime.transform.position.x, _helper.baseSlime.transform.position.y + 0.427f);
+        }
     }
 
 

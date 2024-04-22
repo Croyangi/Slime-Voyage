@@ -8,6 +8,7 @@ public class BootLoader_WarehouseDioramaMenu : MonoBehaviour
 {
     [Header("General References")]
     [SerializeField] private GameObject _camera;
+    [SerializeField] private AudioClip audioClip_employeesLament;
 
     [Header("Screen Transition")]
     [SerializeField] private float screenTransitionDelay;
@@ -25,6 +26,11 @@ public class BootLoader_WarehouseDioramaMenu : MonoBehaviour
             _sceneQueue.LoadScene(scene_loadingScreen, true);
         }
         StartCoroutine(DelayedAwake());
+    }
+
+    private void Start()
+    {
+        Manager_SFXPlayer.instance.PlaySFXClip(audioClip_employeesLament, transform, 0.5f, false, Manager_AudioMixer.instance.mixer_music);
     }
 
     private IEnumerator DelayedAwake()

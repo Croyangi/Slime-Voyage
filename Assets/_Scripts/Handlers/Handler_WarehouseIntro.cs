@@ -1,7 +1,9 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 public class Handler_WarehouseIntro : MonoBehaviour
@@ -22,16 +24,16 @@ public class Handler_WarehouseIntro : MonoBehaviour
 
     [SerializeField] private GameObject lamp;
 
+    [SerializeField] private AudioSource audioSource_warehouseIntro;
+    [SerializeField] private TextMeshProUGUI tm_escapeText;
+
     public IEnumerator InitiateWarehouseIntro()
     {
         cinemachine.SetActive(true);
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(0.5f);
+        audioSource_warehouseIntro.Play();
+        yield return new WaitForSeconds(6f);
         InitiateOpenGarageDoor();
-    }
-
-    public void AbortWarehouseIntro()
-    {
-        cinemachine.SetActive(false);
     }
 
     [ContextMenu("Open Garage Door")]
@@ -58,6 +60,19 @@ public class Handler_WarehouseIntro : MonoBehaviour
     public void InitiateCloseGarageDoor()
     {
         CloseGarageDoor();
+    }
+
+    private IEnumerator FadeInEscapeText(float targetAlpha)
+    {
+        Color textColor = tm_escapeText.color;
+        float newAlpha = Mathf.MoveTowards(textColor.a, targetAlpha, Time.deltaTime / 8f);
+        tm_escapeText.color = new Color(textColor.r, textColor.g, textColor.b, newAlpha);
+
+        if (newAlpha < targetAlpha)
+        {
+            yield return new WaitForFixedUpdate();
+            StartCoroutine(FadeInEscapeText(targetAlpha));
+        }
     }
 
     private IEnumerator LaunchSlimeBox()
@@ -91,6 +106,8 @@ public class Handler_WarehouseIntro : MonoBehaviour
         CloseGarageDoor();
         yield return new WaitForSeconds(3f);
         ZoomInOnSlimeBox();
+        yield return new WaitForSeconds(6f);
+        StartCoroutine(FadeInEscapeText(150f));
     }
 
     private void ZoomInOnSlimeBox()
@@ -126,22 +143,33 @@ public class Handler_WarehouseIntro : MonoBehaviour
 
     private IEnumerator WaitForSlimeEscape()
     {
+        if (Input.anyKeyDown)
+        {
+            StopAllCoroutines();
+            StartCoroutine(EndWarehouseIntro());
+            Manager_SpeedrunTimer.instance.StartSpeedrunTimer();
+        }
+
+        /*
         if (baseSlime.GetComponent<Rigidbody2D>().velocity != Vector2.zero)
         {
             StopAllCoroutines();
             StartCoroutine(EndWarehouseIntro());
             Manager_SpeedrunTimer.instance.StartSpeedrunTimer();
         }
-        yield return new WaitForFixedUpdate();
+        */
+        yield return null;
         StartCoroutine(WaitForSlimeEscape());
     }
 
     private IEnumerator EndWarehouseIntro()
     {
         cinemachine.SetActive(false);
+        tm_escapeText.gameObject.SetActive(false);
+
         baseSlime.transform.position = slimeBox.transform.position;
         baseSlime.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        baseSlime.GetComponent<Rigidbody2D>().AddForce(new Vector2(15, 25f), ForceMode2D.Impulse);
+        baseSlime.GetComponent<Rigidbody2D>().AddForce(new Vector2(20f, 25f), ForceMode2D.Impulse);
 
         Manager_Jukebox.instance.PlayBreakingProtocol();
 
