@@ -45,6 +45,6 @@ public class Handler_Checkpoint : MonoBehaviour
     {
         GameObject baseSlime = Manager_PlayerState.instance.player;
         baseSlime.transform.position = checkpoints[0].transform.position;
-        Manager_Jukebox.instance.PlayBreakingProtocol();
+        Manager_Jukebox.instance.PlayJukebox();
     }
 }

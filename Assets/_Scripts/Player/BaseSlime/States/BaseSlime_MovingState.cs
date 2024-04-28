@@ -48,7 +48,6 @@ public class BaseSlime_MovingState : State
 
     public override void ExitState()
     {
-        _animator.SetEyesActive(false);
     }
 
     public override void TransitionToState(State state)

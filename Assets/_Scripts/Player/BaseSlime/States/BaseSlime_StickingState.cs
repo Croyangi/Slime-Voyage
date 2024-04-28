@@ -47,6 +47,8 @@ public class BaseSlime_StickingState : State
     {
         ModifyStateKey(this);
 
+        _animator.SetEyesActive(false);
+
         // Delay because Jely just LOVEEEESSS TRANSITIONS HUH
         _animator.ChangeAnimationState(_animator.BASESLIME_STICKINGTRANSITION, _animator.baseSlime_animator);
         StartCoroutine(StickingTransitionDelay());
@@ -83,7 +85,6 @@ public class BaseSlime_StickingState : State
 
         _helper.col_onEdgeLeft.gameObject.SetActive(true);
         _helper.col_onEdgeRight.gameObject.SetActive(true);
-        _animator.SetEyesActive(false);
     }
 
     public override void TransitionToState(State state)

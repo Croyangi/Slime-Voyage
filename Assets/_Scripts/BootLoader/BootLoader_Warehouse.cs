@@ -12,41 +12,60 @@ public class BootLoader_Warehouse : MonoBehaviour
     [SerializeField] private Handler_WarehouseIntro _warehouseIntro;
     [SerializeField] private Handler_Checkpoint _checkpoint;
     [SerializeField] private Handler_WarehouseSwapeeMode _swapeeMode;
+    [SerializeField] private ScriptObj_ModifierMode _modifierMode;
 
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
     [SerializeField] private string scene_bootloaderDevTools;
     [SerializeField] private string scene_bootloaderGlobal;
+    [SerializeField] private string scene_loadingScreen;
+    [SerializeField] private string scene_activeScene;
 
     private void Awake()
     {
         _sceneQueue.LoadScene(scene_bootloaderDevTools, true);
-        _sceneQueue.LoadScene(scene_bootloaderGlobal, true);
+        //_sceneQueue.LoadScene(scene_bootloaderGlobal, true);
 
         StartCoroutine(DelayedAwake());
+
+        Application.targetFrameRate = -1;
+    }
+
+    private void Start()
+    {
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene_activeScene));
     }
 
     private IEnumerator DelayedAwake()
     {
         yield return new WaitForFixedUpdate();
 
-        if (_checkpoint._checkpointQueue.checkpointId == "" || _checkpoint._checkpointQueue.checkpointId == "0")
+        if (_checkpoint._checkpointQueue.checkpointId == "WarehouseIntro")
         {
+            Debug.Log("WAREHOUSE INTRO");
             StartCoroutine(_warehouseIntro.InitiateWarehouseIntro());
-        } else if (_checkpoint._checkpointQueue.checkpointId == "SwapeeMode")
-        {
-            _swapeeMode.EnableSwapeeMode();
         } else
         {
             _checkpoint.InitiateCheckpointHandling();
         }
 
+        // Transition screen
         if (Manager_LoadingScreen.instance != null)
         {
-            Manager_PauseMenu.instance.isUnpausable = true;
             Manager_LoadingScreen.instance.OpenLoadingScreen();
-            yield return new WaitForSeconds(3f);
-            Manager_PauseMenu.instance.isUnpausable = false;
+        }
+        else
+        {
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene_loadingScreen, LoadSceneMode.Additive);
+
+            // Wait until the asynchronous scene loading is complete
+            while (!asyncLoad.isDone)
+            {
+                yield return null;
+            }
+
+            Debug.Log("Finished");
+            Manager_LoadingScreen.instance.OpenLoadingScreen();
         }
 
         Debug.Log("Checkpoint ID: " + _checkpoint._checkpointQueue.checkpointId);

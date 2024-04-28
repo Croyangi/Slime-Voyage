@@ -466,6 +466,7 @@ public class Manager_DialogueHandler : MonoBehaviour
         // Technicals
         isDialogueWaiting = false;
         isDialogueTyping = false;
+        isDialogueSkipping = false;
         currentDialogueIndex = 0;
 
         // To make sure no infinite dialogue loops occur

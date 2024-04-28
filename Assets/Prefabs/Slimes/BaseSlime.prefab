@@ -312,7 +312,11 @@ MonoBehaviour:
   _helper: {fileID: 9029656406374692392}
   _animator: {fileID: 4564319859956447544}
   isTransitioning: 0
+  col_hitbox: {fileID: 7038440154281907218}
   canEmote: 0
+  tag_isSolidGround: {fileID: 11400000, guid: 30c5fc2392c18074cbc1b3707eda820e, type: 2}
+  sfx_land: {fileID: 8300000, guid: 7bb2ca601060dc1479c4eb9444f3055d, type: 3}
+  sfx_landHard: {fileID: 8300000, guid: d80f1c631c5ad9848882ab4d4968019f, type: 3}
 --- !u!1 &2317627284233952323
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,6 +330,8 @@ GameObject:
   - component: {fileID: 7038440154281907218}
   - component: {fileID: 6402195889049545755}
   - component: {fileID: 2910236976104758534}
+  - component: {fileID: 5695712389482632855}
+  - component: {fileID: 1180538179765454178}
   m_Layer: 9
   m_Name: BaseSlime
   m_TagString: Untagged
@@ -440,6 +446,7 @@ MonoBehaviour:
   rb: {fileID: 5020864478455618518}
   _movementVars: {fileID: 6232816610152640318}
   _helper: {fileID: 9029656406374692392}
+  sfx_jump: {fileID: 8300000, guid: 2617765d37af2ce4683de91638d0598b, type: 3}
   jumpMovement: 0
 --- !u!114 &2910236976104758534
 MonoBehaviour:
@@ -459,6 +466,34 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c473bba3b49a68548bc8218b1943c104, type: 2}
   - {fileID: 11400000, guid: 96b1030535d1f4840983c1d073d81835, type: 2}
   - {fileID: 11400000, guid: dc9d4b7d60e8f21408df22e144d4b5b6, type: 2}
+--- !u!114 &5695712389482632855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2317627284233952323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0d3352efe3810c47916e33f51990e84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  col_hitbox: {fileID: 7038440154281907218}
+  col_grounded: {fileID: 6338366257579092545}
+--- !u!114 &1180538179765454178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2317627284233952323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0d3352efe3810c47916e33f51990e84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  col_hitbox: {fileID: 7038440154281907218}
+  col_grounded: {fileID: 6338366257579092545}
 --- !u!1 &2330876738127689946
 GameObject:
   m_ObjectHideFlags: 0

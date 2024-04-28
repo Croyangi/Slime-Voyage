@@ -99,7 +99,7 @@ public class Manager_SpeedrunTimer : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        if (data.isSpeedrunModeOn && (_checkpoint._checkpointQueue.checkpointId == "" || _checkpoint._checkpointQueue.checkpointId == "0"))
+        if (data.isSpeedrunModeOn && (_checkpoint._checkpointQueue.checkpointId == "WarehouseIntro"))
         {
             OpenSpeedrunTimer();
         }

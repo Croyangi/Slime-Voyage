@@ -12,6 +12,7 @@ public class ScriptObj_SceneQueue : ScriptableObject
     {
         public string scene;
         public bool isAdditive;
+        public bool isActiveScene;
     }
 
     public List<QueuedScenes> queuedScenes;

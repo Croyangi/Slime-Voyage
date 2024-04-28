@@ -24,6 +24,11 @@ public class Handler_WarehouseElevator : MonoBehaviour
     [SerializeField] private float frequencyRotate = 1;
     [SerializeField] private float time;
 
+    [Header("Scene")]
+    [SerializeField] private SceneQueue _sceneQueue;
+    [SerializeField] private string scene_demoEnd;
+    [SerializeField] private string scene_deloadedScene;
+
     public IEnumerator ElevatorPlateMove()
     {
         MovementMath();
@@ -68,10 +73,10 @@ public class Handler_WarehouseElevator : MonoBehaviour
         LeanTween.rotateAround(chainedGear, Vector3.forward, 360, 2.5f).setLoopClamp();
         LeanTween.moveLocalY(elevator, elevator.transform.position.y + 100, 10).setEaseInCubic();
 
-        LeanTween.color(closingTransition.rectTransform, new Color(0f, 0f, 0f, 1f), 10f).setEaseInCubic();
+        yield return new WaitForSeconds(6f);
 
-        yield return new WaitForSeconds(12);
-        SceneManager.LoadScene("DemoEnd");
+        // Transition screen
+        StartCoroutine(LoadDemoEnd());
     }
 
     private IEnumerator OnElevatorButtonDownInitiate()
@@ -86,9 +91,19 @@ public class Handler_WarehouseElevator : MonoBehaviour
         LeanTween.rotateAround(chainedGear, Vector3.forward, -360, 2.5f).setLoopClamp();
         LeanTween.moveLocalY(elevator, elevator.transform.position.y - 150, 4);
 
-        LeanTween.color(closingTransition.rectTransform, new Color(0f, 0f, 0f, 1f), 4f).setEaseInCubic();
-        yield return new WaitForSeconds(6);
-        SceneManager.LoadScene("DemoEnd");
+        yield return new WaitForSeconds(3f);
+
+        // Transition screen
+        StartCoroutine(LoadDemoEnd());
+    }
+
+    private IEnumerator LoadDemoEnd()
+    {
+        Manager_PauseMenu.instance.isUnpausable = true;
+        Manager_LoadingScreen.instance.CloseLoadingScreen();
+        yield return new WaitForSeconds(3f);
+        Manager_PauseMenu.instance.isUnpausable = false;
+        Manager_LoadingScreen.instance.OnLoadSceneTransfer(scene_demoEnd, scene_deloadedScene);
     }
 
     public void InitiateElevatorPanel()

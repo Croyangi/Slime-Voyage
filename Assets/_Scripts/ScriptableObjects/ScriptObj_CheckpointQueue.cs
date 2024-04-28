@@ -8,4 +8,9 @@ using UnityEngine;
 public class ScriptObj_CheckpointQueue : ScriptableObject
 {
     public string checkpointId = "";
+
+    public void ClearCheckpoints()
+    {
+        checkpointId = string.Empty;
+    }
 }

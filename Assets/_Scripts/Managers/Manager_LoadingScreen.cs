@@ -20,7 +20,6 @@ public class Manager_LoadingScreen : MonoBehaviour
 
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
-    [SerializeField] public float transitionSpeedMultiplier = 1f;
 
     public static Manager_LoadingScreen instance { get; private set; }
     private void Awake()
@@ -52,15 +51,15 @@ public class Manager_LoadingScreen : MonoBehaviour
     public void OpenLoadingScreen()
     {
         PrepareOpenLoadingScreen();
-        LeanTween.moveY(flavorGraphics.GetComponent<RectTransform>(), -350, 1f * transitionSpeedMultiplier).setEaseInOutBack().setDelay(1 * transitionSpeedMultiplier);
-        LeanTween.moveX(blackScreen.GetComponent<RectTransform>(), -2500f, 1.2f * transitionSpeedMultiplier).setEaseInQuart().setDelay(1.5f * transitionSpeedMultiplier);
+        LeanTween.moveY(flavorGraphics.GetComponent<RectTransform>(), -350, 1f).setEaseInOutBack().setDelay(0.5f).setIgnoreTimeScale(true); ;
+        LeanTween.moveX(blackScreen.GetComponent<RectTransform>(), -2500f, 1.2f).setEaseInQuart().setDelay(1f).setIgnoreTimeScale(true); ;
     }
 
     [ContextMenu("Prepare Close Loading Screen")]
     public void PrepareOpenLoadingScreen()
     {
-        LeanTween.moveY(flavorGraphics.GetComponent<RectTransform>(), 0, 0);
-        LeanTween.moveX(blackScreen.GetComponent<RectTransform>(), 0, 0);
+        LeanTween.moveY(flavorGraphics.GetComponent<RectTransform>(), 0, 0).setIgnoreTimeScale(true);
+        LeanTween.moveX(blackScreen.GetComponent<RectTransform>(), 0, 0).setIgnoreTimeScale(true); ;
     }
 
     [ContextMenu("Open Loading Screen")]
@@ -68,31 +67,39 @@ public class Manager_LoadingScreen : MonoBehaviour
     {
         PrepareCloseLoadingScreen();
         GenerateRandomFlavorText();
-        LeanTween.moveX(blackScreen.GetComponent<RectTransform>(), 0f, 1.2f * transitionSpeedMultiplier).setEaseInQuart().setDelay(1f * transitionSpeedMultiplier);
-        LeanTween.moveY(flavorGraphics.GetComponent<RectTransform>(), 0, 1f * transitionSpeedMultiplier).setEaseInOutBack().setDelay(1.8f * transitionSpeedMultiplier);
+        LeanTween.moveX(blackScreen.GetComponent<RectTransform>(), 0f, 1.2f).setEaseInQuart().setDelay(0.5f).setIgnoreTimeScale(true);
+        LeanTween.moveY(flavorGraphics.GetComponent<RectTransform>(), 0, 1f).setEaseInOutBack().setDelay(1.3f).setIgnoreTimeScale(true); ;
     }
 
     [ContextMenu("Prepare Open Loading Screen")]
     public void PrepareCloseLoadingScreen()
     {
-        LeanTween.moveX(blackScreen.GetComponent<RectTransform>(), -2500, 0);
-        LeanTween.moveY(flavorGraphics.GetComponent<RectTransform>(), -350, 0);
+        LeanTween.moveX(blackScreen.GetComponent<RectTransform>(), -2500, 0).setIgnoreTimeScale(true); ;
+        LeanTween.moveY(flavorGraphics.GetComponent<RectTransform>(), -350, 0).setIgnoreTimeScale(true); ;
     }
 
-    public void OnLoadSceneTransfer(string sceneName, string unloadedSceneName)
+    public void OnLoadSceneTransfer(string loadedScene, string unloadedSceneName)
     {
         SceneManager.UnloadSceneAsync(unloadedSceneName);
         mainCamera.SetActive(true);
 
-        _sceneQueue.UnqueueAllScenes();
-        _sceneQueue.QueueScene(sceneName, true);
-        StartCoroutine(ProcessLoadSceneTransfer());
+       // _sceneQueue.UnqueueAllScenes();
+        //_sceneQueue.QueueScene(loadedScene, true);
+
+        StartCoroutine(ProcessLoadSceneTransfer(loadedScene));
     }
 
-    private IEnumerator ProcessLoadSceneTransfer()
+    private IEnumerator ProcessLoadSceneTransfer(string loadedScene)
     {
-        yield return new WaitForSeconds(3f);
-        _sceneQueue.LoadQueuedScenes();
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(loadedScene, LoadSceneMode.Additive);
+
+        // Wait until the asynchronous scene loading is complete
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+        Debug.Log("Scene loaded: " + loadedScene);
         mainCamera.SetActive(false);
     }
 }

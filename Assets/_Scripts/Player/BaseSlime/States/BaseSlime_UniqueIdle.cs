@@ -49,6 +49,8 @@ public class BaseSlime_UniqueIdle : State
     {
         ModifyStateKey(this);
 
+        _animator.SetEyesActive(false);
+
         GenerateRandomUniqueIdle();
 
         _helper.col_slime.offset = new Vector2(0, -0.058f);

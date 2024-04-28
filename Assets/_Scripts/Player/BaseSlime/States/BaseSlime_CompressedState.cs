@@ -44,7 +44,6 @@ public class BaseSlime_CompressedState : State
 
     public override void ExitState()
     {
-        _animator.SetEyesActive(false);
     }
 
     public override void TransitionToState(State state)

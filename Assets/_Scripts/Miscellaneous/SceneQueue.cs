@@ -45,6 +45,7 @@ public class SceneQueue : MonoBehaviour
             {
                 SceneManager.LoadScene(scriptObj_roomQueue.queuedScenes[0].scene, LoadSceneMode.Additive);
             }
+
             scriptObj_roomQueue.queuedScenes.RemoveAt(0);
         } else
         {

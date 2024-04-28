@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class Handler_WarehouseDioramaMenu : MonoBehaviour
 {
     [SerializeField] private BootLoader_WarehouseDioramaMenu _bootLoader;
+    [SerializeField] private ScriptObj_CheckpointQueue _checkpointQueue;
 
-    public bool isTransitioning = false;
     [SerializeField] private Image ticketButton;
     [SerializeField] private Sprite playTicketHolePunched;
     [SerializeField] private GameObject ticketButtonHolePunch;
@@ -15,6 +15,13 @@ public class Handler_WarehouseDioramaMenu : MonoBehaviour
     [SerializeField] private GameObject[] tabs;
     [SerializeField] private int currentTabId;
     [SerializeField] private GameObject[] menus;
+
+    [SerializeField] private AudioClip sfx_onPressMode;
+
+    [Header("Scene")]
+    [SerializeField] private SceneQueue _sceneQueue;
+    [SerializeField] private string scene_deloadedScene;
+    [SerializeField] private string scene_loadedScene;
 
     private void Awake()
     {
@@ -25,14 +32,24 @@ public class Handler_WarehouseDioramaMenu : MonoBehaviour
 
     public void OnPressTicketButton()
     {
-        if (!isTransitioning)
+        if (!_bootLoader.isTransitioning)
         {
             ApplyForceTicketButton();
-        }
 
-        _bootLoader.StartScreenTransition();
-        isTransitioning = true;
-        ticketButton.sprite = playTicketHolePunched;
+            _checkpointQueue.checkpointId = "WarehouseIntro";
+
+            StartCoroutine(LoadTheWarehouse());
+            _bootLoader.isTransitioning = true;
+            ticketButton.sprite = playTicketHolePunched;
+            Manager_SFXPlayer.instance.PlaySFXClip(sfx_onPressMode, transform, 1f, false, Manager_AudioMixer.instance.mixer_music);
+        }
+    }
+
+    private IEnumerator LoadTheWarehouse()
+    {
+        Manager_LoadingScreen.instance.CloseLoadingScreen();
+        yield return new WaitForSeconds(3f);
+        Manager_LoadingScreen.instance.OnLoadSceneTransfer(scene_loadedScene, scene_deloadedScene);
     }
 
     private void ApplyForceTicketButton()

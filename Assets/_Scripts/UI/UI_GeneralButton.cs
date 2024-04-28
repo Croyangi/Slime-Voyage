@@ -10,15 +10,24 @@ public class UI_GeneralButton : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     [SerializeField] private GameObject button;
     [SerializeField] private bool isMultipleObjects;
 
-    [SerializeField] private Color unpressedColor = new Color(1f, 1f, 1f, 1f);
-    [SerializeField] private Color pressedColor = new Color(0.7f, 0.7f, 0.7f, 0f);
+    [SerializeField] private Color unpressedColor = new Color(1f, 1f, 1f);
+    [SerializeField] private Color pressedColor = new Color(0.7f, 0.7f, 0.7f);
 
     [SerializeField] private Vector3 unpressedScale = new Vector3(1f, 1f, 1f);
     [SerializeField] private Vector3 pressedScale = new Vector3(0.95f, 0.95f, 0.95f);
+
     [SerializeField] private Vector3 hoverScale = new Vector3(1.05f, 1.05f, 1.05f);
+    [SerializeField] private Color unhoveredColor = new Color(1f, 1f, 1f);
+    [SerializeField] private Color hoveredColor = new Color(1f, 1f, 1f);
     [SerializeField] private float scaleSpeed = 0.1f;
 
     [SerializeField] private AudioClip generalUIHover;
+
+    private void Awake()
+    {
+        LeanTween.scale(button, unpressedScale, scaleSpeed).setIgnoreTimeScale(true);
+        ChangeButtonColor(unhoveredColor);
+    }
 
 
     public void OnPointerDown(PointerEventData eventData)
@@ -43,14 +52,16 @@ public class UI_GeneralButton : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     {
         if (generalUIHover != null && Manager_SFXPlayer.instance != null) 
         {
-            Manager_SFXPlayer.instance.PlaySFXClip(generalUIHover, transform, 0.3f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.3f);
+            Manager_SFXPlayer.instance.PlaySFXClip(generalUIHover, transform, 0.3f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.3f, 0f, 0f, 0f, true);
         }
         LeanTween.scale(button, hoverScale, scaleSpeed).setIgnoreTimeScale(true);
+        ChangeButtonColor(hoveredColor);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         LeanTween.scale(button, unpressedScale, scaleSpeed).setIgnoreTimeScale(true);
+        ChangeButtonColor(unhoveredColor);
     }
 
     private void ChangeButtonColor(Color color)

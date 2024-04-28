@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BootLoader_WarehouseDioramaMenu : MonoBehaviour
@@ -9,47 +10,32 @@ public class BootLoader_WarehouseDioramaMenu : MonoBehaviour
     [Header("General References")]
     [SerializeField] private GameObject _camera;
     [SerializeField] private AudioClip audioClip_employeesLament;
+    [SerializeField] private ScriptObj_CheckpointQueue _checkpointQueue;
 
     [Header("Screen Transition")]
-    [SerializeField] private float screenTransitionDelay;
+    public bool isTransitioning;
 
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
-    [SerializeField] private string scene_warehousePrologue;
     [SerializeField] private string scene_loadingScreen;
-    [SerializeField] private string scene_warehouseDioramaMenu;
+    [SerializeField] private string scene_activeScene;
 
     private void Awake()
     {
+        _checkpointQueue.ClearCheckpoints();
+
         if (Manager_LoadingScreen.instance == null)
         {
             _sceneQueue.LoadScene(scene_loadingScreen, true);
         }
-        StartCoroutine(DelayedAwake());
     }
 
     private void Start()
     {
-        Manager_SFXPlayer.instance.PlaySFXClip(audioClip_employeesLament, transform, 0.5f, false, Manager_AudioMixer.instance.mixer_music);
-    }
-
-    private IEnumerator DelayedAwake()
-    {
-        yield return new WaitForFixedUpdate();
         Manager_LoadingScreen.instance.OpenLoadingScreen();
-    }
 
-    public void StartScreenTransition()
-    {
-        StartCoroutine(LoadWarehousePrologue());
-    }
-
-    private IEnumerator LoadWarehousePrologue()
-    {
-        yield return new WaitForSeconds(screenTransitionDelay);
-        Manager_LoadingScreen.instance.CloseLoadingScreen();
-        yield return new WaitForSeconds(3);
-        Manager_LoadingScreen.instance.OnLoadSceneTransfer(scene_warehousePrologue, scene_warehouseDioramaMenu);
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene_activeScene));
+        Manager_SFXPlayer.instance.PlaySFXClip(audioClip_employeesLament, transform, 0.5f, false, Manager_AudioMixer.instance.mixer_music);
     }
 
     //private void ScreenFollowMouseUpdate()

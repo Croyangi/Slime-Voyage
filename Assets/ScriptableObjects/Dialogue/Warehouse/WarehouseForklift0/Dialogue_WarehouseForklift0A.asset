@@ -81,9 +81,9 @@ MonoBehaviour:
     profilePicture: {fileID: 21300000, guid: 62c9201c9710e9246b4ab41a25a7482a, type: 3}
     sfx_speaking: {fileID: 0}
     sfxSpeakingSpacing: 0
-  - dialogueText: I- uh...
+  - dialogueText: 'I- uh... '
     dialogueSpeed: 0.03
-    dialogueStallTime: 1
+    dialogueStallTime: 0.3
     cleanText: 1
     stoppingFlag: 0
     profileName: Chic Forklift Stepspike
@@ -93,7 +93,7 @@ MonoBehaviour:
   - dialogueText: Hmm, well no.
     dialogueSpeed: 0.03
     dialogueStallTime: 0
-    cleanText: 1
+    cleanText: 0
     stoppingFlag: 1
     profileName: Crisp Forklift Stepspike
     profilePicture: {fileID: 21300000, guid: 211ec46b11332e1469bb6a15626bb8cd, type: 3}

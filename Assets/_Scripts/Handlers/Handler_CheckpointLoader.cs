@@ -9,8 +9,10 @@ public class Handler_CheckpointLoader : MonoBehaviour, IDataPersistence
     [SerializeField] private GameObject[] checkpoints;
     [SerializeField] private GameObject[] checkpointIcons;
     [SerializeField] private ScriptObj_CheckpointQueue _checkpointQueue;
-    [SerializeField] private Handler_WarehouseDioramaMenu _warehouseDioramaMenu;
+    [SerializeField] private BootLoader_WarehouseDioramaMenu _bootLoader;
     [SerializeField] private Sprite activeCheckpoint;
+
+    [SerializeField] private AudioClip sfx_onPressMode;
 
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
@@ -43,21 +45,22 @@ public class Handler_CheckpointLoader : MonoBehaviour, IDataPersistence
 
     public void OnCheckpointButtonClicked(int id)
     {
-        if (_warehouseDioramaMenu.isTransitioning == false)
+        if (_bootLoader.isTransitioning == false)
         {
             _checkpointQueue.checkpointId = ids[id];
             Debug.Log(_checkpointQueue.checkpointId);
 
             StartCoroutine(LoadTheWarehouse());
+            _bootLoader.isTransitioning = true;
+            Manager_SFXPlayer.instance.PlaySFXClip(sfx_onPressMode, transform, 1f, false, Manager_AudioMixer.instance.mixer_music);
         }
-        _warehouseDioramaMenu.isTransitioning = true;
 
     }
 
     private IEnumerator LoadTheWarehouse()
     {
         Manager_LoadingScreen.instance.CloseLoadingScreen();
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(3f);
         Manager_LoadingScreen.instance.OnLoadSceneTransfer(scene_theWarehouse, scene_deloadedScene);
     }
 }

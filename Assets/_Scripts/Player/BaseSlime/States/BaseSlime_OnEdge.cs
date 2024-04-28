@@ -56,7 +56,7 @@ public class BaseSlime_OnEdge : State
 
     public override void ExitState()
     {
-        _animator.SetEyesActive(false);
+
     }
 
     public override void TransitionToState(State state)

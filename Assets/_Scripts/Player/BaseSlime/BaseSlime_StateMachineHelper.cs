@@ -117,7 +117,7 @@ public class BaseSlime_StateMachineHelper : MonoBehaviour
             if (temp.GetComponent<Tags>() != null)
             {
                 _tags = temp.GetComponent<Tags>();
-                if ((_tags.CheckTags(tag_isSolidGround.name) == true || _tags.CheckTags(tag_isPlatform.name) == true) && rb.velocity.y > -5 && rb.velocity.y < 5)
+                if ((_tags.CheckTags(tag_isSolidGround.name) == true || _tags.CheckTags(tag_isPlatform.name) == true) && Mathf.Abs(rb.velocity.y) < 3f)
                 {
                     return true;
                 }

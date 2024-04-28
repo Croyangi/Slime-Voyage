@@ -14,6 +14,8 @@ public class Handler_WarehouseIntro : MonoBehaviour
     [SerializeField] private GameObject slimeBox;
     [SerializeField] private GameObject[] boxes;
 
+    [SerializeField] private GameObject[] warehouseLoudspeaker;
+
     [SerializeField] private Vector2 slimeBoxLaunchVelocity;
     [SerializeField] private float slimeBoxAngularVelocity;
     [SerializeField] private LayerMask slimeBoxLayerMask;
@@ -29,10 +31,18 @@ public class Handler_WarehouseIntro : MonoBehaviour
 
     public IEnumerator InitiateWarehouseIntro()
     {
+        foreach (GameObject speaker in warehouseLoudspeaker) 
+        {
+            speaker.SetActive(true);
+        }
         cinemachine.SetActive(true);
+
         yield return new WaitForSeconds(0.5f);
+
         audioSource_warehouseIntro.Play();
+
         yield return new WaitForSeconds(6f);
+
         InitiateOpenGarageDoor();
     }
 
@@ -171,7 +181,7 @@ public class Handler_WarehouseIntro : MonoBehaviour
         baseSlime.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         baseSlime.GetComponent<Rigidbody2D>().AddForce(new Vector2(20f, 25f), ForceMode2D.Impulse);
 
-        Manager_Jukebox.instance.PlayBreakingProtocol();
+        Manager_Jukebox.instance.PlayJukebox();
 
         yield return new WaitForSeconds(1f);
         lamp.GetComponent<WarehouseLamp>().FlickerOn();

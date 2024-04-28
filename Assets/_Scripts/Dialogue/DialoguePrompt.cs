@@ -11,6 +11,7 @@ public class DialoguePrompt : MonoBehaviour, IDialogueCommunicator
     [SerializeField] public List<ScriptableObject_Dialogue> _dialoguePackages;
     [SerializeField] public int dialoguePackageIteration = 0;
     [SerializeField] private Collider2D _promptCollider;
+    [SerializeField] private bool isDialogueCompleted;
 
     [Header("Technical References")]
     [SerializeField] private PlayerInput playerInput = null;
@@ -84,8 +85,12 @@ public class DialoguePrompt : MonoBehaviour, IDialogueCommunicator
                 if (dialoguePackageIteration < _dialoguePackages.Count - 1)
                 {
                     dialoguePackageIteration++;
+                } else
+                {
+                    isDialogueCompleted = true;
                 }
-                else
+
+                if (isDialogueCompleted == true)
                 {
                     _dialoguePrompt_Effects.GrayOutInnerCircle();
                 }

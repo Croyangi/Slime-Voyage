@@ -181,6 +181,8 @@ MonoBehaviour:
   unpressedScale: {x: 1, y: 1, z: 0}
   pressedScale: {x: 0.95, y: 0.95, z: 0}
   hoverScale: {x: 1.05, y: 1.05, z: 1.05}
+  unhoveredColor: {r: 1, g: 1, b: 1, a: 1}
+  hoveredColor: {r: 1, g: 1, b: 1, a: 1}
   scaleSpeed: 0.1
   generalUIHover: {fileID: 8300000, guid: ed12db967aab43249ae20148d89757c3, type: 3}
 --- !u!114 &7481219
@@ -723,6 +725,8 @@ MonoBehaviour:
   unpressedScale: {x: 1, y: 1, z: 0}
   pressedScale: {x: 0.95, y: 0.95, z: 0}
   hoverScale: {x: 1.05, y: 1.05, z: 1.05}
+  unhoveredColor: {r: 1, g: 1, b: 1, a: 1}
+  hoveredColor: {r: 1, g: 1, b: 1, a: 1}
   scaleSpeed: 0.1
   generalUIHover: {fileID: 8300000, guid: ed12db967aab43249ae20148d89757c3, type: 3}
 --- !u!114 &158628642
@@ -1535,50 +1539,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 516157706}
   m_CullTransparentMesh: 1
---- !u!1 &606237450
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 606237452}
-  - component: {fileID: 606237451}
-  m_Layer: 0
-  m_Name: BootLoader_Global
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &606237451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 606237450}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17887f243fa573c40a160e3de2bda4f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &606237452
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 606237450}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -350.14093, y: -232.16808, z: 0.0676367}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1935705280}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &663869117
 GameObject:
   m_ObjectHideFlags: 0
@@ -4115,7 +4075,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 606237452}
   - {fileID: 999093810}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4735,6 +4694,7 @@ MonoBehaviour:
   isTransitioning: 0
   chunkfishDisk: {fileID: 2133889722}
   chunkfishDiskNeedle: {fileID: 736055415}
+  isUnpausable: 0
   parallaxOriginPoint: {x: 0, y: 0}
   parallaxScale: 0.05
   lerpScale: 0.03

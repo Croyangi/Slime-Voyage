@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,6 +13,7 @@ public class Manager_PauseMenu : MonoBehaviour
     [SerializeField] private bool isTransitioning;
     [SerializeField] private GameObject chunkfishDisk;
     [SerializeField] private GameObject chunkfishDiskNeedle;
+    [SerializeField] private TextMeshProUGUI tm_songText;
 
     public bool isUnpausable;
 
@@ -176,5 +178,10 @@ public class Manager_PauseMenu : MonoBehaviour
             isTransitioning = false;
             enabledGroup.SetActive(false);
         }
+    }
+
+    public void ChangeSongText(string name)
+    {
+        tm_songText.text = name;
     }
 }

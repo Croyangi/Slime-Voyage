@@ -18,6 +18,9 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
     [SerializeField] private BaseSlime_MovementVariables _movementVars;
     [SerializeField] private BaseSlime_StateMachineHelper _helper;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip sfx_jump;
+
     [Header("Variables")]
     [SerializeField] public float jumpMovement; // From Unity's input system
 
@@ -67,20 +70,34 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
             _movementVars.jumpBufferTimer = _movementVars.jumpBuffer;
         }
 
-        if ((_helper.isGrounded && _helper.stickingDirection == Vector2.zero && Mathf.Abs(_helper.rb.velocity.y) < 3f) || (!_helper.isGrounded && _movementVars.coyoteJumpTimer != 0 && _movementVars.coyoteJumpTimer < _movementVars.coyoteTime))
+        if (_helper.isGrounded && _helper.stickingDirection == Vector2.zero && Mathf.Abs(_helper.rb.velocity.y) < 3f)
         {
             float jump = value.ReadValue<float>();
             jumpMovement = jump;
 
-            rb.velocity = new Vector2(rb.velocity.x, 0f);
-            Vector2 jumpVelocity = new Vector2(_movementVars.jumpVelocityXAdd * Mathf.Sign(_helper.facingDirection), _movementVars.jumpStrength);
-            rb.AddForce(jumpVelocity, ForceMode2D.Impulse);
+            OnJump();
+        }
+
+        if (!_helper.isGrounded && _movementVars.coyoteJumpTimer != 0 && _movementVars.coyoteJumpTimer < _movementVars.coyoteTime)
+        {
+            float jump = value.ReadValue<float>();
+            jumpMovement = jump;
+
+            OnJump();
         }
 
         if (_movementVars.coyoteJumpTimer == 0 && _helper.stickingDirection != Vector2.zero)
         {
             SetWallJumpTechnicals();
         }
+    }
+
+    private void OnJump() 
+    {
+        rb.velocity = new Vector2(rb.velocity.x, 0f);
+        Vector2 jumpVelocity = new Vector2(_movementVars.jumpVelocityXAdd * Mathf.Sign(_helper.facingDirection), _movementVars.jumpStrength);
+        rb.AddForce(jumpVelocity, ForceMode2D.Impulse);
+        Manager_SFXPlayer.instance.PlaySFXClip(sfx_jump, transform, 0.2f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.2f);
     }
 
     private void OnJumpCancelled(InputAction.CallbackContext value)
@@ -139,8 +156,7 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
             float jump = 1;
             jumpMovement = jump;
 
-            rb.velocity = new Vector2(rb.velocity.x, 0f);
-            rb.AddForce(Vector2.up * _movementVars.jumpStrength, ForceMode2D.Impulse);
+            OnJump();
         }
 
         if (_movementVars.coyoteJumpTimer == 0 && _helper.stickingDirection != Vector2.zero)

@@ -11,6 +11,10 @@ public class NPC_AmbientMovement : MonoBehaviour
     private void Awake()
     {
         originPoint = transform;
+    }
+
+    private void Start()
+    {
         StartCoroutine(AmbientMovementRandomChance());
     }
 
@@ -18,7 +22,7 @@ public class NPC_AmbientMovement : MonoBehaviour
     {
         gameObject.transform.position = originPoint.position;
 
-        float random = Random.Range(1f, 5f);
+        float random = Random.Range(3f, 5f);
         yield return new WaitForSeconds(random);
         JumpAround();
 
@@ -29,8 +33,8 @@ public class NPC_AmbientMovement : MonoBehaviour
     private void JumpAround()
     {
         LeanTween.moveLocalY(gameObject, originPoint.position.y + 0.2f, 0.2f);
-        LeanTween.moveLocalY(gameObject, originPoint.position.y, 0.1f).setDelay(0.2f);
-        LeanTween.moveLocalY(gameObject, originPoint.position.y + 0.2f, 0.2f).setDelay(0.4f);
-        LeanTween.moveLocalY(gameObject, originPoint.position.y, 0.1f).setDelay(0.6f);
+        LeanTween.moveLocalY(gameObject, originPoint.position.y, 0.1f).setDelay(0.3f);
+        LeanTween.moveLocalY(gameObject, originPoint.position.y + 0.2f, 0.2f).setDelay(0.6f);
+        LeanTween.moveLocalY(gameObject, originPoint.position.y, 0.1f).setDelay(0.9f);
     }
 }

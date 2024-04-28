@@ -39,7 +39,6 @@ public class BaseSlime_LookingUp : State
 
     public override void ExitState()
     {
-        _animator.SetEyesActive(false);
     }
 
     public override void TransitionToState(State state)
