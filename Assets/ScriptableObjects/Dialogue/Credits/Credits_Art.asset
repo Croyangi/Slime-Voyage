@@ -29,9 +29,10 @@ MonoBehaviour:
     sfxSpeakingSpacing: 0
   - dialogueText: 'Jingles (She/Her):
 
-      - Promotional Art
+      - Promotional Graphics
 
-      ~ Jingles ~'
+      ~ Jingles
+      ~'
     dialogueSpeed: 0.02
     dialogueStallTime: 0
     cleanText: 1

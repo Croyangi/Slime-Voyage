@@ -76,7 +76,7 @@ public class Handler_WarehouseElevator : MonoBehaviour
         yield return new WaitForSeconds(6f);
 
         // Transition screen
-        StartCoroutine(LoadDemoEnd());
+        LoadDemoEnd();
     }
 
     private IEnumerator OnElevatorButtonDownInitiate()
@@ -94,16 +94,12 @@ public class Handler_WarehouseElevator : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
         // Transition screen
-        StartCoroutine(LoadDemoEnd());
+        LoadDemoEnd();
     }
 
-    private IEnumerator LoadDemoEnd()
+    private void LoadDemoEnd()
     {
-        Manager_PauseMenu.instance.isUnpausable = true;
-        Manager_LoadingScreen.instance.CloseLoadingScreen();
-        yield return new WaitForSeconds(3f);
-        Manager_PauseMenu.instance.isUnpausable = false;
-        Manager_LoadingScreen.instance.OnLoadSceneTransfer(scene_demoEnd, scene_deloadedScene);
+        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_demoEnd, scene_deloadedScene);
     }
 
     public void InitiateElevatorPanel()

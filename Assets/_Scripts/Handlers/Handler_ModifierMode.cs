@@ -33,7 +33,7 @@ public class Handler_ModifierMode : MonoBehaviour
             _modifierMode.isModified = true;
             _modifierMode.isSwapeeMode = true;
 
-            StartCoroutine(LoadTheWarehouse());
+            LoadTheWarehouse();
             _bootLoader.isTransitioning = true;
             ticketButton.sprite = playTicketHolePunched;
             Manager_SFXPlayer.instance.PlaySFXClip(sfx_onPressMode, transform, 1f, false, Manager_AudioMixer.instance.mixer_music);
@@ -52,10 +52,8 @@ public class Handler_ModifierMode : MonoBehaviour
         rb.AddTorque(randomTorque);
     }
 
-    private IEnumerator LoadTheWarehouse()
+    private void LoadTheWarehouse()
     {
-        Manager_LoadingScreen.instance.CloseLoadingScreen();
-        yield return new WaitForSeconds(3f);
-        Manager_LoadingScreen.instance.OnLoadSceneTransfer(scene_theWarehouse, scene_deloadedScene);
+        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_theWarehouse, scene_deloadedScene);
     }
 }

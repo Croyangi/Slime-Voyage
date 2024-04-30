@@ -38,18 +38,16 @@ public class Handler_WarehouseDioramaMenu : MonoBehaviour
 
             _checkpointQueue.checkpointId = "WarehouseIntro";
 
-            StartCoroutine(LoadTheWarehouse());
+            TransitionToScene();
             _bootLoader.isTransitioning = true;
             ticketButton.sprite = playTicketHolePunched;
             Manager_SFXPlayer.instance.PlaySFXClip(sfx_onPressMode, transform, 1f, false, Manager_AudioMixer.instance.mixer_music);
         }
     }
 
-    private IEnumerator LoadTheWarehouse()
+    private void TransitionToScene()
     {
-        Manager_LoadingScreen.instance.CloseLoadingScreen();
-        yield return new WaitForSeconds(3f);
-        Manager_LoadingScreen.instance.OnLoadSceneTransfer(scene_loadedScene, scene_deloadedScene);
+        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_loadedScene, scene_deloadedScene);
     }
 
     private void ApplyForceTicketButton()
@@ -111,5 +109,12 @@ public class Handler_WarehouseDioramaMenu : MonoBehaviour
     private void SetDeactiveTabVFX(GameObject tab)
     {
         LeanTween.moveX(tab.GetComponent<RectTransform>(), 40, 0.5f).setEaseInBack().setEaseOutBounce();
+    }
+
+    public void OnReturnToMenuButtonPressed()
+    {
+        scene_loadedScene = "MainMenu";
+        TransitionToScene();
+        _bootLoader.isTransitioning = true;
     }
 }

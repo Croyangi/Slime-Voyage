@@ -27,6 +27,8 @@ public class Handler_LogoStartup : MonoBehaviour
     private void Awake()
     {
         StartCoroutine(StartTransitionMainMenu());
+
+        setup.SetActive(true);
     }
 
     private void Update()
@@ -91,8 +93,5 @@ public class Handler_LogoStartup : MonoBehaviour
         canSkip = false;
 
         whiteScreenTransition.enabled = false;
-
-        // Ensures that if skipped, the impact still hits
-        audioSource_slimeVoyageMainTheme.volume = 1f;
     }
 }

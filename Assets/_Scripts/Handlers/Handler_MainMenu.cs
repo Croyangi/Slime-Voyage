@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Handler_MainMenu : MonoBehaviour
 {
@@ -10,37 +12,85 @@ public class Handler_MainMenu : MonoBehaviour
     [SerializeField] private string scene_warehouseDioramaMenu;
     [SerializeField] private string scene_loadingScreen;
 
+    [Header("Tabs")]
+    [SerializeField] private GameObject[] tabs;
+
     [Header("References")]
-    [SerializeField] private GameObject setup;
+    [SerializeField] private Canvas setup_canvas;
+    [SerializeField] private GameObject credits;
+    [SerializeField] private AudioClip sfx_onPlayClicked;
 
 
     private void Awake()
     {
-        _sceneQueue.LoadScene(scene_loadingScreen, true);
-        StartCoroutine(DelayedAwake());
+        setup_canvas.enabled = false;
+        credits.SetActive(false);
+
+        StartCoroutine(LoadLoadingScreen());
     }
 
-    private IEnumerator DelayedAwake()
+    private IEnumerator LoadLoadingScreen()
     {
-        yield return new WaitForFixedUpdate();
-        Manager_LoadingScreen.instance.PrepareCloseLoadingScreen();
+        // Transition screen
+        if (Manager_LoadingScreen.instance != null)
+        {
+            Manager_LoadingScreen.instance.PrepareCloseLoadingScreen();
+        }
+        else
+        {
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene_loadingScreen, LoadSceneMode.Additive);
+
+            // Wait until the asynchronous scene loading is complete
+            while (!asyncLoad.isDone)
+            {
+                yield return null;
+            }
+            Manager_LoadingScreen.instance.PrepareCloseLoadingScreen();
+        }
     }
 
-    public void OnMainMenuPlayButtonPressed()
+    // Close and then transition
+    private void LoadWarehouseDioramaMenu()
     {
-        StartCoroutine(LoadWarehouseDioramaMenu());
+        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_warehouseDioramaMenu, scene_mainMenu);
     }
 
-    private IEnumerator LoadWarehouseDioramaMenu()
-    {
-        Debug.Log("pingus");
-        Manager_LoadingScreen.instance.CloseLoadingScreen();
-        yield return new WaitForSeconds(3);
-        Manager_LoadingScreen.instance.OnLoadSceneTransfer(scene_warehouseDioramaMenu, scene_mainMenu);
-    }
-
+    // Called by another script to enable canvas
     public void OnMainMenuSetup()
     {
-        setup.SetActive(true);
+        setup_canvas.enabled = true;
+    }
+
+    // Set tab active
+    public void SetActiveTabVFX(int index)
+    {
+        GameObject tab = tabs[index];
+
+        LeanTween.moveX(tab.GetComponent<RectTransform>(), 330f, 0.5f).setEaseInBack().setEaseOutBounce();
+    }
+
+    // Set tab deactive
+    public void SetDeactiveTabVFX(int index)
+    {
+        GameObject tab = tabs[index];
+
+        LeanTween.moveX(tab.GetComponent<RectTransform>(), 250f, 0.5f).setEaseInBack().setEaseOutBounce();
+    }
+
+    //// Buttons
+    public void OnPlayButtonPressed()
+    {
+        LoadWarehouseDioramaMenu();
+        Manager_SFXPlayer.instance.PlaySFXClip(sfx_onPlayClicked, transform, 1f, false, Manager_AudioMixer.instance.mixer_sfx);
+    }
+
+    public void OnCreditsButtonPressed()
+    {
+        credits.SetActive(!credits.activeSelf);
+    }
+
+    public void OnExitButtonPressed()
+    {
+        Application.Quit();
     }
 }

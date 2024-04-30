@@ -144,7 +144,11 @@ public class BaseSlime_IdleState : State
 
         canEmote = true;
 
-        CheckPenetrationDepth();
+        if (_helper.currentHighestImpactVelocityY < -0.1f)
+        {
+            CheckPenetrationDepth();
+        }
+
         OnLandingAnimation();
     }
 

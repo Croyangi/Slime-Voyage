@@ -18,7 +18,7 @@ MonoBehaviour:
   _dialogues:
   - dialogueText: 'Jely (They/Them):
 
-      - Head of Design, Artist
+      - Creative Lead, Artist
 
       ~ JUSTICE
       FOR BOXFLY ~'
@@ -28,3 +28,5 @@ MonoBehaviour:
     stoppingFlag: 1
     profileName: Jely
     profilePicture: {fileID: 21300000, guid: c554412db3aa1404c82889a52fcc871b, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0

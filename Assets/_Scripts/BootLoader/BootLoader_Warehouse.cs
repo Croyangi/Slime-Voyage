@@ -27,8 +27,6 @@ public class BootLoader_Warehouse : MonoBehaviour
         //_sceneQueue.LoadScene(scene_bootloaderGlobal, true);
 
         StartCoroutine(DelayedAwake());
-
-        Application.targetFrameRate = -1;
     }
 
     private void Start()

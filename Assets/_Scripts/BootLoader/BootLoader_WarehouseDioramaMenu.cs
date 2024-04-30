@@ -24,18 +24,35 @@ public class BootLoader_WarehouseDioramaMenu : MonoBehaviour
     {
         _checkpointQueue.ClearCheckpoints();
 
-        if (Manager_LoadingScreen.instance == null)
-        {
-            _sceneQueue.LoadScene(scene_loadingScreen, true);
-        }
+        StartCoroutine(LoadLoadingScreen());
     }
 
     private void Start()
     {
-        Manager_LoadingScreen.instance.OpenLoadingScreen();
-
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene_activeScene));
         Manager_SFXPlayer.instance.PlaySFXClip(audioClip_employeesLament, transform, 0.5f, false, Manager_AudioMixer.instance.mixer_music);
+    }
+
+    private IEnumerator LoadLoadingScreen()
+    {
+        // Transition screen
+        if (Manager_LoadingScreen.instance != null)
+        {
+            Manager_LoadingScreen.instance.OpenLoadingScreen();
+        }
+        else
+        {
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene_loadingScreen, LoadSceneMode.Additive);
+
+            // Wait until the asynchronous scene loading is complete
+            while (!asyncLoad.isDone)
+            {
+                yield return null;
+            }
+
+            Debug.Log("Finished");
+            Manager_LoadingScreen.instance.OpenLoadingScreen();
+        }
     }
 
     //private void ScreenFollowMouseUpdate()

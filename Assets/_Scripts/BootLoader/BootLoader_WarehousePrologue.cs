@@ -5,72 +5,59 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class BootLoader_WarehousePrologue : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private Image closingTransition;
-    [SerializeField] private bool isClosing = false;
+    [SerializeField] private AudioSource music_cutscene;
+    [SerializeField] private VideoPlayer video_cutscene;
 
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
+    [SerializeField] private string scene_loadingScreen;
+    [SerializeField] private string scene_activeScene;
     [SerializeField] private string scene_theWarehouse;
     [SerializeField] private string scene_deloadedScene;
 
     private void Awake()
     {
-        StartCoroutine(DelayedAwake());
+        StartCoroutine(LoadLoadingScreen());
 
-        LeanTween.color(closingTransition.rectTransform, new Color(0f, 0f, 0f, 0f), 3f).setEaseInCubic();
-        StartCoroutine(OnWarehouseProloguePlay());
+        music_cutscene.Play();
+        video_cutscene.Play();
     }
 
-    private IEnumerator DelayedAwake()
+    private void Start()
     {
-        yield return new WaitForFixedUpdate();
-        Manager_LoadingScreen.instance.OpenLoadingScreen();
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene_activeScene));
     }
 
-    private IEnumerator OnWarehouseProloguePlay()
+    private IEnumerator LoadLoadingScreen()
     {
-        yield return new WaitForSeconds(22);
-        if (isClosing == false)
+        // Transition screen
+        if (Manager_LoadingScreen.instance != null)
         {
-            StartCoroutine(EndWarehousePrologue());
+            Manager_LoadingScreen.instance.OpenLoadingScreen();
+        }
+        else
+        {
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene_loadingScreen, LoadSceneMode.Additive);
+
+            // Wait until the asynchronous scene loading is complete
+            while (!asyncLoad.isDone)
+            {
+                yield return null;
+            }
+
+            Debug.Log("Finished");
+            Manager_LoadingScreen.instance.OpenLoadingScreen();
         }
     }
 
-    private IEnumerator EndWarehousePrologue()
+    private void LoadWarehouse()
     {
-        isClosing = true;
-        LeanTween.color(closingTransition.rectTransform, new Color(0f, 0f, 0f, 1f), 2f).setEaseInCubic();
-
-        yield return new WaitForSeconds(2f);
-        StartCoroutine(LoadWarehouse());
-    }
-
-    private IEnumerator SkipWarehousePrologue()
-    {
-        isClosing = true;
-        LeanTween.color(closingTransition.rectTransform, new Color(0f, 0f, 0f, 1f), 0.5f).setEaseInCubic();
-
-        yield return new WaitForSeconds(1);
-        StartCoroutine(LoadWarehouse());
-    }
-
-    private IEnumerator LoadWarehouse()
-    {
-        Manager_LoadingScreen.instance.CloseLoadingScreen();
-        yield return new WaitForSeconds(3);
-        Manager_LoadingScreen.instance.OnLoadSceneTransfer(scene_theWarehouse, scene_deloadedScene);
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.X) && isClosing == false)
-        {
-            StartCoroutine(SkipWarehousePrologue());
-        }
+        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_theWarehouse, scene_deloadedScene);
     }
 
 

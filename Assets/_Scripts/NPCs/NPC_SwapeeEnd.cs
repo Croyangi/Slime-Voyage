@@ -9,6 +9,7 @@ public class NPC_SwapeeEnd : MonoBehaviour
     [SerializeField] private Collider2D col_detect;
     [SerializeField] private ScriptableObject_Dialogue _dialoguePackage;
     [SerializeField] private GameObject dialoguePrompt;
+    [SerializeField] private bool isCompleted;
 
     [Header("Tags")]
     [SerializeField] private TagsScriptObj tag_player;
@@ -20,25 +21,18 @@ public class NPC_SwapeeEnd : MonoBehaviour
 
     private void OnDialogueEnd()
     {
-        if (Manager_DialogueHandler.instance._dialoguePackage == _dialoguePackage)
+        if (Manager_DialogueHandler.instance._dialoguePackage == _dialoguePackage && isCompleted == false)
         {
+            isCompleted = true;
             Manager_PlayerState.instance.SetInputStall(false);
             dialoguePrompt.SetActive(false);
-            StartCoroutine(LoadWarehouseDioramaMenu());
+            LoadWarehouseDioramaMenu();
         }
     }
 
-    private IEnumerator LoadWarehouseDioramaMenu()
+    private void LoadWarehouseDioramaMenu()
     {
-        _sceneQueue.LoadScene("WarehouseDioramaMenu");
-        yield return null;
-
-        /*Manager_PauseMenu.instance.isUnpausable = true;
-        Manager_LoadingScreen.instance.CloseLoadingScreen();
-        yield return new WaitForSeconds(3f);
-        Manager_PauseMenu.instance.isUnpausable = false;
-        Manager_LoadingScreen.instance.OnLoadSceneTransfer(scene_loadedScene, scene_deloadedScene);
-        */
+        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_loadedScene, scene_deloadedScene);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

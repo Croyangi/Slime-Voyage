@@ -78,8 +78,17 @@ public class Manager_LoadingScreen : MonoBehaviour
         LeanTween.moveY(flavorGraphics.GetComponent<RectTransform>(), -350, 0).setIgnoreTimeScale(true); ;
     }
 
-    public void OnLoadSceneTransfer(string loadedScene, string unloadedSceneName)
+    public void InitiateLoadSceneTransfer(string loadedScene, string unloadedSceneName)
     {
+        StartCoroutine(OnLoadSceneTransfer(loadedScene, unloadedSceneName));
+    }
+
+    public IEnumerator OnLoadSceneTransfer(string loadedScene, string unloadedSceneName)
+    {
+        Debug.Log("Transfering Scene");
+
+        CloseLoadingScreen();
+        yield return new WaitForSecondsRealtime(3f);
         SceneManager.UnloadSceneAsync(unloadedSceneName);
         mainCamera.SetActive(true);
 

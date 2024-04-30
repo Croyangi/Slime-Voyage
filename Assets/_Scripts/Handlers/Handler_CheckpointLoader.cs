@@ -50,17 +50,15 @@ public class Handler_CheckpointLoader : MonoBehaviour, IDataPersistence
             _checkpointQueue.checkpointId = ids[id];
             Debug.Log(_checkpointQueue.checkpointId);
 
-            StartCoroutine(LoadTheWarehouse());
+            LoadTheWarehouse();
             _bootLoader.isTransitioning = true;
             Manager_SFXPlayer.instance.PlaySFXClip(sfx_onPressMode, transform, 1f, false, Manager_AudioMixer.instance.mixer_music);
         }
 
     }
 
-    private IEnumerator LoadTheWarehouse()
+    private void LoadTheWarehouse()
     {
-        Manager_LoadingScreen.instance.CloseLoadingScreen();
-        yield return new WaitForSeconds(3f);
-        Manager_LoadingScreen.instance.OnLoadSceneTransfer(scene_theWarehouse, scene_deloadedScene);
+        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_theWarehouse, scene_deloadedScene);
     }
 }

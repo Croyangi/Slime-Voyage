@@ -18,7 +18,7 @@ public class BootLoader_WarehouseSwapeeMode : MonoBehaviour
     {
         _sceneQueue.LoadScene(scene_bootloaderDevTools, true);
 
-        StartCoroutine(DelayedAwake());
+        StartCoroutine(LoadLoadingScreen());
     }
 
     private void Start()
@@ -26,7 +26,7 @@ public class BootLoader_WarehouseSwapeeMode : MonoBehaviour
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene_activeScene));
     }
 
-    private IEnumerator DelayedAwake()
+    private IEnumerator LoadLoadingScreen ()
     {
         // Transition screen
         if (Manager_LoadingScreen.instance != null)
