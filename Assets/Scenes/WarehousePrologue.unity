@@ -2183,6 +2183,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   music_cutscene: {fileID: 1799237922}
   video_cutscene: {fileID: 724687946}
+  cutsceneCutoffTime: 1.7
+  isCutoff: 0
   _sceneQueue: {fileID: 999093811}
   scene_loadingScreen: LoadingScreen
   scene_activeScene: WarehousePrologue
@@ -3637,11 +3639,11 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 3637054094149109581, guid: 9230e92806392014abf4f707843afb7b, type: 2}
   m_audioClip: {fileID: 8300000, guid: 26ce356508cd9514b9020347b6e52586, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
-  Mute: 1
+  Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128

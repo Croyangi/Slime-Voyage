@@ -12,6 +12,8 @@ public class BootLoader_WarehousePrologue : MonoBehaviour
     [Header("References")]
     [SerializeField] private AudioSource music_cutscene;
     [SerializeField] private VideoPlayer video_cutscene;
+    [SerializeField] private float cutsceneCutoffTime;
+    [SerializeField] private bool isCutoff;
 
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
@@ -24,8 +26,7 @@ public class BootLoader_WarehousePrologue : MonoBehaviour
     {
         StartCoroutine(LoadLoadingScreen());
 
-        music_cutscene.Play();
-        video_cutscene.Play();
+        StartCoroutine(LoadCutscene());
     }
 
     private void Start()
@@ -53,8 +54,26 @@ public class BootLoader_WarehousePrologue : MonoBehaviour
             Debug.Log("Finished");
             Manager_LoadingScreen.instance.OpenLoadingScreen();
         }
+
     }
 
+    private void FixedUpdate()
+    {
+        // Transfers scene based on cutoff time
+        if (video_cutscene.time > video_cutscene.length - cutsceneCutoffTime && isCutoff == false)
+        {
+            isCutoff = true;
+            LoadWarehouse();
+        }
+    }
+
+    // Just delays it, so the loading screen doesn't overshadow it
+    private IEnumerator LoadCutscene()
+    {
+        yield return new WaitForSeconds(1f);
+        music_cutscene.Play();
+        video_cutscene.Play();
+    }
     private void LoadWarehouse()
     {
         Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_theWarehouse, scene_deloadedScene);
