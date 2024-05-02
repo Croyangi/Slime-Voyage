@@ -24,6 +24,8 @@ public class BootLoader_WarehousePrologue : MonoBehaviour
 
     private void Awake()
     {
+        music_cutscene.ignoreListenerPause = true;
+
         StartCoroutine(LoadLoadingScreen());
 
         StartCoroutine(LoadCutscene());

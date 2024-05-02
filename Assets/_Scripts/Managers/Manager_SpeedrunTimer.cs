@@ -13,6 +13,8 @@ public class Manager_SpeedrunTimer : MonoBehaviour, IDataPersistence
     [SerializeField] private float currentTime;
     [SerializeField] private float recordTime;
 
+    [SerializeField] private string id;
+
     [SerializeField] private Handler_Checkpoint _checkpoint;
 
     [Header("UI")]
@@ -99,15 +101,16 @@ public class Manager_SpeedrunTimer : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        if (data.isSpeedrunModeOn && (_checkpoint._checkpointQueue.checkpointId == "WarehouseIntro"))
+        if (data.isSpeedrunModeOn)
         {
             OpenSpeedrunTimer();
         }
 
-        if (data.recordSpeedrunTime != 0f)
-        {
-            recordTime = data.recordSpeedrunTime;
 
+        data.recordSpeedrunTimes.TryGetValue(id, out recordTime);
+
+        if (recordTime != 0f)
+        {
             TimeSpan speedrunRecordTime = TimeSpan.FromSeconds(recordTime);
             tmp_recordTime.text = speedrunRecordTime.Minutes.ToString("00") + ":" +
                                   speedrunRecordTime.Seconds.ToString("00") + "." +
@@ -118,10 +121,14 @@ public class Manager_SpeedrunTimer : MonoBehaviour, IDataPersistence
 
     public void SaveData(ref GameData data)
     {
-        // Lots of additional checks just to discourage speedrun
+        // Lots of additional checks just to discourage speedrun cheating
         if (currentTime > recordTime && isSpeedrunFinished)
         {
-            data.recordSpeedrunTime = currentTime;
+            if (data.recordSpeedrunTimes.ContainsKey(id))
+            {
+                data.recordSpeedrunTimes.Remove(id);
+            }
+            data.recordSpeedrunTimes.Add(id, currentTime);
         }
     }
 }

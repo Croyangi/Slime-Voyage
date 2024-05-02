@@ -6,13 +6,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class BootLoader_Warehouse : MonoBehaviour
+public class BootLoader_Warehouse : MonoBehaviour, IDataPersistence
 {
     [Header("References")]
     [SerializeField] private Handler_WarehouseIntro _warehouseIntro;
     [SerializeField] private Handler_Checkpoint _checkpoint;
-    [SerializeField] private Handler_WarehouseSwapeeMode _swapeeMode;
     [SerializeField] private ScriptObj_ModifierMode _modifierMode;
+
+    [SerializeField] private string areaId;
+    [SerializeField] private bool isCompleted;
 
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
@@ -67,5 +69,25 @@ public class BootLoader_Warehouse : MonoBehaviour
         }
 
         Debug.Log("Checkpoint ID: " + _checkpoint._checkpointQueue.checkpointId);
+    }
+
+    public void OnWarehouseComplete()
+    {
+        isCompleted = true;
+        DataPersistenceManager.instance.SaveGame();
+    }
+
+    public void LoadData(GameData data)
+    {
+        data.areasCompleted.TryGetValue(areaId, out isCompleted);
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        if (data.areasCompleted.ContainsKey(areaId))
+        {
+            data.areasCompleted.Remove(areaId);
+        }
+        data.areasCompleted.Add(areaId, isCompleted);
     }
 }

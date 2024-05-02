@@ -11,6 +11,8 @@ public class NPC_SwapeeEnd : MonoBehaviour
     [SerializeField] private GameObject dialoguePrompt;
     [SerializeField] private bool isCompleted;
 
+    [SerializeField] private BootLoader_WarehouseSwapeeMode _warehouseSwapeeMode;
+
     [Header("Tags")]
     [SerializeField] private TagsScriptObj tag_player;
 
@@ -26,6 +28,9 @@ public class NPC_SwapeeEnd : MonoBehaviour
             isCompleted = true;
             Manager_PlayerState.instance.SetInputStall(false);
             dialoguePrompt.SetActive(false);
+
+            _warehouseSwapeeMode.OnWarehouseSwapeeModeComplete();
+
             LoadWarehouseDioramaMenu();
         }
     }

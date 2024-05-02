@@ -18,6 +18,8 @@ public class Manager_LoadingScreen : MonoBehaviour
 
     [SerializeField] private GameObject mainCamera;
 
+    [SerializeField] private bool isTransitioning;
+
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
 
@@ -85,17 +87,19 @@ public class Manager_LoadingScreen : MonoBehaviour
 
     public IEnumerator OnLoadSceneTransfer(string loadedScene, string unloadedSceneName)
     {
-        Debug.Log("Transfering Scene");
+        if (isTransitioning == false)
+        {
+            isTransitioning = true;
+            Debug.Log("Transfering Scene");
 
-        CloseLoadingScreen();
-        yield return new WaitForSecondsRealtime(3f);
-        SceneManager.UnloadSceneAsync(unloadedSceneName);
-        mainCamera.SetActive(true);
+            CloseLoadingScreen();
+            yield return new WaitForSecondsRealtime(3f);
+            SceneManager.UnloadSceneAsync(unloadedSceneName);
 
-       // _sceneQueue.UnqueueAllScenes();
-        //_sceneQueue.QueueScene(loadedScene, true);
-
-        StartCoroutine(ProcessLoadSceneTransfer(loadedScene));
+            mainCamera.SetActive(true);
+            StartCoroutine(ProcessLoadSceneTransfer(loadedScene));
+            isTransitioning = false;
+        }
     }
 
     private IEnumerator ProcessLoadSceneTransfer(string loadedScene)

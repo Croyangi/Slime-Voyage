@@ -31,6 +31,10 @@ public class Manager_DialogueHandler : MonoBehaviour
         public TextMeshProUGUI nameText;
         public GameObject name;
         public Vector3 nameScale;
+
+        public GameObject dialogueContinue;
+        public Vector3 dialogueContinueScale;
+
     }
 
     [SerializeField] private List<DialogueSet> dialogueSets;
@@ -43,6 +47,7 @@ public class Manager_DialogueHandler : MonoBehaviour
     [SerializeField] private TextMeshProUGUI current_dialogueBoxText;
     [SerializeField] private GameObject current_profilePictureImage;
     [SerializeField] private TextMeshProUGUI current_profileNameTextMesh;
+    [SerializeField] private GameObject current_dialogueContinue;
 
     [Header("Dialogue References")]
     [SerializeField] public List<Dialogue> _dialogues;
@@ -105,6 +110,7 @@ public class Manager_DialogueHandler : MonoBehaviour
             if (d.dialogue != null) { d.dialogueScale = d.dialogue.transform.localScale; }
             if (d.name != null) { d.nameScale = d.name.transform.localScale; }
             if (d.dialogueImage != null) { d.dialogueImageScale = d.dialogueImage.transform.localScale; }
+            if (d.dialogueContinue != null) { d.dialogueContinueScale = d.dialogueContinue.transform.localScale; }
         }
     }
 
@@ -236,7 +242,32 @@ public class Manager_DialogueHandler : MonoBehaviour
         isDialogueWaiting = false;
         currentDialogueIndex = 0;
 
+        // Hide continue dialogue button
+        DisableDialogueContinue();
+
         InteractPerformed();
+    }
+
+    private void EnableDialogueContinue()
+    {
+        // Hide continue dialogue button
+        if (current_dialogueContinue != null)
+        {
+            GameObject dialogueContinue = current_dialogueContinue.gameObject;
+            dialogueContinue.transform.localScale = Vector3.zero;
+            LeanTween.scale(dialogueContinue, dialogueSets[dialogueSetIndex].dialogueContinueScale + (Vector3.one * 0.4f), 0.2f);
+            LeanTween.scale(dialogueContinue, dialogueSets[dialogueSetIndex].dialogueContinueScale, 0.2f).setEaseOutBack().setDelay(0.2f);
+        }
+    }
+
+    private void DisableDialogueContinue()
+    {
+        // Hide continue dialogue button
+        if (current_dialogueContinue != null)
+        {
+            GameObject dialogueContinue = current_dialogueContinue.gameObject;
+            dialogueContinue.transform.localScale = Vector3.zero;
+        }
     }
 
     private void DialogueScaleUp()
@@ -315,6 +346,7 @@ public class Manager_DialogueHandler : MonoBehaviour
             current_dialogueBoxText = dialogueSets[0].dialogueText;
             current_profilePictureImage = dialogueSets[0].image;
             current_profileNameTextMesh = dialogueSets[0].nameText;
+            current_dialogueContinue = dialogueSets[0].dialogueContinue;
         }
 
         // Small top
@@ -325,6 +357,7 @@ public class Manager_DialogueHandler : MonoBehaviour
             current_dialogueBoxText = dialogueSets[1].dialogueText;
             current_profilePictureImage = dialogueSets[1].image;
             current_profileNameTextMesh = null;
+            current_dialogueContinue = null;
         }
 
         // Normal bottom
@@ -335,16 +368,21 @@ public class Manager_DialogueHandler : MonoBehaviour
             current_dialogueBoxText = dialogueSets[2].dialogueText;
             current_profilePictureImage = dialogueSets[2].image;
             current_profileNameTextMesh = dialogueSets[2].nameText;
+            current_dialogueContinue = dialogueSets[2].dialogueContinue;
         }
     }
 
     private void ProcessThroughDialogue(bool bypassStoppingFlag = false)
     {
+        DisableDialogueContinue();
+
         // Waits for user input if stopping flag is true
         if (currentDialogueIndex > 0)
         {
             if (_dialogues[currentDialogueIndex - 1].stoppingFlag == true && bypassStoppingFlag == false)
             {
+                EnableDialogueContinue();
+
                 isDialogueWaiting = true;
                 isDialogueSkipping = false;
                 return;
@@ -468,6 +506,9 @@ public class Manager_DialogueHandler : MonoBehaviour
         isDialogueTyping = false;
         isDialogueSkipping = false;
         currentDialogueIndex = 0;
+
+        // Hide continue dialogue button
+        DisableDialogueContinue();
 
         // To make sure no infinite dialogue loops occur
         StartCoroutine(DelayedDialogueEnd());

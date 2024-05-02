@@ -6,10 +6,12 @@ public class GameData
 {
     public int deathCount;
     public SerializableDictionary<string, bool> checkpointsReached;
-    public SerializableDictionary<string, bool> warehouseAreasDiscovered;
+    public SerializableDictionary<string, bool> newLocationsDiscovered;
+    public SerializableDictionary<string, bool> areasCompleted;
+
     public SerializableDictionary<string, bool> warehouseDoorsUnlocked;
 
-    public float recordSpeedrunTime;
+    public SerializableDictionary<string, float> recordSpeedrunTimes;
     public bool isSpeedrunModeOn;
 
     public float masterVolume;
@@ -20,8 +22,15 @@ public class GameData
     public GameData() 
     { 
         deathCount = 0;
+
         checkpointsReached = new SerializableDictionary<string, bool>();
-        recordSpeedrunTime = 0f;
+        newLocationsDiscovered = new SerializableDictionary<string, bool>();
+        areasCompleted = new SerializableDictionary<string, bool>();
+
+        warehouseDoorsUnlocked = new SerializableDictionary<string, bool>();
+
+        recordSpeedrunTimes = new SerializableDictionary<string, float>();
+
         isSpeedrunModeOn = false;
 
         masterVolume = 1;

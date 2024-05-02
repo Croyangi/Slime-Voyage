@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class BootLoader_WarehouseSwapeeMode : MonoBehaviour
+public class BootLoader_WarehouseSwapeeMode : MonoBehaviour, IDataPersistence
 {
     [Header("References")]
+    [SerializeField] private string areaId;
+    [SerializeField] private bool isCompleted;
 
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
@@ -46,5 +48,25 @@ public class BootLoader_WarehouseSwapeeMode : MonoBehaviour
             Debug.Log("Finished");
             Manager_LoadingScreen.instance.OpenLoadingScreen();
         }
+    }
+
+    public void OnWarehouseSwapeeModeComplete()
+    {
+        isCompleted = true;
+        DataPersistenceManager.instance.SaveGame();
+    }
+
+    public void LoadData(GameData data)
+    {
+        data.areasCompleted.TryGetValue(areaId, out isCompleted);
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        if (data.areasCompleted.ContainsKey(areaId))
+        {
+            data.areasCompleted.Remove(areaId);
+        }
+        data.areasCompleted.Add(areaId, isCompleted);
     }
 }

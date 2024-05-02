@@ -40,16 +40,16 @@ public class NewLocationDiscover : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        data.warehouseAreasDiscovered.TryGetValue(id, out isDiscovered);
+        data.newLocationsDiscovered.TryGetValue(id, out isDiscovered);
     }
 
     public void SaveData(ref GameData data)
     {
-        if (data.warehouseAreasDiscovered.ContainsKey(id))
+        if (data.newLocationsDiscovered.ContainsKey(id))
         {
-            data.warehouseAreasDiscovered.Remove(id);
+            data.newLocationsDiscovered.Remove(id);
         }
-        data.warehouseAreasDiscovered.Add(id, isDiscovered);
+        data.newLocationsDiscovered.Add(id, isDiscovered);
     }
 
     private void OnDrawGizmos()

@@ -13,6 +13,8 @@ public class Handler_WarehouseElevator : MonoBehaviour
     [SerializeField] private GameObject prompt;
     [SerializeField] private Image closingTransition;
 
+    [SerializeField] private BootLoader_Warehouse _warehouse;
+
     [Header("Elevator Pieces")]
     [SerializeField] private GameObject chainedGear;
     [SerializeField] private GameObject elevator;
@@ -99,6 +101,7 @@ public class Handler_WarehouseElevator : MonoBehaviour
 
     private void LoadDemoEnd()
     {
+        _warehouse.OnWarehouseComplete();
         Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_demoEnd, scene_deloadedScene);
     }
 

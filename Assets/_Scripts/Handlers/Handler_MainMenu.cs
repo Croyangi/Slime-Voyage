@@ -19,6 +19,7 @@ public class Handler_MainMenu : MonoBehaviour
     [SerializeField] private Canvas setup_canvas;
     [SerializeField] private GameObject credits;
     [SerializeField] private AudioClip sfx_onPlayClicked;
+    [SerializeField] private bool isTransitioning;
 
 
     private void Awake()
@@ -80,8 +81,13 @@ public class Handler_MainMenu : MonoBehaviour
     //// Buttons
     public void OnPlayButtonPressed()
     {
-        LoadWarehouseDioramaMenu();
-        Manager_SFXPlayer.instance.PlaySFXClip(sfx_onPlayClicked, transform, 1f, false, Manager_AudioMixer.instance.mixer_sfx);
+        if (isTransitioning == false)
+        {
+            isTransitioning = true;
+
+            LoadWarehouseDioramaMenu();
+            Manager_SFXPlayer.instance.PlaySFXClip(sfx_onPlayClicked, transform, 1f, false, Manager_AudioMixer.instance.mixer_sfx);
+        }
     }
 
     public void OnCreditsButtonPressed()
