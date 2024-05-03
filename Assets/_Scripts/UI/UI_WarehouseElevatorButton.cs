@@ -42,7 +42,7 @@ public class UI_WarehouseGeneralButton : MonoBehaviour, IPointerDownHandler, IPo
     {
         if (sfx_generalUIHover != null && Manager_SFXPlayer.instance != null)
         {
-            Manager_SFXPlayer.instance.PlaySFXClip(sfx_generalUIHover, transform, 0.3f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.3f, 0f, 0f, 0f, true);
+            Manager_SFXPlayer.instance.PlaySFXClip(sfx_generalUIHover, transform, 0.3f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.3f, isUnaffectedByTime: true);
         }
         buttonOutline.color = new Color(1f, 0.78f, 0f, 1f);
     }

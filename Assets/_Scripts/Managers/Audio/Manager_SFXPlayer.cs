@@ -26,7 +26,7 @@ public class Manager_SFXPlayer : MonoBehaviour
     }
 
 
-    public void PlaySFXClip(AudioClip audioClip, Transform spawnTransform, float volume = 1f, bool isLooping = false, AudioMixerGroup mixerGroup = null, bool isPitchShifted = false, float pitchShift = 0f, float spatialBlend = 0, float minDistance = 1, float maxDistance = 500, bool isUnaffectedByTime = false)
+    public void PlaySFXClip(AudioClip audioClip, Transform spawnTransform, float volume = 1f, bool isLooping = false, AudioMixerGroup mixerGroup = null, bool isPitchShifted = false, float pitchShift = 0f, float spatialBlend = 0, float minDistance = 1, float maxDistance = 500, float spread = 0, bool isUnaffectedByTime = false)
     {
         AudioSource audioSource = Instantiate(sfxObject, spawnTransform.position, Quaternion.identity);
 
@@ -38,6 +38,7 @@ public class Manager_SFXPlayer : MonoBehaviour
         audioSource.maxDistance = maxDistance;
 
         audioSource.spatialBlend = spatialBlend;
+        audioSource.spread = spread;
 
         audioSource.ignoreListenerPause = isUnaffectedByTime;
 
@@ -64,7 +65,7 @@ public class Manager_SFXPlayer : MonoBehaviour
         }
     }
 
-    public void PlayRandomSFXClip(AudioClip[] audioClips, Transform spawnTransform, float volume = 1f, bool isLooping = false, AudioMixerGroup mixerGroup = null, bool isPitchShifted = false, float pitchShift = 0f, float spatialBlend = 0, float minDistance = 1, float maxDistance = 500)
+    public void PlayRandomSFXClip(AudioClip[] audioClips, Transform spawnTransform, float volume = 1f, bool isLooping = false, AudioMixerGroup mixerGroup = null, bool isPitchShifted = false, float pitchShift = 0f, float spatialBlend = 0, float minDistance = 1, float maxDistance = 500, float spread = 0, bool isUnaffectedByTime = false)
     {
         AudioSource audioSource = Instantiate(sfxObject, spawnTransform.position, Quaternion.identity);
 
@@ -76,6 +77,9 @@ public class Manager_SFXPlayer : MonoBehaviour
         audioSource.maxDistance = maxDistance;
 
         audioSource.spatialBlend = spatialBlend;
+        audioSource.spread = spread;
+
+        audioSource.ignoreListenerPause = isUnaffectedByTime;
 
         // Pitch Shift
         if (isPitchShifted)

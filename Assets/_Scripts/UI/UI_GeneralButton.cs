@@ -52,7 +52,7 @@ public class UI_GeneralButton : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     {
         if (generalUIHover != null && Manager_SFXPlayer.instance != null) 
         {
-            Manager_SFXPlayer.instance.PlaySFXClip(generalUIHover, transform, 0.3f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.3f, 0f, 0f, 0f, true);
+            Manager_SFXPlayer.instance.PlaySFXClip(generalUIHover, transform, 0.3f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.3f, isUnaffectedByTime: true);
         }
         LeanTween.scale(button, hoverScale, scaleSpeed).setIgnoreTimeScale(true);
         ChangeButtonColor(hoveredColor);

@@ -30,6 +30,7 @@ public class NPC_SwapeeEnd : MonoBehaviour
             dialoguePrompt.SetActive(false);
 
             _warehouseSwapeeMode.OnWarehouseSwapeeModeComplete();
+            Manager_SpeedrunTimer.instance.EndSpeedrunTimer();
 
             LoadWarehouseDioramaMenu();
         }

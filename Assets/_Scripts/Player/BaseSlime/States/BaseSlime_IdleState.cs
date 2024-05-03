@@ -221,7 +221,7 @@ public class BaseSlime_IdleState : State
             _animator.SetEyesActive(false);
             StartCoroutine(ReturnToIdleAnimation(0.5f));
 
-            Manager_SFXPlayer.instance.PlaySFXClip(sfx_landHard, transform, 0.5f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.1f);
+            Manager_SFXPlayer.instance.PlaySFXClip(sfx_landHard, transform, 0.5f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.1f, 1f, 1f, 20f, spread: 180);
         } else
         {
             _animator.ChangeAnimationState(_animator.BASESLIME_IDLE, _animator.baseSlime_animator);

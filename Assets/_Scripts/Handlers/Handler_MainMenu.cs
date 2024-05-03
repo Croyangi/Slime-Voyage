@@ -18,6 +18,7 @@ public class Handler_MainMenu : MonoBehaviour
     [Header("References")]
     [SerializeField] private Canvas setup_canvas;
     [SerializeField] private GameObject credits;
+    [SerializeField] private GameObject controls;
     [SerializeField] private AudioClip sfx_onPlayClicked;
     [SerializeField] private bool isTransitioning;
 
@@ -25,7 +26,9 @@ public class Handler_MainMenu : MonoBehaviour
     private void Awake()
     {
         setup_canvas.enabled = false;
+
         credits.SetActive(false);
+        controls.SetActive(false);
 
         StartCoroutine(LoadLoadingScreen());
     }
@@ -90,9 +93,17 @@ public class Handler_MainMenu : MonoBehaviour
         }
     }
 
+    public void OnControlsButtonPressed()
+    {
+        controls.SetActive(!controls.activeSelf);
+        credits.SetActive(false);
+    }
+
+
     public void OnCreditsButtonPressed()
     {
         credits.SetActive(!credits.activeSelf);
+        controls.SetActive(false);
     }
 
     public void OnExitButtonPressed()

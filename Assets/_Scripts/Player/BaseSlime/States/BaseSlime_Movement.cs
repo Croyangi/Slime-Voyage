@@ -97,7 +97,7 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
         rb.velocity = new Vector2(rb.velocity.x, 0f);
         Vector2 jumpVelocity = new Vector2(_movementVars.jumpVelocityXAdd * Mathf.Sign(_helper.facingDirection), _movementVars.jumpStrength);
         rb.AddForce(jumpVelocity, ForceMode2D.Impulse);
-        Manager_SFXPlayer.instance.PlaySFXClip(sfx_jump, transform, 0.1f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.2f);
+        Manager_SFXPlayer.instance.PlaySFXClip(sfx_jump, transform, 0.1f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.2f, 1f, 1f, 20f, spread: 180);
     }
 
     private void OnJumpCancelled(InputAction.CallbackContext value)
@@ -115,7 +115,7 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
 
     private void ApplyWallJumpForce()
     {
-        Manager_SFXPlayer.instance.PlaySFXClip(sfx_jump, transform, 0.1f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.2f);
+        Manager_SFXPlayer.instance.PlaySFXClip(sfx_jump, transform, 0.1f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.2f, 1f, 1f, 20f, spread: 180);
         rb.velocity = new Vector2(_movementVars.wallJumpStrengthHorizontal * -(_helper.stickingDirection.x), _movementVars.wallJumpStrengthVerticle);
         _helper.facingDirection = (int) -(_helper.stickingDirection.x);
     }

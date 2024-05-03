@@ -58,7 +58,7 @@ public class UI_MainMenuTabs : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
         if (sfx_onHover != null && Manager_SFXPlayer.instance != null)
         {
-            Manager_SFXPlayer.instance.PlaySFXClip(sfx_onHover, transform, 0.3f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.3f, 0f, 0f, 0f, true);
+            Manager_SFXPlayer.instance.PlaySFXClip(sfx_onHover, transform, 0.3f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.3f, isUnaffectedByTime: true);
         }
     }
 

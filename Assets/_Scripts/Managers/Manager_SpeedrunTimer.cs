@@ -15,8 +15,6 @@ public class Manager_SpeedrunTimer : MonoBehaviour, IDataPersistence
 
     [SerializeField] private string id;
 
-    [SerializeField] private Handler_Checkpoint _checkpoint;
-
     [Header("UI")]
     [SerializeField] private GameObject ui_currentTime;
     [SerializeField] private GameObject ui_recordTime;

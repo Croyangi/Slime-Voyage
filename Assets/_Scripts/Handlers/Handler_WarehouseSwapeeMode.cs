@@ -30,6 +30,7 @@ public class Handler_WarehouseSwapeeMode : MonoBehaviour
         swapeeModeOnGroup.SetActive(true);
         swapeeIntroGroup.SetActive(false);
         Manager_Jukebox.instance.PlayJukebox();
+        Manager_SpeedrunTimer.instance.StartSpeedrunTimer();
     }
 
 }

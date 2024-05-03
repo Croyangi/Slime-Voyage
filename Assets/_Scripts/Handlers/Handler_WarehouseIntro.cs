@@ -182,6 +182,7 @@ public class Handler_WarehouseIntro : MonoBehaviour
         baseSlime.GetComponent<Rigidbody2D>().AddForce(new Vector2(20f, 25f), ForceMode2D.Impulse);
 
         Manager_Jukebox.instance.PlayJukebox();
+        Manager_SpeedrunTimer.instance.StartSpeedrunTimer();
 
         yield return new WaitForSeconds(1f);
         lamp.GetComponent<WarehouseLamp>().FlickerOn();
