@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: Dialogue_WarehouseSHS0
   m_EditorClassIdentifier: 
   isDialogueOnTop: 1
-  isDialogueMini: 1
+  isDialogueMini: 0
   isPlayerInputStall: 1
   _dialogues:
-  - dialogueText: 'Pssst... '
-    dialogueSpeed: 0.02
+  - dialogueText: 'Pssst...
+
+'
+    dialogueSpeed: 0.03
     dialogueStallTime: 0.3
     cleanText: 1
     stoppingFlag: 0
@@ -26,12 +28,12 @@ MonoBehaviour:
     sfx_speaking: {fileID: 8300000, guid: b45f90f4db75d15479068d5168b17415, type: 3}
     sfxSpeakingSpacing: 0
   - dialogueText: Do you know when the next SHS* meeting is?
-    dialogueSpeed: 0.02
+    dialogueSpeed: 0.03
     dialogueStallTime: 0
     cleanText: 0
     stoppingFlag: 1
     profileName: 
-    profilePicture: {fileID: 21300000, guid: db712b0bc4f9fe94a937cc60506ba35a, type: 3}
+    profilePicture: {fileID: 0}
     sfx_speaking: {fileID: 0}
     sfxSpeakingSpacing: 0
   - dialogueText: '*(Secret Hatted Society).'
@@ -49,7 +51,7 @@ MonoBehaviour:
     cleanText: 1
     stoppingFlag: 0
     profileName: Well Hatted Chunkfish
-    profilePicture: {fileID: 21300000, guid: ffd2b0ef6e8c5014a95b912c0421e4e8, type: 3}
+    profilePicture: {fileID: 21300000, guid: d9856317052befc4b973899f6a605f94, type: 3}
     sfx_speaking: {fileID: 8300000, guid: 88ec61b4f026dd747be95c5c0e0d0cd4, type: 3}
     sfxSpeakingSpacing: 0
   - dialogueText: why are you speaking so loud?
@@ -58,7 +60,7 @@ MonoBehaviour:
     cleanText: 0
     stoppingFlag: 1
     profileName: 
-    profilePicture: {fileID: 21300000, guid: b0d9e644860f22e4b8af3b65b30a4d0f, type: 3}
+    profilePicture: {fileID: 21300000, guid: 7f88537efa5d85047b7b5c346a480146, type: 3}
     sfx_speaking: {fileID: 0}
     sfxSpeakingSpacing: 0
   - dialogueText: Oh for any eavesdroppers.
@@ -76,6 +78,6 @@ MonoBehaviour:
     cleanText: 1
     stoppingFlag: 1
     profileName: 
-    profilePicture: {fileID: 21300000, guid: 891db02c02116554a92c2722ffe868c2, type: 3}
+    profilePicture: {fileID: 21300000, guid: 18c8254a678b0ae4e8a55796c373172e, type: 3}
     sfx_speaking: {fileID: 8300000, guid: 88ec61b4f026dd747be95c5c0e0d0cd4, type: 3}
     sfxSpeakingSpacing: 0

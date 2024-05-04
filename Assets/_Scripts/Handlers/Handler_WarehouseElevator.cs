@@ -78,7 +78,7 @@ public class Handler_WarehouseElevator : MonoBehaviour
         yield return new WaitForSeconds(6f);
 
         // Transition screen
-        LoadDemoEnd();
+        _warehouse.OnWarehouseComplete();
     }
 
     private IEnumerator OnElevatorButtonDownInitiate()
@@ -96,13 +96,7 @@ public class Handler_WarehouseElevator : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
         // Transition screen
-        LoadDemoEnd();
-    }
-
-    private void LoadDemoEnd()
-    {
         _warehouse.OnWarehouseComplete();
-        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_demoEnd, scene_deloadedScene);
     }
 
     public void InitiateElevatorPanel()

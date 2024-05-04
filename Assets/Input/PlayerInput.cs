@@ -202,6 +202,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ResetDeath"",
+                    ""type"": ""Value"",
+                    ""id"": ""386859e6-2dd5-42e4-a140-b228e9a85abe"",
+                    ""expectedControlType"": ""Integer"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -224,6 +233,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""75bbdea7-4104-4cbc-a9c8-45665be7b843"",
+                    ""path"": ""<Keyboard>/R"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ResetDeath"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -426,6 +446,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Interact = asset.FindActionMap("Interact", throwIfNotFound: true);
         m_Interact_Interact1 = m_Interact.FindAction("Interact1", throwIfNotFound: true);
         m_Interact_Pause = m_Interact.FindAction("Pause", throwIfNotFound: true);
+        m_Interact_ResetDeath = m_Interact.FindAction("ResetDeath", throwIfNotFound: true);
         // Emote
         m_Emote = asset.FindActionMap("Emote", throwIfNotFound: true);
         m_Emote_RandomEmote = m_Emote.FindAction("RandomEmote", throwIfNotFound: true);
@@ -550,12 +571,14 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private List<IInteractActions> m_InteractActionsCallbackInterfaces = new List<IInteractActions>();
     private readonly InputAction m_Interact_Interact1;
     private readonly InputAction m_Interact_Pause;
+    private readonly InputAction m_Interact_ResetDeath;
     public struct InteractActions
     {
         private @PlayerInput m_Wrapper;
         public InteractActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Interact1 => m_Wrapper.m_Interact_Interact1;
         public InputAction @Pause => m_Wrapper.m_Interact_Pause;
+        public InputAction @ResetDeath => m_Wrapper.m_Interact_ResetDeath;
         public InputActionMap Get() { return m_Wrapper.m_Interact; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -571,6 +594,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
+            @ResetDeath.started += instance.OnResetDeath;
+            @ResetDeath.performed += instance.OnResetDeath;
+            @ResetDeath.canceled += instance.OnResetDeath;
         }
 
         private void UnregisterCallbacks(IInteractActions instance)
@@ -581,6 +607,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
+            @ResetDeath.started -= instance.OnResetDeath;
+            @ResetDeath.performed -= instance.OnResetDeath;
+            @ResetDeath.canceled -= instance.OnResetDeath;
         }
 
         public void RemoveCallbacks(IInteractActions instance)
@@ -707,6 +736,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     {
         void OnInteract1(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnResetDeath(InputAction.CallbackContext context);
     }
     public interface IEmoteActions
     {

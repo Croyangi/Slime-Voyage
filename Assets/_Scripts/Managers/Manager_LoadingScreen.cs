@@ -45,6 +45,8 @@ public class Manager_LoadingScreen : MonoBehaviour
 
     private void RotateChunkfishDisc()
     {
+        LeanTween.cancel(chunkfishDisc);
+
         LeanTween.rotateZ(chunkfishDisc, 0, 0).setIgnoreTimeScale(true);
         LeanTween.rotateAroundLocal(chunkfishDisc, Vector3.forward, -360, 4f).setLoopClamp().setIgnoreTimeScale(true).setDelay(0.1f);
     }
@@ -52,9 +54,12 @@ public class Manager_LoadingScreen : MonoBehaviour
     [ContextMenu("Close Loading Screen")]
     public void OpenLoadingScreen()
     {
+        LeanTween.cancel(blackScreen);
+        LeanTween.cancel(flavorGraphics);
+
         PrepareOpenLoadingScreen();
-        LeanTween.moveY(flavorGraphics.GetComponent<RectTransform>(), -350, 1f).setEaseInOutBack().setDelay(0.5f).setIgnoreTimeScale(true); ;
-        LeanTween.moveX(blackScreen.GetComponent<RectTransform>(), -2500f, 1.2f).setEaseInQuart().setDelay(1f).setIgnoreTimeScale(true); ;
+        LeanTween.moveY(flavorGraphics.GetComponent<RectTransform>(), -350, 1f).setEaseInOutBack().setDelay(0.5f).setIgnoreTimeScale(true);
+        LeanTween.moveX(blackScreen.GetComponent<RectTransform>(), -2500f, 1.2f).setEaseInQuart().setDelay(1f).setIgnoreTimeScale(true);
     }
 
     [ContextMenu("Prepare Close Loading Screen")]
@@ -67,10 +72,13 @@ public class Manager_LoadingScreen : MonoBehaviour
     [ContextMenu("Open Loading Screen")]
     public void CloseLoadingScreen()
     {
+        LeanTween.cancel(blackScreen);
+        LeanTween.cancel(flavorGraphics);
+
         PrepareCloseLoadingScreen();
         GenerateRandomFlavorText();
         LeanTween.moveX(blackScreen.GetComponent<RectTransform>(), 0f, 1.2f).setEaseInQuart().setDelay(0.5f).setIgnoreTimeScale(true);
-        LeanTween.moveY(flavorGraphics.GetComponent<RectTransform>(), 0, 1f).setEaseInOutBack().setDelay(1.3f).setIgnoreTimeScale(true); ;
+        LeanTween.moveY(flavorGraphics.GetComponent<RectTransform>(), 0, 1f).setEaseInOutBack().setDelay(1.3f).setIgnoreTimeScale(true);
     }
 
     [ContextMenu("Prepare Open Loading Screen")]

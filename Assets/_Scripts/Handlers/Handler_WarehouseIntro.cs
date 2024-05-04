@@ -1,12 +1,12 @@
 using Cinemachine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 
-public class Handler_WarehouseIntro : MonoBehaviour
+public class Handler_WarehouseIntro : MonoBehaviour, IDataPersistence
 {
     [Header("References")]
     [SerializeField] private GameObject baseSlime;
@@ -29,8 +29,19 @@ public class Handler_WarehouseIntro : MonoBehaviour
     [SerializeField] private AudioSource audioSource_warehouseIntro;
     [SerializeField] private TextMeshProUGUI tm_escapeText;
 
+    [SerializeField] private bool isSpeedrunModeOn;
+
+
+    // Setup, called by bootloader
     public IEnumerator InitiateWarehouseIntro()
     {
+        Manager_PlayerState.instance.SetResetDeath(false);
+
+        if (isSpeedrunModeOn)
+        {
+            Manager_SpeedrunTimer.instance.OpenSpeedrunTimer();
+        }
+
         foreach (GameObject speaker in warehouseLoudspeaker) 
         {
             speaker.SetActive(true);
@@ -157,7 +168,6 @@ public class Handler_WarehouseIntro : MonoBehaviour
         {
             StopAllCoroutines();
             StartCoroutine(EndWarehouseIntro());
-            Manager_SpeedrunTimer.instance.StartSpeedrunTimer();
         }
 
         /*
@@ -172,6 +182,7 @@ public class Handler_WarehouseIntro : MonoBehaviour
         StartCoroutine(WaitForSlimeEscape());
     }
 
+    // Setup for the end
     private IEnumerator EndWarehouseIntro()
     {
         cinemachine.SetActive(false);
@@ -184,7 +195,18 @@ public class Handler_WarehouseIntro : MonoBehaviour
         Manager_Jukebox.instance.PlayJukebox();
         Manager_SpeedrunTimer.instance.StartSpeedrunTimer();
 
+        Manager_PlayerState.instance.SetResetDeath(true);
+
         yield return new WaitForSeconds(1f);
         lamp.GetComponent<WarehouseLamp>().FlickerOn();
+    }
+
+    public void LoadData(GameData data)
+    {
+        isSpeedrunModeOn = data.isSpeedrunModeOn;
+    }
+
+    public void SaveData(ref GameData data)
+    {
     }
 }

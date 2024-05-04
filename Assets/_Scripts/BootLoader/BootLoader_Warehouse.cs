@@ -13,7 +13,7 @@ public class BootLoader_Warehouse : MonoBehaviour, IDataPersistence
     [SerializeField] private Handler_Checkpoint _checkpoint;
     [SerializeField] private ScriptObj_ModifierMode _modifierMode;
 
-    [SerializeField] private string areaId;
+    [SerializeField] private ScriptObj_AreaId _areaId;
     [SerializeField] private bool isCompleted;
 
     [Header("Scene")]
@@ -22,6 +22,8 @@ public class BootLoader_Warehouse : MonoBehaviour, IDataPersistence
     [SerializeField] private string scene_bootloaderGlobal;
     [SerializeField] private string scene_loadingScreen;
     [SerializeField] private string scene_activeScene;
+    [SerializeField] private string scene_loadedScene;
+    [SerializeField] private string scene_deloadedScene;
 
     private void Awake()
     {
@@ -75,19 +77,20 @@ public class BootLoader_Warehouse : MonoBehaviour, IDataPersistence
     {
         isCompleted = true;
         DataPersistenceManager.instance.SaveGame();
+        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_loadedScene, scene_deloadedScene);
     }
 
     public void LoadData(GameData data)
     {
-        data.areasCompleted.TryGetValue(areaId, out isCompleted);
+        data.areasCompleted.TryGetValue(_areaId.name, out isCompleted);
     }
 
     public void SaveData(ref GameData data)
     {
-        if (data.areasCompleted.ContainsKey(areaId))
+        if (data.areasCompleted.ContainsKey(_areaId.name))
         {
-            data.areasCompleted.Remove(areaId);
+            data.areasCompleted.Remove(_areaId.name);
         }
-        data.areasCompleted.Add(areaId, isCompleted);
+        data.areasCompleted.Add(_areaId.name, isCompleted);
     }
 }

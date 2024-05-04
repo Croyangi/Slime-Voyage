@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Handler_CheckpointLoader : MonoBehaviour, IDataPersistence
 {
+    [Header("References")]
     [SerializeField] private string[] ids;
     [SerializeField] private GameObject[] checkpoints;
     [SerializeField] private GameObject[] checkpointIcons;
@@ -12,11 +14,13 @@ public class Handler_CheckpointLoader : MonoBehaviour, IDataPersistence
     [SerializeField] private BootLoader_WarehouseDioramaMenu _bootLoader;
     [SerializeField] private Sprite activeCheckpoint;
 
+    [SerializeField] private ScriptObj_AreaId _areaId;
+
     [SerializeField] private AudioClip sfx_onPressMode;
 
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
-    [SerializeField] private string scene_theWarehouse;
+    [SerializeField] private string scene_loadedScene;
     [SerializeField] private string scene_deloadedScene;
 
     private void Start()
@@ -29,9 +33,13 @@ public class Handler_CheckpointLoader : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
+        // Use reflection for flexibility
+        string fieldName = _areaId.name + "_checkpointsReached";
+        SerializableDictionary<string, bool> checkpointsReached = (SerializableDictionary<string, bool>)data.GetType().GetField(fieldName).GetValue(data);
+
         for (int i = 0; i < checkpoints.Length; i++)
         {
-            if (data.checkpointsReached.TryGetValue(ids[i], out bool isReached) && isReached == true)
+            if (checkpointsReached.TryGetValue(ids[i], out bool isReached) && isReached == true)
             {
                 checkpointIcons[i].GetComponent<Image>().sprite = activeCheckpoint;
                 checkpoints[i].GetComponent<Button>().interactable = true;
@@ -59,6 +67,6 @@ public class Handler_CheckpointLoader : MonoBehaviour, IDataPersistence
 
     private void LoadTheWarehouse()
     {
-        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_theWarehouse, scene_deloadedScene);
+        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_loadedScene, scene_deloadedScene);
     }
 }

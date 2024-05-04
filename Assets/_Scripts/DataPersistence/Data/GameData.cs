@@ -5,12 +5,17 @@ using UnityEngine;
 public class GameData
 {
     public int deathCount;
-    public SerializableDictionary<string, bool> checkpointsReached;
-    public SerializableDictionary<string, bool> newLocationsDiscovered;
-    public SerializableDictionary<string, bool> areasCompleted;
 
+    //public SerializableDictionary<string, bool> checkpointsReached;
+    //public SerializableDictionary<string, bool> newLocationsDiscovered;
+
+    public SerializableDictionary<string, bool> warehouse_checkpointsReached;
+    public SerializableDictionary<string, bool> warehouse_newLocationsDiscovered;
     public SerializableDictionary<string, bool> warehouseDoorsUnlocked;
 
+    public SerializableDictionary<string, bool> areasCompleted;
+
+    public float currentSpeedrunTime;
     public SerializableDictionary<string, float> recordSpeedrunTimes;
     public bool isSpeedrunModeOn;
 
@@ -23,12 +28,13 @@ public class GameData
     { 
         deathCount = 0;
 
-        checkpointsReached = new SerializableDictionary<string, bool>();
-        newLocationsDiscovered = new SerializableDictionary<string, bool>();
-        areasCompleted = new SerializableDictionary<string, bool>();
-
+        warehouse_checkpointsReached = new SerializableDictionary<string, bool>();
+        warehouse_newLocationsDiscovered = new SerializableDictionary<string, bool>();
         warehouseDoorsUnlocked = new SerializableDictionary<string, bool>();
 
+        areasCompleted = new SerializableDictionary<string, bool>();
+
+        currentSpeedrunTime = 0f;
         recordSpeedrunTimes = new SerializableDictionary<string, float>();
 
         isSpeedrunModeOn = false;

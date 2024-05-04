@@ -180,6 +180,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "ResetDeath",
+                    "type": "Value",
+                    "id": "386859e6-2dd5-42e4-a140-b228e9a85abe",
+                    "expectedControlType": "Integer",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -202,6 +211,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "75bbdea7-4104-4cbc-a9c8-45665be7b843",
+                    "path": "<Keyboard>/R",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ResetDeath",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

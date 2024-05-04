@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class Manager_PlayerState : MonoBehaviour, IDataPersistence
@@ -14,6 +15,8 @@ public class Manager_PlayerState : MonoBehaviour, IDataPersistence
     [Header("Variables")]
     public bool isDead;
     public bool isInvincible;
+    public bool isInputStall;
+    public bool isResetDeathOn;
 
     [Header("Death Count Test")]
     [SerializeField] private TMP_Text test;
@@ -24,6 +27,9 @@ public class Manager_PlayerState : MonoBehaviour, IDataPersistence
 
     [Header("Building Blocks")]
     [SerializeField] private Warehouse_DeathTransition_Animator deathTransition_animator;
+
+    [Header("Technical References")]
+    [SerializeField] private PlayerInput playerInput = null;
 
     public static Manager_PlayerState instance { get; private set; }
 
@@ -36,17 +42,30 @@ public class Manager_PlayerState : MonoBehaviour, IDataPersistence
         instance = this;
 
         FindPlayer();
+
+        playerInput = new PlayerInput(); // Instantiate new Unity's Input System
     }
 
-    public void LoadData(GameData data)
+    private void OnEnable()
     {
-        this.deathCount = data.deathCount;
-        DeathCount();
+        //// Subscribes to Unity's input system
+        playerInput.Interact.ResetDeath.performed += OnResetDeath;
+        playerInput.Enable();
     }
 
-    public void SaveData(ref GameData data) 
-    { 
-        data.deathCount = this.deathCount;
+    private void OnDisable()
+    {
+        //// Unubscribes to Unity's input system
+        playerInput.Interact.ResetDeath.performed -= OnResetDeath;
+        playerInput.Disable();
+    }
+
+    private void OnResetDeath(InputAction.CallbackContext value)
+    {
+        if (isResetDeathOn)
+        {
+            InitiatePlayerDeath();
+        }
     }
 
     private void FindPlayer()
@@ -76,7 +95,13 @@ public class Manager_PlayerState : MonoBehaviour, IDataPersistence
 
     public void SetInputStall(bool state)
     {
+        isInputStall = state;
         player.GetComponent<IMovementProcessor>().SetInputStall(state);
+    }
+
+    public void SetResetDeath(bool state)
+    {
+        isResetDeathOn = state;
     }
 
     public void InitiatePlayerDeath()
@@ -84,6 +109,8 @@ public class Manager_PlayerState : MonoBehaviour, IDataPersistence
         if (!isInvincible)
         {
             isDead = true;
+            isResetDeathOn = false;
+
             Destroy(player);
             deathTransition_animator.PlayDeathTransitionClose();
             StartCoroutine(WaitForDeathTransition());
@@ -96,6 +123,8 @@ public class Manager_PlayerState : MonoBehaviour, IDataPersistence
         if (isDead)
         {
             EndPlayerDeath();
+            yield return new WaitForSeconds(0.5f);
+            isResetDeathOn = true;
         }
     }
 
@@ -120,5 +149,16 @@ public class Manager_PlayerState : MonoBehaviour, IDataPersistence
     private void DeathCount()
     {
         test.text = "Death Count: " + this.deathCount;
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.deathCount = data.deathCount;
+        DeathCount();
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.deathCount = this.deathCount;
     }
 }

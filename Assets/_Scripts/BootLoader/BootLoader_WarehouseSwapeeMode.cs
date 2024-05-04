@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class BootLoader_WarehouseSwapeeMode : MonoBehaviour, IDataPersistence
 {
     [Header("References")]
-    [SerializeField] private string areaId;
+    [SerializeField] private ScriptObj_AreaId _areaId;
     [SerializeField] private bool isCompleted;
 
     [Header("Scene")]
@@ -58,15 +58,15 @@ public class BootLoader_WarehouseSwapeeMode : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        data.areasCompleted.TryGetValue(areaId, out isCompleted);
+        data.areasCompleted.TryGetValue(_areaId.name, out isCompleted);
     }
 
     public void SaveData(ref GameData data)
     {
-        if (data.areasCompleted.ContainsKey(areaId))
+        if (data.areasCompleted.ContainsKey(_areaId.name))
         {
-            data.areasCompleted.Remove(areaId);
+            data.areasCompleted.Remove(_areaId.name);
         }
-        data.areasCompleted.Add(areaId, isCompleted);
+        data.areasCompleted.Add(_areaId.name, isCompleted);
     }
 }

@@ -8,7 +8,7 @@ public class Handler_SwapeeMode : MonoBehaviour, IDataPersistence
     [SerializeField] private BootLoader_WarehouseDioramaMenu _bootLoader;
     [SerializeField] private ScriptObj_ModifierMode _modifierMode;
 
-    [SerializeField] private string swapeeId;
+    [SerializeField] private ScriptObj_AreaId _areaId;
     [SerializeField] private GameObject lockedObjects;
 
     [SerializeField] private Image ticketButton;
@@ -68,7 +68,7 @@ public class Handler_SwapeeMode : MonoBehaviour, IDataPersistence
     public void LoadData(GameData data)
     {
         bool isCompleted;
-        data.areasCompleted.TryGetValue(swapeeId, out isCompleted);
+        data.areasCompleted.TryGetValue(_areaId.name, out isCompleted);
 
         if (isCompleted)
         {

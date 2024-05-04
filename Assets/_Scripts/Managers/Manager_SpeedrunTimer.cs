@@ -13,7 +13,7 @@ public class Manager_SpeedrunTimer : MonoBehaviour, IDataPersistence
     [SerializeField] private float currentTime;
     [SerializeField] private float recordTime;
 
-    [SerializeField] private string id;
+    [SerializeField] private ScriptObj_AreaId _areaId;
 
     [Header("UI")]
     [SerializeField] private GameObject ui_currentTime;
@@ -64,7 +64,7 @@ public class Manager_SpeedrunTimer : MonoBehaviour, IDataPersistence
     }
 
     [ContextMenu("Open Speedrun Timer")]
-    private void OpenSpeedrunTimer()
+    public void OpenSpeedrunTimer()
     {
         LeanTween.moveX(ui_currentTime.GetComponent<RectTransform>(), 0f, 2f).setEaseInOutBack().setDelay(2f);
         LeanTween.moveX(ui_recordTime.GetComponent<RectTransform>(), -27f, 2f).setEaseInOutBack().setDelay(2.3f);
@@ -99,13 +99,7 @@ public class Manager_SpeedrunTimer : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        if (data.isSpeedrunModeOn)
-        {
-            OpenSpeedrunTimer();
-        }
-
-
-        data.recordSpeedrunTimes.TryGetValue(id, out recordTime);
+        data.recordSpeedrunTimes.TryGetValue(_areaId.name, out recordTime);
 
         if (recordTime != 0f)
         {
@@ -119,14 +113,16 @@ public class Manager_SpeedrunTimer : MonoBehaviour, IDataPersistence
 
     public void SaveData(ref GameData data)
     {
+        data.currentSpeedrunTime = currentTime;
+
         // Lots of additional checks just to discourage speedrun cheating
         if (currentTime > recordTime && isSpeedrunFinished)
         {
-            if (data.recordSpeedrunTimes.ContainsKey(id))
+            if (data.recordSpeedrunTimes.ContainsKey(_areaId.name))
             {
-                data.recordSpeedrunTimes.Remove(id);
+                data.recordSpeedrunTimes.Remove(_areaId.name);
             }
-            data.recordSpeedrunTimes.Add(id, currentTime);
+            data.recordSpeedrunTimes.Add(_areaId.name, currentTime);
         }
     }
 }

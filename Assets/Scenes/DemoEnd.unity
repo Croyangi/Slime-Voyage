@@ -1833,7 +1833,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1810614679}
   - {fileID: 121275826}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4088,6 +4087,7 @@ MonoBehaviour:
   isTransitioning: 0
   chunkfishDisk: {fileID: 2007785500}
   chunkfishDiskNeedle: {fileID: 1038460537}
+  tm_songText: {fileID: 0}
   isUnpausable: 0
   parallaxOriginPoint: {x: 0, y: 0}
   parallaxScale: 0.05
@@ -4107,6 +4107,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1007471994}
+  - {fileID: 1810614679}
   m_Father: {fileID: 116002551}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1810614678
@@ -4142,7 +4143,7 @@ RectTransform:
   m_Children:
   - {fileID: 1248561697}
   - {fileID: 2037229481}
-  m_Father: {fileID: 739439429}
+  m_Father: {fileID: 1802997197}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

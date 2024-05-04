@@ -11,6 +11,8 @@ public class NewLocationDiscover : MonoBehaviour, IDataPersistence
     [SerializeField] private bool isDisplayed;
     [SerializeField] private string id;
 
+    [SerializeField] private ScriptObj_AreaId _areaId;
+
     [Header("Area Discovery")]
     [SerializeField] private string areaName;
 
@@ -40,16 +42,22 @@ public class NewLocationDiscover : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        data.newLocationsDiscovered.TryGetValue(id, out isDiscovered);
+        string fieldName = _areaId.name + "_newLocationsDiscovered";
+        SerializableDictionary<string, bool> newLocationsDiscovered = (SerializableDictionary<string, bool>)data.GetType().GetField(fieldName).GetValue(data);
+        Debug.Log(newLocationsDiscovered);
+
+        newLocationsDiscovered.TryGetValue(id, out isDiscovered);
     }
 
     public void SaveData(ref GameData data)
     {
-        if (data.newLocationsDiscovered.ContainsKey(id))
+        string fieldName = _areaId.name + "_newLocationsDiscovered";
+        SerializableDictionary<string, bool> newLocationsDiscovered = (SerializableDictionary<string, bool>)data.GetType().GetField(fieldName).GetValue(data);
+        if (newLocationsDiscovered.ContainsKey(id))
         {
-            data.newLocationsDiscovered.Remove(id);
+            newLocationsDiscovered.Remove(id);
         }
-        data.newLocationsDiscovered.Add(id, isDiscovered);
+        newLocationsDiscovered.Add(id, isDiscovered);
     }
 
     private void OnDrawGizmos()

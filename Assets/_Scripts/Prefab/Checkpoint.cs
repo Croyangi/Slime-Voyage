@@ -15,6 +15,7 @@ public class Checkpoint : MonoBehaviour, IDataPersistence
     [Header("Tags")]
     [SerializeField] private TagsScriptObj tag_player;
 
+    [SerializeField] private ScriptObj_AreaId _areaId;
     [SerializeField] private string id;
 
     [Header("Animation Clips")]
@@ -30,7 +31,9 @@ public class Checkpoint : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        data.checkpointsReached.TryGetValue(id, out isReached);
+        string fieldName = _areaId.name + "_checkpointsReached";
+        SerializableDictionary<string, bool> checkpointsReached = (SerializableDictionary<string, bool>)data.GetType().GetField(fieldName).GetValue(data);
+        checkpointsReached.TryGetValue(id, out isReached);
         if (isReached)
         {
             ReachedCheckpoint();
@@ -39,11 +42,13 @@ public class Checkpoint : MonoBehaviour, IDataPersistence
 
     public void SaveData(ref GameData data)
     {
-        if (data.checkpointsReached.ContainsKey(id))
+        string fieldName = _areaId.name + "_checkpointsReached";
+        SerializableDictionary<string, bool> checkpointsReached = (SerializableDictionary<string, bool>)data.GetType().GetField(fieldName).GetValue(data);
+        if (checkpointsReached.ContainsKey(id))
         {
-            data.checkpointsReached.Remove(id);
+            checkpointsReached.Remove(id);
         }
-        data.checkpointsReached.Add(id, isReached);
+        checkpointsReached.Add(id, isReached);
     }
 
     private void Awake()

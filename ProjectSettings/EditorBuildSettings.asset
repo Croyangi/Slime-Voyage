@@ -59,4 +59,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TheWarehouseSwapeeMode.unity
     guid: ad6f0c0305326134d9c72b5913724a46
+  - enabled: 1
+    path: Assets/Scenes/ResultsScreen.unity
+    guid: 537eba5533a347f45a0a564be39484ee
   m_configObjects: {}
