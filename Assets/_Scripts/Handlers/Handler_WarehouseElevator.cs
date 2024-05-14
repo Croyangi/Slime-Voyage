@@ -10,14 +10,14 @@ public class Handler_WarehouseElevator : MonoBehaviour
     [SerializeField] private GameObject elevatorPanel;
     [SerializeField] private bool isTransitioning = false;
     [SerializeField] private GameObject canvas_elevator;
-    [SerializeField] private GameObject prompt;
-    [SerializeField] private Image closingTransition;
+    [SerializeField] private Handler_WarehouseElevatorCutscene _elevatorCutscene;
+    [SerializeField] private GameObject dialoguePrompt;
 
-    [SerializeField] private BootLoader_Warehouse _warehouse;
-
-    [Header("Elevator Pieces")]
-    [SerializeField] private GameObject chainedGear;
-    [SerializeField] private GameObject elevator;
+    [Header("Broken Button")]
+    [SerializeField] private AudioClip sfx_brokenButton;
+    [SerializeField] private Image brokenButtonOutline;
+    [SerializeField] private Color brokenButtonOutlineOn = new Color(1f, 0.78f, 0f, 1f);
+    [SerializeField] private Color brokenButtonOutlineOff = new Color(0.36f, 0.36f, 0.36f, 1f);
 
     [Header("Rise/Fall Visual Settings")]
     [SerializeField] private float amplitude = 0;
@@ -31,97 +31,87 @@ public class Handler_WarehouseElevator : MonoBehaviour
     [SerializeField] private string scene_demoEnd;
     [SerializeField] private string scene_deloadedScene;
 
-    public IEnumerator ElevatorPlateMove()
+    // Called by dialogue prompt
+    public void InitiateElevatorPanel()
     {
-        MovementMath();
-
-        yield return new WaitForFixedUpdate();
-        if (elevatorPanel.activeSelf == true)
+        if (isTransitioning == false)
         {
+            isTransitioning = true;
+
+            canvas_elevator.SetActive(true);
+            elevatorPanel.transform.localScale = Vector3.zero;
+            LeanTween.scale(elevatorPanel, Vector3.one, 0.1f);
+
+            StopAllCoroutines();
+
+            // Looping VFX
             StartCoroutine(ElevatorPlateMove());
+            StartCoroutine(BrokenButtonOutlineFlicker());
         }
     }
 
-    private void MovementMath()
+
+    // When exited
+    public IEnumerator EndElevatorPanel()
+    {
+        if (isTransitioning == true)
+        {
+            // Shrinking VFX takes 0.1 seconds, only then allowed to re-open, cause it messes up the scales
+            elevatorPanel.transform.localScale = Vector3.one;
+            LeanTween.scale(elevatorPanel, Vector3.zero, 0.1f);
+
+            yield return new WaitForSeconds(0.1f);
+
+            canvas_elevator.SetActive(false);
+            isTransitioning = false;
+        }
+    }
+
+    // Looping hovering VFX
+    public IEnumerator ElevatorPlateMove()
     {
         time += Time.deltaTime;
         float y = Mathf.Sin(time * frequency) * amplitude;
         float rotateZ = Mathf.Sin(time * frequencyRotate) * amplitudeRotate;
         elevatorPanel.transform.position = new Vector2(elevatorPanel.transform.position.x, elevatorPanel.transform.position.y + y);
         elevatorPanel.transform.rotation = Quaternion.Euler(new Vector3(0, 0, rotateZ));
-    }
 
-    public void OnElevatorUpButton()
-    {
-        Manager_SpeedrunTimer.instance.EndSpeedrunTimer();
-        StartCoroutine(OnElevatorButtonUpInitiate());
-    }
-
-    public void OnElevatorDownButton()
-    {
-        Manager_SpeedrunTimer.instance.EndSpeedrunTimer();
-        StartCoroutine(OnElevatorButtonDownInitiate());
-    }
-
-    private IEnumerator OnElevatorButtonUpInitiate()
-    {
-        prompt.SetActive(false);
-        canvas_elevator.SetActive(false);
-        Manager_PlayerState.instance.SetInputStall(false);
-
-        LeanTween.moveLocalY(elevator, elevator.transform.position.y - 0.5f, 1f).setEaseInBounce();
-        yield return new WaitForSeconds(2f);
-        //StartCoroutine(ElevatorUpButtonAnimation());
-        LeanTween.rotateAround(chainedGear, Vector3.forward, 360, 2.5f).setLoopClamp();
-        LeanTween.moveLocalY(elevator, elevator.transform.position.y + 100, 10).setEaseInCubic();
-
-        yield return new WaitForSeconds(6f);
-
-        // Transition screen
-        _warehouse.OnWarehouseComplete();
-    }
-
-    private IEnumerator OnElevatorButtonDownInitiate()
-    {
-        prompt.SetActive(false);
-        canvas_elevator.SetActive(false);
-        Manager_PlayerState.instance.SetInputStall(false);
-
-        LeanTween.moveLocalY(elevator, elevator.transform.position.y - 0.5f, 0.3f).setEaseInBounce();
-        yield return new WaitForSeconds(2f);
-        //StartCoroutine(ElevatorDownButtonAnimation());
-        LeanTween.rotateAround(chainedGear, Vector3.forward, -360, 2.5f).setLoopClamp();
-        LeanTween.moveLocalY(elevator, elevator.transform.position.y - 150, 4);
-
-        yield return new WaitForSeconds(3f);
-
-        // Transition screen
-        _warehouse.OnWarehouseComplete();
-    }
-
-    public void InitiateElevatorPanel()
-    {
-        if (isTransitioning == false)
+        yield return new WaitForFixedUpdate();
+        if (isTransitioning)
         {
-            isTransitioning = true;
-            canvas_elevator.SetActive(true);
-            elevatorPanel.transform.localScale = Vector3.zero;
-            LeanTween.scale(elevatorPanel, Vector3.one, 0.1f);
-
-            StopAllCoroutines();
             StartCoroutine(ElevatorPlateMove());
         }
     }
 
-    public IEnumerator EndElevatorPanel()
+    public IEnumerator BrokenButtonOutlineFlicker()
     {
-        if (isTransitioning == true)
+        brokenButtonOutline.color = brokenButtonOutlineOn;
+        yield return new WaitForSeconds(Random.Range(0f, 0.7f));
+
+        brokenButtonOutline.color = brokenButtonOutlineOff;
+        yield return new WaitForSeconds(Random.Range(0f, 0.7f));
+
+        yield return new WaitForFixedUpdate();
+        if (isTransitioning)
         {
-            elevatorPanel.transform.localScale = Vector3.one;
-            LeanTween.scale(elevatorPanel, Vector3.zero, 0.1f);
-            yield return new WaitForSeconds(0.1f);
-            canvas_elevator.SetActive(false);
-            isTransitioning = false;
+            StartCoroutine(BrokenButtonOutlineFlicker());
         }
+    }
+
+    public void OnElevatorUpButton()
+    {
+        Manager_PlayerState.instance.SetResetDeath(false);
+        Manager_SpeedrunTimer.instance.EndSpeedrunTimer();
+
+        // Cleanup
+        canvas_elevator.SetActive(false);
+        dialoguePrompt.SetActive(false);
+
+        _elevatorCutscene.InitiateElevatorCutscene();
+    }
+
+    public void OnElevatorDownButton()
+    {
+        Manager_SFXPlayer.instance.PlaySFXClip(sfx_brokenButton, transform, 1, false, Manager_AudioMixer.instance.mixer_sfx, isPitchShifted: true, 0.1f);
     }
 }

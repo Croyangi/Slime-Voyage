@@ -39,6 +39,7 @@ public class Handler_ChunkshipCutscene : MonoBehaviour
     public void InitiateCheckpointCutscene(GameObject checkpoint)
     {
         cinemachine.SetActive(true);
+        Manager_PlayerState.instance.SetResetDeath(false);
 
         dropOffPoint = checkpoint.transform;
 
@@ -127,6 +128,7 @@ public class Handler_ChunkshipCutscene : MonoBehaviour
         baseSlime.GetComponent<Rigidbody2D>().AddForce(new Vector2(10, 20f), ForceMode2D.Impulse);
 
         Manager_Jukebox.instance.PlayJukebox();
+        Manager_PlayerState.instance.SetResetDeath(true);
 
         // Cleanup
         cinemachine.SetActive(false);

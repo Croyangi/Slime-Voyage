@@ -58,15 +58,15 @@ public class Manager_LoadingScreen : MonoBehaviour
         LeanTween.cancel(flavorGraphics);
 
         PrepareOpenLoadingScreen();
-        LeanTween.moveY(flavorGraphics.GetComponent<RectTransform>(), -350, 1f).setEaseInOutBack().setDelay(0.5f).setIgnoreTimeScale(true);
-        LeanTween.moveX(blackScreen.GetComponent<RectTransform>(), -2500f, 1.2f).setEaseInQuart().setDelay(1f).setIgnoreTimeScale(true);
+        LeanTween.moveY(flavorGraphics.GetComponent<RectTransform>(), -350, 1f).setEaseInOutBack().setDelay(0.1f).setIgnoreTimeScale(true);
+        LeanTween.moveX(blackScreen.GetComponent<RectTransform>(), -2500f, 1.2f).setEaseInQuart().setDelay(0.9f).setIgnoreTimeScale(true);
     }
 
     [ContextMenu("Prepare Close Loading Screen")]
     public void PrepareOpenLoadingScreen()
     {
         LeanTween.moveY(flavorGraphics.GetComponent<RectTransform>(), 0, 0).setIgnoreTimeScale(true);
-        LeanTween.moveX(blackScreen.GetComponent<RectTransform>(), 0, 0).setIgnoreTimeScale(true); ;
+        LeanTween.moveX(blackScreen.GetComponent<RectTransform>(), 0, 0).setIgnoreTimeScale(true);
     }
 
     [ContextMenu("Open Loading Screen")]
@@ -77,15 +77,15 @@ public class Manager_LoadingScreen : MonoBehaviour
 
         PrepareCloseLoadingScreen();
         GenerateRandomFlavorText();
-        LeanTween.moveX(blackScreen.GetComponent<RectTransform>(), 0f, 1.2f).setEaseInQuart().setDelay(0.5f).setIgnoreTimeScale(true);
-        LeanTween.moveY(flavorGraphics.GetComponent<RectTransform>(), 0, 1f).setEaseInOutBack().setDelay(1.3f).setIgnoreTimeScale(true);
+        LeanTween.moveX(blackScreen.GetComponent<RectTransform>(), 0f, 1.2f).setEaseInQuart().setDelay(0.1f).setIgnoreTimeScale(true);
+        LeanTween.moveY(flavorGraphics.GetComponent<RectTransform>(), 0, 1f).setEaseInOutBack().setDelay(0.9f).setIgnoreTimeScale(true);
     }
 
     [ContextMenu("Prepare Open Loading Screen")]
     public void PrepareCloseLoadingScreen()
     {
-        LeanTween.moveX(blackScreen.GetComponent<RectTransform>(), -2500, 0).setIgnoreTimeScale(true); ;
-        LeanTween.moveY(flavorGraphics.GetComponent<RectTransform>(), -350, 0).setIgnoreTimeScale(true); ;
+        LeanTween.moveX(blackScreen.GetComponent<RectTransform>(), -2500, 0).setIgnoreTimeScale(true);
+        LeanTween.moveY(flavorGraphics.GetComponent<RectTransform>(), -350, 0).setIgnoreTimeScale(true);
     }
 
     public void InitiateLoadSceneTransfer(string loadedScene, string unloadedSceneName)

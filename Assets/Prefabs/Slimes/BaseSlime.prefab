@@ -1225,8 +1225,8 @@ MonoBehaviour:
   layer_isCullable:
     serializedVersion: 2
     m_Bits: 1024
-  activationDistance: 40
-  totalDistance: 50
+  activationDistance: 50
+  totalDistance: 60
 --- !u!1 &5994524716872074455
 GameObject:
   m_ObjectHideFlags: 0

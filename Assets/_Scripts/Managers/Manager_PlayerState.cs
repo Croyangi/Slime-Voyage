@@ -44,6 +44,8 @@ public class Manager_PlayerState : MonoBehaviour, IDataPersistence
         FindPlayer();
 
         playerInput = new PlayerInput(); // Instantiate new Unity's Input System
+
+        isResetDeathOn = true;
     }
 
     private void OnEnable()
@@ -62,8 +64,10 @@ public class Manager_PlayerState : MonoBehaviour, IDataPersistence
 
     private void OnResetDeath(InputAction.CallbackContext value)
     {
-        if (isResetDeathOn)
+        Debug.Log("ON RESET DEATH");
+        if (isResetDeathOn && Time.timeScale > 0f)
         {
+            Debug.Log("INITIATING DEATH");
             InitiatePlayerDeath();
         }
     }

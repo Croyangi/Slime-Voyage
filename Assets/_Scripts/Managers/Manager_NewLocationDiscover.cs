@@ -10,6 +10,9 @@ public class Manager_NewLocationDiscover : MonoBehaviour
     [SerializeField] private Animator animator_flavorText;
     [SerializeField] private Animator animator_extender;
     [SerializeField] private GameObject enabledGroup;
+    [SerializeField] private GameObject newArea;
+
+    [SerializeField] private AudioClip sfx_onNewLocationDiscover;
 
     [SerializeField] private TextMeshProUGUI tm_areaName;
 
@@ -35,16 +38,27 @@ public class Manager_NewLocationDiscover : MonoBehaviour
 
     }
 
+    // Called if discovered new location
     [ContextMenu("New Location Discover VFX")]
     public void NewLocationDiscoverVFX()
     {
+        enabledGroup.SetActive(false);
+        enabledGroup.SetActive(true);
+        newArea.SetActive(true);
+        Manager_SFXPlayer.instance.PlaySFXClip(sfx_onNewLocationDiscover, transform, 1f, mixerGroup: Manager_AudioMixer.instance.mixer_sfx);
+
         PlayAnimationState(NLC_AREANAMEOPENCLOSE, animator_areaName);
         PlayAnimationState(NLC_FLAVORTEXTOPENCLOSE, animator_flavorText);
         PlayAnimationState(NLC_EXTENDEROPENCLOSE, animator_extender);
     }
 
+    // Called if already been at location
     public void EnterLocationVFX()
     {
+        enabledGroup.SetActive(false);
+        enabledGroup.SetActive(true);
+        newArea.SetActive(false);
+
         PlayAnimationState(NLC_AREANAMEOPENCLOSE, animator_areaName);
         PlayAnimationState(NLC_EXTENDEROPENCLOSE, animator_extender);
     }

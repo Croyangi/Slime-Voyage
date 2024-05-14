@@ -4968,7 +4968,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5261721901008872251}
   - component: {fileID: 3777559222809558379}
-  - component: {fileID: 5204456760796456883}
+  - component: {fileID: 6683621589983742261}
   - component: {fileID: 557247039507913381}
   m_Layer: 0
   m_Name: Decoration_Fan
@@ -5047,7 +5047,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &5204456760796456883
+--- !u!61 &6683621589983742261
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

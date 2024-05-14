@@ -30,7 +30,7 @@ public class BootLoader_WarehouseDioramaMenu : MonoBehaviour
     private void Start()
     {
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene_activeScene));
-        Manager_SFXPlayer.instance.PlaySFXClip(audioClip_employeesLament, transform, 0.5f, false, Manager_AudioMixer.instance.mixer_music);
+        Manager_SFXPlayer.instance.PlaySFXClip(audioClip_employeesLament, transform, 0.5f, true, Manager_AudioMixer.instance.mixer_music);
     }
 
     private IEnumerator LoadLoadingScreen()

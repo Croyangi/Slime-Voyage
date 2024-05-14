@@ -16,7 +16,7 @@ MonoBehaviour:
   isDialogueMini: 0
   isPlayerInputStall: 0
   _dialogues:
-  - dialogueText: 'YOU THOUGHT, '
+  - dialogueText: 'NUH UHHH!!! '
     dialogueSpeed: 0.03
     dialogueStallTime: 0.3
     cleanText: 1
@@ -25,7 +25,7 @@ MonoBehaviour:
     profilePicture: {fileID: 21300000, guid: 98453d08ff975904e9a876b8dbde7a09, type: 3}
     sfx_speaking: {fileID: 8300000, guid: b45f90f4db75d15479068d5168b17415, type: 3}
     sfxSpeakingSpacing: 0
-  - dialogueText: you thought this was going to be easy huh? Take another route...
+  - dialogueText: Did you think I was going to make this easy? Take another route...
     dialogueSpeed: 0.03
     dialogueStallTime: 0
     cleanText: 0

@@ -31,8 +31,10 @@ public class Checkpoint : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        string fieldName = _areaId.name + "_checkpointsReached";
-        SerializableDictionary<string, bool> checkpointsReached = (SerializableDictionary<string, bool>)data.GetType().GetField(fieldName).GetValue(data);
+        // Search up area data based on id
+        AreaSet areaSet = data.SearchAreaWithId(_areaId.name);
+        SerializableDictionary<string, bool> checkpointsReached = areaSet.checkpointsReached;
+
         checkpointsReached.TryGetValue(id, out isReached);
         if (isReached)
         {
@@ -42,8 +44,10 @@ public class Checkpoint : MonoBehaviour, IDataPersistence
 
     public void SaveData(ref GameData data)
     {
-        string fieldName = _areaId.name + "_checkpointsReached";
-        SerializableDictionary<string, bool> checkpointsReached = (SerializableDictionary<string, bool>)data.GetType().GetField(fieldName).GetValue(data);
+        // Search up area data based on id
+        AreaSet areaSet = data.SearchAreaWithId(_areaId.name);
+        SerializableDictionary<string, bool> checkpointsReached = areaSet.checkpointsReached;
+
         if (checkpointsReached.ContainsKey(id))
         {
             checkpointsReached.Remove(id);

@@ -9,14 +9,15 @@ public class UI_ReturnToMenuButton : MonoBehaviour, IPointerDownHandler, IPointe
 {
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
-    [SerializeField] private string scene_warehouseDioramaMenu;
+    [SerializeField] private string scene_loadedScene;
+    [SerializeField] private string scene_deloadedScene;
 
     [Header("UI References")]
     [SerializeField] private GameObject button;
     [SerializeField] private Image sr_icon;
 
     [SerializeField] private Color unpressedColor = new Color(1f, 1f, 1f, 1f);
-    [SerializeField] private Color pressedColor = new Color(0.7f, 0.7f, 0.7f, 0f);
+    [SerializeField] private Color pressedColor = new Color(0.7f, 0.7f, 0.7f, 1f);
 
     [SerializeField] private Vector3 unpressedScale = new Vector3(1f, 1f, 1f);
     [SerializeField] private Vector3 pressedScale = new Vector3(0.95f, 0.95f, 0.95f);
@@ -82,6 +83,6 @@ public class UI_ReturnToMenuButton : MonoBehaviour, IPointerDownHandler, IPointe
 
     private void ReturnToMenu()
     {
-        _sceneQueue.LoadScene(scene_warehouseDioramaMenu);
+        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_loadedScene, scene_deloadedScene);
     }
 }

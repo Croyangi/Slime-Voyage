@@ -2222,7 +2222,7 @@ MonoBehaviour:
   video_cutscene: {fileID: 724687946}
   cutsceneCutoffTime: 1.7
   isCutoff: 0
-  isPlayingCutscene: 0
+  isSkippable: 0
   skipCutscene: {fileID: 693469275}
   _sceneQueue: {fileID: 999093811}
   scene_loadingScreen: LoadingScreen
@@ -2843,11 +2843,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneQueue: {fileID: 1378778616}
-  scene_warehouseDioramaMenu: 
+  scene_loadedScene: WarehouseDioramaMenu
+  scene_deloadedScene: WarehousePrologue
   button: {fileID: 1378778614}
   sr_icon: {fileID: 1324725046}
   unpressedColor: {r: 1, g: 1, b: 1, a: 1}
-  pressedColor: {r: 0.7, g: 0.7, b: 0.7, a: 0}
+  pressedColor: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   unpressedScale: {x: 1, y: 1, z: 1}
   pressedScale: {x: 0.95, y: 0.95, z: 0.95}
   hoverScale: {x: 1.05, y: 1.05, z: 1.05}
@@ -3234,7 +3235,7 @@ RectTransform:
   m_Children:
   - {fileID: 7481217}
   - {fileID: 1616653711}
-  m_Father: {fileID: 1947589624}
+  m_Father: {fileID: 2116348472}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3968,7 +3969,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1556647226}
   - {fileID: 2040211635}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4700,6 +4700,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1095461588}
+  - {fileID: 1556647226}
   m_Father: {fileID: 1429341546}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2116348473

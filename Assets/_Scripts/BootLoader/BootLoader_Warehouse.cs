@@ -92,5 +92,10 @@ public class BootLoader_Warehouse : MonoBehaviour, IDataPersistence
             data.areasCompleted.Remove(_areaId.name);
         }
         data.areasCompleted.Add(_areaId.name, isCompleted);
+
+        if (isCompleted)
+        {
+            data.resultsScreenId = _areaId.name;
+        }
     }
 }

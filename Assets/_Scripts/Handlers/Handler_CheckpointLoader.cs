@@ -33,9 +33,9 @@ public class Handler_CheckpointLoader : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        // Use reflection for flexibility
-        string fieldName = _areaId.name + "_checkpointsReached";
-        SerializableDictionary<string, bool> checkpointsReached = (SerializableDictionary<string, bool>)data.GetType().GetField(fieldName).GetValue(data);
+        // Search up area data based on id
+        AreaSet areaSet = data.SearchAreaWithId(_areaId.name);
+        SerializableDictionary<string, bool> checkpointsReached = areaSet.checkpointsReached;
 
         for (int i = 0; i < checkpoints.Length; i++)
         {

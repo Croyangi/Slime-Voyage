@@ -15,7 +15,7 @@ public class Warehouse_ElevatorPrompt : MonoBehaviour
     [SerializeField] private PlayerInput playerInput = null;
 
     [Header("Building Block References")]
-    [SerializeField] private Handler_WarehouseElevator _WarehouseElevator;
+    [SerializeField] private Handler_WarehouseElevator _warehouseElevator;
 
     [Header("Tags")]
     [SerializeField] private TagsScriptObj tag_player;
@@ -42,7 +42,7 @@ public class Warehouse_ElevatorPrompt : MonoBehaviour
 
     private void OnInteractPerformed(InputAction.CallbackContext value)
     {
-        _WarehouseElevator.InitiateElevatorPanel();
+        _warehouseElevator.InitiateElevatorPanel();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -70,7 +70,7 @@ public class Warehouse_ElevatorPrompt : MonoBehaviour
 
     private void ForceQuitOutOfRange()
     {
-        StartCoroutine(_WarehouseElevator.EndElevatorPanel());
+        StartCoroutine(_warehouseElevator.EndElevatorPanel());
     }
 
     private bool CheckExistingObjects()

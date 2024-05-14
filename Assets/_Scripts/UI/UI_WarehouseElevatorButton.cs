@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UI_WarehouseGeneralButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
+public class UI_WarehouseElevatorButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [Header("References")]
     [SerializeField] private GameObject button;
@@ -12,6 +12,9 @@ public class UI_WarehouseGeneralButton : MonoBehaviour, IPointerDownHandler, IPo
 
     [SerializeField] private Color unpressedColor;
     [SerializeField] private Color pressedColor;
+
+    [SerializeField] private Color outline_hoveredColor = new Color(1f, 0.78f, 0f, 1f);
+    [SerializeField] private Color outline_unhoveredColor = new Color(1f, 1f, 1f, 1f);
 
     [SerializeField] private Vector3 unpressedScale;
     [SerializeField] private Vector3 pressedScale;
@@ -23,7 +26,7 @@ public class UI_WarehouseGeneralButton : MonoBehaviour, IPointerDownHandler, IPo
     public void OnPointerDown(PointerEventData eventData)
     {
         // Change color
-        ChangeButtonColor(pressedColor);
+        ChangeColor(button, pressedColor);
 
         // LeanTween scale
         LeanTween.scale(button, pressedScale, scaleSpeed).setIgnoreTimeScale(true);
@@ -32,7 +35,7 @@ public class UI_WarehouseGeneralButton : MonoBehaviour, IPointerDownHandler, IPo
     public void OnPointerUp(PointerEventData eventData)
     {
         // Change color
-        ChangeButtonColor(unpressedColor);
+        ChangeColor(button, unpressedColor);
 
         // LeanTween scale
         LeanTween.scale(button, unpressedScale, scaleSpeed).setIgnoreTimeScale(true);
@@ -44,17 +47,18 @@ public class UI_WarehouseGeneralButton : MonoBehaviour, IPointerDownHandler, IPo
         {
             Manager_SFXPlayer.instance.PlaySFXClip(sfx_generalUIHover, transform, 0.3f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.3f, isUnaffectedByTime: true);
         }
-        buttonOutline.color = new Color(1f, 0.78f, 0f, 1f);
+
+        buttonOutline.color = outline_hoveredColor;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        buttonOutline.color = new Color(1f, 1f, 1f, 1f);
+        buttonOutline.color = outline_unhoveredColor;
     }
 
-    private void ChangeButtonColor(Color color)
+    private void ChangeColor(GameObject gameObj, Color color)
     {
-        Image image = button.GetComponent<Image>();
+        Image image = gameObj.GetComponent<Image>();
         image.color = color;
     }
 }

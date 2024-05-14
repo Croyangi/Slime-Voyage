@@ -21,6 +21,12 @@ public class NPC_SwapeeEnd : MonoBehaviour
     [SerializeField] private string scene_loadedScene;
     [SerializeField] private string scene_deloadedScene;
 
+    private void OnDialogueStart()
+    {
+        Manager_SpeedrunTimer.instance.EndSpeedrunTimer();
+        Manager_PlayerState.instance.SetResetDeath(false);
+    }
+
     private void OnDialogueEnd()
     {
         if (Manager_DialogueHandler.instance._dialoguePackage == _dialoguePackage && isCompleted == false)
@@ -30,15 +36,7 @@ public class NPC_SwapeeEnd : MonoBehaviour
             dialoguePrompt.SetActive(false);
 
             _warehouseSwapeeMode.OnWarehouseSwapeeModeComplete();
-            Manager_SpeedrunTimer.instance.EndSpeedrunTimer();
-
-            LoadWarehouseDioramaMenu();
         }
-    }
-
-    private void LoadWarehouseDioramaMenu()
-    {
-        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_loadedScene, scene_deloadedScene);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -47,6 +45,7 @@ public class NPC_SwapeeEnd : MonoBehaviour
         {
             if (_tags.CheckTags(tag_player.name) == true)
             {
+                Manager_DialogueHandler.instance.onDialogueStart += OnDialogueStart;
                 Manager_DialogueHandler.instance.onDialogueEnd += OnDialogueEnd;
             }
         }
@@ -58,6 +57,7 @@ public class NPC_SwapeeEnd : MonoBehaviour
         {
             if (_tags.CheckTags(tag_player.name) == true && CheckExistingObjects() == false)
             {
+                Manager_DialogueHandler.instance.onDialogueStart -= OnDialogueStart;
                 Manager_DialogueHandler.instance.onDialogueEnd -= OnDialogueEnd;
             }
         }

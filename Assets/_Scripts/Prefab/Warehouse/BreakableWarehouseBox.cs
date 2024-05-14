@@ -70,7 +70,8 @@ public class BreakableWarehouseBox : MonoBehaviour
             GameObject brokenBoxPiece = Instantiate(box, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
 
             Vector2 modifiedVelocity = new Vector2(currentVelocity.x, Mathf.Clamp(currentVelocity.y, 10f, 999f));
-            modifiedVelocity = new Vector2(modifiedVelocity.x + Random.Range(-5, 5), modifiedVelocity.y + Random.Range(-5, 5));
+
+            modifiedVelocity = new Vector2(modifiedVelocity.x + Random.Range(-15, 15), modifiedVelocity.y + Random.Range(-15, 15));
 
             brokenBoxPiece.GetComponent<Rigidbody2D>().velocity = modifiedVelocity;
 

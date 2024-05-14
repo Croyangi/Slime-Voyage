@@ -25,8 +25,8 @@ MonoBehaviour:
     profilePicture: {fileID: 21300000, guid: a3de2ecd6d76bd44d9d56d17d75af805, type: 3}
     sfx_speaking: {fileID: 8300000, guid: b45f90f4db75d15479068d5168b17415, type: 3}
     sfxSpeakingSpacing: 0
-  - dialogueText: Thanks for playing! Y'know, it's not often I get someone who reached
-      the end without perishing.
+  - dialogueText: Thanks for playing! Y'know, it's not often I get someone who reaches
+      the end.
     dialogueSpeed: 0.03
     dialogueStallTime: 0
     cleanText: 1

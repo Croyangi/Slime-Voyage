@@ -15,6 +15,8 @@ public class BootLoader_WarehouseSwapeeMode : MonoBehaviour, IDataPersistence
     [SerializeField] private string scene_bootloaderGlobal;
     [SerializeField] private string scene_loadingScreen;
     [SerializeField] private string scene_activeScene;
+    [SerializeField] private string scene_loadedScene;
+    [SerializeField] private string scene_deloadedScene;
 
     private void Awake()
     {
@@ -54,6 +56,7 @@ public class BootLoader_WarehouseSwapeeMode : MonoBehaviour, IDataPersistence
     {
         isCompleted = true;
         DataPersistenceManager.instance.SaveGame();
+        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_loadedScene, scene_deloadedScene);
     }
 
     public void LoadData(GameData data)
@@ -68,5 +71,10 @@ public class BootLoader_WarehouseSwapeeMode : MonoBehaviour, IDataPersistence
             data.areasCompleted.Remove(_areaId.name);
         }
         data.areasCompleted.Add(_areaId.name, isCompleted);
+
+        if (isCompleted)
+        {
+            data.resultsScreenId = _areaId.name;
+        }
     }
 }

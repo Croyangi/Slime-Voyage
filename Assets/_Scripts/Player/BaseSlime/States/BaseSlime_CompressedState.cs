@@ -68,7 +68,7 @@ public class BaseSlime_CompressedState : State
             if (temp.GetComponent<Tags>() != null)
             {
                 _tags = temp.GetComponent<Tags>();
-                if ((_tags.CheckTags(tag_isSolidGround.name) == true || _tags.CheckTags(tag_isPlatform.name) == true))
+                if ((_tags.CheckTags(tag_isSolidGround.name) == true))
                 {
                     return true;
                 }

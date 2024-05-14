@@ -115,14 +115,24 @@ public class Manager_SpeedrunTimer : MonoBehaviour, IDataPersistence
     {
         data.currentSpeedrunTime = currentTime;
 
-        // Lots of additional checks just to discourage speedrun cheating
-        if (currentTime > recordTime && isSpeedrunFinished)
+        if (currentTime != 0f)
         {
-            if (data.recordSpeedrunTimes.ContainsKey(_areaId.name))
+            // In case no record was set yet
+            float tempRecordTime = recordTime;
+            if (tempRecordTime == 0f)
             {
-                data.recordSpeedrunTimes.Remove(_areaId.name);
+                tempRecordTime = Mathf.Infinity;
             }
-            data.recordSpeedrunTimes.Add(_areaId.name, currentTime);
+
+            // Lots of additional checks just to discourage speedrun cheating
+            if (currentTime < tempRecordTime && isSpeedrunFinished)
+            {
+                if (data.recordSpeedrunTimes.ContainsKey(_areaId.name))
+                {
+                    data.recordSpeedrunTimes.Remove(_areaId.name);
+                }
+                data.recordSpeedrunTimes.Add(_areaId.name, currentTime);
+            }
         }
     }
 }

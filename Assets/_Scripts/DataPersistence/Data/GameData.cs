@@ -1,19 +1,29 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+
+[Serializable]
+public class AreaSet
+{
+    public string areaId = string.Empty;
+    public SerializableDictionary<string, bool> checkpointsReached;
+    public SerializableDictionary<string, bool> locationsDiscovered;
+
+}
 
 public class GameData
 {
     public int deathCount;
 
-    //public SerializableDictionary<string, bool> checkpointsReached;
-    //public SerializableDictionary<string, bool> newLocationsDiscovered;
+    public List<AreaSet> areaSets = new List<AreaSet>();
 
-    public SerializableDictionary<string, bool> warehouse_checkpointsReached;
-    public SerializableDictionary<string, bool> warehouse_newLocationsDiscovered;
     public SerializableDictionary<string, bool> warehouseDoorsUnlocked;
 
     public SerializableDictionary<string, bool> areasCompleted;
+
+    public string resultsScreenId;
 
     public float currentSpeedrunTime;
     public SerializableDictionary<string, float> recordSpeedrunTimes;
@@ -23,16 +33,42 @@ public class GameData
     public float musicVolume;
     public float sfxVolume;
 
+
+    // Search function within areaSets
+    public AreaSet SearchAreaWithId(string id)
+    {
+        foreach (AreaSet set in areaSets)
+        {
+            if (set.areaId == id)
+            {
+                return set;
+            }
+        }
+        Debug.Log("No area set with that id found");
+        return null;
+    }
+
     // Default Values
     public GameData() 
     { 
         deathCount = 0;
 
-        warehouse_checkpointsReached = new SerializableDictionary<string, bool>();
-        warehouse_newLocationsDiscovered = new SerializableDictionary<string, bool>();
+        areaSets = new List<AreaSet>();
+
+        // Instantiate areas
+        AreaSet warehouse = new AreaSet();
+        warehouse.areaId = "warehouse";
+        areaSets.Add(warehouse);
+
+        AreaSet warehouseSwapeeMode = new AreaSet();
+        warehouseSwapeeMode.areaId = "warehouseSwapeeMode";
+        areaSets.Add(warehouseSwapeeMode);
+
         warehouseDoorsUnlocked = new SerializableDictionary<string, bool>();
 
         areasCompleted = new SerializableDictionary<string, bool>();
+
+        resultsScreenId = string.Empty;
 
         currentSpeedrunTime = 0f;
         recordSpeedrunTimes = new SerializableDictionary<string, float>();

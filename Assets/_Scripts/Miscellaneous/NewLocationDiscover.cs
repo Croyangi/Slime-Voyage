@@ -42,22 +42,23 @@ public class NewLocationDiscover : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        string fieldName = _areaId.name + "_newLocationsDiscovered";
-        SerializableDictionary<string, bool> newLocationsDiscovered = (SerializableDictionary<string, bool>)data.GetType().GetField(fieldName).GetValue(data);
-        Debug.Log(newLocationsDiscovered);
+        // Search up area data based on id
+        AreaSet areaSet = data.SearchAreaWithId(_areaId.name);
+        SerializableDictionary<string, bool> locationsDiscovered = areaSet.locationsDiscovered;
 
-        newLocationsDiscovered.TryGetValue(id, out isDiscovered);
+        locationsDiscovered.TryGetValue(id, out isDiscovered);
     }
 
     public void SaveData(ref GameData data)
     {
-        string fieldName = _areaId.name + "_newLocationsDiscovered";
-        SerializableDictionary<string, bool> newLocationsDiscovered = (SerializableDictionary<string, bool>)data.GetType().GetField(fieldName).GetValue(data);
-        if (newLocationsDiscovered.ContainsKey(id))
+        // Search up area data based on id
+        AreaSet areaSet = data.SearchAreaWithId(_areaId.name);
+        SerializableDictionary<string, bool> locationsDiscovered = areaSet.locationsDiscovered;
+        if (locationsDiscovered.ContainsKey(id))
         {
-            newLocationsDiscovered.Remove(id);
+            locationsDiscovered.Remove(id);
         }
-        newLocationsDiscovered.Add(id, isDiscovered);
+        locationsDiscovered.Add(id, isDiscovered);
     }
 
     private void OnDrawGizmos()

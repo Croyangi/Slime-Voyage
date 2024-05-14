@@ -48,7 +48,7 @@ MonoBehaviour:
     dialogueStallTime: 0
     cleanText: 1
     stoppingFlag: 1
-    profileName: 
+    profileName: Stepspike Greeter
     profilePicture: {fileID: 21300000, guid: da33df0294be09f4290bfc646e2c67ca, type: 3}
     sfx_speaking: {fileID: 0}
     sfxSpeakingSpacing: 0
