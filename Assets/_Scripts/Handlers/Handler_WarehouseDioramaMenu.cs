@@ -20,8 +20,9 @@ public class Handler_WarehouseDioramaMenu : MonoBehaviour
 
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
-    [SerializeField] private string scene_deloadedScene;
-    [SerializeField] private string scene_loadedScene;
+    [SerializeField] private ScriptObj_SceneName scene_deloadedScene;
+    [SerializeField] private ScriptObj_SceneName scene_loadedScene;
+    [SerializeField] private ScriptObj_SceneName scene_mainMenu;
 
     private void Awake()
     {
@@ -47,7 +48,7 @@ public class Handler_WarehouseDioramaMenu : MonoBehaviour
 
     private void TransitionToScene()
     {
-        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_loadedScene, scene_deloadedScene);
+        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_loadedScene.name, scene_deloadedScene.name);
     }
 
     private void ApplyForceTicketButton()
@@ -113,8 +114,7 @@ public class Handler_WarehouseDioramaMenu : MonoBehaviour
 
     public void OnReturnToMenuButtonPressed()
     {
-        scene_loadedScene = "MainMenu";
-        TransitionToScene();
+        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_mainMenu.name, scene_deloadedScene.name);
         _bootLoader.isTransitioning = true;
     }
 }

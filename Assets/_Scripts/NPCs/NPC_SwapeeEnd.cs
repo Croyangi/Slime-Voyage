@@ -18,8 +18,6 @@ public class NPC_SwapeeEnd : MonoBehaviour
 
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
-    [SerializeField] private string scene_loadedScene;
-    [SerializeField] private string scene_deloadedScene;
 
     private void OnDialogueStart()
     {

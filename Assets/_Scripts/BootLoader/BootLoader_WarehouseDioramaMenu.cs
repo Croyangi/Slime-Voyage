@@ -17,8 +17,8 @@ public class BootLoader_WarehouseDioramaMenu : MonoBehaviour
 
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
-    [SerializeField] private string scene_loadingScreen;
-    [SerializeField] private string scene_activeScene;
+    [SerializeField] private ScriptObj_SceneName scene_loadingScreen;
+    [SerializeField] private ScriptObj_SceneName scene_activeScene;
 
     private void Awake()
     {
@@ -29,7 +29,7 @@ public class BootLoader_WarehouseDioramaMenu : MonoBehaviour
 
     private void Start()
     {
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene_activeScene));
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene_activeScene.name));
         Manager_SFXPlayer.instance.PlaySFXClip(audioClip_employeesLament, transform, 0.5f, true, Manager_AudioMixer.instance.mixer_music);
     }
 
@@ -42,7 +42,7 @@ public class BootLoader_WarehouseDioramaMenu : MonoBehaviour
         }
         else
         {
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene_loadingScreen, LoadSceneMode.Additive);
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene_loadingScreen.name, LoadSceneMode.Additive);
 
             // Wait until the asynchronous scene loading is complete
             while (!asyncLoad.isDone)

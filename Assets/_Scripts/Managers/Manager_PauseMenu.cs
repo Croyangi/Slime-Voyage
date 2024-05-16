@@ -23,6 +23,11 @@ public class Manager_PauseMenu : MonoBehaviour
     [SerializeField] private float lerpScale;
     [SerializeField] private Vector2 offset;
 
+    [Header("Scene")]
+    [SerializeField] private SceneQueue _sceneQueue;
+    [SerializeField] private ScriptObj_SceneName scene_deloadedScene;
+    [SerializeField] private ScriptObj_SceneName scene_loadedScene;
+
     [Header("Technical References")]
     [SerializeField] private PlayerInput playerInput = null;
 
@@ -183,5 +188,10 @@ public class Manager_PauseMenu : MonoBehaviour
     public void ChangeSongText(string name)
     {
         tm_songText.text = name;
+    }
+
+    public void OnExitButton()
+    {
+        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_loadedScene.name, scene_deloadedScene.name);
     }
 }

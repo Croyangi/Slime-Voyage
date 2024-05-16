@@ -40,8 +40,8 @@ public class BootLoader_ResultsScreen : MonoBehaviour, IDataPersistence
 
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
-    [SerializeField] private string scene_loadingScreen;
-    [SerializeField] private string scene_activeScene;
+    [SerializeField] private ScriptObj_SceneName scene_loadingScreen;
+    [SerializeField] private ScriptObj_SceneName scene_activeScene;
 
     public TimeSpan timeElapsed { get; private set; }
 
@@ -55,7 +55,7 @@ public class BootLoader_ResultsScreen : MonoBehaviour, IDataPersistence
 
     private void Start()
     {
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene_activeScene));
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene_activeScene.name));
     }
 
     // VFX for dramatic rank reveal
@@ -102,7 +102,7 @@ public class BootLoader_ResultsScreen : MonoBehaviour, IDataPersistence
         }
         else
         {
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene_loadingScreen, LoadSceneMode.Additive);
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene_loadingScreen.name, LoadSceneMode.Additive);
 
             // Wait until the asynchronous scene loading is complete
             while (!asyncLoad.isDone)

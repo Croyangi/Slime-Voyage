@@ -8,9 +8,9 @@ public class Handler_MainMenu : MonoBehaviour
 {
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
-    [SerializeField] private string scene_mainMenu;
-    [SerializeField] private string scene_warehouseDioramaMenu;
-    [SerializeField] private string scene_loadingScreen;
+    [SerializeField] private ScriptObj_SceneName scene_mainMenu;
+    [SerializeField] private ScriptObj_SceneName scene_warehouseDioramaMenu;
+    [SerializeField] private ScriptObj_SceneName scene_loadingScreen;
 
     [Header("Tabs")]
     [SerializeField] private GameObject[] tabs;
@@ -42,7 +42,7 @@ public class Handler_MainMenu : MonoBehaviour
         }
         else
         {
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene_loadingScreen, LoadSceneMode.Additive);
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene_loadingScreen.name, LoadSceneMode.Additive);
 
             // Wait until the asynchronous scene loading is complete
             while (!asyncLoad.isDone)
@@ -56,7 +56,7 @@ public class Handler_MainMenu : MonoBehaviour
     // Close and then transition
     private void LoadWarehouseDioramaMenu()
     {
-        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_warehouseDioramaMenu, scene_mainMenu);
+        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_warehouseDioramaMenu.name, scene_mainMenu.name);
     }
 
     // Called by another script to enable canvas

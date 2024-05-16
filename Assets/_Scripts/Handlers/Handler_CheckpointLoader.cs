@@ -20,8 +20,8 @@ public class Handler_CheckpointLoader : MonoBehaviour, IDataPersistence
 
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
-    [SerializeField] private string scene_loadedScene;
-    [SerializeField] private string scene_deloadedScene;
+    [SerializeField] private ScriptObj_SceneName scene_loadedScene;
+    [SerializeField] private ScriptObj_SceneName scene_deloadedScene;
 
     private void Start()
     {
@@ -67,6 +67,6 @@ public class Handler_CheckpointLoader : MonoBehaviour, IDataPersistence
 
     private void LoadTheWarehouse()
     {
-        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_loadedScene, scene_deloadedScene);
+        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_loadedScene.name, scene_deloadedScene.name);
     }
 }

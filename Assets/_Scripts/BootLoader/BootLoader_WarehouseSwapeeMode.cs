@@ -11,23 +11,22 @@ public class BootLoader_WarehouseSwapeeMode : MonoBehaviour, IDataPersistence
 
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
-    [SerializeField] private string scene_bootloaderDevTools;
-    [SerializeField] private string scene_bootloaderGlobal;
-    [SerializeField] private string scene_loadingScreen;
-    [SerializeField] private string scene_activeScene;
-    [SerializeField] private string scene_loadedScene;
-    [SerializeField] private string scene_deloadedScene;
+    [SerializeField] private ScriptObj_SceneName scene_devTools;
+    [SerializeField] private ScriptObj_SceneName scene_loadingScreen;
+    [SerializeField] private ScriptObj_SceneName scene_activeScene;
+    [SerializeField] private ScriptObj_SceneName scene_loadedScene;
+    [SerializeField] private ScriptObj_SceneName scene_deloadedScene;
 
     private void Awake()
     {
-        _sceneQueue.LoadScene(scene_bootloaderDevTools, true);
+        _sceneQueue.LoadScene(scene_devTools.name, true);
 
         StartCoroutine(LoadLoadingScreen());
     }
 
     private void Start()
     {
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene_activeScene));
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene_activeScene.name));
     }
 
     private IEnumerator LoadLoadingScreen ()
@@ -39,7 +38,7 @@ public class BootLoader_WarehouseSwapeeMode : MonoBehaviour, IDataPersistence
         }
         else
         {
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene_loadingScreen, LoadSceneMode.Additive);
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene_loadingScreen.name, LoadSceneMode.Additive);
 
             // Wait until the asynchronous scene loading is complete
             while (!asyncLoad.isDone)
@@ -56,7 +55,7 @@ public class BootLoader_WarehouseSwapeeMode : MonoBehaviour, IDataPersistence
     {
         isCompleted = true;
         DataPersistenceManager.instance.SaveGame();
-        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_loadedScene, scene_deloadedScene);
+        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_loadedScene.name, scene_deloadedScene.name);
     }
 
     public void LoadData(GameData data)

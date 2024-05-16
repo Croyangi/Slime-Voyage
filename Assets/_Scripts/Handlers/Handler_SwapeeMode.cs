@@ -19,8 +19,8 @@ public class Handler_SwapeeMode : MonoBehaviour, IDataPersistence
 
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
-    [SerializeField] private string scene_theWarehouse;
-    [SerializeField] private string scene_deloadedScene;
+    [SerializeField] private ScriptObj_SceneName scene_warehouse;
+    [SerializeField] private ScriptObj_SceneName scene_deloadedScene;
 
     private void Awake()
     {
@@ -57,7 +57,7 @@ public class Handler_SwapeeMode : MonoBehaviour, IDataPersistence
 
     private void LoadTheWarehouse()
     {
-        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_theWarehouse, scene_deloadedScene);
+        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_warehouse.name, scene_deloadedScene.name);
     }
 
     private void UnlockSwapeeMode()

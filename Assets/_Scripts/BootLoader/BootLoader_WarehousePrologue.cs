@@ -19,10 +19,10 @@ public class BootLoader_WarehousePrologue : MonoBehaviour
 
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
-    [SerializeField] private string scene_loadingScreen;
-    [SerializeField] private string scene_activeScene;
-    [SerializeField] private string scene_theWarehouse;
-    [SerializeField] private string scene_deloadedScene;
+    [SerializeField] private ScriptObj_SceneName scene_loadingScreen;
+    [SerializeField] private ScriptObj_SceneName scene_activeScene;
+    [SerializeField] private ScriptObj_SceneName scene_warehouse;
+    [SerializeField] private ScriptObj_SceneName scene_deloadedScene;
 
     private void Awake()
     {
@@ -36,7 +36,7 @@ public class BootLoader_WarehousePrologue : MonoBehaviour
 
     private void Start()
     {
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene_activeScene));
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene_activeScene.name));
     }
 
     private IEnumerator LoadLoadingScreen()
@@ -48,7 +48,7 @@ public class BootLoader_WarehousePrologue : MonoBehaviour
         }
         else
         {
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene_loadingScreen, LoadSceneMode.Additive);
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene_loadingScreen.name, LoadSceneMode.Additive);
 
             // Wait until the asynchronous scene loading is complete
             while (!asyncLoad.isDone)
@@ -115,7 +115,7 @@ public class BootLoader_WarehousePrologue : MonoBehaviour
 
     private void LoadWarehouse()
     {
-        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_theWarehouse, scene_deloadedScene);
+        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_warehouse.name, scene_deloadedScene.name);
     }
 
 

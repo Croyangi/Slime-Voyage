@@ -28,8 +28,6 @@ public class Handler_WarehouseElevator : MonoBehaviour
 
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
-    [SerializeField] private string scene_demoEnd;
-    [SerializeField] private string scene_deloadedScene;
 
     // Called by dialogue prompt
     public void InitiateElevatorPanel()
