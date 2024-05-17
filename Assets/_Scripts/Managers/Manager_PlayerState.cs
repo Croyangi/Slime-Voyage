@@ -18,10 +18,6 @@ public class Manager_PlayerState : MonoBehaviour, IDataPersistence
     public bool isInputStall;
     public bool isResetDeathOn;
 
-    [Header("Death Count Test")]
-    [SerializeField] private TMP_Text test;
-    [SerializeField] private int deathCount;
-
     [Header("Actions")]
     [SerializeField] public Action onPlayerMoldChanged;
 
@@ -145,24 +141,14 @@ public class Manager_PlayerState : MonoBehaviour, IDataPersistence
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
         // Data save
-        this.deathCount++;
-        DeathCount();
         DataPersistenceManager.instance.SaveGame();
-    }
-
-    private void DeathCount()
-    {
-        test.text = "Death Count: " + this.deathCount;
     }
 
     public void LoadData(GameData data)
     {
-        this.deathCount = data.deathCount;
-        DeathCount();
     }
 
     public void SaveData(ref GameData data)
     {
-        data.deathCount = this.deathCount;
     }
 }
