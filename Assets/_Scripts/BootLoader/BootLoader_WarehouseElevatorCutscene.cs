@@ -21,11 +21,14 @@ public class BootLoader_WarehouseElevatorCutscene : MonoBehaviour
     [SerializeField] private float elevatorFallYPos;
     [SerializeField] private float elevatorFallTime;
 
+    [SerializeField] private float transitionYpos;
+
     [SerializeField] private GameObject pulley;
     [SerializeField] private GameObject gear1;
     [SerializeField] private GameObject gear2;
 
     [SerializeField] private GameObject slime;
+    [SerializeField] private GameObject newspaperStepspike;
 
     [Header("Elevator Light")]
     [SerializeField] private GameObject elevatorLight;
@@ -39,12 +42,19 @@ public class BootLoader_WarehouseElevatorCutscene : MonoBehaviour
     [SerializeField] private Sprite elevatorRedLightOn;
 
     [Header("References")]
-    [SerializeField] private AudioClip music_elevatorCutscene;
+    [SerializeField] private AudioClip music_elevatorCutsceneBeginning;
+    [SerializeField] private AudioClip music_elevatorCutsceneFall;
 
     [SerializeField] private Image fadeOutTransition;
     [SerializeField] private float elapsedTime;
 
     [SerializeField] private GameObject fallingParticles;
+
+    [SerializeField] private GameObject warehouseBackround;
+    [SerializeField] private GameObject basementBackround;
+
+    [SerializeField] private NPC_NewspaperStepspike _newspaperStepspike;
+    [SerializeField] private GameObject dialoguePrompt;
 
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
@@ -115,10 +125,32 @@ public class BootLoader_WarehouseElevatorCutscene : MonoBehaviour
         }
     }
 
+    private void InitiateFadeInTransition()
+    {
+        elapsedTime = 0f;
+        fadeOutTransition.color = new Color(fadeOutTransition.color.r, fadeOutTransition.color.g, fadeOutTransition.color.b, 0f);
+        StartCoroutine(FadeInTransition());
+    }
+
+    private IEnumerator FadeInTransition()
+    {
+        elapsedTime += Time.deltaTime;
+
+        float alpha = Mathf.Lerp(0f, 1f, elapsedTime / 2f);
+
+        fadeOutTransition.color = new Color(fadeOutTransition.color.r, fadeOutTransition.color.g, fadeOutTransition.color.b, alpha);
+
+        yield return new WaitForFixedUpdate();
+        if (fadeOutTransition.color.a < 1f)
+        {
+            StartCoroutine(FadeInTransition());
+        }
+    }
+
     private IEnumerator InitiateElevatorCutscene()
     {
         // Music
-        Manager_SFXPlayer.instance.PlaySFXClip(music_elevatorCutscene, transform, 1, false, Manager_AudioMixer.instance.mixer_music);
+        Manager_SFXPlayer.instance.PlaySFXClip(music_elevatorCutsceneBeginning, transform, 1, false, Manager_AudioMixer.instance.mixer_music);
 
         // Start
         LeanTween.rotateAround(pulley, Vector3.forward, 360, 2.5f).setLoopClamp();
@@ -130,14 +162,18 @@ public class BootLoader_WarehouseElevatorCutscene : MonoBehaviour
 
         // Sudden Stop
         StartCoroutine(FlickerLight());
+        _newspaperStepspike.OnElevatorStallDialogueInteraction();
 
         LeanTween.moveLocalY(elevator, elevator.transform.position.y - 0.5f, 1f).setEaseInBounce();
         LeanTween.cancel(pulley);
         LeanTween.cancel(gear1);
         LeanTween.cancel(gear2);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(7f);
 
         // Slow fall down
+        Manager_SFXPlayer.instance.PlaySFXClip(music_elevatorCutsceneFall, transform, 1, false, Manager_AudioMixer.instance.mixer_music);
+        yield return new WaitForSeconds(0.2f);
+
         LeanTween.moveY(elevator, elevator.transform.position.y - elevatorSlowFallYPos, elevatorSlowFallTime).setEaseInQuad();
         LeanTween.rotateAround(pulley, Vector3.forward, -360, 2.5f).setLoopClamp();
         LeanTween.rotateAround(gear1, Vector3.forward, -360, 2f).setLoopClamp();
@@ -146,11 +182,11 @@ public class BootLoader_WarehouseElevatorCutscene : MonoBehaviour
 
         // Fall
         fallingParticles.SetActive(true);
+        _newspaperStepspike.OnElevatorFallDialogueInteraction();
 
         InitiateRedLights();
+        StartCoroutine(TransitionBasementBackround());
 
-        slime.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 10f, ForceMode2D.Impulse);
-        slime.GetComponent<Rigidbody2D>().gravityScale = 0;
         StartCoroutine(ApplyFallingVelocity());
 
         LeanTween.moveY(elevator, elevator.transform.position.y - elevatorFallYPos, elevatorFallTime);
@@ -204,8 +240,25 @@ public class BootLoader_WarehouseElevatorCutscene : MonoBehaviour
 
     private IEnumerator ApplyFallingVelocity()
     {
-        slime.GetComponent<Rigidbody2D>().velocity = Vector2.up * 10f;
+        slime.GetComponent<Rigidbody2D>().velocity = Vector2.up * 30f;
+        newspaperStepspike.GetComponent<Rigidbody2D>().velocity = Vector2.up * 3f;
+        newspaperStepspike.GetComponent<Rigidbody2D>().angularVelocity = 10f;
         yield return new WaitForFixedUpdate();
         StartCoroutine(ApplyFallingVelocity());
+    }
+
+    private IEnumerator TransitionBasementBackround()
+    {
+        yield return new WaitForFixedUpdate();
+        if (elevator.transform.position.y > transitionYpos)
+        {
+            StartCoroutine(TransitionBasementBackround());
+        } else
+        {
+            warehouseBackround.SetActive(false);
+            basementBackround.SetActive(true);
+            InitiateFadeInTransition();
+            dialoguePrompt.SetActive(false);
+        }
     }
 }

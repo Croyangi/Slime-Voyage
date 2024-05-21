@@ -19,6 +19,9 @@ public class ParallaxBackround : MonoBehaviour
     [SerializeField] private float parallaxEffect;
     [SerializeField] private float distance;
 
+    [SerializeField] private bool isUnaffectedX;
+    [SerializeField] private bool isUnaffectedY;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -43,13 +46,30 @@ public class ParallaxBackround : MonoBehaviour
         //bounds_minY = bounds.min.y;
         //bounds_maxY = bounds.max.y;
 
-        float tempX = (_camera.transform.transform.position.x * (1 - parallaxEffect));
-        float tempY = (_camera.transform.transform.position.y * (1 - parallaxEffect));
+        float tempX = 0f;
+        float distanceX = 0f;
+        if (!isUnaffectedX) 
+        {
+            tempX = (_camera.transform.transform.position.x * (1 - parallaxEffect));
+            distanceX = (_camera.transform.position.x * parallaxEffect);
+        }
 
-        float distanceX = (_camera.transform.position.x * parallaxEffect);
-        float distanceY = (_camera.transform.position.y * parallaxEffect);
+        float tempY = 0f;
+        float distanceY = 0f;
+        if (!isUnaffectedY)
+        {
+            tempY = (_camera.transform.transform.position.y * (1 - parallaxEffect));
+            distanceY = (_camera.transform.position.y * parallaxEffect);
+        }
 
-        transform.position = new Vector3(startPos.x + distanceX, startPos.y + distanceY, transform.position.z);
+        if (!isUnaffectedX)
+        {
+            transform.position = new Vector3(startPos.x + distanceX, transform.position.y, transform.position.z);
+        }
+        if (!isUnaffectedY)
+        {
+            transform.position = new Vector3(transform.position.x, startPos.y + distanceY, transform.position.z);
+        }
 
 
         // X-axis version

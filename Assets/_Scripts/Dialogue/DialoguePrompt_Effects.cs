@@ -13,6 +13,8 @@ public class DialoguePrompt_Effects : MonoBehaviour
     [SerializeField] private CircleCollider2D col_prompt;
     [SerializeField] private CircleCollider2D col_promptEffects;
 
+    [SerializeField] private bool isMovingEffects;
+
     [Header("LeanTween Settings")]
     [SerializeField] private Vector2 detectedScale;
     [SerializeField] private Vector2 undetectedScale;
@@ -125,7 +127,15 @@ public class DialoguePrompt_Effects : MonoBehaviour
         yOffset = Mathf.Lerp(yOffset, projectedYOffset, Time.deltaTime * yMoveSpeed);
 
         float y = Mathf.Sin(Time.time * frequency) * amplitude;
-        float newY = initialDialoguePromptPosition.y + y + yOffset;
+
+        float newY;
+        if (isMovingEffects)
+        {
+            newY = transform.position.y + y + yOffset;
+        } else
+        {
+            newY = initialDialoguePromptPosition.y + y + yOffset;
+        }
 
         dialoguePrompt.transform.position = new Vector2(dialoguePrompt.transform.position.x, newY);
     }
