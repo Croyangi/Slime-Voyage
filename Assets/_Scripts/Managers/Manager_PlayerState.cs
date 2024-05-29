@@ -111,7 +111,7 @@ public class Manager_PlayerState : MonoBehaviour, IDataPersistence
             isDead = true;
             isResetDeathOn = false;
 
-            Destroy(player);
+            player.GetComponentInChildren<IPlayerProcessor>().InitiatePlayerDeath();
             deathTransition_animator.PlayDeathTransitionClose();
             StartCoroutine(WaitForDeathTransition());
         }

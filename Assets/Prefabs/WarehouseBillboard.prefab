@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   billboardImage: {fileID: 9130026214306945298}
-  spriteFolderPath: Sprites/Warehouse/WarehouseBillboard/Graphics
+  spriteFolderPath: Sprites/Areas/Warehouse/WarehouseBillboard/Graphics
   spriteList: []
 --- !u!1 &4563877568107784849
 GameObject:
@@ -488,8 +488,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.00020003319, y: -0.0176, z: 0}
-    m_Extent: {x: 1.2213, y: 0.6314, z: 0}
+    m_Center: {x: -0.00045001507, y: -0.016949981, z: 0}
+    m_Extent: {x: 1.22115, y: 0.63095, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -652,8 +652,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.00064998865, y: -0.017850012, z: 0}
-    m_Extent: {x: 1.2204499, y: 0.63135004, z: 0}
+    m_Center: {x: -0.00029999018, y: -0.017150015, z: 0}
+    m_Extent: {x: 1.2211001, y: 0.63165, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -734,8 +734,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.00090003014, y: -0.017399997, z: 0}
-    m_Extent: {x: 1.2206, y: 0.63100004, z: 0}
+    m_Center: {x: 0.000100016594, y: -0.017549992, z: 0}
+    m_Extent: {x: 1.2208, y: 0.63115, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0

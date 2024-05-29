@@ -56,10 +56,14 @@ public class BootLoader_WarehouseElevatorCutscene : MonoBehaviour
     [SerializeField] private NPC_NewspaperStepspike _newspaperStepspike;
     [SerializeField] private GameObject dialoguePrompt;
 
+    [SerializeField] private bool isCutsceneReady;
+
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
     [SerializeField] private ScriptObj_SceneName scene_loadingScreen;
     [SerializeField] private ScriptObj_SceneName scene_activeScene;
+    [SerializeField] private ScriptObj_SceneName scene_loadedScene;
+    [SerializeField] private ScriptObj_SceneName scene_deloadedScene;
 
     private void Awake()
     {
@@ -71,6 +75,25 @@ public class BootLoader_WarehouseElevatorCutscene : MonoBehaviour
     {
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene_activeScene.name));
         Manager_PlayerState.instance.isResetDeathOn = false;
+        StartCoroutine(OnCutsceneStandby());
+    }
+
+    private IEnumerator OnCutsceneStandby()
+    {
+        yield return null;
+        if (isCutsceneReady)
+        {
+            StartCoroutine(InitiateFadeOutTransition());
+            StartCoroutine(InitiateElevatorCutscene());
+        } else
+        {
+            StartCoroutine(OnCutsceneStandby());
+        }
+    }
+
+    private void OnElevatorCutsceneComplete()
+    {
+        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_loadedScene.name, scene_deloadedScene.name);
     }
 
     private IEnumerator LoadLoadingScreen()
@@ -81,8 +104,7 @@ public class BootLoader_WarehouseElevatorCutscene : MonoBehaviour
             Manager_LoadingScreen.instance.OpenLoadingScreen();
 
             // Initiate cutscene
-            StartCoroutine(InitiateFadeOutTransition());
-            StartCoroutine(InitiateElevatorCutscene());
+            isCutsceneReady = true;
         }
         else
         {
@@ -99,8 +121,7 @@ public class BootLoader_WarehouseElevatorCutscene : MonoBehaviour
             Manager_LoadingScreen.instance.OpenLoadingScreen();
 
             // Initiate cutscene
-            StartCoroutine(InitiateFadeOutTransition());
-            StartCoroutine(InitiateElevatorCutscene());
+            isCutsceneReady = true;
         }
     }
 
@@ -157,8 +178,8 @@ public class BootLoader_WarehouseElevatorCutscene : MonoBehaviour
         LeanTween.rotateAround(gear1, Vector3.forward, 360, 2f).setLoopClamp();
         LeanTween.rotateAround(gear2, Vector3.forward, 360, 2f).setLoopClamp();
 
-        LeanTween.moveY(elevator, elevatorRiseYPos, elevatorRiseTime);
-        yield return new WaitForSeconds(elevatorRiseTime);
+        LeanTween.moveY(elevator, elevatorRiseYPos, music_elevatorCutsceneBeginning.length - 1.7f);
+        yield return new WaitForSeconds(music_elevatorCutsceneBeginning.length - 1.7f);
 
         // Sudden Stop
         StartCoroutine(FlickerLight());
@@ -197,6 +218,11 @@ public class BootLoader_WarehouseElevatorCutscene : MonoBehaviour
         LeanTween.rotateAround(pulley, Vector3.forward, -360, 0.1f).setLoopClamp();
         LeanTween.rotateAround(gear1, Vector3.forward, -360, 0.1f).setLoopClamp();
         LeanTween.rotateAround(gear2, Vector3.forward, -360, 0.1f).setLoopClamp();
+
+        yield return new WaitForSeconds(elevatorFallTime);
+        yield return new WaitForSeconds(5f);
+        OnElevatorCutsceneComplete();
+
     }
 
     private void InitiateRedLights()

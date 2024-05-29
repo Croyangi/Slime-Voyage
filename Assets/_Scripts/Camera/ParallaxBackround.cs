@@ -15,6 +15,9 @@ public class ParallaxBackround : MonoBehaviour
     [SerializeField] private float bounds_minY;
     [SerializeField] private float bounds_maxY;
 
+    [SerializeField] private float offsetX;
+    [SerializeField] private float offsetY;
+
     [Header("Variables")]
     [SerializeField] private float parallaxEffect;
     [SerializeField] private float distance;
@@ -85,11 +88,11 @@ public class ParallaxBackround : MonoBehaviour
         // Y-axis version
         if (tempY > startPos.y + length.y)
         {
-            startPos.y += length.y;
+            startPos.y += length.y + offsetY;
         }
         else if (tempY < startPos.y - length.y)
         {
-            startPos.y -= length.y;
+            startPos.y -= length.y + offsetY;
         }
     }
 }

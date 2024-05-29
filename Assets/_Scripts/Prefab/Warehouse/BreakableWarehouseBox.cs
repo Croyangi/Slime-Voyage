@@ -114,7 +114,7 @@ public class BreakableWarehouseBox : MonoBehaviour
         return Random.value < .5? 1 : -1;
     }
 
-private void SpawnWarehouseJunk(GameObject junk)
+    private void SpawnWarehouseJunk(GameObject junk)
     {
         GameObject warehouseJunk = Instantiate(junk, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
 

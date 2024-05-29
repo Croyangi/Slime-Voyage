@@ -64,6 +64,10 @@ public class GameData
         warehouseSwapeeMode.areaId = "warehouseSwapeeMode";
         areaSets.Add(warehouseSwapeeMode);
 
+        AreaSet basement = new AreaSet();
+        basement.areaId = "basement";
+        areaSets.Add(basement);
+
         warehouseDoorsUnlocked = new SerializableDictionary<string, bool>();
 
         areasCompleted = new SerializableDictionary<string, bool>();

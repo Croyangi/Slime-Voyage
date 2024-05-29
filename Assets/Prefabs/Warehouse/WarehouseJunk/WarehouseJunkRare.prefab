@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sr: {fileID: 1729760319327038464}
-  spriteFolderPath: Sprites/Warehouse/WarehouseJunk/Rare
+  spriteFolderPath: Sprites/Areas/Warehouse/WarehouseJunk/Rare
   spriteList: []
   warehouseJunkLayers:
     serializedVersion: 2

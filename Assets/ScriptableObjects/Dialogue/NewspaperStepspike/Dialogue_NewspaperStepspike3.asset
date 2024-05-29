@@ -16,11 +16,8 @@ MonoBehaviour:
   isDialogueMini: 0
   isPlayerInputStall: 0
   _dialogues:
-  - dialogueText: '...mmmmmmmmmmmmmmm
-
-      If you think this is bad, wait till
-      crunch week...'
-    dialogueSpeed: 0.02
+  - dialogueText: If you think this is bad, wait till crunch week...
+    dialogueSpeed: 0.01
     dialogueStallTime: 0
     cleanText: 1
     stoppingFlag: 1
