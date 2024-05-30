@@ -35,6 +35,7 @@ public class BaseSlime_AirborneState : State
             }
         }
 
+        // Rising, Falling, and Midair Variants
         if (_helper.rb.velocity.y > 3f)
         {
             _animator.ChangeAnimationState(_animator.BASESLIME_RISING, _animator.baseSlime_animator);
@@ -52,6 +53,15 @@ public class BaseSlime_AirborneState : State
             _animator.ChangeAnimationState(_animator.BASESLIME_MIDAIR, _animator.baseSlime_animator);
             _animator.SetEyesOffset(new Vector2(0f, -0.051f));
             _helper.col_slime.offset = new Vector2(0f, 0f);
+        }
+
+        // Top Speed Scared Eyes
+        if (_helper.isTopVisualSpeed)
+        {
+            _animator.ChangeAnimationState(_animator.EYES_SCARED, _animator.eyes_animator);
+        } else
+        {
+            _animator.ChangeAnimationState(_animator.EYES_AIRBORNE, _animator.eyes_animator);
         }
     }
 
@@ -83,6 +93,7 @@ public class BaseSlime_AirborneState : State
         _helper.col_onEdgeRight.gameObject.SetActive(false);
 
         // Animation
+        // Rising, Falling, and Midair Variants
         if (_helper.rb.velocity.y > 3f)
         {
             _animator.ChangeAnimationState(_animator.BASESLIME_RISING, _animator.baseSlime_animator);
@@ -104,8 +115,14 @@ public class BaseSlime_AirborneState : State
             _helper.col_slime.offset = new Vector2(0f, 0f);
         }
 
+        // Eyes
         _animator.SetEyesActive(true);
         _animator.ChangeAnimationState(_animator.EYES_AIRBORNE, _animator.eyes_animator);
+
+        if (_helper.isTopVisualSpeed)
+        {
+            _animator.ChangeAnimationState(_animator.EYES_SCARED, _animator.eyes_animator);
+        }
     }
 
 

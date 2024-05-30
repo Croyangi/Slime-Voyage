@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class BaseSlime_StateMachineHelper : MonoBehaviour
 {
+
+    [Header("Top Visual Speed")]
+    [SerializeField] private float xVelocityPointWeight = 1f;
+    [SerializeField] private float yVelocityPointWeight = 0.75f;
+    [SerializeField] private float topVisualSpeedPoint = 5f;
+
     [Header("General References")]
     public GameObject baseSlime;
     public Vector2 colliderBounds;
@@ -34,6 +40,7 @@ public class BaseSlime_StateMachineHelper : MonoBehaviour
     public Vector2 stickingDirection;
     public bool isPermanentlySticking; // Disables after touching ground again
     public int facingDirection;
+    public bool isTopVisualSpeed;
 
     private void Awake()
     {
@@ -56,6 +63,7 @@ public class BaseSlime_StateMachineHelper : MonoBehaviour
 
         touchingDirection = TouchingDirectionUpdate();
 
+        // Facing Direction
         if (_movementVars.processedInputMovement.x == 1)
         {
             facingDirection = 1;
@@ -65,6 +73,20 @@ public class BaseSlime_StateMachineHelper : MonoBehaviour
         }
 
         SplatCheckUpdate(rb.velocity.y);
+
+        TopVisualSpeedCheckUpdate();
+    }
+
+    private void TopVisualSpeedCheckUpdate()
+    {
+        float combinedVelocity = Mathf.Abs(rb.velocity.x * xVelocityPointWeight) + Mathf.Abs(rb.velocity.y * yVelocityPointWeight);
+        if (combinedVelocity > topVisualSpeedPoint)
+        {
+            isTopVisualSpeed = true;
+        } else
+        {
+            isTopVisualSpeed = false;
+        }
     }
 
     private void SplatCheckUpdate(float newImpactVelocity = 0)

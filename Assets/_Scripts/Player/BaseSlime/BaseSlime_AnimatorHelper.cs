@@ -44,6 +44,7 @@ public class BaseSlime_AnimatorHelper : MonoBehaviour
     public string EYES_ONEDGE = "BaseSlime_Eyes_OnEdge";
     public string EYES_COMPRESSED = "BaseSlime_Eyes_Compressed";
     public string EYES_AIRBORNE = "BaseSlime_Eyes_Airborne";
+    public string EYES_SCARED = "BaseSlime_Eyes_Scared";
 
     public string BASESLIME_UNIQUEIDLE_SLIMEPILLED = "BaseSlime_UniqueIdle_SlimePilled";
     public string BASESLIME_UNIQUEIDLE_SPIN = "BaseSlime_UniqueIdle_Spin";

@@ -1062,6 +1062,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8068d2da1ba089c49b531d7f3178dbb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xVelocityPointWeight: 0.5
+  yVelocityPointWeight: 1
+  topVisualSpeedPoint: 30
   baseSlime: {fileID: 2317627284233952323}
   colliderBounds: {x: 0, y: 0}
   rb: {fileID: 5020864478455618518}
@@ -1082,6 +1085,7 @@ MonoBehaviour:
   stickingDirection: {x: 0, y: 0}
   isPermanentlySticking: 0
   facingDirection: 0
+  isTopVisualSpeed: 0
 --- !u!114 &4564319859956447544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1120,6 +1124,7 @@ MonoBehaviour:
   EYES_ONEDGE: BaseSlime_Eyes_OnEdge
   EYES_COMPRESSED: BaseSlime_Eyes_Compressed
   EYES_AIRBORNE: BaseSlime_Eyes_Airborne
+  EYES_SCARED: BaseSlime_Eyes_Scared
   BASESLIME_UNIQUEIDLE_SLIMEPILLED: BaseSlime_UniqueIdle_SlimePilled
   BASESLIME_UNIQUEIDLE_SPIN: BaseSlime_UniqueIdle_Spin
   BASESLIME_UNIQUEIDLE_STRETCH: BaseSlime_UniqueIdle_Stretch
