@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class BootLoader_Basement : MonoBehaviour
+public class BootLoader_Basement : MonoBehaviour, IDataPersistence
 {
     [Header("References")]
     [SerializeField] private ScriptObj_AreaId _areaId;
@@ -88,9 +88,12 @@ public class BootLoader_Basement : MonoBehaviour
         }
         data.areasCompleted.Add(_areaId.name, isCompleted);
 
-        if (isCompleted)
+        // Until area complete
+        /*if (isCompleted)
         {
             data.resultsScreenId = _areaId.name;
-        }
+        }*/
+
+        data.resultsScreenId = _areaId.name;
     }
 }

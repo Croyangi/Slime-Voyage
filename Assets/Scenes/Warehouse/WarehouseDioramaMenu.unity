@@ -1595,7 +1595,7 @@ MonoBehaviour:
   sfx_onPressMode: {fileID: 8300000, guid: 07f5b847b591f08418aa3bfcd30766d0, type: 3}
   _sceneQueue: {fileID: 445615767}
   scene_deloadedScene: {fileID: 11400000, guid: b8fc24e842f2c2f4a9bbe022ec00c8ee, type: 2}
-  scene_loadedScene: {fileID: 11400000, guid: 32d5ba8e93b89c842b9141b09ac6430f, type: 2}
+  scene_loadedScene: {fileID: 11400000, guid: d868f43a76d1ada4c94c849c8f651e59, type: 2}
   scene_mainMenu: {fileID: 11400000, guid: dd3e8c3f7bb91ac419bcd0e1832d8231, type: 2}
 --- !u!4 &445615766
 Transform:

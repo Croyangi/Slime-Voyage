@@ -30,6 +30,7 @@ public class BootLoader_ResultsScreen : MonoBehaviour, IDataPersistence
 
     [SerializeField] private TextMeshProUGUI tmp_checkpointsReached;
     [SerializeField] private TextMeshProUGUI tmp_newLocationsDiscovered;
+    [SerializeField] private TextMeshProUGUI tmp_collectiblesCollected;
 
     [SerializeField] private GameObject speedrun;
     [SerializeField] private TextMeshProUGUI tmp_speedrunTime;
@@ -169,6 +170,17 @@ public class BootLoader_ResultsScreen : MonoBehaviour, IDataPersistence
         }
     }
 
+    private void SetCollectiblesCollected(int amount, int totalAmount)
+    {
+        if (totalAmount > 0)
+        {
+            tmp_collectiblesCollected.text = "Collectibles Collected: " + amount + "/" + totalAmount;
+
+            currentScore += amount;
+            totalScore += totalAmount;
+        }
+    }
+
     // Sets rank after tallying scores
     private void SetRank(float currentScore, float totalScore)
     {
@@ -240,7 +252,7 @@ public class BootLoader_ResultsScreen : MonoBehaviour, IDataPersistence
         SetCheckpointsReached(checkpointCount, checkpointsReached.Count);
         //
 
-        // Areas Discovered
+        // Locations Discovered
         // Search up area data based on id
         AreaSet areaSetLocations = data.SearchAreaWithId(_areaId);
         SerializableDictionary<string, bool> areasDiscovered = areaSetLocations.locationsDiscovered;
@@ -254,6 +266,22 @@ public class BootLoader_ResultsScreen : MonoBehaviour, IDataPersistence
             }
         }
         SetLocationsDiscovered(locationCount, areasDiscovered.Count);
+        //
+
+        // Collectibles Collected
+        // Search up area data based on id
+        AreaSet areaSetCollectibles = data.SearchAreaWithId(_areaId);
+        SerializableDictionary<string, bool> collectiblesCollected = areaSetCollectibles.collectiblesCollected;
+
+        int collectibleCount = 0;
+        foreach (bool value in collectiblesCollected.Values)
+        {
+            if (value)
+            {
+                collectibleCount++;
+            }
+        }
+        SetCollectiblesCollected(collectibleCount, collectiblesCollected.Count);
         //
 
     }

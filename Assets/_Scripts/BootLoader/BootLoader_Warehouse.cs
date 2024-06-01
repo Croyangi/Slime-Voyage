@@ -10,7 +10,7 @@ public class BootLoader_Warehouse : MonoBehaviour, IDataPersistence
 {
     [Header("References")]
     [SerializeField] private Handler_WarehouseIntro _warehouseIntro;
-    [SerializeField] private Handler_Checkpoint _checkpoint;
+    [SerializeField] private Handler_WarehouseCheckpoint _checkpoint;
     [SerializeField] private ScriptObj_ModifierMode _modifierMode;
 
     [SerializeField] private ScriptObj_AreaId _areaId;

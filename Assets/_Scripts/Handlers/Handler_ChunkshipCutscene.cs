@@ -24,6 +24,8 @@ public class Handler_ChunkshipCutscene : MonoBehaviour
     [SerializeField] private GameObject chunkship_bottom;
     [SerializeField] private Vector2 chunkship_offset;
 
+    [SerializeField] private AudioClip sfx_chunkshipDocking;
+
     [Header("Rise/Fall Visual Settings")]
     [SerializeField] private float amplitudeY = 0;
     [SerializeField] private float frequencyY = 1;
@@ -77,7 +79,10 @@ public class Handler_ChunkshipCutscene : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
 
+
         LeanTween.moveX(chunkship, dropOffPoint.position.x - 1f, 5f).setEaseInOutSine();
+        Manager_SFXPlayer.instance.PlaySFXClip(sfx_chunkshipDocking, transform, 1f, false, Manager_AudioMixer.instance.mixer_sfx);
+
         LeanTween.moveY(chunkship, dropOffPoint.position.y + 5.5f, 5f).setEaseInOutSine();
 
         yield return new WaitForSeconds(2f);

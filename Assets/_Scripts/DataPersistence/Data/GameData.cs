@@ -10,7 +10,7 @@ public class AreaSet
     public string areaId = string.Empty;
     public SerializableDictionary<string, bool> checkpointsReached;
     public SerializableDictionary<string, bool> locationsDiscovered;
-
+    public SerializableDictionary<string, bool> collectiblesCollected;
 }
 
 public class GameData
@@ -55,18 +55,8 @@ public class GameData
 
         areaSets = new List<AreaSet>();
 
-        // Instantiate areas
-        AreaSet warehouse = new AreaSet();
-        warehouse.areaId = "warehouse";
-        areaSets.Add(warehouse);
-
-        AreaSet warehouseSwapeeMode = new AreaSet();
-        warehouseSwapeeMode.areaId = "warehouseSwapeeMode";
-        areaSets.Add(warehouseSwapeeMode);
-
-        AreaSet basement = new AreaSet();
-        basement.areaId = "basement";
-        areaSets.Add(basement);
+        // Initiate areas
+        InitiateAreas();
 
         warehouseDoorsUnlocked = new SerializableDictionary<string, bool>();
 
@@ -82,5 +72,21 @@ public class GameData
         masterVolume = 1;
         musicVolume = 1;
         sfxVolume = 1;
+    }
+
+    public void InitiateAreas()
+    {
+        // Instantiate areas
+        AreaSet warehouse = new AreaSet();
+        warehouse.areaId = "warehouse";
+        areaSets.Add(warehouse);
+
+        AreaSet warehouseSwapeeMode = new AreaSet();
+        warehouseSwapeeMode.areaId = "warehouseSwapeeMode";
+        areaSets.Add(warehouseSwapeeMode);
+
+        AreaSet basement = new AreaSet();
+        basement.areaId = "basement";
+        areaSets.Add(basement);
     }
 }
