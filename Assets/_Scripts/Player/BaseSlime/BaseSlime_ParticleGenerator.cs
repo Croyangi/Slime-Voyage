@@ -8,6 +8,8 @@ public class BaseSlime_ParticleGenerator : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private GameObject[] slimeParticles;
 
+    [SerializeField] private bool isGeneratingParticles;
+
     [Header("Settings")]
     [SerializeField] private float slimeOffset = 0.5f; // Time between each particle
     [SerializeField] private float slimeOffsetTime = 0f; // Current slime offset time
@@ -27,12 +29,15 @@ public class BaseSlime_ParticleGenerator : MonoBehaviour
         }
 
         float combinedVelocity = Mathf.Abs(rb.velocity.x * xVelocityPointWeight) + Mathf.Abs(rb.velocity.y * yVelocityPointWeight);
-        if (combinedVelocity > velocityPoint && slimeOffsetTime <= 0f)
+        if (combinedVelocity >= velocityPoint && slimeOffsetTime <= 0f)
         {
             slimeOffsetTime = slimeOffset;
 
             SpawnSlimeParticle();
-
+            isGeneratingParticles = true;
+        } else
+        {
+            isGeneratingParticles = false;
         }
     }
 

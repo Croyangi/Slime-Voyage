@@ -58,6 +58,13 @@ public class BootLoader_WarehouseElevatorCutscene : MonoBehaviour
 
     [SerializeField] private bool isCutsceneReady;
 
+    [SerializeField] private bool isCutoff;
+    [SerializeField] private bool isSkippable;
+    [SerializeField] private GameObject skipCutscene;
+
+    [SerializeField] private GameObject risingCinemachine;
+    [SerializeField] private GameObject fallingCinemachine;
+
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
     [SerializeField] private ScriptObj_SceneName scene_loadingScreen;
@@ -68,7 +75,11 @@ public class BootLoader_WarehouseElevatorCutscene : MonoBehaviour
     private void Awake()
     {
         StartCoroutine(LoadLoadingScreen());
+        PrepareOpenSkipCutscene();
         fadeOutTransition.gameObject.SetActive(true);
+
+        risingCinemachine.SetActive(true);
+        fallingCinemachine.SetActive(false);
     }
 
     private void Start()
@@ -78,6 +89,39 @@ public class BootLoader_WarehouseElevatorCutscene : MonoBehaviour
         StartCoroutine(OnCutsceneStandby());
     }
 
+    private void Update()
+    {
+        // Skip cutscene
+        if (Input.GetKeyUp(KeyCode.P) && isCutoff == false && isSkippable == true)
+        {
+            isCutoff = true;
+            SkipCutscene();
+        }
+    }
+
+    // UI vfx for opening the skip cutscene object
+    private void OpenSkipCutscene()
+    {
+        LeanTween.moveX(skipCutscene.GetComponent<RectTransform>(), -960f, 2f).setEaseInOutBack().setIgnoreTimeScale(true);
+    }
+
+    private void CloseSkipCutscene()
+    {
+        LeanTween.moveX(skipCutscene.GetComponent<RectTransform>(), -1300f, 2f).setEaseInOutBack().setIgnoreTimeScale(true);
+    }
+
+    // UI vfx for opening the skip cutscene object
+    private void PrepareOpenSkipCutscene()
+    {
+        LeanTween.moveX(skipCutscene.GetComponent<RectTransform>(), -1300f, 0f).setIgnoreTimeScale(true);
+    }
+
+    private void SkipCutscene()
+    {
+        CloseSkipCutscene();
+        OnElevatorCutsceneComplete();
+    }
+
     private IEnumerator OnCutsceneStandby()
     {
         yield return null;
@@ -85,6 +129,11 @@ public class BootLoader_WarehouseElevatorCutscene : MonoBehaviour
         {
             StartCoroutine(InitiateFadeOutTransition());
             StartCoroutine(InitiateElevatorCutscene());
+
+            yield return new WaitForSeconds(5f);
+            isSkippable = true;
+
+            OpenSkipCutscene();
         } else
         {
             StartCoroutine(OnCutsceneStandby());
@@ -202,6 +251,9 @@ public class BootLoader_WarehouseElevatorCutscene : MonoBehaviour
         yield return new WaitForSeconds(elevatorSlowFallTime);
 
         // Fall
+        risingCinemachine.SetActive(false);
+        fallingCinemachine.SetActive(true);
+
         fallingParticles.SetActive(true);
         _newspaperStepspike.OnElevatorFallDialogueInteraction();
 

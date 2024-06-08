@@ -80,7 +80,7 @@ public class BaseSlime_StateMachineHelper : MonoBehaviour
     private void TopVisualSpeedCheckUpdate()
     {
         float combinedVelocity = Mathf.Abs(rb.velocity.x * xVelocityPointWeight) + Mathf.Abs(rb.velocity.y * yVelocityPointWeight);
-        if (combinedVelocity > topVisualSpeedPoint)
+        if (combinedVelocity >= topVisualSpeedPoint)
         {
             isTopVisualSpeed = true;
         } else

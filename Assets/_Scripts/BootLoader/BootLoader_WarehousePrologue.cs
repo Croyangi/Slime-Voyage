@@ -72,7 +72,7 @@ public class BootLoader_WarehousePrologue : MonoBehaviour
         }
 
         // Skip cutscene
-        if (Input.GetKeyUp(KeyCode.X) && isCutoff == false && isSkippable == true) 
+        if (Input.GetKeyUp(KeyCode.P) && isCutoff == false && isSkippable == true) 
         {
             isCutoff = true;
             SkipCutscene();
