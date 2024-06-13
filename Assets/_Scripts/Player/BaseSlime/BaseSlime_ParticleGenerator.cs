@@ -7,6 +7,7 @@ public class BaseSlime_ParticleGenerator : MonoBehaviour
     [Header("References")]
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private GameObject[] slimeParticles;
+    [SerializeField] private BaseSlime_StateMachineHelper _helper;
 
     [SerializeField] private bool isGeneratingParticles;
 
@@ -25,11 +26,11 @@ public class BaseSlime_ParticleGenerator : MonoBehaviour
     {
         if (slimeOffsetTime > 0f)
         {
-            slimeOffsetTime -= Time.deltaTime;
+            slimeOffsetTime -= Time.fixedDeltaTime;
         }
 
         float combinedVelocity = Mathf.Abs(rb.velocity.x * xVelocityPointWeight) + Mathf.Abs(rb.velocity.y * yVelocityPointWeight);
-        if (combinedVelocity >= velocityPoint && slimeOffsetTime <= 0f)
+        if ((combinedVelocity >= velocityPoint || _helper.isRunning) && slimeOffsetTime <= 0f)
         {
             slimeOffsetTime = slimeOffset;
 

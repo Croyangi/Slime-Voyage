@@ -76,6 +76,8 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
             jumpMovement = jump;
 
             OnJump();
+            Debug.Log("1st jump");
+            return;
         }
 
         if (!_helper.isGrounded && _movementVars.coyoteJumpTimer != 0 && _movementVars.coyoteJumpTimer < _movementVars.coyoteTime)
@@ -84,11 +86,15 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
             jumpMovement = jump;
 
             OnJump();
+            Debug.Log("2nd jump");
+            return;
         }
 
         if (_movementVars.coyoteJumpTimer == 0 && _helper.stickingDirection != Vector2.zero)
         {
             SetWallJumpTechnicals();
+            Debug.Log("wall jump");
+            return;
         }
     }
 
@@ -115,9 +121,13 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
 
     private void ApplyWallJumpForce()
     {
-        Manager_SFXPlayer.instance.PlaySFXClip(sfx_jump, transform, 0.1f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.2f, 1f, 1f, 30f, spread: 180);
-        rb.velocity = new Vector2(_movementVars.wallJumpStrengthHorizontal * -(_helper.stickingDirection.x), _movementVars.wallJumpStrengthVerticle);
+        rb.velocity = Vector2.zero;
+
+        Vector2 wallJumpVelocity = new Vector2(_movementVars.wallJumpStrengthHorizontal * -(_helper.stickingDirection.x), _movementVars.wallJumpStrengthVertical);
+        rb.AddForce(wallJumpVelocity, ForceMode2D.Impulse);
         _helper.facingDirection = (int) -(_helper.stickingDirection.x);
+
+        Manager_SFXPlayer.instance.PlaySFXClip(sfx_jump, transform, 0.1f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.2f, 1f, 1f, 30f, spread: 180);
     }
 
     private void CoyoteTimeUpdate()
@@ -128,7 +138,7 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
         }
         else
         {
-            _movementVars.coyoteJumpTimer = Mathf.Clamp(_movementVars.coyoteJumpTimer -= Time.deltaTime, 0, _movementVars.coyoteTime);
+            _movementVars.coyoteJumpTimer = Mathf.Clamp(_movementVars.coyoteJumpTimer -= Time.fixedDeltaTime, 0, _movementVars.coyoteTime);
         }
     }
 
@@ -136,7 +146,7 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
     {
         if (_movementVars.jumpBufferTimer > 0)
         {
-            _movementVars.jumpBufferTimer -= Time.deltaTime;
+            _movementVars.jumpBufferTimer -= Time.fixedDeltaTime;
             if (_helper.isGrounded)
             {
                 JumpBufferCheck();
@@ -203,7 +213,7 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
     private void DecellerationStall()
     {
         _movementVars.groundedDeceleration = 1f;
-        _movementVars.deccelerationTimer -= Time.deltaTime;
+        _movementVars.deccelerationTimer -= Time.fixedDeltaTime;
     }
 
     private void MovementInputProcessor()
@@ -222,7 +232,7 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
         if (_movementVars.movementStallTime > 0) 
         {
             _movementVars.isMovementStalled = true;
-            _movementVars.movementStallTime = Mathf.Clamp(_movementVars.movementStallTime -= Time.deltaTime, 0, 9999);
+            _movementVars.movementStallTime = Mathf.Clamp(_movementVars.movementStallTime -= Time.fixedDeltaTime, 0, 9999);
         } else
         {
             _movementVars.isMovementStalled = false;

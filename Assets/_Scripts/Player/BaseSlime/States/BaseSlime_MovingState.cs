@@ -30,7 +30,21 @@ public class BaseSlime_MovingState : State
                 TransitionToState(state);
             }
         }
+
+        // Go into running speed
+        if (_helper.speedUpTimer > 0)
+        {
+            _helper.speedUpTimer -= Time.deltaTime;
+        }
+
+        if (_helper.isRunning == true)
+        {
+            _animator.ChangeAnimationState(_animator.EYES_SCARED, _animator.eyes_animator);
+        } else {
+            _animator.ChangeAnimationState(_animator.EYES_MOVING, _animator.eyes_animator);
+        }
     }
+
 
     public override void EnterState()
     {
@@ -43,6 +57,16 @@ public class BaseSlime_MovingState : State
 
         _helper.col_slime.offset = new Vector2(0, -0.058f);
         _helper.col_slime.size = new Vector2(1.8f, 1.37f);
+
+        // Go into running speed
+        if (_helper.isRunning == true)
+        {
+            _animator.ChangeAnimationState(_animator.EYES_SCARED, _animator.eyes_animator);
+        }
+        else
+        {
+            _animator.ChangeAnimationState(_animator.EYES_MOVING, _animator.eyes_animator);
+        }
     }
 
 

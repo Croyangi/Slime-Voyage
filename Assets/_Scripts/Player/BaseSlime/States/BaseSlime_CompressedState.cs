@@ -44,6 +44,7 @@ public class BaseSlime_CompressedState : State
 
     public override void ExitState()
     {
+        _helper._movementVars.movementSpeed = _helper._movementVars.walkingSpeed;
     }
 
     public override void TransitionToState(State state)

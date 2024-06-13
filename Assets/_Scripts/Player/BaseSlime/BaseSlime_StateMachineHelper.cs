@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class BaseSlime_StateMachineHelper : MonoBehaviour
 {
@@ -19,6 +20,10 @@ public class BaseSlime_StateMachineHelper : MonoBehaviour
 
     [Header("Building Block References")]
     public BaseSlime_MovementVariables _movementVars;
+
+    [Header("Running Speed")]
+    public float speedUpTimer;
+    public float speedUpTimerSet;
 
     [Header("Collider References")]
     public BoxCollider2D col_slime;
@@ -41,14 +46,16 @@ public class BaseSlime_StateMachineHelper : MonoBehaviour
     public bool isPermanentlySticking; // Disables after touching ground again
     public int facingDirection;
     public bool isTopVisualSpeed;
+    public bool isRunning;
 
     private void Awake()
     {
         //colliderBounds = baseSlime.GetComponent<Collider2D>().bounds.extents;
         facingDirection = 1;
+        speedUpTimer = speedUpTimerSet;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         isGrounded = IsGroundedUpdate();
 
@@ -75,6 +82,29 @@ public class BaseSlime_StateMachineHelper : MonoBehaviour
         SplatCheckUpdate(rb.velocity.y);
 
         TopVisualSpeedCheckUpdate();
+
+        RunningCheckUpdate();
+    }
+
+    private void RunningCheckUpdate()
+    {
+        isRunning = false;
+
+        if (_movementVars.processedInputMovement.x == 0)
+        {
+            // Running speed
+            speedUpTimer = speedUpTimerSet;
+        }
+
+        if (Mathf.Abs(rb.velocity.x) >= _movementVars.runningSpeed || speedUpTimer <= 0)
+        {
+            _movementVars.movementSpeed = _movementVars.runningSpeed;
+            isRunning = true;
+        }
+        else if (_movementVars.movementSpeed > 0) // Hotfix against compressed or lookup
+        {
+            _movementVars.movementSpeed = _movementVars.walkingSpeed;
+        }
     }
 
     private void TopVisualSpeedCheckUpdate()

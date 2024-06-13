@@ -1070,6 +1070,8 @@ MonoBehaviour:
   rb: {fileID: 5020864478455618518}
   currentHighestImpactVelocityY: 0
   _movementVars: {fileID: 6232816610152640318}
+  speedUpTimer: 0
+  speedUpTimerSet: 1
   col_slime: {fileID: 7038440154281907218}
   col_isGrounded: {fileID: 6338366257579092545}
   col_touchingLeft: {fileID: 2911381771255685479}
@@ -1086,6 +1088,7 @@ MonoBehaviour:
   isPermanentlySticking: 0
   facingDirection: 0
   isTopVisualSpeed: 0
+  isRunning: 0
 --- !u!114 &4564319859956447544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1156,13 +1159,16 @@ MonoBehaviour:
   velocityPower: 1
   movementSpeed: 10
   deccelerationTimer: 0
+  airborneSpeed: 0
+  walkingSpeed: 10
+  runningSpeed: 12
   maxFallSpeed: -30
   jumpStrength: 21
   rawInputMovement: {x: 0, y: 0}
   processedInputMovement: {x: 0, y: 0}
   wallJumpStrengthHorizontal: 17
-  wallJumpStrengthVerticle: 26
-  wallJumpStallTime: 0.25
+  wallJumpStrengthVertical: 29
+  wallJumpStallTime: 0.2
   stickingWallSpeed: 2
   stickingWallAcceleration: 7
   stickingWallDeceleration: 7
@@ -1515,6 +1521,8 @@ MonoBehaviour:
   - {fileID: 8388530168780798048, guid: 575fa1de954c8eb48aa1a92b5b910a90, type: 3}
   - {fileID: 8388530168780798048, guid: dbcda1b1ec803504d9ccd8d87b79b46a, type: 3}
   - {fileID: 8388530168780798048, guid: ed725c70f0eb5584ca9825feba963777, type: 3}
+  _helper: {fileID: 9029656406374692392}
+  isGeneratingParticles: 0
   slimeOffset: 0.1
   slimeOffsetTime: 0
   xVelocityPointWeight: 1

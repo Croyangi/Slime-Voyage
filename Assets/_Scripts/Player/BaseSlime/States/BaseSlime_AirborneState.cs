@@ -63,6 +63,12 @@ public class BaseSlime_AirborneState : State
         {
             _animator.ChangeAnimationState(_animator.EYES_AIRBORNE, _animator.eyes_animator);
         }
+
+        // Go into running speed
+        if (_helper.speedUpTimer > 0)
+        {
+            _helper.speedUpTimer -= Time.deltaTime;
+        }
     }
 
     public override void EnterState()

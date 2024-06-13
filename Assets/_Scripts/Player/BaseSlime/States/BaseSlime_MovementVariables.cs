@@ -25,6 +25,10 @@ public class BaseSlime_MovementVariables : MonoBehaviour
     public float movementSpeed;
     public float deccelerationTimer;
 
+    public float airborneSpeed;
+    public float walkingSpeed;
+    public float runningSpeed;
+
     public float maxFallSpeed;
 
     [Header("General Movement")]
@@ -34,7 +38,7 @@ public class BaseSlime_MovementVariables : MonoBehaviour
 
     [Header("Wall Jump")]
     public float wallJumpStrengthHorizontal;
-    public float wallJumpStrengthVerticle;
+    public float wallJumpStrengthVertical;
     public float wallJumpStallTime;
 
     public float stickingWallSpeed;
