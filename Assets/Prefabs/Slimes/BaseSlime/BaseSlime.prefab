@@ -373,7 +373,8 @@ MonoBehaviour:
   isTransitioning: 0
   col_hitbox: {fileID: 7038440154281907218}
   canEmote: 0
-  tag_isSolidGround: {fileID: 11400000, guid: 30c5fc2392c18074cbc1b3707eda820e, type: 2}
+  isVerticalCorrecting: 1
+  tag_isVerticalCorrecting: {fileID: 11400000, guid: afe9a11083cb83640ab4fc8944c1e236, type: 2}
   sfx_land: {fileID: 8300000, guid: 7bb2ca601060dc1479c4eb9444f3055d, type: 3}
   sfx_landHard: {fileID: 8300000, guid: d80f1c631c5ad9848882ab4d4968019f, type: 3}
 --- !u!1 &2317627284233952323
@@ -1150,9 +1151,12 @@ MonoBehaviour:
   isMovementStalled: 0
   coyoteTime: 0.2
   coyoteJumpTimer: 0
+  jumpStrength: 21
   jumpBuffer: 0.1
   jumpBufferTimer: 0
   jumpVelocityXAdd: 0
+  jumpCooldownTimer: 0
+  jumpCooldown: 0.1
   acceleration: 7
   groundedDeceleration: 7
   exceedDeceleration: 2
@@ -1163,7 +1167,6 @@ MonoBehaviour:
   walkingSpeed: 10
   runningSpeed: 12
   maxFallSpeed: -30
-  jumpStrength: 21
   rawInputMovement: {x: 0, y: 0}
   processedInputMovement: {x: 0, y: 0}
   wallJumpStrengthHorizontal: 17

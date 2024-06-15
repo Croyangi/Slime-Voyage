@@ -70,30 +70,27 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
             _movementVars.jumpBufferTimer = _movementVars.jumpBuffer;
         }
 
-        if (_helper.isGrounded && _helper.stickingDirection == Vector2.zero && Mathf.Abs(_helper.rb.velocity.y) < 3f)
+        if (_helper.isGrounded && _helper.stickingDirection == Vector2.zero && Mathf.Abs(_helper.rb.velocity.y) < 3f && _movementVars.jumpCooldownTimer <= 0)
         {
             float jump = value.ReadValue<float>();
             jumpMovement = jump;
 
             OnJump();
-            Debug.Log("1st jump");
             return;
         }
 
-        if (!_helper.isGrounded && _movementVars.coyoteJumpTimer != 0 && _movementVars.coyoteJumpTimer < _movementVars.coyoteTime)
+        if (!_helper.isGrounded && _movementVars.coyoteJumpTimer != 0 && _movementVars.coyoteJumpTimer < _movementVars.coyoteTime && _movementVars.jumpCooldownTimer <= 0)
         {
             float jump = value.ReadValue<float>();
             jumpMovement = jump;
 
             OnJump();
-            Debug.Log("2nd jump");
             return;
         }
 
         if (_movementVars.coyoteJumpTimer == 0 && _helper.stickingDirection != Vector2.zero)
         {
             SetWallJumpTechnicals();
-            Debug.Log("wall jump");
             return;
         }
     }
@@ -103,7 +100,9 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
         rb.velocity = new Vector2(rb.velocity.x, 0f);
         Vector2 jumpVelocity = new Vector2(_movementVars.jumpVelocityXAdd * Mathf.Sign(_helper.facingDirection), _movementVars.jumpStrength);
         rb.AddForce(jumpVelocity, ForceMode2D.Impulse);
+
         Manager_SFXPlayer.instance.PlaySFXClip(sfx_jump, transform, 0.1f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.2f, 1f, 1f, 30f, spread: 180);
+        _movementVars.jumpCooldownTimer = _movementVars.jumpCooldown;
     }
 
     private void OnJumpCancelled(InputAction.CallbackContext value)
@@ -164,10 +163,13 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
 
         if ((_helper.isGrounded && _helper.stickingDirection == Vector2.zero) || (!_helper.isGrounded && _movementVars.coyoteJumpTimer != 0 && _movementVars.coyoteJumpTimer < _movementVars.coyoteTime))
         {
-            float jump = 1;
-            jumpMovement = jump;
+            if (_movementVars.jumpCooldownTimer <= 0)
+            {
+                float jump = 1;
+                jumpMovement = jump;
 
-            OnJump();
+                OnJump();
+            }
         }
 
         if (_movementVars.coyoteJumpTimer == 0 && _helper.stickingDirection != Vector2.zero)
@@ -310,6 +312,14 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
         rb.AddForce(movement * Vector2.up);
     }
 
+    private void JumpCooldownUpdate()
+    {
+        if (_movementVars.jumpCooldownTimer > 0)
+        {
+            _movementVars.jumpCooldownTimer = Mathf.Clamp(_movementVars.jumpCooldownTimer -= Time.fixedDeltaTime, 0, 9999);
+        }
+    }
+
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, _movementVars.maxFallSpeed, 99999));
@@ -326,5 +336,6 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
 
         CoyoteTimeUpdate(); // Coyote time update
         JumpBufferUpdate(); // Jump buffer update
+        JumpCooldownUpdate(); // Jump cooldown update
     }
 }

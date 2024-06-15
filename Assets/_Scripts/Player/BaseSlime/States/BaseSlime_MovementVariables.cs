@@ -13,9 +13,12 @@ public class BaseSlime_MovementVariables : MonoBehaviour
     public float coyoteJumpTimer;
 
     [Header("Jump")]
+    public float jumpStrength;
     public float jumpBuffer;
     public float jumpBufferTimer;
     public float jumpVelocityXAdd;
+    public float jumpCooldownTimer;
+    public float jumpCooldown;
 
     [Header("Velocity")]
     public float acceleration;
@@ -32,7 +35,6 @@ public class BaseSlime_MovementVariables : MonoBehaviour
     public float maxFallSpeed;
 
     [Header("General Movement")]
-    public float jumpStrength;
     public Vector2 rawInputMovement;
     public Vector2 processedInputMovement;
 

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb648bad1628e56478dc2dcfc1068eac, type: 3}
   m_Name: ScriptObj_CheckpointQueue
   m_EditorClassIdentifier: 
-  checkpointId: WarehouseCheckpoint0
+  checkpointId: WarehouseIntro

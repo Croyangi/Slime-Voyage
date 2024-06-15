@@ -19,7 +19,9 @@ public class BaseSlime_IdleState : State
 
     [SerializeField] private bool canEmote = false;
 
-    [SerializeField] private TagsScriptObj tag_isSolidGround;
+    [SerializeField] private bool isVerticalCorrecting = false;
+
+    [SerializeField] private TagsScriptObj tag_isVerticalCorrecting;
 
     [Header("SFX")]
     [SerializeField] private AudioClip sfx_land;
@@ -46,48 +48,6 @@ public class BaseSlime_IdleState : State
         playerInput.Emote.RandomEmote.performed -= OnRandomEmote;
         playerInput.Disable();
     }
-
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.red;
-
-    //    Vector3 topPos = new Vector3(transform.position.x + col_hitbox.offset.x, transform.position.y + col_hitbox.offset.y + col_hitbox.bounds.size.y / 2f, 0f);
-    //    Vector3 botPos = new Vector3(transform.position.x + col_hitbox.offset.x, transform.position.y + col_hitbox.offset.y - col_hitbox.bounds.size.y / 2f, 0f);
-
-
-    //    //Gizmos.DrawWireSphere(col_hitbox.transform.position + topPos, 0.2f);
-    //    //Gizmos.DrawWireSphere(col_hitbox.transform.position + botPos, 0.2f);
-
-    //    float distance = col_hitbox.bounds.size.y;
-
-    //    // Perform the raycast
-    //    RaycastHit2D[] hits = Physics2D.RaycastAll(topPos, Vector2.down, distance);
-
-    //    // Draw the raycast
-    //    foreach (RaycastHit2D hit in hits)
-    //    {
-    //        // Draw a line from topPos to the hit point
-    //        Gizmos.DrawLine(topPos, hit.point);
-
-    //        if (hit.collider != null) // On Hit
-    //        {
-
-    //            //float distanceError = Mathf.Abs(hit.point.y - transform.position.y);
-    //            //Vector3 place = new Vector3(transform.position.x + col_hitbox.offset.x, transform.position.y + col_hitbox.offset.y + distanceError, 0f);
-    //            //Gizmos.DrawWireSphere(place, 1f);
-    //            //Debug.Log(distanceError);
-
-    //            if (hit.collider.gameObject.TryGetComponent<Tags>(out var _tags))
-    //            {
-    //                if (_tags.CheckTags(tag_isSolidGround.name) == true)
-    //                {
-    //                    Vector3 here = new Vector3(transform.position.x, hit.point.y, 0f);
-    //                    Gizmos.DrawWireSphere(here, 0.5f);
-    //                }
-    //            }
-    //        }
-    //    }
-    //}
 
     public override void UpdateState()
     {
@@ -144,7 +104,7 @@ public class BaseSlime_IdleState : State
 
         canEmote = true;
 
-        if (_helper.currentHighestImpactVelocityY < -0.1f)
+        if (_helper.currentHighestImpactVelocityY < -0.1f && isVerticalCorrecting == true)
         {
             CheckPenetrationDepth();
         }
@@ -184,13 +144,55 @@ public class BaseSlime_IdleState : State
                 //Debug.Log(hit.collider.gameObject);
                 if (hit.collider.gameObject.TryGetComponent<Tags>(out var _tags))
                 {
-                    if (_tags.CheckTags(tag_isSolidGround.name) == true)
+                    if (_tags.CheckTags(tag_isVerticalCorrecting.name) == true)
                     {
                         Vector3 pos = _helper.baseSlime.transform.position;
 
                         float bottomPos = transform.position.y + col_hitbox.offset.y - (col_hitbox.bounds.size.y / 2f);
                         float heightError = Mathf.Abs(hit.point.y - bottomPos);
                         _helper.baseSlime.transform.position = new Vector3(pos.x, pos.y + heightError, pos.z);
+                    }
+                }
+            }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+
+        Vector3 topPos = new Vector3(transform.position.x + col_hitbox.offset.x, transform.position.y + col_hitbox.offset.y + col_hitbox.bounds.size.y / 2f, 0f);
+        Vector3 botPos = new Vector3(transform.position.x + col_hitbox.offset.x, transform.position.y + col_hitbox.offset.y - col_hitbox.bounds.size.y / 2f, 0f);
+
+
+        //Gizmos.DrawWireSphere(col_hitbox.transform.position + topPos, 0.2f);
+        //Gizmos.DrawWireSphere(col_hitbox.transform.position + botPos, 0.2f);
+
+        float distance = col_hitbox.bounds.size.y;
+
+        // Perform the raycast
+        RaycastHit2D[] hits = Physics2D.RaycastAll(topPos, Vector2.down, distance);
+
+        // Draw the raycast
+        foreach (RaycastHit2D hit in hits)
+        {
+            // Draw a line from topPos to the hit point
+            Gizmos.DrawLine(topPos, hit.point);
+
+            if (hit.collider != null) // On Hit
+            {
+
+                //float distanceError = Mathf.Abs(hit.point.y - transform.position.y);
+                //Vector3 place = new Vector3(transform.position.x + col_hitbox.offset.x, transform.position.y + col_hitbox.offset.y + distanceError, 0f);
+                //Gizmos.DrawWireSphere(place, 1f);
+                //Debug.Log(distanceError);
+
+                if (hit.collider.gameObject.TryGetComponent<Tags>(out var _tags))
+                {
+                    if (_tags.CheckTags(tag_isVerticalCorrecting.name) == true)
+                    {
+                        Vector3 here = new Vector3(transform.position.x, hit.point.y, 0f);
+                        Gizmos.DrawWireSphere(here, 0.5f);
                     }
                 }
             }
