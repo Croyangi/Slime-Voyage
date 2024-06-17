@@ -272,6 +272,7 @@ SpriteAtlas:
     - b5d3da86915852042bb09751da482c4d: 21300000
     - 66e3b796afac0e045a02403af1dbba65: 21300000
     - 2c0fef969d3cffd4ebc8f1d5b6566982: 21300000
+    - 2007a5a6409a49d41868f94bd4be41f0: 21300000
     - db2b2aa605da161499bbb575af5eb357: 21300000
     - 681255b612381854f8a83f9560413d0c: 21300000
     - d2de95c686001b64d9088c99a3b51adf: 21300000
@@ -560,6 +561,7 @@ SpriteAtlas:
     - fd656dac6e571c6469ba05011715a3a8: 21300000
     - 61f0c2bc53eee2d468f426b95936b1ad: 21300000
     - 40f66dbc189853043a29f615feeccb1d: 21300000
+    - ae91aeccdd59fce4cb17b3158f9666a6: 21300000
     - 3f2b39eca7a307f49b196533de0c9855: 21300000
     - 61e96cfcfaa05714a9778e9acce9aa89: 21300000
     - 8c69cffc5e5ebe04c9c616def2455904: 21300000
@@ -586,6 +588,7 @@ SpriteAtlas:
     - e51db69de7538dc4b94e6222184b29a5: -637907904
     - e51db69de7538dc4b94e6222184b29a5: -492725871
     - 56791b9d24f74ce449485757b4dbefee: 21300000
+    - 56cb3dbdd7461f241aa427b720a652a3: 21300000
     - 50192fbdce6149f43ad447b3247a9dab: 21300000
     - d33c64cd1d604ca418060e32f67f4a38: -1770400815
     - d33c64cd1d604ca418060e32f67f4a38: 399009904
@@ -886,6 +889,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: b5d3da86915852042bb09751da482c4d, type: 3}
   - {fileID: 21300000, guid: 66e3b796afac0e045a02403af1dbba65, type: 3}
   - {fileID: 21300000, guid: 2c0fef969d3cffd4ebc8f1d5b6566982, type: 3}
+  - {fileID: 21300000, guid: 2007a5a6409a49d41868f94bd4be41f0, type: 3}
   - {fileID: 21300000, guid: db2b2aa605da161499bbb575af5eb357, type: 3}
   - {fileID: 21300000, guid: 681255b612381854f8a83f9560413d0c, type: 3}
   - {fileID: 21300000, guid: d2de95c686001b64d9088c99a3b51adf, type: 3}
@@ -1174,6 +1178,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: fd656dac6e571c6469ba05011715a3a8, type: 3}
   - {fileID: 21300000, guid: 61f0c2bc53eee2d468f426b95936b1ad, type: 3}
   - {fileID: 21300000, guid: 40f66dbc189853043a29f615feeccb1d, type: 3}
+  - {fileID: 21300000, guid: ae91aeccdd59fce4cb17b3158f9666a6, type: 3}
   - {fileID: 21300000, guid: 3f2b39eca7a307f49b196533de0c9855, type: 3}
   - {fileID: 21300000, guid: 61e96cfcfaa05714a9778e9acce9aa89, type: 3}
   - {fileID: 21300000, guid: 8c69cffc5e5ebe04c9c616def2455904, type: 3}
@@ -1200,6 +1205,7 @@ SpriteAtlas:
   - {fileID: -637907904, guid: e51db69de7538dc4b94e6222184b29a5, type: 3}
   - {fileID: -492725871, guid: e51db69de7538dc4b94e6222184b29a5, type: 3}
   - {fileID: 21300000, guid: 56791b9d24f74ce449485757b4dbefee, type: 3}
+  - {fileID: 21300000, guid: 56cb3dbdd7461f241aa427b720a652a3, type: 3}
   - {fileID: 21300000, guid: 50192fbdce6149f43ad447b3247a9dab, type: 3}
   - {fileID: -1770400815, guid: d33c64cd1d604ca418060e32f67f4a38, type: 3}
   - {fileID: 399009904, guid: d33c64cd1d604ca418060e32f67f4a38, type: 3}
@@ -1283,16 +1289,16 @@ SpriteAtlas:
   - BaseSlime_Moving_3
   - NPC_MushroomHatStepspikeTalking
   - Billboard_SmileYouAreOnCamera
-  - ProfilePicture_BaseSlime
+  - PFP_BaseSlime
   - CreditStatue_Art
   - BasementBackroundWood
-  - ProfilePicture_LoudSpeaker
+  - PFP_LoudSpeaker
   - BaseSlime_Moving_Eyes_4
   - BaseSlime_Moving_Eyes_3
   - BaseSlime_Moving_Eyes_2
   - BaseSlime_Moving_Eyes_1
   - BaseSlime_Moving_Eyes_0
-  - ProfilePicture_HattedStepspikeMouthOpen
+  - PFP_HattedStepspikeMouthOpen
   - WarehouseJunk (12)
   - PFP_SwapeeIdle
   - Billboard_LiftLaughLove
@@ -1325,8 +1331,8 @@ SpriteAtlas:
   - NPC_SunHatStepspike
   - Billboard_ReservedForMarsh
   - UI_ChunkfishDiscRecordScratcher
-  - ProfilePicture_HattedStepspikeSuprised
-  - ProfilePicture_StepspikeWorkerMouthClosed
+  - PFP_HattedStepspikeSuprised
+  - PFP_StepspikeWorkerMouthClosed
   - UI_GenericButton_2
   - UI_GenericButton_0
   - UI_GenericButton_1
@@ -1399,7 +1405,7 @@ SpriteAtlas:
   - NPC_FallenStepspike
   - WarehouseElevatorRedLightOff
   - UI_VerticleSlider
-  - ProfilePicture_BaseSlimeScared
+  - PFP_BaseSlimeScared
   - Chunkfish_Eyes_0
   - Chunkfish_Eyes_1
   - Chunkfish_Eyes_2
@@ -1408,10 +1414,10 @@ SpriteAtlas:
   - Chunkfish_Eyes_5
   - Chunkfish_Eyes_6
   - Chunkfish_Eyes_7
-  - ProfilePicture_HattedChunkfishMouthClosed
+  - PFP_HattedChunkfishMouthClosed
   - JCSign
   - Decoration_DarkBox4
-  - ProfilePicture_HattedChunkfishSmile
+  - PFP_HattedChunkfishSmile
   - PFP_SwapeeStretch
   - SlimeMove_7
   - SlimeMove_6
@@ -1421,7 +1427,7 @@ SpriteAtlas:
   - SlimeMove_2
   - SlimeMove_1
   - SlimeMove_0
-  - ProfilePicture_BaseSlimeBlink
+  - PFP_BaseSlimeBlink
   - Chunkship_Boxes
   - Decoration_DarkFence_2
   - Decoration_DarkFence_0
@@ -1458,13 +1464,13 @@ SpriteAtlas:
   - WarehouseJunk (25)
   - spikes
   - InteractableGumBlock
-  - ProfilePicture_BaseSlimePilled
+  - PFP_BaseSlimePilled
   - Decoration_Lamp_1
   - Decoration_Lamp_0
   - ScrollingSlimeBackround
   - NPC_SittingStepSpikeWorker
   - TicketButton
-  - ProfilePicture_StepspikeWorkerSideEye
+  - PFP_StepspikeWorkerSideEye
   - BaseSlime_Idle_Eyes_3
   - BaseSlime_Idle_Eyes_2
   - BaseSlime_Idle_Eyes_1
@@ -1493,12 +1499,13 @@ SpriteAtlas:
   - Decoration_BrokenDarkBoxPieces_4
   - Decoration_BrokenDarkBoxPieces_5
   - WarehouseJunk (21)
-  - ProfilePicture_StepspikeWorkerHappy
+  - PFP_StepspikeWorkerHappy
   - Billboard_WatchYourStep
   - CytochasmPreview
   - WarehouseJunk (10)
   - Chunkship_Chunkfish
-  - ProfilePicture_LeaderHattedStepspikeMouthClosed
+  - PFP_LeaderHattedStepspikeMouthClosed
+  - PFP_BlueCapStepspikeSmile
   - Billboard_BoxySaysGibberish
   - WarehouseBackroundTertiaryLayer
   - Decoration_Box0
@@ -1553,7 +1560,7 @@ SpriteAtlas:
   - GhostSlimeBubbleMoldInside
   - Billboard_StayRested
   - SunsetPreview
-  - NPC_TophatChunkfishConcernedMouthClosed
+  - PFP_TophatChunkfishConcernedMouthClosed
   - EmptyForklift
   - BaseSlime_SlimeParticles_4
   - BaseSlime_SlimeParticles_3
@@ -1573,7 +1580,7 @@ SpriteAtlas:
   - SlimeLookUp_1
   - WarehouseElevatorDownOutline
   - Decoration_Box2
-  - ProfilePicture_HattedStepspikeMouthClosed
+  - PFP_HattedStepspikeMouthClosed
   - Decoration_Pillar
   - UI_SliderBlue_2
   - UI_SliderBlue_0
@@ -1592,7 +1599,7 @@ SpriteAtlas:
   - Decoration_BrokenBoxPieces_1
   - Decoration_BrokenBoxPieces_4
   - Decoration_BrokenBoxPieces_5
-  - ProfilePicture_StepspikeWorkerMouthOpen
+  - PFP_StepspikeWorkerMouthOpen
   - NPC_CatEarsStepspike
   - Decoration_Shelf
   - WarehouseElevator
@@ -1600,13 +1607,13 @@ SpriteAtlas:
   - WarehouseJunk (14)
   - SlimeVoyageLogo
   - WarehouseJunk (4)
-  - ProfilePicture_LeaderHattedStepspikeMouthOpenSmug
+  - PFP_LeaderHattedStepspikeMouthOpenSmug
   - WarehouseElevatorDown
   - WarehouseElevatorShaft
   - NPC_BlueCapStepspikeTalking
   - UI_CheckpointHolder
   - Warehouse_ProfilePicture
-  - ProfilePicture_StepspikeMouthOpen
+  - PFP_StepspikeMouthOpen
   - JumpBoostOutline
   - WarehouseJunk (3)
   - BaseSlime_LookUp_Eyes_3
@@ -1643,7 +1650,7 @@ SpriteAtlas:
   - WarehouseVents_20
   - WarehouseVents_23
   - WarehouseVents_22
-  - ProfilePicture_ChunkfishMouthOpen
+  - PFP_ChunkfishMouthOpen
   - CreditStatue_Music
   - UI_Door
   - WarehouseJunk (2)
@@ -1671,7 +1678,7 @@ SpriteAtlas:
   - Chunkfish_Flag_2
   - Chunkfish_Flag_3
   - Billboard_BoxySaysRules
-  - NPC_TophatChunkfishFaceForward
+  - PFP_TophatChunkfishFaceForward
   - stebbspike
   - BaseSlime_IdleStretch_10
   - BaseSlime_IdleStretch_11
@@ -1695,7 +1702,7 @@ SpriteAtlas:
   - WarehouseDoorOpen
   - Billboard_BoxySaysBlessings
   - UI_PauseMenu
-  - NPC_TophatChunkfishMouthOpen
+  - PFP_TophatChunkfishMouthOpen
   - Decoration_DarkBox2
   - PFP_SwapeeConcerned
   - Warehouse_DialogueBox
@@ -1721,7 +1728,7 @@ SpriteAtlas:
   - SlimeSpinIdle_3
   - SlimeSpinIdle_0
   - SlimeSpinIdle_1
-  - ProfilePicture_HattedStepspikeMouthClosed2
+  - PFP_HattedStepspikeMouthClosed2
   - NPC_LeaderHattedStepSpike
   - pngegg_0
   - GeneralBlueButton_0
@@ -1730,9 +1737,9 @@ SpriteAtlas:
   - WarehouseElevatorPulley
   - OldSlime
   - Chunkfish_LandingDock
-  - ProfilePicture_StepspikeSideEye
+  - PFP_StepspikeSideEye
   - NPC_NewspaperStepspike_Idle
-  - ProfilePicture_StepspikeMouthClosed
+  - PFP_StepspikeMouthClosed
   - CreditStatue_Croyangi
   - WarehouseBackround
   - Billboard_NotPaidToFrown
@@ -1740,8 +1747,8 @@ SpriteAtlas:
   - BaseSlime_Splat_1
   - BaseSlime_Splat_2
   - BaseSlime_Splat_3
-  - ProfilePicture_BaseSlimeEyebrowRaised
-  - ProfilePicture_ChunkfishMouthClosed
+  - PFP_BaseSlimeEyebrowRaised
+  - PFP_ChunkfishMouthClosed
   - Billboard_NotPayingToFrown
   - NPC_NewspaperStepspike_IdleRead
   - Billboard_ThinkInsideTheBox
@@ -1785,8 +1792,9 @@ SpriteAtlas:
   - Warehouse_Decoration_WoodenTiles_20
   - Warehouse_Decoration_WoodenTiles_21
   - GeneralSquareBlueButton
-  - ProfilePicture_StepspikeMouthHappy
-  - ProfilePicture_HattedChunkfishSmugOpen
+  - PFP_StepspikeMouthHappy
+  - PFP_HattedChunkfishSmugOpen
+  - PFP_BlueCapStepSpikeMouthOpen
   - Warehouse_ProfilePictureOutline
   - Billboard_WorkPlaceRelationships
   - UI_DoorOpen
@@ -1805,14 +1813,15 @@ SpriteAtlas:
   - NPC_CowboyChunkfish
   - JumpBoostParticle
   - WarehouseBillboardGrate
-  - NPC_TophatChunkfishMouthClosed
+  - PFP_TophatChunkfishMouthClosed
   - Collectible_Boombox
   - WarehouseJunk (11)
   - EndingPoint_1
   - EndingPoint_0
   - EndingPoint_3
   - EndingPoint_2
-  - ProfilePicture_HattedStepspikeSideEye
+  - PFP_HattedStepspikeSideEye
+  - PFP_BlueCapStepSpikeSideEye
   - WarehouseJunk (17)
   - NPC_NewspaperStepspike_8
   - NPC_NewspaperStepspike_1
@@ -1835,7 +1844,7 @@ SpriteAtlas:
   - JumpBoost
   - Billboard_BeWareV2
   - NPC_SwapeeStare
-  - NPC_TophatChunkfishConcernedMouthOpen
+  - PFP_TophatChunkfishConcernedMouthOpen
   - NPC_Loudspeaker_3
   - NPC_Loudspeaker_2
   - NPC_Loudspeaker_1
@@ -1844,7 +1853,7 @@ SpriteAtlas:
   - NPC_SunHatStepspikeTalking
   - WarehouseJunk (7)
   - WarehouseJunk (22)
-  - ProfilePicture_BaseSlimeConcerned
+  - PFP_BaseSlimeConcerned
   - Billboard_WareHomeStripped_1
   - Billboard_WareHomeStripped_0
   - Billboard_WareHomeStripped_3
@@ -1857,7 +1866,7 @@ SpriteAtlas:
   - Decoration_Fence_0
   - Decoration_Fence_1
   - Decoration_DarkBox3
-  - ProfilePicture_LeaderHattedStepspikeMouthClosedSmug
+  - PFP_LeaderHattedStepspikeMouthClosedSmug
   - NPC_ForkliftFire_1
   - NPC_ForkliftFire_0
   - NPC_Forklift
@@ -1879,13 +1888,13 @@ SpriteAtlas:
   - NPC_BlueCapStepspike
   - GeneralUI_Return
   - WarehouseDiorama_Heading
-  - ProfilePicture_LeaderHattedStepspikeMouthOpen
+  - PFP_LeaderHattedStepspikeMouthOpen
   - MetalBlock
   - TicketButton_HolePunched
   - BaseSlimeBubbleMoldInside
   - _BaseSlime_Idle_SlimePilled
   - BasementBackroundTrash
-  - ProfilePicture_HattedChunkfishMouthOpen
+  - PFP_HattedChunkfishMouthOpen
   - NPC_MushroomHatStepspike
   - Decoration_Lightbulb_0
   - Decoration_Lightbulb_1

@@ -246,6 +246,7 @@ MonoBehaviour:
   maxVelocityRandomParticle: {x: 10, y: 10}
   minVelocityIdleRandomParticle: {x: 5, y: 5}
   maxVelocityIdleRandomParticle: {x: 10, y: 10}
+  sfx_slimeDeath: {fileID: 8300000, guid: 47f4ea0d268575149b0c2bbeeef6d421, type: 3}
 --- !u!1 &1541632588066162261
 GameObject:
   m_ObjectHideFlags: 0
@@ -1170,7 +1171,7 @@ MonoBehaviour:
   rawInputMovement: {x: 0, y: 0}
   processedInputMovement: {x: 0, y: 0}
   wallJumpStrengthHorizontal: 17
-  wallJumpStrengthVertical: 29
+  wallJumpStrengthVertical: 31
   wallJumpStallTime: 0.2
   stickingWallSpeed: 2
   stickingWallAcceleration: 7

@@ -23,8 +23,12 @@ public class BaseSlime_Death : MonoBehaviour, IPlayerProcessor
     [SerializeField] private Vector2 minVelocityIdleRandomParticle;
     [SerializeField] private Vector2 maxVelocityIdleRandomParticle;
 
+    [SerializeField] private AudioClip sfx_slimeDeath;
+
     public void InitiatePlayerDeath()
     {
+        Manager_SFXPlayer.instance.PlaySFXClip(sfx_slimeDeath, transform, 0.1f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.1f);
+
         for (int i = 0; i < particleAmount; i++)
         {
 

@@ -10,7 +10,7 @@ public class LoudSpeaker : MonoBehaviour, IDialogueCommunicator
     [SerializeField] public List<ScriptableObject_Dialogue> _dialoguePackages;
     [SerializeField] public int dialoguePackageIteration = 0;
     [SerializeField] private Collider2D _promptCollider;
-    [SerializeField] private bool isSpeaking;
+    [SerializeField] private bool isInterrupted;
 
     [Header("Building Block References")]
     [SerializeField] private LoudSpeaker_Animator _loudSpeaker_Animator;
@@ -29,6 +29,13 @@ public class LoudSpeaker : MonoBehaviour, IDialogueCommunicator
     public void OnDialogueEnd()
     {
         _loudSpeaker_Animator.ChangeToIdle();
+
+        // Next dialogue interaction
+        if (dialoguePackageIteration < _dialoguePackages.Count - 1 && isInterrupted == false)
+        {
+            dialoguePackageIteration++;
+        }
+        isInterrupted = false;
     }
 
     private List<Dialogue> CopyDialoguePrompt()
@@ -72,6 +79,7 @@ public class LoudSpeaker : MonoBehaviour, IDialogueCommunicator
 
         if (_handler.currentDialoguePrompt == gameObject && _handler != null)
         {
+            isInterrupted = true;
             _handler.ForceQuitDialogue();
         }
     }
@@ -92,12 +100,6 @@ public class LoudSpeaker : MonoBehaviour, IDialogueCommunicator
             _handler._dialogues = CopyDialoguePrompt();
             _handler._dialoguePackage = _dialoguePackages[dialoguePackageIteration];
             _handler.InitiateDialogue();
-
-            // Next dialogue interaction
-            if (dialoguePackageIteration < _dialoguePackages.Count - 1)
-            {
-                dialoguePackageIteration++;
-            }
         }
 
     }

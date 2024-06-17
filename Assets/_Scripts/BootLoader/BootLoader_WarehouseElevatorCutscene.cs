@@ -176,7 +176,7 @@ public class BootLoader_WarehouseElevatorCutscene : MonoBehaviour
 
     private IEnumerator InitiateFadeOutTransition()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(6f);
         StartCoroutine(FadeOutTransition());
     }
 
