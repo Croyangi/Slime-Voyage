@@ -49,11 +49,13 @@ public class NPC_Forklift : MonoBehaviour
 
         Manager_SFXPlayer.instance.PlaySFXClip(audioClip_forkliftExplosion, transform, 0.3f, false, Manager_AudioMixer.instance.mixer_sfx, false, 0f, 1f, 1f, 30f);
         Manager_SFXPlayer.instance.PlaySFXClip(audioClip_forkliftFire, transform, 0.3f, true, Manager_AudioMixer.instance.mixer_sfx, true, 0.2f, 1f, 1f, 30f);
+
+        Manager_Cinemachine.instance.ApplyScreenShake(0.3f, 3f);
     }
 
     private IEnumerator LoopingCheckForDestroyedForklift()
     {
-        if (Manager_DialogueHandler.instance.isDialogueActive && Manager_DialogueHandler.instance.currentDialogueIndex >= 12 && Manager_DialogueHandler.instance._dialoguePackage == _dialoguePackage)
+        if (Manager_DialogueHandler.instance.isDialogueActive && Manager_DialogueHandler.instance.currentDialogueIndex >= 6 && Manager_DialogueHandler.instance._dialoguePackage == _dialoguePackage)
         {
             ChangeToDestroyed();
             isDetected = false;

@@ -238,7 +238,7 @@ public class BootLoader_WarehouseElevatorCutscene : MonoBehaviour
         LeanTween.cancel(pulley);
         LeanTween.cancel(gear1);
         LeanTween.cancel(gear2);
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(6f);
 
         // Slow fall down
         Manager_SFXPlayer.instance.PlaySFXClip(music_elevatorCutsceneFall, transform, 1, false, Manager_AudioMixer.instance.mixer_music);

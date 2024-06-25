@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static PlayerMovementScriptObj;
 
 public class BaseSlime_IdleState : State
 {
@@ -224,6 +223,7 @@ public class BaseSlime_IdleState : State
             StartCoroutine(ReturnToIdleAnimation(0.5f));
 
             Manager_SFXPlayer.instance.PlaySFXClip(sfx_landHard, transform, 0.5f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.1f, 1f, 1f, 30f, spread: 180);
+            Manager_Cinemachine.instance.ApplyScreenShake(0.2f, 1f);
         } else
         {
             _animator.ChangeAnimationState(_animator.BASESLIME_IDLE, _animator.baseSlime_animator);

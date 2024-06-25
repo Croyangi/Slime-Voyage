@@ -20,6 +20,7 @@ public class BootLoader_DevTool : MonoBehaviour
     private void Awake()
     {
         _devToolsInput = new DevToolsInput();
+        enabledGroup.SetActive(false);
     }
 
     private void OnEnable()

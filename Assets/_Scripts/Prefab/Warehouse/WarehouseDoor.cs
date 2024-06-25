@@ -75,6 +75,7 @@ public class WarehouseDoor : MonoBehaviour, IDataPersistence
         {
             _prompt.SendInteraction();
             Manager_SFXPlayer.instance.PlaySFXClip(audioClip_locked, transform, 0.3f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.2f);
+            Manager_Cinemachine.instance.ApplyScreenShake(0.1f, 0.7f);
         }
 
         // Unlock door

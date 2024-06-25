@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 public class DialogueInteraction_SwapeeEnabled : MonoBehaviour
@@ -20,6 +21,8 @@ public class DialogueInteraction_SwapeeEnabled : MonoBehaviour
     [SerializeField] private GameObject swapee_dialoguePrompt;
     [SerializeField] private ParticleSystem swapee_particles;
     [SerializeField] private float elapsedTime;
+    [SerializeField] private Light2D swapee_light;
+    [SerializeField] private GameObject swapee_globalVolume;
 
     [Header("Tags")]
     [SerializeField] private TagsScriptObj tag_player;
@@ -35,6 +38,7 @@ public class DialogueInteraction_SwapeeEnabled : MonoBehaviour
 
         swapee.transform.localScale = scale * 1.01f;
 
+        swapee_light.intensity += 0.04f;
         fadeOut.color = new Color(fadeOut.color.r, fadeOut.color.g, fadeOut.color.b, alpha);
         
         yield return new WaitForFixedUpdate();
@@ -47,6 +51,7 @@ public class DialogueInteraction_SwapeeEnabled : MonoBehaviour
 
         swapee_particles.Play();
         fadeOut.enabled = true;
+        swapee_globalVolume.SetActive(true);
         Manager_SFXPlayer.instance.PlaySFXClip(audioClip_swapeeGrowing, transform, 1f, false, Manager_AudioMixer.instance.mixer_sfx);
         StartCoroutine(SwapeeGrowing());
 
@@ -55,6 +60,8 @@ public class DialogueInteraction_SwapeeEnabled : MonoBehaviour
         swapee.SetActive(false);
         swapee_particles.Stop();
         fadeOut.enabled = false;
+        swapee_light.enabled = false;
+        swapee_globalVolume.SetActive(false);
 
         StopAllCoroutines();
         _swapeeMode.EndSwapeeModeIntro();

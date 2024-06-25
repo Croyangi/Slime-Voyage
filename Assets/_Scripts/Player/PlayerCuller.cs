@@ -6,8 +6,8 @@ using UnityEngine;
 public class PlayerCuller : MonoBehaviour
 {
     [SerializeField] private LayerMask layer_isCullable;
-    [SerializeField] private float activationDistance = 40f;
-    [SerializeField] private float totalDistance = 50f;
+    [SerializeField] public float activationDistance = 40f;
+    [SerializeField] public float totalDistance = 50f;
 
     private void Update()
     {

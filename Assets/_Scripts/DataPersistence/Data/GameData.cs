@@ -27,7 +27,7 @@ public class GameData
 
     public float currentSpeedrunTime;
     public SerializableDictionary<string, float> recordSpeedrunTimes;
-    public bool isSpeedrunModeOn;
+    public bool isSpeedrunModeOn = false;
 
     public float masterVolume;
     public float musicVolume;

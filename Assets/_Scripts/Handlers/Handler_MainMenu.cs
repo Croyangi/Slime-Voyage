@@ -19,6 +19,7 @@ public class Handler_MainMenu : MonoBehaviour
     [SerializeField] private Canvas setup_canvas;
     [SerializeField] private GameObject credits;
     [SerializeField] private GameObject controls;
+    [SerializeField] private GameObject supportUs;
     [SerializeField] private AudioClip sfx_onPlayClicked;
     [SerializeField] private bool isTransitioning;
 
@@ -29,6 +30,7 @@ public class Handler_MainMenu : MonoBehaviour
 
         credits.SetActive(false);
         controls.SetActive(false);
+        supportUs.SetActive(false);
 
         StartCoroutine(LoadLoadingScreen());
     }
@@ -97,6 +99,7 @@ public class Handler_MainMenu : MonoBehaviour
     {
         controls.SetActive(!controls.activeSelf);
         credits.SetActive(false);
+        supportUs.SetActive(false);
     }
 
 
@@ -104,6 +107,24 @@ public class Handler_MainMenu : MonoBehaviour
     {
         credits.SetActive(!credits.activeSelf);
         controls.SetActive(false);
+        supportUs.SetActive(false);
+    }
+
+    public void OnSupportUsButtonPressed()
+    {
+        supportUs.SetActive(!supportUs.activeSelf);
+        credits.SetActive(false);
+        controls.SetActive(false);
+    }
+
+    public void OnDiscordOpen()
+    {
+        Application.OpenURL("https://discord.gg/DVh5eCWNfs");
+    }
+
+    public void OnKickstarterOpen()
+    {
+        Application.OpenURL("https://www.kickstarter.com/projects/croyangi/slime-voyage");
     }
 
     public void OnExitButtonPressed()

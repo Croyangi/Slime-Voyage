@@ -49,6 +49,9 @@ public class FanBreaking : MonoBehaviour
                 StartCoroutine(FadeOut());
                 Destroy(gameObject, 2f);
 
+                // Screen Shake
+                Manager_Cinemachine.instance.ApplyScreenShake(0.1f, 1f);
+
                 // SFX
                 GenerateWeightPoolSFX();
             }

@@ -7,7 +7,7 @@ public class WarehouseTutorialRoom : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Light2D playerLight;
-    [SerializeField] private PlayerMovementScriptObj _playerMovementScriptObj;
+    [SerializeField] private ScriptObj_BaseSlimeMovementVariables movementVars;
 
     [SerializeField] private GameObject[] tutorialBoxes;
 
@@ -16,7 +16,7 @@ public class WarehouseTutorialRoom : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if ((_playerMovementScriptObj.baseSlime.processedInputMovement.x != 0 || _playerMovementScriptObj.baseSlime.processedInputMovement.y != 0) && !initialPlayerTrigger)
+        if ((movementVars.baseSlime.processedInputMovement.x != 0 || movementVars.baseSlime.processedInputMovement.y != 0) && !initialPlayerTrigger)
         {
             initialPlayerTrigger = true;
             playerLight.enabled = true;

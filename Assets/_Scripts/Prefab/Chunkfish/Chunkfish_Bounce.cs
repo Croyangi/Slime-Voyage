@@ -76,6 +76,9 @@ public class Chunkfish_Bounce : MonoBehaviour
             if (_tags.CheckTags(_playerTag.name) == true && collidedObject.GetComponent<IMovementProcessor>() != null)
             {
                 SetMovementStall();
+
+                // Set camera shake
+                Manager_Cinemachine.instance.ApplyScreenShake(0.1f, 1f);
             }
         }
     }
