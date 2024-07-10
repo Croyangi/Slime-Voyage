@@ -67,13 +67,15 @@ public class BootLoader_WarehouseElevatorCutscene : MonoBehaviour
 
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
+    [SerializeField] private ScriptObj_SceneName scene_devTools;
     [SerializeField] private ScriptObj_SceneName scene_loadingScreen;
     [SerializeField] private ScriptObj_SceneName scene_activeScene;
     [SerializeField] private ScriptObj_SceneName scene_loadedScene;
-    [SerializeField] private ScriptObj_SceneName scene_deloadedScene;
 
     private void Awake()
     {
+        _sceneQueue.LoadScene(scene_devTools.name, true);
+
         StartCoroutine(LoadLoadingScreen());
         PrepareOpenSkipCutscene();
         fadeOutTransition.gameObject.SetActive(true);
@@ -142,7 +144,7 @@ public class BootLoader_WarehouseElevatorCutscene : MonoBehaviour
 
     private void OnElevatorCutsceneComplete()
     {
-        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_loadedScene.name, scene_deloadedScene.name);
+        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_loadedScene.name);
     }
 
     private IEnumerator LoadLoadingScreen()
@@ -238,7 +240,7 @@ public class BootLoader_WarehouseElevatorCutscene : MonoBehaviour
         LeanTween.cancel(pulley);
         LeanTween.cancel(gear1);
         LeanTween.cancel(gear2);
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(2f);
 
         // Slow fall down
         Manager_SFXPlayer.instance.PlaySFXClip(music_elevatorCutsceneFall, transform, 1, false, Manager_AudioMixer.instance.mixer_music);

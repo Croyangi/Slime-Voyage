@@ -57,7 +57,7 @@ public class Handler_SwapeeMode : MonoBehaviour, IDataPersistence
 
     private void LoadTheWarehouse()
     {
-        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_warehouse.name, scene_deloadedScene.name);
+        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_warehouse.name);
     }
 
     private void UnlockSwapeeMode()

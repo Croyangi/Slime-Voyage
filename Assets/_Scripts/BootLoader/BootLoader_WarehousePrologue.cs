@@ -115,7 +115,7 @@ public class BootLoader_WarehousePrologue : MonoBehaviour
 
     private void LoadWarehouse()
     {
-        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_warehouse.name, scene_deloadedScene.name);
+        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_warehouse.name);
     }
 
 

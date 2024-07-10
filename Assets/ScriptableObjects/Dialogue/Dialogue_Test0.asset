@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e2d313d4c016d342bc276cb73a36214, type: 3}
   m_Name: Dialogue_Test0
   m_EditorClassIdentifier: 
-  isDialogueOnTop: 0
+  isDialogueOnTop: 1
   isDialogueMini: 0
-  isPlayerInputStall: 0
+  isPlayerInputStall: 1
   _dialogues:
-  - dialogueText: ermmm... what the sigma...
+  - dialogueText: I got a job for you.
     dialogueSpeed: 0.03
     dialogueStallTime: 0
     cleanText: 1
     stoppingFlag: 1
-    profileName: Newspaper Stepspike
-    profilePicture: {fileID: 21300000, guid: 211ec46b11332e1469bb6a15626bb8cd, type: 3}
+    profileName: Daria
+    profilePicture: {fileID: 21300000, guid: 6933fa1cca7d9214c81cc5617c05b214, type: 3}
     sfx_speaking: {fileID: 8300000, guid: b45f90f4db75d15479068d5168b17415, type: 3}
     sfxSpeakingSpacing: 0

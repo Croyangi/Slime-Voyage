@@ -55,7 +55,7 @@ public class BootLoader_WarehouseSwapeeMode : MonoBehaviour, IDataPersistence
     {
         isCompleted = true;
         DataPersistenceManager.instance.SaveGame();
-        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_loadedScene.name, scene_deloadedScene.name);
+        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_loadedScene.name);
     }
 
     public void LoadData(GameData data)

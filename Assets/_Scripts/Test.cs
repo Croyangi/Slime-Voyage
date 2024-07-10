@@ -5,10 +5,18 @@ using UnityEngine;
 
 public class Test : MonoBehaviour
 {
-    [SerializeField] private float magnitude;
+    [Header("General References")]
+    [SerializeField] private GameObject chunkfish;
 
-    private void OnTriggerStay2D(Collider2D collision)
+    [Header("Rise/Fall Visual Settings")]
+    [SerializeField] private float _amplitude = 0.01f;
+    [SerializeField] private float _frequency = 3;
+    [SerializeField] private float time;
+
+    private void FixedUpdate()
     {
-        collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * magnitude);
+        time += Time.deltaTime;
+        float y = Mathf.Sin(time * _frequency) * _amplitude;
+        chunkfish.transform.position = new Vector2(chunkfish.transform.position.x, chunkfish.transform.position.y + y);
     }
 }

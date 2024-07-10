@@ -119,7 +119,8 @@ public class BootLoader_ResultsScreen : MonoBehaviour, IDataPersistence
     // Set project version
     private void SetVersion()
     {
-        tmp_version.text = "v" + Application.version;
+        tmp_version.text =  be
+            Application.version;
     }
 
     // Sets text

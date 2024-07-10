@@ -67,6 +67,6 @@ public class Handler_CheckpointLoader : MonoBehaviour, IDataPersistence
 
     private void LoadTheWarehouse()
     {
-        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_loadedScene.name, scene_deloadedScene.name);
+        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_loadedScene.name);
     }
 }

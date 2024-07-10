@@ -9,6 +9,6 @@ public class UI_GetVersion : MonoBehaviour
 
     private void Awake()
     {
-        tmp_version.text = "v" + Application.version;
+        tmp_version.text = Application.version;
     }
 }

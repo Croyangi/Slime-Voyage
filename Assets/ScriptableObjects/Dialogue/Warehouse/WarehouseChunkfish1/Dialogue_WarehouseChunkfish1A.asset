@@ -16,21 +16,12 @@ MonoBehaviour:
   isDialogueMini: 0
   isPlayerInputStall: 1
   _dialogues:
-  - dialogueText: 'Hey bub, '
+  - dialogueText: But can you even break it down?
     dialogueSpeed: 0.03
-    dialogueStallTime: 0.3
+    dialogueStallTime: 0
     cleanText: 1
-    stoppingFlag: 0
+    stoppingFlag: 1
     profileName: Hatted Chunkfish
     profilePicture: {fileID: 21300000, guid: 8fd5ddaa96fdec440aea87e7cc1681b4, type: 3}
     sfx_speaking: {fileID: 8300000, guid: b45f90f4db75d15479068d5168b17415, type: 3}
-    sfxSpeakingSpacing: 0
-  - dialogueText: get outta here unless you got some skills yourself.
-    dialogueSpeed: 0.03
-    dialogueStallTime: 0.3
-    cleanText: 0
-    stoppingFlag: 1
-    profileName: 
-    profilePicture: {fileID: 21300000, guid: 9dbb647d34752af478b12bbbda679e28, type: 3}
-    sfx_speaking: {fileID: 0}
     sfxSpeakingSpacing: 0

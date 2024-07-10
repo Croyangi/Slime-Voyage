@@ -16,7 +16,7 @@ MonoBehaviour:
   isDialogueMini: 0
   isPlayerInputStall: 0
   _dialogues:
-  - dialogueText: I'll be your museum curator today!
+  - dialogueText: Oh yeah, also I'll be your museum curator today!
     dialogueSpeed: 0.03
     dialogueStallTime: 0
     cleanText: 1

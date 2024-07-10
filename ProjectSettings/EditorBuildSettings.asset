@@ -35,7 +35,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Warehouse/WarehouseElevatorCutscene.unity
     guid: 39870aec9269f0d47a9d2275f31f3e4f
-  - enabled: 1
-    path: Assets/Scenes/Chunktime.unity
-    guid: ad20d609d0c70eb418cffec89e7979c5
   m_configObjects: {}

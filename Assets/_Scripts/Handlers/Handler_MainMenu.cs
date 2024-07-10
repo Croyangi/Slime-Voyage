@@ -58,7 +58,7 @@ public class Handler_MainMenu : MonoBehaviour
     // Close and then transition
     private void LoadWarehouseDioramaMenu()
     {
-        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_warehouseDioramaMenu.name, scene_mainMenu.name);
+        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_warehouseDioramaMenu.name);
     }
 
     // Called by another script to enable canvas
@@ -72,7 +72,13 @@ public class Handler_MainMenu : MonoBehaviour
     {
         GameObject tab = tabs[index];
 
-        LeanTween.moveX(tab.GetComponent<RectTransform>(), 330f, 0.5f).setEaseInBack().setEaseOutBounce();
+        if (index == 4)
+        {
+            LeanTween.moveX(tab.GetComponent<RectTransform>(), 820f, 0.5f).setEaseInBack().setEaseOutBounce();
+        } else
+        {
+            LeanTween.moveX(tab.GetComponent<RectTransform>(), 330f, 0.5f).setEaseInBack().setEaseOutBounce();
+        }
     }
 
     // Set tab deactive
@@ -80,7 +86,14 @@ public class Handler_MainMenu : MonoBehaviour
     {
         GameObject tab = tabs[index];
 
-        LeanTween.moveX(tab.GetComponent<RectTransform>(), 250f, 0.5f).setEaseInBack().setEaseOutBounce();
+        if (index == 4)
+        {
+            LeanTween.moveX(tab.GetComponent<RectTransform>(), 900f, 0.5f).setEaseInBack().setEaseOutBounce();
+        }
+        else
+        {
+            LeanTween.moveX(tab.GetComponent<RectTransform>(), 250f, 0.5f).setEaseInBack().setEaseOutBounce();
+        }
     }
 
     //// Buttons
@@ -115,16 +128,6 @@ public class Handler_MainMenu : MonoBehaviour
         supportUs.SetActive(!supportUs.activeSelf);
         credits.SetActive(false);
         controls.SetActive(false);
-    }
-
-    public void OnDiscordOpen()
-    {
-        Application.OpenURL("https://discord.gg/DVh5eCWNfs");
-    }
-
-    public void OnKickstarterOpen()
-    {
-        Application.OpenURL("https://www.kickstarter.com/projects/croyangi/slime-voyage");
     }
 
     public void OnExitButtonPressed()

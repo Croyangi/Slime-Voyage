@@ -17,7 +17,7 @@ MonoBehaviour:
   isPlayerInputStall: 1
   _dialogues:
   - dialogueText: Our latest breakthrough in generating infinite energy!
-    dialogueSpeed: 0.04
+    dialogueSpeed: 0.03
     dialogueStallTime: 0
     cleanText: 1
     stoppingFlag: 1
@@ -26,7 +26,7 @@ MonoBehaviour:
     sfx_speaking: {fileID: 8300000, guid: b45f90f4db75d15479068d5168b17415, type: 3}
     sfxSpeakingSpacing: 0
   - dialogueText: 'Ethical? I don''t know but it''s just so... '
-    dialogueSpeed: 0.02
+    dialogueSpeed: 0.03
     dialogueStallTime: 0.3
     cleanText: 1
     stoppingFlag: 0

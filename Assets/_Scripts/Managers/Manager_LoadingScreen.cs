@@ -19,6 +19,7 @@ public class Manager_LoadingScreen : MonoBehaviour
     [SerializeField] private GameObject mainCamera;
 
     [SerializeField] private bool isTransitioning;
+    [SerializeField] private ScriptObj_SceneName scene_loadingScreen;
 
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
@@ -88,21 +89,32 @@ public class Manager_LoadingScreen : MonoBehaviour
         LeanTween.moveY(flavorGraphics.GetComponent<RectTransform>(), -350, 0).setIgnoreTimeScale(true);
     }
 
-    public void InitiateLoadSceneTransfer(string loadedScene, string unloadedSceneName)
+    public void InitiateLoadSceneTransfer(string loadedScene)
     {
-        StartCoroutine(OnLoadSceneTransfer(loadedScene, unloadedSceneName));
+        StartCoroutine(OnLoadSceneTransfer(loadedScene));
     }
 
-    public IEnumerator OnLoadSceneTransfer(string loadedScene, string unloadedSceneName)
+    public IEnumerator OnLoadSceneTransfer(string loadedScene)
     {
         if (isTransitioning == false)
         {
+            // To prevent spam
             isTransitioning = true;
             Debug.Log("Transfering Scene");
 
+            // VFX transition
             CloseLoadingScreen();
             yield return new WaitForSecondsRealtime(3f);
-            SceneManager.UnloadSceneAsync(unloadedSceneName);
+
+            // Deload all scenes except key ones
+            Scene[] loadedScenes = GetLoadedScenes();
+            foreach (Scene scene in loadedScenes)
+            {
+                if (scene.name != scene_loadingScreen.name)
+                {
+                    SceneManager.UnloadSceneAsync(scene);
+                }
+            }
 
             mainCamera.SetActive(true);
             StartCoroutine(ProcessLoadSceneTransfer(loadedScene));
@@ -122,5 +134,18 @@ public class Manager_LoadingScreen : MonoBehaviour
 
         Debug.Log("Scene loaded: " + loadedScene);
         mainCamera.SetActive(false);
+    }
+
+    private Scene[] GetLoadedScenes()
+    {
+        int countLoaded = SceneManager.sceneCount;
+        Scene[] loadedScenes = new Scene[countLoaded];
+
+        for (int i = 0; i < countLoaded; i++)
+        {
+            loadedScenes[i] = SceneManager.GetSceneAt(i);
+        }
+
+        return loadedScenes;
     }
 }

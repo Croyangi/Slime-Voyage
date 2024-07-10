@@ -6,11 +6,11 @@ using UnityEngine.InputSystem;
 public class NPC_AmbientMovement : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private Transform originPoint;
+    [SerializeField] private Vector3 originPoint;
 
     private void Awake()
     {
-        originPoint = transform;
+        originPoint = gameObject.transform.localPosition;
     }
 
     private void Start()
@@ -20,7 +20,7 @@ public class NPC_AmbientMovement : MonoBehaviour
 
     private IEnumerator AmbientMovementRandomChance()
     {
-        gameObject.transform.position = originPoint.position;
+        gameObject.transform.localPosition = originPoint;
 
         float random = Random.Range(3f, 5f);
         yield return new WaitForSeconds(random);
@@ -32,9 +32,9 @@ public class NPC_AmbientMovement : MonoBehaviour
 
     private void JumpAround()
     {
-        LeanTween.moveLocalY(gameObject, originPoint.position.y + 0.2f, 0.2f);
-        LeanTween.moveLocalY(gameObject, originPoint.position.y, 0.1f).setDelay(0.3f);
-        LeanTween.moveLocalY(gameObject, originPoint.position.y + 0.2f, 0.2f).setDelay(0.6f);
-        LeanTween.moveLocalY(gameObject, originPoint.position.y, 0.1f).setDelay(0.9f);
+        LeanTween.moveLocalY(gameObject, originPoint.y + 0.2f, 0.2f);
+        LeanTween.moveLocalY(gameObject, originPoint.y, 0.1f).setDelay(0.3f);
+        LeanTween.moveLocalY(gameObject, originPoint.y + 0.2f, 0.2f).setDelay(0.6f);
+        LeanTween.moveLocalY(gameObject, originPoint.y, 0.1f).setDelay(0.9f);
     }
 }

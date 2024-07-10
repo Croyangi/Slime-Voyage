@@ -22,7 +22,6 @@ public class BootLoader_Warehouse : MonoBehaviour, IDataPersistence
     [SerializeField] private ScriptObj_SceneName scene_loadingScreen;
     [SerializeField] private ScriptObj_SceneName scene_activeScene;
     [SerializeField] private ScriptObj_SceneName scene_loadedScene;
-    [SerializeField] private ScriptObj_SceneName scene_deloadedScene;
 
     private void Awake()
     {
@@ -75,7 +74,7 @@ public class BootLoader_Warehouse : MonoBehaviour, IDataPersistence
     {
         isCompleted = true;
         DataPersistenceManager.instance.SaveGame();
-        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_loadedScene.name, scene_deloadedScene.name);
+        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_loadedScene.name);
     }
 
     public void LoadData(GameData data)

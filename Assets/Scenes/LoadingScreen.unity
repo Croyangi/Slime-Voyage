@@ -759,8 +759,9 @@ MonoBehaviour:
   _flavorText: {fileID: 11400000, guid: ca38fc75e3daf7e4d9aead394adea4ea, type: 2}
   tmp_flavorText: {fileID: 1585283743}
   mainCamera: {fileID: 532930922}
+  isTransitioning: 0
+  scene_loadingScreen: {fileID: 11400000, guid: 183e6e39c7d6664448a1bad35c651889, type: 2}
   _sceneQueue: {fileID: 1172204781}
-  transitionSpeedMultiplier: 1
 --- !u!114 &1172204781
 MonoBehaviour:
   m_ObjectHideFlags: 0

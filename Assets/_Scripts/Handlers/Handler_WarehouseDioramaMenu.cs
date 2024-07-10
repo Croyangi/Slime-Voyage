@@ -48,7 +48,7 @@ public class Handler_WarehouseDioramaMenu : MonoBehaviour
 
     private void TransitionToScene()
     {
-        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_loadedScene.name, scene_deloadedScene.name);
+        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_loadedScene.name);
     }
 
     private void ApplyForceTicketButton()
@@ -114,7 +114,7 @@ public class Handler_WarehouseDioramaMenu : MonoBehaviour
 
     public void OnReturnToMenuButtonPressed()
     {
-        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_mainMenu.name, scene_deloadedScene.name);
+        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_mainMenu.name);
         _bootLoader.isTransitioning = true;
     }
 }

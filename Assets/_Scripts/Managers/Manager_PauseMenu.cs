@@ -192,6 +192,6 @@ public class Manager_PauseMenu : MonoBehaviour
 
     public void OnExitButton()
     {
-        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_loadedScene.name, scene_deloadedScene.name);
+        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_loadedScene.name);
     }
 }

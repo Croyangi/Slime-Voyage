@@ -510,7 +510,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: F
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -666,8 +666,8 @@ MonoBehaviour:
   _dialoguePackages:
   - {fileID: 11400000, guid: d5a1594fa131d25429fb61b633446dd8, type: 2}
   dialoguePackageIteration: 0
-  _oldDialoguePackage: {fileID: 0}
   _promptCollider: {fileID: 5435463709706601536}
+  isDialogueCompleted: 0
   _dialoguePrompt_Effects: {fileID: 2117292860217059764}
   _playerTag: {fileID: 11400000, guid: 052214d19408f7a48bba66682f7001de, type: 2}
 --- !u!114 &7445431052153540464
@@ -736,6 +736,7 @@ MonoBehaviour:
   innerCircleInitialColor: {r: 0, g: 0, b: 0, a: 0}
   col_prompt: {fileID: 5435463709706601536}
   col_promptEffects: {fileID: 6797954347613764600}
+  isMovingEffects: 0
   detectedScale: {x: 1, y: 1}
   undetectedScale: {x: 0.5, y: 0.5}
   detectedScaleTime: 0.1
