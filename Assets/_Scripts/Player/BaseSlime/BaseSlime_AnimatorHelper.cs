@@ -97,15 +97,6 @@ public class BaseSlime_AnimatorHelper : MonoBehaviour
         {
             FlipSprite(true);
         }
-
-        if (_helper.facingDirection == 1)
-        {
-            FlipSprite(false);
-        }
-        else if (_helper.facingDirection == -1)
-        {
-            FlipSprite(true);
-        }
     }
 
     public void SetEyesActive(bool isActive)

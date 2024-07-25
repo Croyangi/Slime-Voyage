@@ -25,20 +25,26 @@ public class BaseSlime_LookingUp : State
     {
         ModifyStateKey(this);
 
+        // Animation
         _animator.ChangeAnimationState(_animator.BASESLIME_LOOKINGUP, _animator.baseSlime_animator);
         _animator.SetEyesActive(true);
         _animator.ChangeAnimationState(_animator.EYES_LOOKINGUP, _animator.eyes_animator);
         _animator.SetEyesOffset(new Vector2(0f, 0.5f));
 
+        // Hitbox
         _helper.col_slime.offset = new Vector2(0, -0.058f);
         _helper.col_slime.size = new Vector2(1.8f, 1.37f);
 
+        // Movement conditionals
+        _helper.canJump = true;
         _helper._movementVars.movementSpeed = 0f;
     }
 
 
     public override void ExitState()
     {
+        // Movement conditionals
+        _helper.canJump = false;
         _helper._movementVars.movementSpeed = _helper._movementVars.walkingSpeed;
     }
 

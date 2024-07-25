@@ -35,6 +35,7 @@ public class BaseSlime_OnEdge : State
     {
         ModifyStateKey(this);
 
+        // Animation
         _animator.ChangeAnimationState(_animator.BASESLIME_ONEDGE, _animator.baseSlime_animator);
         _animator.ChangeAnimationState(_animator.EYES_ONEDGE, _animator.eyes_animator);
         _animator.SetEyesOffset(new Vector2(0f, -0.058f));
@@ -49,14 +50,19 @@ public class BaseSlime_OnEdge : State
             _animator.FlipSprite(false);
         }
 
+        // Hitbox
         _helper.col_slime.offset = new Vector2(0, -0.058f);
         _helper.col_slime.size = new Vector2(1.8f, 1.37f);
+
+        // Movement conditionals
+        _helper.canJump = true;
     }
 
 
     public override void ExitState()
     {
-
+        // Movement conditionals
+        _helper.canJump = false;
     }
 
     public override void TransitionToState(State state)

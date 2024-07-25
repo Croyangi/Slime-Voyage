@@ -29,21 +29,27 @@ public class BaseSlime_CompressedState : State
     {
         ModifyStateKey(this);
 
+        // Animation
         _animator.ChangeAnimationState(_animator.BASESLIME_COMPRESS, _animator.baseSlime_animator);
         _animator.SetEyesActive(true);
         _animator.ChangeAnimationState(_animator.EYES_COMPRESSED, _animator.eyes_animator);
         _animator.SetEyesOffset(new Vector2(0f, -0.344f));
 
+        // Hitbox
         _helper.col_slime.offset = new Vector2(-0.03f, -0.333f);
         _helper.col_slime.size = new Vector2(1.8f, 0.817f);
 
+        // Movement conditionals
         _helper._movementVars.movementSpeed = 0f;
         _helper._movementVars.jumpVelocityXAdd = 5f;
+        _helper.canJump = true;
     }
 
 
     public override void ExitState()
     {
+        // Movement conditionals
+        _helper.canJump = false;
         _helper._movementVars.movementSpeed = _helper._movementVars.walkingSpeed;
     }
 

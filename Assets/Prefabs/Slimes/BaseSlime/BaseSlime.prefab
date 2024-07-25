@@ -371,9 +371,9 @@ MonoBehaviour:
   _stateMachine: {fileID: 1875351865489630565}
   _helper: {fileID: 9029656406374692392}
   _animator: {fileID: 4564319859956447544}
+  _movement: {fileID: 6402195889049545755}
   isTransitioning: 0
   col_hitbox: {fileID: 7038440154281907218}
-  canEmote: 0
   isVerticalCorrecting: 1
   tag_isVerticalCorrecting: {fileID: 11400000, guid: afe9a11083cb83640ab4fc8944c1e236, type: 2}
   sfx_land: {fileID: 8300000, guid: 7bb2ca601060dc1479c4eb9444f3055d, type: 3}
@@ -415,6 +415,7 @@ Transform:
   - {fileID: 540355865430590843}
   - {fileID: 1252577652729645609}
   - {fileID: 5502838925363671096}
+  - {fileID: 715188922732200465}
   - {fileID: 158331228110815649}
   - {fileID: 3431511130912380065}
   - {fileID: 4910725806688262230}
@@ -781,7 +782,6 @@ MonoBehaviour:
   _helper: {fileID: 9029656406374692392}
   _animator: {fileID: 4564319859956447544}
   isTransitioning: 0
-  canEmote: 0
 --- !u!1 &3044217293546073241
 GameObject:
   m_ObjectHideFlags: 0
@@ -934,7 +934,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.6, y: 0.71301806}
+  m_Size: {x: 1.8, y: 0.71301806}
   m_EdgeRadius: 0
 --- !u!1 &3735167291916367843
 GameObject:
@@ -1091,6 +1091,11 @@ MonoBehaviour:
   facingDirection: 0
   isTopVisualSpeed: 0
   isRunning: 0
+  canJump: 0
+  canWallJump: 0
+  canEmote: 0
+  canStick: 0
+  isJumpBuffered: 0
 --- !u!114 &4564319859956447544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1153,7 +1158,7 @@ MonoBehaviour:
   coyoteTime: 0.2
   coyoteJumpTimer: 0
   jumpStrength: 21
-  jumpBuffer: 0.1
+  jumpBuffer: 0.15
   jumpBufferTimer: 0
   jumpVelocityXAdd: 0
   jumpCooldownTimer: 0
@@ -1171,9 +1176,9 @@ MonoBehaviour:
   rawInputMovement: {x: 0, y: 0}
   processedInputMovement: {x: 0, y: 0}
   wallJumpStrengthHorizontal: 17
-  wallJumpStrengthVertical: 31
-  wallJumpStallTime: 0.2
-  stickingWallSpeed: 2
+  wallJumpStrengthVertical: 21
+  wallJumpStallTime: 0.27
+  stickingWallSpeed: 3
   stickingWallAcceleration: 7
   stickingWallDeceleration: 7
   stickingWallVelocityPower: 1
@@ -1694,4 +1699,87 @@ MonoBehaviour:
   _stateMachine: {fileID: 1875351865489630565}
   _helper: {fileID: 9029656406374692392}
   _animator: {fileID: 4564319859956447544}
+  _movement: {fileID: 6402195889049545755}
   isTransitioning: 0
+--- !u!1 &8271808997286525887
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 715188922732200465}
+  - component: {fileID: 2175109177204417404}
+  m_Layer: 9
+  m_Name: Light 2D
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &715188922732200465
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8271808997286525887}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2918270612944670021}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2175109177204417404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8271808997286525887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ComponentVersion: 1
+  m_LightType: 3
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.5
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 0.1
+  m_LightVolumeIntensity: 1
+  m_LightVolumeIntensityEnabled: 0
+  m_ApplyToSortingLayers: 00000000
+  m_LightCookieSprite: {fileID: 0}
+  m_DeprecatedPointLightCookieSprite: {fileID: 0}
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_OverlapOperation: 0
+  m_NormalMapDistance: 3
+  m_NormalMapQuality: 2
+  m_UseNormalMap: 0
+  m_ShadowIntensityEnabled: 0
+  m_ShadowIntensity: 0.75
+  m_ShadowVolumeIntensityEnabled: 0
+  m_ShadowVolumeIntensity: 0.75
+  m_LocalBounds:
+    m_Center: {x: 0, y: -0.00000011920929, z: 0}
+    m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 3
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}

@@ -10,11 +10,29 @@ public class BaseSlime_AirborneState : State
     [SerializeField] private BaseSlime_StateMachineHelper _helper;
     [SerializeField] private BaseSlime_AnimatorHelper _animator;
     [SerializeField] private bool isTransitioning;
+    [SerializeField] private PlayerInput playerInput = null;
 
     private Vector2 prev_touchingLeft_size;
     private Vector2 prev_touchingLeft_offset;
     private Vector2 prev_touchingRight_size;
     private Vector2 prev_touchingRight_offset;
+
+    private void OnEnable()
+    {
+        //// Subscribes to Unity's input system
+        playerInput.Enable();
+    }
+
+    private void OnDisable()
+    {
+        //// Unubscribes to Unity's input system
+        playerInput.Disable();
+    }
+
+    private void Awake()
+    {
+        playerInput = new PlayerInput(); // Instantiate new Unity's Input System
+    }
 
     public override void UpdateState()
     {
@@ -27,10 +45,32 @@ public class BaseSlime_AirborneState : State
             }
         }
 
-        if (!_helper.isGrounded && _helper.stickingDirection != Vector2.zero && !isTransitioning)
+
+        // Normal sticking, press on a wall, but only when falling
+        if (!_helper.isGrounded && _helper.stickingDirection != Vector2.zero && _helper.rb.velocity.y < 3f && !isTransitioning)
         {
             if (_stateMachine.PlayerStatesDictionary.TryGetValue(BaseSlime_StateMachine.PlayerStates.Sticking, out State state))
             {
+                Debug.Log("NORMAL");
+                TransitionToState(state);
+            }
+        }
+
+        // Instant sticking if already stuck before, but in opposite velocity to prevent same wall sticking
+        // Touching Direction ABS > 0, cause 0 is still positive sign
+        // X Velocity > x, cause 0 is still a positive sign
+        // X Velocity check for splat impact
+        if (_helper.rb.velocity.x > 30f)
+        {
+            _helper.isPermanentlySticking = true;
+        }
+
+
+        if (!_helper.isGrounded && _helper.isPermanentlySticking && (Mathf.Sign(_helper.rb.velocity.x) == Mathf.Sign(_helper.touchingDirection.x)) && Mathf.Abs(_helper.touchingDirection.x) > 0f && !isTransitioning)
+        {
+            if (_stateMachine.PlayerStatesDictionary.TryGetValue(BaseSlime_StateMachine.PlayerStates.Sticking, out State state))
+            {
+                Debug.Log("INSTANT");
                 TransitionToState(state);
             }
         }
@@ -65,13 +105,21 @@ public class BaseSlime_AirborneState : State
         }
     }
 
+    private void OnJumpPerformed(InputAction.CallbackContext value)
+    {
+        _helper._movementVars.jumpBufferTimer = _helper._movementVars.jumpBuffer;
+    }
+
     public override void EnterState()
     {
         ModifyStateKey(this);
 
+        // Input
+        playerInput.BaseSlime.Jump.performed += OnJumpPerformed;
+
         ////// Hitboxes
-        _helper.col_slime.offset = new Vector2(0.3f, -0.15f);
-        _helper.col_slime.size = new Vector2(1.2f, 1.2f);
+        _helper.col_slime.offset = new Vector2(0f, -0.15f);
+        _helper.col_slime.size = new Vector2(1.8f, 1.2f);
         //_helper.col_slime.size = new Vector2(0.8f, 0.8f);
 
         //// Touching Side Hitboxes
@@ -128,6 +176,9 @@ public class BaseSlime_AirborneState : State
 
     public override void ExitState()
     {
+        // Input
+        playerInput.BaseSlime.Jump.performed -= OnJumpPerformed;
+
         // OnEdge hitboxes re-enabled
         _helper.col_onEdgeLeft.gameObject.SetActive(true);
         _helper.col_onEdgeRight.gameObject.SetActive(true);

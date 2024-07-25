@@ -7,7 +7,7 @@ public class SpriteFadeOut : MonoBehaviour
 {
     [SerializeField] private float startingAlpha;
     [SerializeField] private float target;
-    [SerializeField] private float transitionSpeed;
+    [SerializeField] private float transitionTime;
     [SerializeField] private bool isDestroyedWhenReachingTarget;
 
     private void Awake()
@@ -19,7 +19,7 @@ public class SpriteFadeOut : MonoBehaviour
     private void FixedUpdate()
     {
         Color spriteColor = gameObject.GetComponent<SpriteRenderer>().color;
-        float newAlpha = Mathf.MoveTowards(spriteColor.a, target, transitionSpeed * Time.deltaTime);
+        float newAlpha = Mathf.MoveTowards(spriteColor.a, target, Time.deltaTime / transitionTime);
         gameObject.GetComponent<SpriteRenderer>().color = new Color(spriteColor.r, spriteColor.g, spriteColor.b, newAlpha);
 
         if (newAlpha == target)

@@ -10,7 +10,6 @@ public class BaseSlime_UniqueIdle : State
     [SerializeField] private BaseSlime_StateMachineHelper _helper;
     [SerializeField] private BaseSlime_AnimatorHelper _animator;
     [SerializeField] private bool isTransitioning;
-    [SerializeField] private bool canEmote = false;
 
     [Header("Technical References")]
     [SerializeField] private PlayerInput playerInput = null;
@@ -49,20 +48,26 @@ public class BaseSlime_UniqueIdle : State
     {
         ModifyStateKey(this);
 
+        // Animation
         _animator.SetEyesActive(false);
 
         GenerateRandomUniqueIdle();
 
+        // Hitbox
         _helper.col_slime.offset = new Vector2(0, -0.058f);
         _helper.col_slime.size = new Vector2(1.8f, 1.37f);
 
-        canEmote = true;
+        // Movement conditionals
+        _helper.canJump = true;
+        _helper.canEmote = true;
     }
 
 
     public override void ExitState()
     {
-        canEmote = false;
+        // Movement conditionals
+        _helper.canJump = false;
+        _helper.canEmote = false;
     }
 
     public override void TransitionToState(State state)
@@ -75,7 +80,7 @@ public class BaseSlime_UniqueIdle : State
 
     private void OnGenerateRandomUniqueIdle(InputAction.CallbackContext value)
     {
-        if (canEmote == true)
+        if (_helper.canEmote == true)
         {
             GenerateRandomUniqueIdle();
         }

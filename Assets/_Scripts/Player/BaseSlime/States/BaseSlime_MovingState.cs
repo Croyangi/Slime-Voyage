@@ -50,11 +50,16 @@ public class BaseSlime_MovingState : State
     {
         ModifyStateKey(this);
 
+        // Movement conditionals
+        _helper.canJump = true;
+
+        // Animation
         _animator.ChangeAnimationState(_animator.BASESLIME_MOVING, _animator.baseSlime_animator);
         _animator.SetEyesActive(true);
         _animator.ChangeAnimationState(_animator.EYES_MOVING, _animator.eyes_animator);
         _animator.SetEyesOffset(new Vector2(0f, -0.112f));
 
+        // Hitbox
         _helper.col_slime.offset = new Vector2(0, -0.058f);
         _helper.col_slime.size = new Vector2(1.8f, 1.37f);
 
@@ -72,6 +77,8 @@ public class BaseSlime_MovingState : State
 
     public override void ExitState()
     {
+        // Movement conditionals
+        _helper.canJump = false;
     }
 
     public override void TransitionToState(State state)

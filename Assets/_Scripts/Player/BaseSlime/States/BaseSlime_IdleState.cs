@@ -12,11 +12,10 @@ public class BaseSlime_IdleState : State
     [SerializeField] private BaseSlime_StateMachine _stateMachine;
     [SerializeField] private BaseSlime_StateMachineHelper _helper;
     [SerializeField] private BaseSlime_AnimatorHelper _animator;
+    [SerializeField] private BaseSlime_Movement _movement;
     [SerializeField] private bool isTransitioning;
 
     [SerializeField] private Collider2D col_hitbox;
-
-    [SerializeField] private bool canEmote = false;
 
     [SerializeField] private bool isVerticalCorrecting = false;
 
@@ -65,7 +64,7 @@ public class BaseSlime_IdleState : State
                 TransitionToState(state);
             }
         }
-        
+
         if (_helper.isGrounded && _helper._movementVars.processedInputMovement.x == 0 && _helper._movementVars.processedInputMovement.y == -1 && !isTransitioning)
         {
             if (_stateMachine.PlayerStatesDictionary.TryGetValue(BaseSlime_StateMachine.PlayerStates.Compressed, out State state))
@@ -91,24 +90,55 @@ public class BaseSlime_IdleState : State
         }
     }
 
+    private void JumpBufferCheck()
+    {
+        //// _stateHandler.stickingDirection == Vector2.zero
+        // Basically acts as "Not Sticking", vice versa
+        _helper._movementVars.jumpBufferTimer = 0;
+
+        if ((_helper.isGrounded && _helper.stickingDirection == Vector2.zero) || (!_helper.isGrounded && _helper._movementVars.coyoteJumpTimer != 0 && _helper._movementVars.coyoteJumpTimer < _helper._movementVars.coyoteTime))
+        {
+            if (_helper._movementVars.jumpCooldownTimer <= 0)
+            {
+                _movement.OnJump();
+                _helper.isJumpBuffered = false;
+            }
+        }
+
+        //if (_movementVars.coyoteJumpTimer == 0 && _helper.stickingDirection != Vector2.zero)
+        //{
+        //    SetWallJumpTechnicals();
+        //}
+    }
+
     public override void EnterState()
     {
         ModifyStateKey(this);
 
+        // Hitbox
         _helper.col_slime.offset = new Vector2(0, -0.058f);
         _helper.col_slime.size = new Vector2(1.8f, 1.37f);
 
+        // Movement conditionals
         _helper._movementVars.movementSpeed = 10f;
         _helper._movementVars.jumpVelocityXAdd = 0f;
+        _helper.canEmote = true;
+        _helper.canJump = true;
 
-        canEmote = true;
-
+        // Vertical Correcting
         if (_helper.currentHighestImpactVelocityY < -0.1f && isVerticalCorrecting == true)
         {
             CheckPenetrationDepth();
         }
 
+        // Plays landing animation based on Y velocity
         OnLandingAnimation();
+
+        // Jump Buffer
+        if (_helper.isJumpBuffered)
+        {
+            JumpBufferCheck();
+        }
     }
 
 
@@ -116,7 +146,9 @@ public class BaseSlime_IdleState : State
     {
         StopAllCoroutines();
 
-        canEmote = false;
+        // Movement Conditionals
+        _helper.canEmote = false;
+        _helper.canJump = false;
     }
 
     public override void TransitionToState(State state)
@@ -224,7 +256,8 @@ public class BaseSlime_IdleState : State
 
             Manager_SFXPlayer.instance.PlaySFXClip(sfx_landHard, transform, 0.5f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.1f, 1f, 1f, 30f, spread: 180);
             Manager_Cinemachine.instance.ApplyScreenShake(0.2f, 1f);
-        } else
+        }
+        else
         {
             _animator.ChangeAnimationState(_animator.BASESLIME_IDLE, _animator.baseSlime_animator);
             _animator.SetEyesActive(true);
@@ -246,7 +279,7 @@ public class BaseSlime_IdleState : State
 
     private void OnRandomEmote(InputAction.CallbackContext value)
     {
-        if (_helper.isGrounded && !isTransitioning && canEmote == true)
+        if (_helper.isGrounded && !isTransitioning && _helper.canEmote == true)
         {
             if (_stateMachine.PlayerStatesDictionary.TryGetValue(BaseSlime_StateMachine.PlayerStates.UniqueIdle, out State state))
             {

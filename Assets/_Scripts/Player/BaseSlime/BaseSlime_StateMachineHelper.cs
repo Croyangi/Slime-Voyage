@@ -5,7 +5,6 @@ using UnityEngine.Rendering;
 
 public class BaseSlime_StateMachineHelper : MonoBehaviour
 {
-
     [Header("Top Visual Speed")]
     [SerializeField] private float xVelocityPointWeight = 1f;
     [SerializeField] private float yVelocityPointWeight = 0.75f;
@@ -48,6 +47,13 @@ public class BaseSlime_StateMachineHelper : MonoBehaviour
     public bool isTopVisualSpeed;
     public bool isRunning;
 
+    [Header("Conditional Movement Options")]
+    public bool canJump;
+    public bool canWallJump;
+    public bool canEmote;
+    public bool canStick;
+    public bool isJumpBuffered;
+
     private void Awake()
     {
         //colliderBounds = baseSlime.GetComponent<Collider2D>().bounds.extents;
@@ -55,12 +61,11 @@ public class BaseSlime_StateMachineHelper : MonoBehaviour
         speedUpTimer = speedUpTimerSet;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         isGrounded = IsGroundedUpdate();
 
         if (IsTrueGroundedUpdate()) { isPermanentlySticking = false; }
-        if (_movementVars.processedInputMovement.y < 0) { isPermanentlySticking = false; }
 
         isOnEdge = OnEdgeUpdate();
 
@@ -69,15 +74,6 @@ public class BaseSlime_StateMachineHelper : MonoBehaviour
         PermanentlyStickingUpdate();
 
         touchingDirection = TouchingDirectionUpdate();
-
-        // Facing Direction
-        if (_movementVars.processedInputMovement.x == 1)
-        {
-            facingDirection = 1;
-        } else if (_movementVars.processedInputMovement.x == -1)
-        {
-            facingDirection = -1;
-        }
 
         SplatCheckUpdate(rb.velocity.y);
 
@@ -235,13 +231,13 @@ public class BaseSlime_StateMachineHelper : MonoBehaviour
         if (IsStickingLeft() && _movementVars.processedInputMovement.x == -1 && !isGrounded)
         {
             direction.x = -1;
-            isPermanentlySticking = true;
+            //isPermanentlySticking = true;
         }
 
         if (IsStickingRight() && _movementVars.processedInputMovement.x == 1 && !isGrounded)
         {
             direction.x = 1;
-            isPermanentlySticking = true;
+            //isPermanentlySticking = true;
         }
 
         return direction;
