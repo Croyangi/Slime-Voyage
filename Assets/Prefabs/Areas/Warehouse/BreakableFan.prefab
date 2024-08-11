@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6153449235478822966}
   - component: {fileID: 7392593562890039973}
   - component: {fileID: 8860319768271441530}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Fan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 2197738877930125553}
   - component: {fileID: 7947268823104303979}
   - component: {fileID: 4617952348292974166}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BreakableFan
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -31,7 +31,7 @@ MonoBehaviour:
     cleanText: 1
     stoppingFlag: 1
     profileName: Stepspike #3797
-    profilePicture: {fileID: 21300000, guid: 522f821951eb3214caee383f588fb94c, type: 3}
+    profilePicture: {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
     sfx_speaking: {fileID: 8300000, guid: b45f90f4db75d15479068d5168b17415, type: 3}
     sfxSpeakingSpacing: 0
   - dialogueText: Oh yea.

@@ -25,6 +25,10 @@ public class BaseSlime_CompressedState : State
         }
     }
 
+    public override void FixedUpdateState()
+    {
+    }
+
     public override void EnterState()
     {
         ModifyStateKey(this);

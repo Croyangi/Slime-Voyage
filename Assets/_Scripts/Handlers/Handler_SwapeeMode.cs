@@ -22,6 +22,9 @@ public class Handler_SwapeeMode : MonoBehaviour, IDataPersistence
     [SerializeField] private ScriptObj_SceneName scene_warehouse;
     [SerializeField] private ScriptObj_SceneName scene_deloadedScene;
 
+    public bool isSpeedrunModeOn;
+    public bool isUsed;
+
     private void Awake()
     {
         _modifierMode.ResetModifiers();
@@ -40,6 +43,20 @@ public class Handler_SwapeeMode : MonoBehaviour, IDataPersistence
             _bootLoader.isTransitioning = true;
             ticketButton.sprite = playTicketHolePunched;
             Manager_SFXPlayer.instance.PlaySFXClip(sfx_onPressMode, transform, 1f, false, Manager_AudioMixer.instance.mixer_music);
+        }
+    }
+
+    public void OnPressSpeedrunModeButton()
+    {
+        if (!_bootLoader.isTransitioning)
+        {
+            _modifierMode.isModified = true;
+            _modifierMode.isSwapeeMode = true;
+            Manager_SFXPlayer.instance.PlaySFXClip(sfx_onPressMode, transform, 1f, false, Manager_AudioMixer.instance.mixer_sfx);
+            isSpeedrunModeOn = true;
+            isUsed = true;
+            _bootLoader.isTransitioning = true;
+            LoadTheWarehouse();
         }
     }
 
@@ -78,6 +95,9 @@ public class Handler_SwapeeMode : MonoBehaviour, IDataPersistence
 
     public void SaveData(ref GameData data)
     {
-        //
+        if (isUsed)
+        {
+            data.isSpeedrunModeOn = isSpeedrunModeOn;
+        }
     }
 }

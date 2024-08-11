@@ -7,7 +7,7 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class LevelEditorToolbox : EditorWindow
 {
-    private Grid currentGridSelected;
+    private GameObject currentParent;
 
     private string searchString = "";
     private List<string> searchTagList = new List<string>();
@@ -104,8 +104,8 @@ public class LevelEditorToolbox : EditorWindow
     {
         GUILayout.BeginHorizontal();
 
-        GUILayout.Label("Grid:", GUILayout.Width(70));
-        currentGridSelected = EditorGUILayout.ObjectField(currentGridSelected, typeof(Grid), true) as Grid;
+        GUILayout.Label("As Parent:", GUILayout.Width(70));
+        currentParent = EditorGUILayout.ObjectField(currentParent, typeof(GameObject), true) as GameObject;
 
         GUILayout.EndHorizontal();
     }
@@ -328,9 +328,9 @@ public class LevelEditorToolbox : EditorWindow
 
             // Instantiate on grid or not
             GameObject instantiatedObject;
-            if (currentGridSelected != null)
+            if (currentParent != null)
             {
-                instantiatedObject = PrefabUtility.InstantiatePrefab(prefab, currentGridSelected.transform) as GameObject;
+                instantiatedObject = PrefabUtility.InstantiatePrefab(prefab, currentParent.transform) as GameObject;
             } else
             {
                 instantiatedObject = PrefabUtility.InstantiatePrefab(prefab) as GameObject;

@@ -5,15 +5,18 @@ using UnityEngine;
 public class DevTool_TargetFrameRate : MonoBehaviour
 {
     [SerializeField] private bool isSet;
+    [SerializeField] private int frameRate;
 
     public void SetTargetFrameRate()
     {
-        if (Application.targetFrameRate == 60)
+        if (isSet)
         {
+            isSet = false;
             SetDefaultFrameRate();
         } else
         {
-            Application.targetFrameRate = 60;
+            isSet = true;
+            Application.targetFrameRate = frameRate;
         }
     }
 

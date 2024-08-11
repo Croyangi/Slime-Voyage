@@ -12,6 +12,7 @@ public abstract class State : MonoBehaviour
     }
 
     public abstract void EnterState();
+    public abstract void FixedUpdateState();
     public abstract void UpdateState();
     public abstract void ExitState();
     public abstract void TransitionToState(State state);

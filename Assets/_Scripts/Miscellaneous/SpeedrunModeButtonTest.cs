@@ -4,16 +4,16 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SpeedrunModeButtonTest : MonoBehaviour, IDataPersistence
+public class SpeedrunModeButtonTest : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI tm_speedrunModeState;
     [SerializeField] private bool isSpeedrunModeOn;
+    [SerializeField] private Handler_WarehouseDioramaMenu _menu;
+    [SerializeField] private BootLoader_WarehouseDioramaMenu _bootLoader;
 
-    public void OnToggleSpeedrunButtonClicked()
-    {
-        isSpeedrunModeOn = !isSpeedrunModeOn;
-        ChangeSpeedrunModeText();
-    }
+    [Header("Scene")]
+    [SerializeField] private SceneQueue _sceneQueue;
+    [SerializeField] private ScriptObj_SceneName scene_movementGym;
 
     public void OnToggleResetDataClicked()
     {
@@ -21,26 +21,12 @@ public class SpeedrunModeButtonTest : MonoBehaviour, IDataPersistence
         SceneManager.LoadScene("MainMenu");
     }
 
-    private void ChangeSpeedrunModeText()
+    public void TransitionToScene()
     {
-        if (isSpeedrunModeOn == true)
+        if (!_bootLoader.isTransitioning)
         {
-            tm_speedrunModeState.text = "On";
+            _bootLoader.isTransitioning = true;
+            Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_movementGym.name);
         }
-        else
-        {
-            tm_speedrunModeState.text = "Off";
-        }
-    }
-
-    public void LoadData(GameData data)
-    {
-        isSpeedrunModeOn = data.isSpeedrunModeOn;
-        ChangeSpeedrunModeText();
-    }
-
-    public void SaveData(ref GameData data)
-    {
-        data.isSpeedrunModeOn = isSpeedrunModeOn;
     }
 }

@@ -17,12 +17,15 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
     [Header("Building Block References")]
     [SerializeField] private BaseSlime_MovementVariables _movementVars;
     [SerializeField] private BaseSlime_StateMachineHelper _helper;
+    [SerializeField] private BaseSlime_StateMachine _stateMachine;
 
     [Header("SFX")]
     [SerializeField] private AudioClip sfx_jump;
 
     [Header("Variables")]
     [SerializeField] public float jumpMovement; // From Unity's input system
+
+    [SerializeField] public SpriteRenderer jumpChecker;
 
     private void Awake()
     {
@@ -62,8 +65,8 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
 
     private void OnJumpPerformed(InputAction.CallbackContext value)
     {
-        //// _stateHandler.stickingDirection == Vector2.zero
-        // Basically acts as "Not Sticking", vice versa
+        jumpChecker.color = Color.green;
+        Debug.Log(_stateMachine.currentState);
 
         // Standard jump
         if (_helper.canJump && _movementVars.jumpCooldownTimer <= 0)
@@ -85,6 +88,14 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
             return;
         }
 
+        //Debug.Log("CanJumpBuffer: " + _helper.canJumpBuffer);
+
+        if (_helper.canJumpBuffer)
+        {
+            _helper._movementVars.jumpBufferTimer = _helper._movementVars.jumpBuffer;
+            _helper.isJumpBuffered = true;
+        }
+
         //if (_movementVars.coyoteJumpTimer == 0 && _helper.stickingDirection != Vector2.zero)
         //{
         //    SetWallJumpTechnicals();
@@ -94,24 +105,110 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
 
     public void OnJump() 
     {
+        _movementVars.timeSinceJump = 0f;
+        _helper.canJumpCancel = true;
+        _helper.canJumpBuffer = false;
+
         rb.velocity = new Vector2(rb.velocity.x, 0f);
-        Vector2 jumpVelocity = new Vector2(_movementVars.jumpVelocityXAdd * Mathf.Sign(_helper.facingDirection), _movementVars.jumpStrength);
+
+        float g = Physics2D.gravity.y * rb.gravityScale;
+        float jumpStrength = -g * Time.fixedDeltaTime / 2f + Mathf.Sqrt(-2f * g * _movementVars.jumpTileHeight);
+
+        Vector2 jumpVelocity = new Vector2(_movementVars.jumpVelocityXAdd * Mathf.Sign(_helper.facingDirection), jumpStrength);
         rb.AddForce(jumpVelocity, ForceMode2D.Impulse);
 
         Manager_SFXPlayer.instance.PlaySFXClip(sfx_jump, transform, 0.1f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.2f, 1f, 1f, 30f, spread: 180);
         _movementVars.jumpCooldownTimer = _movementVars.jumpCooldown;
 
         _movementVars.jumpBufferTimer = 0f;
+
+        Debug.Log("JUMP");
     }
 
     private void OnJumpCancelled(InputAction.CallbackContext value)
     {
         _movementVars.coyoteJumpTimer = 0;
         jumpMovement = 0f;
+        if (rb.velocity.y > 0f && _helper.canJumpCancel)
+        {
+            ApplyJumpCancel();
+        }
+        _helper.canJumpCancel = false;
+
+        jumpChecker.color = Color.red;
+
+    }
+
+    private void ApplyJumpCancel()
+    {
+        {// Find time for reaching MIN jump height with REGULAR jump height power
+
+            //float g = Physics2D.gravity.y * rb.gravityScale;
+            //float jumpStrength = -g * Time.fixedDeltaTime / 2f + Mathf.Sqrt(-2f * g * _movementVars.jumpTileHeight);
+
+            //// h = v0t + 1/2gt^2
+            //float a = g / 2f;
+            //float b = jumpStrength;
+            //float c = _movementVars.jumpTileMinHeight - _movementVars.jumpTileHeight;
+            //float discriminant = Mathf.Sqrt(b * b - (4 * a * c));
+
+            //// 2 solutions
+            //float timeToPeak = (-b + discriminant) / (2 * a);
+
+            //if (timeToPeak < 0)
+            //{
+            //    timeToPeak = (-b - discriminant) / (2 * a);
+            //}
+
+            //float g = Physics2D.gravity.y * rb.gravityScale;
+            //float jumpStrength = -g * Time.fixedDeltaTime / 2f + Mathf.Sqrt(-2f * g * _movementVars.jumpTileHeight);
+            //float timeToPeak = Mathf.Abs(jumpStrength / (Physics2D.gravity.y * rb.gravityScale)) / 2f;
+
+            //_movementVars.jumpCancelMinWindow = timeToPeak;
+            //Debug.Log("Time for min Height: " + timeToPeak);
+
+            //if (timeToPeak > _movementVars.jumpCancelHoldTimer)
+            //{
+            //    _movementVars.jumpCancelTimer = timeToPeak - _movementVars.jumpCancelHoldTimer;
+            //    _helper.isJumpCanceled = true;
+            //}
+            //else
+            //{
+            //    rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y - _movementVars.jumpCutVelocity);
+            //}
+        } ////
+
+        if (_movementVars.jumpCancelMinWindow < _movementVars.timeSinceJump && _movementVars.timeSinceJump < _movementVars.jumpCancelMaxWindow)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y - _movementVars.jumpCutVelocity);
+        } else if (_movementVars.jumpCancelMinWindow > _movementVars.timeSinceJump)
+        {
+            _helper.isJumpCanceled = true;
+            _movementVars.jumpCancelTimer = _movementVars.jumpCancelMinWindow - _movementVars.timeSinceJump;
+            Debug.Log(_movementVars.jumpCancelTimer);
+        }
+    }
+
+    private void JumpCancelTimerUpdate()
+    {
+        if (_helper.canJumpCancel)
+        {
+            _movementVars.timeSinceJump += Time.fixedDeltaTime;
+        }
+
+        if (_helper.isJumpCanceled && _movementVars.jumpCancelTimer <= 0f)
+        {
+            _helper.isJumpCanceled = false;
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y - _movementVars.jumpCutVelocity);
+        } else if (_movementVars.jumpCancelTimer > 0f)
+        {
+            _movementVars.jumpCancelTimer = Mathf.Clamp(_movementVars.jumpCancelTimer -= Time.fixedDeltaTime, 0, 99999f);
+        }
     }
 
     public void OnWallJump()
     {
+        //Debug.Log("walljump");
         ApplyWallJumpForce();
         _movementVars.deccelerationTimer = 0.4f;
         _movementVars.movementStallTime = _movementVars.wallJumpStallTime;
@@ -122,9 +219,14 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
     {
         rb.velocity = Vector2.zero;
 
-        Vector2 wallJumpVelocity = new Vector2(_movementVars.wallJumpStrengthHorizontal * -(_helper.stickingDirection.x), _movementVars.wallJumpStrengthVertical);
+        // Re-affirm direction
+        _helper.PermanentlyStickingUpdate();
+
+        float g = Physics2D.gravity.y * rb.gravityScale;
+        float jumpStrength = -g * Time.fixedDeltaTime / 2f + Mathf.Sqrt(-2f * g * _movementVars.wallJumpTileHeightVertical);
+        Vector2 wallJumpVelocity = new Vector2(_movementVars.wallJumpStrengthHorizontal * -(_helper.stickingDirection.x), jumpStrength);
         rb.AddForce(wallJumpVelocity, ForceMode2D.Impulse);
-        _helper.facingDirection = (int)-(_helper.stickingDirection.x);
+        _helper.facingDirection = (int) -(_helper.stickingDirection.x);
 
         Manager_SFXPlayer.instance.PlaySFXClip(sfx_jump, transform, 0.1f, false, Manager_AudioMixer.instance.mixer_sfx, true, 0.2f, 1f, 1f, 30f, spread: 180);
     }
@@ -228,7 +330,7 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
         }
     }
 
-    private void MainMovementMath()
+    public void MainMovementMath()
     {
         // Math.Sign is because Unity's input can give float values if diagonal movement
         float targetSpeed = Math.Sign(_movementVars.processedInputMovement.x) * _movementVars.movementSpeed;
@@ -277,7 +379,7 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
         rb.AddForce(movement * Vector2.right);
     }
 
-    private void StickingWallMovementMath()
+    public void StickingWallMovementMath()
     {
         float targetSpeed = _movementVars.stickingWallSpeed;
         float speedDif = targetSpeed - rb.velocity.y;
@@ -307,10 +409,11 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
 
         MainMovementMath(); // Main movement math
 
-        if (_helper.canStick) { StickingWallMovementMath(); } // Main sticking wall movement math
+        //if (_helper.canStick) { StickingWallMovementMath(); } // Main sticking wall movement math
 
         CoyoteTimeUpdate(); // Coyote time update
         JumpBufferUpdate(); // Jump buffer update
         JumpCooldownUpdate(); // Jump cooldown update
+        JumpCancelTimerUpdate();
     }
 }

@@ -46,9 +46,9 @@ public class BaseSlime_AnimatorHelper : MonoBehaviour
     public string EYES_AIRBORNE = "BaseSlime_Eyes_Airborne";
     public string EYES_SCARED = "BaseSlime_Eyes_Scared";
 
-    public string BASESLIME_UNIQUEIDLE_SLIMEPILLED = "BaseSlime_UniqueIdle_SlimePilled";
-    public string BASESLIME_UNIQUEIDLE_SPIN = "BaseSlime_UniqueIdle_Spin";
-    public string BASESLIME_UNIQUEIDLE_STRETCH = "BaseSlime_UniqueIdle_Stretch";
+    public string BASESLIME_EMOTE_CATEARS = "BaseSlime_Emote_CatEars";
+    public string BASESLIME_EMOTE_SPIN = "BaseSlime_Emote_Spin";
+    public string BASESLIME_EMOTE_STRETCH = "BaseSlime_Emote_Stretch";
 
     [Header("Building Block References")]
     [SerializeField] private BaseSlime_StateMachine _stateMachine;

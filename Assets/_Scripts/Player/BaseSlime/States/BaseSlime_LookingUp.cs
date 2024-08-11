@@ -21,6 +21,10 @@ public class BaseSlime_LookingUp : State
         }
     }
 
+    public override void FixedUpdateState()
+    {
+    }
+
     public override void EnterState()
     {
         ModifyStateKey(this);

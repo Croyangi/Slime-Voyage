@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Handler_WarehouseDioramaMenu : MonoBehaviour
+public class Handler_WarehouseDioramaMenu : MonoBehaviour, IDataPersistence
 {
     [SerializeField] private BootLoader_WarehouseDioramaMenu _bootLoader;
     [SerializeField] private ScriptObj_CheckpointQueue _checkpointQueue;
@@ -23,12 +23,17 @@ public class Handler_WarehouseDioramaMenu : MonoBehaviour
     [SerializeField] private ScriptObj_SceneName scene_deloadedScene;
     [SerializeField] private ScriptObj_SceneName scene_loadedScene;
     [SerializeField] private ScriptObj_SceneName scene_mainMenu;
+    [SerializeField] private ScriptObj_SceneName scene_warehouse;
+
+    public bool isSpeedrunModeOn;
+    public bool isUsed;
 
     private void Awake()
     {
         currentTabId = 0;
         SetTabButton();
         SetMenu();
+        isSpeedrunModeOn = false;
     }
 
     public void OnPressTicketButton()
@@ -36,13 +41,32 @@ public class Handler_WarehouseDioramaMenu : MonoBehaviour
         if (!_bootLoader.isTransitioning)
         {
             ApplyForceTicketButton();
+            ticketButton.sprite = playTicketHolePunched;
+            Manager_SFXPlayer.instance.PlaySFXClip(sfx_onPressMode, transform, 1f, false, Manager_AudioMixer.instance.mixer_sfx);
+
+            if (isSpeedrunModeOn)
+            {
+                scene_loadedScene = scene_warehouse;
+            }
 
             _checkpointQueue.checkpointId = "WarehouseIntro";
 
             TransitionToScene();
             _bootLoader.isTransitioning = true;
-            ticketButton.sprite = playTicketHolePunched;
-            Manager_SFXPlayer.instance.PlaySFXClip(sfx_onPressMode, transform, 1f, false, Manager_AudioMixer.instance.mixer_music);
+        }
+    }
+
+    public void OnPressSpeedrunModeButton()
+    {
+        if (!_bootLoader.isTransitioning)
+        {
+            scene_loadedScene = scene_warehouse;
+            Manager_SFXPlayer.instance.PlaySFXClip(sfx_onPressMode, transform, 1f, false, Manager_AudioMixer.instance.mixer_sfx);
+            _checkpointQueue.checkpointId = "WarehouseIntro";
+            TransitionToScene();
+            isUsed = true;
+            isSpeedrunModeOn = true;
+            _bootLoader.isTransitioning = true;
         }
     }
 
@@ -116,5 +140,17 @@ public class Handler_WarehouseDioramaMenu : MonoBehaviour
     {
         Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_mainMenu.name);
         _bootLoader.isTransitioning = true;
+    }
+
+    public void LoadData(GameData data)
+    {
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        if (isUsed)
+        {
+            data.isSpeedrunModeOn = isSpeedrunModeOn;
+        }
     }
 }

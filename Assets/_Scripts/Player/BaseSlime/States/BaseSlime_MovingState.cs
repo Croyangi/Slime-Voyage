@@ -11,6 +11,7 @@ public class BaseSlime_MovingState : State
     [SerializeField] private BaseSlime_StateMachine _stateMachine;
     [SerializeField] private BaseSlime_StateMachineHelper _helper;
     [SerializeField] private BaseSlime_AnimatorHelper _animator;
+    [SerializeField] private BaseSlime_Movement _movement;
     [SerializeField] private bool isTransitioning;
 
     public override void UpdateState()
@@ -31,17 +32,29 @@ public class BaseSlime_MovingState : State
             }
         }
 
-        // Go into running speed
-        if (_helper.speedUpTimer > 0)
-        {
-            _helper.speedUpTimer -= Time.deltaTime;
-        }
-
         if (_helper.isRunning == true)
         {
             _animator.ChangeAnimationState(_animator.EYES_SCARED, _animator.eyes_animator);
         } else {
             _animator.ChangeAnimationState(_animator.EYES_MOVING, _animator.eyes_animator);
+        }
+    }
+
+    public override void FixedUpdateState()
+    {
+        // Go into running speed
+        if (_helper.speedUpTimer > 0)
+        {
+            _helper.speedUpTimer -= Time.deltaTime;
+        }
+    }
+
+    private void JumpBufferCheck()
+    {
+        if (_helper._movementVars.jumpCooldownTimer <= 0 && _helper._movementVars.jumpBufferTimer > 0)
+        {
+            _movement.OnJump();
+            _helper.isJumpBuffered = false;
         }
     }
 

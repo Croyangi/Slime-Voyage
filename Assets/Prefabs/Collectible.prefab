@@ -133,6 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chunkfish: {fileID: 5073130289605279982}
+  initialPos: {x: 0, y: 0}
   _amplitude: 0.01
   _frequency: 3
   _amplitudeRotate: 3
@@ -253,7 +254,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 0000000089e71e7147a1a9d1
+  m_ApplyToSortingLayers: 0000000013b706af
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0

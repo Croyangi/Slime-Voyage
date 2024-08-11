@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelEditorObject: {fileID: 8634834376494189654, guid: e7440207e72266646ad55765a267a6cc, type: 3}
   objectOffset: {x: 0, y: 0, z: 0}
-  levelEditorObjectSize: {x: 4.5, y: 3.8125}
+  levelEditorObjectSize: {x: 7.125, y: 1}
   levelEditorObjectName: Chunkfish
   tags:
   - Warehouse

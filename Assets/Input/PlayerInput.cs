@@ -40,7 +40,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""name"": ""Jump"",
                     ""type"": ""Value"",
                     ""id"": ""2dbb122a-0a30-4b12-ad97-476eec6ea58c"",
-                    ""expectedControlType"": ""Integer"",
+                    ""expectedControlType"": ""Analog"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -158,6 +158,61 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""Controller"",
+                    ""id"": ""3ca592f3-5355-458b-8325-c50a47accd37"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""75cbfbb9-472d-433f-ac23-c4e3de6a89fb"",
+                    ""path"": ""<Joystick>/stick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""e4c26284-9311-4677-8e13-ff9e3d263340"",
+                    ""path"": ""<Joystick>/stick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""0962e5ee-0250-4fb1-a1b0-97ba59f3076d"",
+                    ""path"": ""<Joystick>/stick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""637acd8a-e8c8-4fbe-9661-7843b49288a8"",
+                    ""path"": ""<Joystick>/stick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": """",
                     ""id"": ""9d317030-4691-4915-a82f-17370054a85e"",
                     ""path"": ""<Keyboard>/space"",
@@ -172,6 +227,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""8e6982f3-88a7-41ec-b719-3872a9e7ef4e"",
                     ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""82ecfe6b-118e-4d36-8c2f-0ca43b1f55a4"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -261,6 +327,33 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Emote0"",
+                    ""type"": ""Value"",
+                    ""id"": ""05cbf752-ce5d-4b58-bcac-46e3cbb9fdac"",
+                    ""expectedControlType"": ""Integer"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Emote1"",
+                    ""type"": ""Value"",
+                    ""id"": ""99e6d63a-99ce-40c0-839c-92467b4ec90d"",
+                    ""expectedControlType"": ""Integer"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Emote2"",
+                    ""type"": ""Value"",
+                    ""id"": ""005447db-22a6-4311-b447-0a8948ccc0c1"",
+                    ""expectedControlType"": ""Integer"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -272,6 +365,39 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""RandomEmote"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c5945430-64e8-4448-863f-0785988d404a"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Emote0"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a7a4d0f2-5bf3-4ed6-abf7-520188dbb34b"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Emote1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ccf2213a-ff37-41cb-b90f-271086341786"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Emote2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -450,6 +576,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         // Emote
         m_Emote = asset.FindActionMap("Emote", throwIfNotFound: true);
         m_Emote_RandomEmote = m_Emote.FindAction("RandomEmote", throwIfNotFound: true);
+        m_Emote_Emote0 = m_Emote.FindAction("Emote0", throwIfNotFound: true);
+        m_Emote_Emote1 = m_Emote.FindAction("Emote1", throwIfNotFound: true);
+        m_Emote_Emote2 = m_Emote.FindAction("Emote2", throwIfNotFound: true);
         // GhostSlime
         m_GhostSlime = asset.FindActionMap("GhostSlime", throwIfNotFound: true);
         m_GhostSlime_Movement = m_GhostSlime.FindAction("Movement", throwIfNotFound: true);
@@ -632,11 +761,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Emote;
     private List<IEmoteActions> m_EmoteActionsCallbackInterfaces = new List<IEmoteActions>();
     private readonly InputAction m_Emote_RandomEmote;
+    private readonly InputAction m_Emote_Emote0;
+    private readonly InputAction m_Emote_Emote1;
+    private readonly InputAction m_Emote_Emote2;
     public struct EmoteActions
     {
         private @PlayerInput m_Wrapper;
         public EmoteActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @RandomEmote => m_Wrapper.m_Emote_RandomEmote;
+        public InputAction @Emote0 => m_Wrapper.m_Emote_Emote0;
+        public InputAction @Emote1 => m_Wrapper.m_Emote_Emote1;
+        public InputAction @Emote2 => m_Wrapper.m_Emote_Emote2;
         public InputActionMap Get() { return m_Wrapper.m_Emote; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -649,6 +784,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @RandomEmote.started += instance.OnRandomEmote;
             @RandomEmote.performed += instance.OnRandomEmote;
             @RandomEmote.canceled += instance.OnRandomEmote;
+            @Emote0.started += instance.OnEmote0;
+            @Emote0.performed += instance.OnEmote0;
+            @Emote0.canceled += instance.OnEmote0;
+            @Emote1.started += instance.OnEmote1;
+            @Emote1.performed += instance.OnEmote1;
+            @Emote1.canceled += instance.OnEmote1;
+            @Emote2.started += instance.OnEmote2;
+            @Emote2.performed += instance.OnEmote2;
+            @Emote2.canceled += instance.OnEmote2;
         }
 
         private void UnregisterCallbacks(IEmoteActions instance)
@@ -656,6 +800,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @RandomEmote.started -= instance.OnRandomEmote;
             @RandomEmote.performed -= instance.OnRandomEmote;
             @RandomEmote.canceled -= instance.OnRandomEmote;
+            @Emote0.started -= instance.OnEmote0;
+            @Emote0.performed -= instance.OnEmote0;
+            @Emote0.canceled -= instance.OnEmote0;
+            @Emote1.started -= instance.OnEmote1;
+            @Emote1.performed -= instance.OnEmote1;
+            @Emote1.canceled -= instance.OnEmote1;
+            @Emote2.started -= instance.OnEmote2;
+            @Emote2.performed -= instance.OnEmote2;
+            @Emote2.canceled -= instance.OnEmote2;
         }
 
         public void RemoveCallbacks(IEmoteActions instance)
@@ -741,6 +894,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     public interface IEmoteActions
     {
         void OnRandomEmote(InputAction.CallbackContext context);
+        void OnEmote0(InputAction.CallbackContext context);
+        void OnEmote1(InputAction.CallbackContext context);
+        void OnEmote2(InputAction.CallbackContext context);
     }
     public interface IGhostSlimeActions
     {

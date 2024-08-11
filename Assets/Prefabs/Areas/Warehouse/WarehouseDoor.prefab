@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5347843069769221829}
   - component: {fileID: 3797297473020165593}
   m_Layer: 0
-  m_Name: DialoguePrompt
+  m_Name: DoorDialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,6 +98,8 @@ MonoBehaviour:
   sr_door: {fileID: 1712083499319547130}
   openDoor: {fileID: 21300000, guid: bd4de09a7ca1a6c42ae8e5ecd995da37, type: 3}
   col_lockedDoor: {fileID: 8435684063342762235}
+  id: 
+  isUnlocked: 0
   audioClip_open: {fileID: 8300000, guid: a2d8a2918fcf3bc46bcc8640940b81ed, type: 3}
   audioClip_locked: {fileID: 8300000, guid: 882bbf59e5c7e034dbe5d2c21becb665, type: 3}
   isLocked: 0

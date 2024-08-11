@@ -43,6 +43,7 @@ public class BootLoader_ResultsScreen : MonoBehaviour, IDataPersistence
     [SerializeField] private SceneQueue _sceneQueue;
     [SerializeField] private ScriptObj_SceneName scene_loadingScreen;
     [SerializeField] private ScriptObj_SceneName scene_activeScene;
+    [SerializeField] private ScriptObj_SceneName scene_warehouseDioramaMenu;
 
     public TimeSpan timeElapsed { get; private set; }
 
@@ -57,6 +58,11 @@ public class BootLoader_ResultsScreen : MonoBehaviour, IDataPersistence
     private void Start()
     {
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene_activeScene.name));
+    }
+
+    public void OnExitButton()
+    {
+        Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_warehouseDioramaMenu.name);
     }
 
     // VFX for dramatic rank reveal

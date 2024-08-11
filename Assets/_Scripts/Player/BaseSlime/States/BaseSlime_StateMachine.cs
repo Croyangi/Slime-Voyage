@@ -6,18 +6,18 @@ public class BaseSlime_StateMachine : MonoBehaviour
 {
     public enum PlayerStates
     {
-        Idle, Moving, Jumping, Airborne, Sticking, Compressed, LookingUp, UniqueIdle, OnEdge
+        Idle, Moving, Jumping, Airborne, Sticking, Compressed, LookingUp, Emote, OnEdge
     }
 
     [SerializeField] public PlayerStates playerStates;
-    [SerializeField] private State currentState;
+    [SerializeField] public State currentState;
     [SerializeField] private BaseSlime_IdleState idle;
     [SerializeField] private BaseSlime_MovingState moving;
     [SerializeField] private BaseSlime_AirborneState airborne;
     [SerializeField] private BaseSlime_StickingState sticking;
     [SerializeField] private BaseSlime_CompressedState compressed;
     [SerializeField] private BaseSlime_LookingUp lookingUp;
-    [SerializeField] private BaseSlime_UniqueIdle uniqueIdle;
+    [SerializeField] private BaseSlime_Emote emote;
     [SerializeField] private BaseSlime_OnEdge onEdge;
     public Dictionary<PlayerStates, State> PlayerStatesDictionary = new Dictionary<PlayerStates, State>();
 
@@ -29,9 +29,12 @@ public class BaseSlime_StateMachine : MonoBehaviour
         PlayerStatesDictionary.Add(PlayerStates.Sticking, sticking);
         PlayerStatesDictionary.Add(PlayerStates.Compressed, compressed);
         PlayerStatesDictionary.Add(PlayerStates.LookingUp, lookingUp);
-        PlayerStatesDictionary.Add(PlayerStates.UniqueIdle, uniqueIdle);
+        PlayerStatesDictionary.Add(PlayerStates.Emote, emote);
         PlayerStatesDictionary.Add(PlayerStates.OnEdge, onEdge);
+    }
 
+    private void Start()
+    {
         if (PlayerStatesDictionary.TryGetValue(PlayerStates.Idle, out State state))
         {
             currentState = state;
@@ -39,17 +42,25 @@ public class BaseSlime_StateMachine : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void FixedUpdate() // Physics updates
     {
         if (currentState.StateKey == currentState)
         {
-            currentState.UpdateState();
+            currentState.FixedUpdateState();
         }
         else
         {
             currentState = currentState.StateKey;
             currentState.EnterState();
             UpdatePlayerState(currentState);
+        }
+    }
+
+    private void Update() // Non-Physics update
+    {
+        if (currentState.StateKey == currentState)
+        {
+            currentState.UpdateState();
         }
     }
 
@@ -77,8 +88,8 @@ public class BaseSlime_StateMachine : MonoBehaviour
             case BaseSlime_LookingUp:
                 playerStates = PlayerStates.LookingUp;
                 break;
-            case BaseSlime_UniqueIdle:
-                playerStates = PlayerStates.UniqueIdle;
+            case BaseSlime_Emote:
+                playerStates = PlayerStates.Emote;
                 break;
         }
     }

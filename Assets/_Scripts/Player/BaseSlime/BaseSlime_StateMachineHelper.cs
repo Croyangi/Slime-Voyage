@@ -40,12 +40,18 @@ public class BaseSlime_StateMachineHelper : MonoBehaviour
     [Header("Base Slime States")]
     public bool isGrounded;
     public int isOnEdge;
+
+    public bool isTouchingLeft;
+    public bool isTouchingRight;
     public Vector2 touchingDirection;
     public Vector2 stickingDirection;
     public bool isPermanentlySticking; // Disables after touching ground again
     public int facingDirection;
     public bool isTopVisualSpeed;
     public bool isRunning;
+    public int emoteIndex;
+    public int nextWallJumpDirection;
+    public bool stopPriorityStickDirection;
 
     [Header("Conditional Movement Options")]
     public bool canJump;
@@ -53,6 +59,9 @@ public class BaseSlime_StateMachineHelper : MonoBehaviour
     public bool canEmote;
     public bool canStick;
     public bool isJumpBuffered;
+    public bool canJumpBuffer;
+    public bool canJumpCancel;
+    public bool isJumpCanceled;
 
     private void Awake()
     {
@@ -243,8 +252,9 @@ public class BaseSlime_StateMachineHelper : MonoBehaviour
         return direction;
     }
 
-    private void PermanentlyStickingUpdate()
+    public void PermanentlyStickingUpdate()
     {
+        // Also only check if not currently holding a sticking direction, due to code priority, aka first if statement will always only make you stick right
         if (touchingDirection.x == 1 && isPermanentlySticking)
         {
             stickingDirection.x = 1;
@@ -305,9 +315,10 @@ public class BaseSlime_StateMachineHelper : MonoBehaviour
     {
         Vector2 direction = Vector2.zero;
 
-        // Calls function and checks if you are holding that direction
-        if (IsTouchingLeft()) { direction.x = -1; }
-        if (IsTouchingRight()) { direction.x = 1; }
+        // Calls function and checks if you are touching that direction
+        // Sticking overrides
+        if (isTouchingLeft = IsTouchingLeft()) { direction.x = -1; }
+        if (isTouchingRight = IsTouchingRight()) { direction.x = 1; }
 
         return direction;
     }

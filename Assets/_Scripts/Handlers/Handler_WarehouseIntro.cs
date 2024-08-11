@@ -35,26 +35,32 @@ public class Handler_WarehouseIntro : MonoBehaviour, IDataPersistence
     // Setup, called by bootloader
     public IEnumerator InitiateWarehouseIntro()
     {
+        // Technicals
         Manager_PlayerState.instance.SetResetDeath(false);
+        cinemachine.SetActive(true);
 
+        // Speedrun Conditionals
         if (isSpeedrunModeOn)
         {
             Manager_SpeedrunTimer.instance.OpenSpeedrunTimer();
-        }
-
-        foreach (GameObject speaker in warehouseLoudspeaker) 
+            slimeBox.transform.position = new Vector3(-36.5818062f, -4.20373011f, 0);
+            yield return new WaitForSeconds(1f);
+            StartCoroutine(WaitForSlimeEscape());
+        } else
         {
-            speaker.SetActive(true);
+            foreach (GameObject speaker in warehouseLoudspeaker)
+            {
+                speaker.SetActive(true);
+            }
+
+            yield return new WaitForSeconds(0.5f);
+
+            audioSource_warehouseIntro.Play();
+
+            yield return new WaitForSeconds(6f);
+
+            InitiateOpenGarageDoor();
         }
-        cinemachine.SetActive(true);
-
-        yield return new WaitForSeconds(0.5f);
-
-        audioSource_warehouseIntro.Play();
-
-        yield return new WaitForSeconds(6f);
-
-        InitiateOpenGarageDoor();
     }
 
     [ContextMenu("Open Garage Door")]

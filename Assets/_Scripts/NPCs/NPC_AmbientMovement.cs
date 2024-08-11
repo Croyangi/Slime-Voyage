@@ -20,9 +20,9 @@ public class NPC_AmbientMovement : MonoBehaviour
 
     private IEnumerator AmbientMovementRandomChance()
     {
-        gameObject.transform.localPosition = originPoint;
+        gameObject.transform.localPosition = new Vector2(originPoint.x, originPoint.y);
 
-        float random = Random.Range(3f, 5f);
+        float random = Random.Range(1f, 3f);
         yield return new WaitForSeconds(random);
         JumpAround();
 

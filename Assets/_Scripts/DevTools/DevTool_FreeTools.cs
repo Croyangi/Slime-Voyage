@@ -16,6 +16,7 @@ public class DevTool_FreeTools : MonoBehaviour
 
     [Header("Camera References")]
     [SerializeField] private Camera _camera;
+    [SerializeField] private Vector2 cameraSpeedWeight;
     [SerializeField] private float cameraSpeed;
     [SerializeField] private float cameraSize;
     [SerializeField] private Rigidbody2D cameraRb;
@@ -159,12 +160,12 @@ public class DevTool_FreeTools : MonoBehaviour
         //_camera.transform.position = new Vector3(_camera.transform.position.x + (inputMovement.x * cameraSpeed), _camera.transform.position.y + (inputMovement.y * cameraSpeed), _camera.transform.position.z);
 
         // Math.Sign is because Unity's input can give float values if diagonal movement
-        float xTargetSpeed = inputMovement.x * _movementVars.devTools.movementSpeed;
+        float xTargetSpeed = inputMovement.x * _movementVars.devTools.movementSpeed * cameraSpeedWeight.x;
         float xSpeedDif = xTargetSpeed - cameraRb.velocity.x;
         float xAccelRate = (Mathf.Abs(xTargetSpeed) > 0.01f) ? _movementVars.devTools.acceleration : _movementVars.devTools.deceleration;
         float xMovement = Mathf.Pow(Mathf.Abs(xSpeedDif) * xAccelRate, _movementVars.devTools.velocityPower) * Mathf.Sign(xSpeedDif);
 
-        float yTargetSpeed = inputMovement.y * _movementVars.devTools.movementSpeed;
+        float yTargetSpeed = inputMovement.y * _movementVars.devTools.movementSpeed * cameraSpeedWeight.y;
         float ySpeedDif = yTargetSpeed - cameraRb.velocity.y;
         float yAccelRate = (Mathf.Abs(yTargetSpeed) > 0.01f) ? _movementVars.devTools.acceleration : _movementVars.devTools.deceleration;
         float yMovement = Mathf.Pow(Mathf.Abs(ySpeedDif) * yAccelRate, _movementVars.devTools.velocityPower) * Mathf.Sign(ySpeedDif);

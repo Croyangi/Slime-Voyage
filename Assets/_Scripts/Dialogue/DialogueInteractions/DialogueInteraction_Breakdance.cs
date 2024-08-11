@@ -60,7 +60,7 @@ public class DialogueInteraction_Breakdance : MonoBehaviour
 
     private IEnumerator CheckBreakdance()
     {
-        if (slime.GetComponentInChildren<BaseSlime_AnimatorHelper>().currentState == "BaseSlime_UniqueIdle_Spin")
+        if (slime.GetComponentInChildren<BaseSlime_AnimatorHelper>().currentState == "BaseSlime_Emote_Spin")
         {
             TriggerDialogueInteraction();
         }

@@ -48,6 +48,7 @@ public class Handler_LogoStartup : MonoBehaviour
     {
         audioSource_slimeVoyageMainTheme.time = 0f;
         audioSource_slimeVoyageMainTheme.Play();
+        audioSource_slimeVoyageMainTheme.ignoreListenerPause = true;
         StartCoroutine(FadeInMainTheme());
 
         yield return new WaitForSeconds(5f);

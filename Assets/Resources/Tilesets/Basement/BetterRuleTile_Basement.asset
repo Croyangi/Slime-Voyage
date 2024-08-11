@@ -4295,12 +4295,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings:
     _gridShape: 0
-    _zoomAmount: 0.32581967
+    _zoomAmount: 0.3379757
     _gridCellSize: {x: 32, y: 32}
     _tileRenderOffset: {x: 0, y: 0}
-    _gridOffset: {x: 58.86139, y: 154.23404}
+    _gridOffset: {x: 176.79092, y: 107.288345}
     _lockWindows: 1
-    _hideSprites: 0
+    _hideSprites: 1
     _showRuler: 1
     _showModified: 1
     _renderSmallGrid: 0

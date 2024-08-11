@@ -366,7 +366,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 89e71e7147a1a9d100000000
+  m_ApplyToSortingLayers: 00000000
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -380,8 +380,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.02789998, y: 0.063550025, z: 0}
-    m_Extent: {x: 1.0022, y: 0.62444997, z: 0}
+    m_Center: {x: 0.027750015, y: 0.0632, z: 0}
+    m_Extent: {x: 1.00275, y: 0.6255, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -448,7 +448,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 89e71e7147a1a9d100000000
+  m_ApplyToSortingLayers: 0000000013b706af
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -530,7 +530,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 89e71e7147a1a9d100000000
+  m_ApplyToSortingLayers: 13b706af
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -544,8 +544,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.010100007, y: 0.057850003, z: 0}
-    m_Extent: {x: 0.7838, y: 0.62135, z: 0}
+    m_Center: {x: -0.01030001, y: 0.05794999, z: 0}
+    m_Extent: {x: 0.78429997, y: 0.62294996, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -612,7 +612,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 0000000089e71e7147a1a9d1
+  m_ApplyToSortingLayers: 0000000013b706af
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -728,7 +728,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 89e71e7147a1a9d100000000
+  m_ApplyToSortingLayers: 0000000013b706af
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -843,7 +843,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 89e71e7147a1a9d100000000
+  m_ApplyToSortingLayers: 13b706af
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -857,8 +857,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.016149998, y: 0.059249997, z: 0}
-    m_Extent: {x: 0.71925, y: 0.62275, z: 0}
+    m_Center: {x: 0.016499996, y: 0.058699995, z: 0}
+    m_Extent: {x: 0.7198, y: 0.6229, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -925,7 +925,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 89e71e7147a1a9d100000000
+  m_ApplyToSortingLayers: 0000000013b706af
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -1063,6 +1063,7 @@ MonoBehaviour:
   lightTip: {fileID: 6449221035861273238}
   audioClip_checkpointLightOn: {fileID: 8300000, guid: 0c895ae39c031fb4ca89fd105f7be8ef, type: 3}
   tag_player: {fileID: 11400000, guid: 052214d19408f7a48bba66682f7001de, type: 2}
+  _areaId: {fileID: 0}
   id: 
 --- !u!50 &147400462892201949
 Rigidbody2D:

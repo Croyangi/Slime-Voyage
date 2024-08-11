@@ -49,17 +49,7 @@ MonoBehaviour:
     dialogueSpeed: 0.03
     dialogueStallTime: 0.3
     cleanText: 1
-    stoppingFlag: 0
-    profileName: 
-    profilePicture: {fileID: 0}
-    sfx_speaking: {fileID: 0}
-    sfxSpeakingSpacing: 0
-  - dialogueText: Need more hats from mushrooms? Much room for more cat ears! Hear
-      me out, all types of colors! Red! Green! Blue! Are gee being in need for more-
-    dialogueSpeed: 0.04
-    dialogueStallTime: 0.3
-    cleanText: 1
-    stoppingFlag: 0
+    stoppingFlag: 1
     profileName: 
     profilePicture: {fileID: 0}
     sfx_speaking: {fileID: 0}

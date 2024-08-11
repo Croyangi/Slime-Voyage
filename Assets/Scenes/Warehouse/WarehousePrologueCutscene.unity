@@ -411,9 +411,9 @@ MonoBehaviour:
   mixer_master: {fileID: 24300002, guid: 9230e92806392014abf4f707843afb7b, type: 2}
   mixer_sfx: {fileID: -5108172681642937467, guid: 9230e92806392014abf4f707843afb7b, type: 2}
   mixer_music: {fileID: 3637054094149109581, guid: 9230e92806392014abf4f707843afb7b, type: 2}
-  slider_master: {fileID: 0}
-  slider_music: {fileID: 0}
-  slider_sfx: {fileID: 0}
+  slider_master: {fileID: 1216241735}
+  slider_music: {fileID: 1216241734}
+  slider_sfx: {fileID: 1216241733}
 --- !u!1 &999093808
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,6 +560,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Manager_InGamePauseMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 1191504035516181082, guid: 7f8a6ef7f9715134c8a4a6a196e19918, type: 3}
+      propertyPath: scene_loadedScene
+      value: 
+      objectReference: {fileID: 11400000, guid: b8fc24e842f2c2f4a9bbe022ec00c8ee, type: 2}
+    - target: {fileID: 1191504035516181082, guid: 7f8a6ef7f9715134c8a4a6a196e19918, type: 3}
+      propertyPath: scene_deloadedScene
+      value: 
+      objectReference: {fileID: 11400000, guid: d868f43a76d1ada4c94c849c8f651e59, type: 2}
     - target: {fileID: 1986282704638038216, guid: 7f8a6ef7f9715134c8a4a6a196e19918, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -632,6 +640,21 @@ PrefabInstance:
 --- !u!4 &1216241732 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3750605337175127675, guid: 7f8a6ef7f9715134c8a4a6a196e19918, type: 3}
+  m_PrefabInstance: {fileID: 1216241731}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1216241733 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1465943320787384218, guid: 7f8a6ef7f9715134c8a4a6a196e19918, type: 3}
+  m_PrefabInstance: {fileID: 1216241731}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1216241734 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 470111981688320678, guid: 7f8a6ef7f9715134c8a4a6a196e19918, type: 3}
+  m_PrefabInstance: {fileID: 1216241731}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1216241735 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5536184597655063329, guid: 7f8a6ef7f9715134c8a4a6a196e19918, type: 3}
   m_PrefabInstance: {fileID: 1216241731}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1223610714

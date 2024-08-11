@@ -38,14 +38,14 @@ public class Manager_Cinemachine : MonoBehaviour
     {
         cinemachineVirtualCam = currentCinemachine.GetComponent<CinemachineVirtualCamera>();
         cinemachineVirtualCam.m_Follow = Manager_PlayerState.instance.player.transform;
-        LoadCinemachineChannel(cinemachineVirtualCam);
+        channel = LoadCinemachineChannel(cinemachineVirtualCam);
     }
 
     public void OnChangeCinemachine(GameObject cinemachine)
     {
         // Cleanup
         cinemachineVirtualCam = currentCinemachine.GetComponent<CinemachineVirtualCamera>();
-        LoadCinemachineChannel(cinemachineVirtualCam);
+        channel = LoadCinemachineChannel(cinemachineVirtualCam);
 
 
         // Post Cleanup
@@ -53,19 +53,21 @@ public class Manager_Cinemachine : MonoBehaviour
         cinemachineVirtualCam = currentCinemachine.GetComponent<CinemachineVirtualCamera>();
 
         cinemachineVirtualCam.m_Follow = Manager_PlayerState.instance.player.transform;
-        LoadCinemachineChannel(cinemachineVirtualCam);
+        channel = LoadCinemachineChannel(cinemachineVirtualCam);
 
         // Reapply
         ApplyScreenShake(screenShakeTime, screenShakeAmplitude);
     }
 
-    private void LoadCinemachineChannel(CinemachineVirtualCamera cinemachine)
+
+    // Returns the channel
+    private CinemachineBasicMultiChannelPerlin LoadCinemachineChannel(CinemachineVirtualCamera cinemachine)
     {
         if (cinemachine.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>() == null)
         {
             cinemachine.AddCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         }
-        channel = cinemachine.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        return cinemachine.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
     }
 
     public void ApplyScreenShake(float time, float amplitude)
@@ -88,7 +90,7 @@ public class Manager_Cinemachine : MonoBehaviour
             screenShakeAmplitude = 0f;
             if (channel != null)
             {
-                channel.m_AmplitudeGain = screenShakeAmplitude;
+                channel.m_AmplitudeGain = 0f;
             }
         }
     }

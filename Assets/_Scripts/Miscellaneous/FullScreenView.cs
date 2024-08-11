@@ -21,7 +21,7 @@ public static class FullscreenGameView
 
     static EditorWindow instance;
 
-    [MenuItem("Window/General/Game (Fullscreen) %#&2", priority = 2)]
+    [MenuItem("Window/General/Game (Fullscreen) %#&G", priority = 2)]
     public static void Toggle()
     {
         if (GameViewType == null)
@@ -54,5 +54,4 @@ public static class FullscreenGameView
         }
     }
 }
-
 #endif

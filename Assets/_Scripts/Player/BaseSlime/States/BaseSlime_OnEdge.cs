@@ -21,6 +21,7 @@ public class BaseSlime_OnEdge : State
             }
         }
 
+        // Flipping
         if (_helper.isOnEdge == 1)
         {
             _animator.FlipSprite(true);
@@ -29,6 +30,10 @@ public class BaseSlime_OnEdge : State
         {
             _animator.FlipSprite(false);
         }
+    }
+
+    public override void FixedUpdateState()
+    {
     }
 
     public override void EnterState()

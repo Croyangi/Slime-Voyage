@@ -15,6 +15,7 @@ public class BootLoader_Warehouse : MonoBehaviour, IDataPersistence
 
     [SerializeField] private ScriptObj_AreaId _areaId;
     [SerializeField] private bool isCompleted;
+    [SerializeField] private bool isSpeedrunModeOn;
 
     [Header("Scene")]
     [SerializeField] private SceneQueue _sceneQueue;
@@ -22,6 +23,7 @@ public class BootLoader_Warehouse : MonoBehaviour, IDataPersistence
     [SerializeField] private ScriptObj_SceneName scene_loadingScreen;
     [SerializeField] private ScriptObj_SceneName scene_activeScene;
     [SerializeField] private ScriptObj_SceneName scene_loadedScene;
+    [SerializeField] private ScriptObj_SceneName scene_resultsScreen;
 
     private void Awake()
     {
@@ -74,12 +76,19 @@ public class BootLoader_Warehouse : MonoBehaviour, IDataPersistence
     {
         isCompleted = true;
         DataPersistenceManager.instance.SaveGame();
+
+        // For speedrunners
+        if (isSpeedrunModeOn)
+        {
+            scene_loadedScene = scene_resultsScreen;
+        }
         Manager_LoadingScreen.instance.InitiateLoadSceneTransfer(scene_loadedScene.name);
     }
 
     public void LoadData(GameData data)
     {
         data.areasCompleted.TryGetValue(_areaId.name, out isCompleted);
+        isSpeedrunModeOn = data.isSpeedrunModeOn;
     }
 
     public void SaveData(ref GameData data)

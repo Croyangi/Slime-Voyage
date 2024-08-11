@@ -72,12 +72,14 @@ public class Handler_MainMenu : MonoBehaviour
     {
         GameObject tab = tabs[index];
 
-        if (index == 4)
-        {
-            LeanTween.moveX(tab.GetComponent<RectTransform>(), 820f, 0.5f).setEaseInBack().setEaseOutBounce();
-        } else
+        if (index <= 4)
         {
             LeanTween.moveX(tab.GetComponent<RectTransform>(), 330f, 0.5f).setEaseInBack().setEaseOutBounce();
+        }
+
+        if (index == 5)
+        {
+            LeanTween.moveX(tab.GetComponent<RectTransform>(), 820f, 0.5f).setEaseInBack().setEaseOutBounce();
         }
     }
 
@@ -86,13 +88,14 @@ public class Handler_MainMenu : MonoBehaviour
     {
         GameObject tab = tabs[index];
 
-        if (index == 4)
-        {
-            LeanTween.moveX(tab.GetComponent<RectTransform>(), 900f, 0.5f).setEaseInBack().setEaseOutBounce();
-        }
-        else
+        if (index <= 4)
         {
             LeanTween.moveX(tab.GetComponent<RectTransform>(), 250f, 0.5f).setEaseInBack().setEaseOutBounce();
+        }
+
+        if (index == 5)
+        {
+            LeanTween.moveX(tab.GetComponent<RectTransform>(), 900f, 0.5f).setEaseInBack().setEaseOutBounce();
         }
     }
 

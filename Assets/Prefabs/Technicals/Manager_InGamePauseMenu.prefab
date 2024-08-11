@@ -1786,8 +1786,8 @@ GameObject:
   - component: {fileID: 8305444629977171304}
   - component: {fileID: 956286290219985972}
   - component: {fileID: 2155829038462538118}
-  - component: {fileID: 333797979443981586}
   - component: {fileID: 2483288035787065510}
+  - component: {fileID: 333797979443981586}
   m_Layer: 5
   m_Name: Resume
   m_TagString: Untagged
@@ -1853,29 +1853,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &333797979443981586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5519376859355799371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac4967b489e0e704ebf7160a3ccc459a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 5519376859355799371}
-  isMultipleObjects: 1
-  unpressedColor: {r: 1, g: 1, b: 1, a: 1}
-  pressedColor: {r: 0.7, g: 0.7, b: 0.7, a: 1}
-  unpressedScale: {x: 1, y: 1, z: 0}
-  pressedScale: {x: 0.95, y: 0.95, z: 0}
-  hoverScale: {x: 1.05, y: 1.05, z: 1.05}
-  unhoveredColor: {r: 1, g: 1, b: 1, a: 1}
-  hoveredColor: {r: 1, g: 1, b: 1, a: 1}
-  scaleSpeed: 0.1
-  generalUIHover: {fileID: 8300000, guid: ed12db967aab43249ae20148d89757c3, type: 3}
 --- !u!114 &2483288035787065510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1932,6 +1909,29 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &333797979443981586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5519376859355799371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac4967b489e0e704ebf7160a3ccc459a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 5519376859355799371}
+  isMultipleObjects: 1
+  unpressedColor: {r: 1, g: 1, b: 1, a: 1}
+  pressedColor: {r: 0.7, g: 0.7, b: 0.7, a: 1}
+  unpressedScale: {x: 1, y: 1, z: 0}
+  pressedScale: {x: 0.95, y: 0.95, z: 0}
+  hoverScale: {x: 1.05, y: 1.05, z: 1.05}
+  unhoveredColor: {r: 1, g: 1, b: 1, a: 1}
+  hoveredColor: {r: 1, g: 1, b: 1, a: 1}
+  scaleSpeed: 0.1
+  generalUIHover: {fileID: 8300000, guid: ed12db967aab43249ae20148d89757c3, type: 3}
 --- !u!1 &5536184597655063329
 GameObject:
   m_ObjectHideFlags: 0
