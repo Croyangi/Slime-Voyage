@@ -234,6 +234,7 @@ SpriteAtlas:
     - afeeb4f466ecc7d4caa9cb3f41398036: -1778180007
     - afeeb4f466ecc7d4caa9cb3f41398036: -184193452
     - cc7845f481a0ad94bbfc4d6b7436b682: 21300000
+    - 16e4b2151b189a44884cf56052bc09db: 21300000
     - 9536261584f6ecc4c9022338af1b2976: 21300000
     - e5c6381523c89a44fb689def922fd97b: 21300000
     - 0fd2072554064d2408c910a46516e155: 1529359761
@@ -573,6 +574,7 @@ SpriteAtlas:
     - bd4de09a7ca1a6c42ae8e5ecd995da37: 21300000
     - 6374419a44e7c48499e54b26f2d0439b: 21300000
     - 533cea9a58350f3438c6f615846fe2d1: 21300000
+    - 1217fbaae62ba4248aba04928543cf1a: 21300000
     - 8fd5ddaa96fdec440aea87e7cc1681b4: 21300000
     - fe352eaa203aee94bbcb3d1c01986ad8: 21300000
     - bdbe22ca0e472cd469df7bb81640db98: 21300000
@@ -1003,6 +1005,7 @@ SpriteAtlas:
   - {fileID: -1778180007, guid: afeeb4f466ecc7d4caa9cb3f41398036, type: 3}
   - {fileID: -184193452, guid: afeeb4f466ecc7d4caa9cb3f41398036, type: 3}
   - {fileID: 21300000, guid: cc7845f481a0ad94bbfc4d6b7436b682, type: 3}
+  - {fileID: 21300000, guid: 16e4b2151b189a44884cf56052bc09db, type: 3}
   - {fileID: 21300000, guid: 9536261584f6ecc4c9022338af1b2976, type: 3}
   - {fileID: 21300000, guid: e5c6381523c89a44fb689def922fd97b, type: 3}
   - {fileID: 1529359761, guid: 0fd2072554064d2408c910a46516e155, type: 3}
@@ -1342,6 +1345,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: bd4de09a7ca1a6c42ae8e5ecd995da37, type: 3}
   - {fileID: 21300000, guid: 6374419a44e7c48499e54b26f2d0439b, type: 3}
   - {fileID: 21300000, guid: 533cea9a58350f3438c6f615846fe2d1, type: 3}
+  - {fileID: 21300000, guid: 1217fbaae62ba4248aba04928543cf1a, type: 3}
   - {fileID: 21300000, guid: 8fd5ddaa96fdec440aea87e7cc1681b4, type: 3}
   - {fileID: 21300000, guid: fe352eaa203aee94bbcb3d1c01986ad8, type: 3}
   - {fileID: 21300000, guid: bdbe22ca0e472cd469df7bb81640db98, type: 3}
@@ -1771,6 +1775,7 @@ SpriteAtlas:
   - GhostSlime_Idle_2
   - GhostSlime_Idle_3
   - BubbleMold
+  - WarehouseLightbulbOn
   - SwapeeTicketButton_HolePunched
   - WarehouseJunk (23)
   - SlimeStretchIdle_8
@@ -2110,6 +2115,7 @@ SpriteAtlas:
   - WarehouseDoorOpen
   - Billboard_BoxySaysBlessings
   - UI_PauseMenu
+  - LightbulbBlackWire
   - PFP_TophatChunkfishMouthOpen
   - Decoration_DarkBox2
   - PFP_SwapeeConcerned

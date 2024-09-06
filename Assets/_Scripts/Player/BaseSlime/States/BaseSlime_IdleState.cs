@@ -105,7 +105,6 @@ public class BaseSlime_IdleState : State
         {
             _movement.OnJump();
             _helper.isJumpBuffered = false;
-            _movement.jumpChecker.color = Color.green;
 
             if (_stateMachine.PlayerStatesDictionary.TryGetValue(BaseSlime_StateMachine.PlayerStates.Airborne, out State state))
             {

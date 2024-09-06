@@ -147,7 +147,6 @@ public class BaseSlime_AirborneState : State
     {
         _helper._movementVars.jumpBufferTimer = _helper._movementVars.jumpBuffer;
         //Debug.Log("BUFFERED");
-        _movement.jumpChecker.color = Color.green;
 
         // Immediate switch to Sticking if jumping on a wall
         if (!_helper.isGrounded && _helper.stickingDirection != Vector2.zero && !isTransitioning)

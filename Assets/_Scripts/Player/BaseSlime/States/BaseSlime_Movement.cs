@@ -25,8 +25,6 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
     [Header("Variables")]
     [SerializeField] public float jumpMovement; // From Unity's input system
 
-    [SerializeField] public SpriteRenderer jumpChecker;
-
     private void Awake()
     {
         playerInput = new PlayerInput(); // Instantiate new Unity's Input System
@@ -65,7 +63,6 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
 
     private void OnJumpPerformed(InputAction.CallbackContext value)
     {
-        jumpChecker.color = Color.green;
         Debug.Log(_stateMachine.currentState);
 
         // Standard jump
@@ -134,8 +131,6 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
             ApplyJumpCancel();
         }
         _helper.canJumpCancel = false;
-
-        jumpChecker.color = Color.red;
 
     }
 

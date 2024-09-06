@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e2d313d4c016d342bc276cb73a36214, type: 3}
+  m_Name: Dialogue_Warehouse24
+  m_EditorClassIdentifier: 
+  isDialogueOnTop: 1
+  isDialogueMini: 1
+  isPlayerInputStall: 0
+  _dialogues:
+  - dialogueText: ~ATTENTION ALL PERSONNEL~
+    dialogueSpeed: 0.02
+    dialogueStallTime: 1.5
+    cleanText: 1
+    stoppingFlag: 0
+    profileName: 
+    profilePicture: {fileID: 21300000, guid: 2cb13f40bb128e14c99c2865e731a3e0, type: 3}
+    sfx_speaking: {fileID: 8300000, guid: b45f90f4db75d15479068d5168b17415, type: 3}
+    sfxSpeakingSpacing: 0
+  - dialogueText: THE CHUNKFISH HAVE SEIZED FLOOR 102, SECTOR 22A.
+    dialogueSpeed: 0.02
+    dialogueStallTime: 1.5
+    cleanText: 1
+    stoppingFlag: 0
+    profileName: 
+    profilePicture: {fileID: 0}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
+  - dialogueText: PLEASE EVACUATE THE PREMISES.
+    dialogueSpeed: 0.02
+    dialogueStallTime: 2
+    cleanText: 1
+    stoppingFlag: 0
+    profileName: 
+    profilePicture: {fileID: 0}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
+  - dialogueText: 'Huh? '
+    dialogueSpeed: 0.04
+    dialogueStallTime: 0.5
+    cleanText: 1
+    stoppingFlag: 0
+    profileName: 
+    profilePicture: {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
+  - dialogueText: 'Wait, '
+    dialogueSpeed: 0.04
+    dialogueStallTime: 0.5
+    cleanText: 0
+    stoppingFlag: 0
+    profileName: 
+    profilePicture: {fileID: 0}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
+  - dialogueText: 'no stop '
+    dialogueSpeed: 0.04
+    dialogueStallTime: 0.5
+    cleanText: 0
+    stoppingFlag: 0
+    profileName: 
+    profilePicture: {fileID: 0}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
+  - dialogueText: 'AHHH '
+    dialogueSpeed: 0.04
+    dialogueStallTime: 0.5
+    cleanText: 0
+    stoppingFlag: 0
+    profileName: 
+    profilePicture: {fileID: 0}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
+  - dialogueText: HELLLLPPPPP-
+    dialogueSpeed: 0.04
+    dialogueStallTime: 0
+    cleanText: 0
+    stoppingFlag: 0
+    profileName: 
+    profilePicture: {fileID: 0}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0
+  - dialogueText: '*click*'
+    dialogueSpeed: 0
+    dialogueStallTime: 2
+    cleanText: 1
+    stoppingFlag: 0
+    profileName: 
+    profilePicture: {fileID: 21300000, guid: 2cb13f40bb128e14c99c2865e731a3e0, type: 3}
+    sfx_speaking: {fileID: 0}
+    sfxSpeakingSpacing: 0

@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e2d313d4c016d342bc276cb73a36214, type: 3}
+  m_Name: Dialogue_WarehouseStepspike34
+  m_EditorClassIdentifier: 
+  isDialogueOnTop: 0
+  isDialogueMini: 0
+  isPlayerInputStall: 0
+  _dialogues:
+  - dialogueText: How's the wife and kids?
+    dialogueSpeed: 0.03
+    dialogueStallTime: 0
+    cleanText: 1
+    stoppingFlag: 1
+    profileName: Stepspike #2571
+    profilePicture: {fileID: 21300000, guid: ae91aeccdd59fce4cb17b3158f9666a6, type: 3}
+    sfx_speaking: {fileID: 8300000, guid: b45f90f4db75d15479068d5168b17415, type: 3}
+    sfxSpeakingSpacing: 0
+  - dialogueText: We don't have any, we've been trapped here for 60 years.
+    dialogueSpeed: 0.03
+    dialogueStallTime: 0
+    cleanText: 1
+    stoppingFlag: 1
+    profileName: Stepspike #3797
+    profilePicture: {fileID: 21300000, guid: 4d687128bdeb70049903656f8c049d38, type: 3}
+    sfx_speaking: {fileID: 8300000, guid: b45f90f4db75d15479068d5168b17415, type: 3}
+    sfxSpeakingSpacing: 0
+  - dialogueText: Oh yea.
+    dialogueSpeed: 0.03
+    dialogueStallTime: 0
+    cleanText: 1
+    stoppingFlag: 1
+    profileName: Stepspike #2571
+    profilePicture: {fileID: 21300000, guid: 56cb3dbdd7461f241aa427b720a652a3, type: 3}
+    sfx_speaking: {fileID: 8300000, guid: b45f90f4db75d15479068d5168b17415, type: 3}
+    sfxSpeakingSpacing: 0
