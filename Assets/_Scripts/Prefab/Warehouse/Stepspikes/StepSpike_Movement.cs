@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StepSpike_Movement : MonoBehaviour
+public class StepSpike_Movement : StepSpike_State
 {
     [Header("References")]
     [SerializeField] public Rigidbody2D _rigidbody2D;
@@ -22,18 +22,14 @@ public class StepSpike_Movement : MonoBehaviour
     [SerializeField] private float decceleration;
     [SerializeField] private float velocityPower;
 
-    private void Awake()
+    public override void OnCull()
     {
-        //if (GetRandomBool())
-        //{
-        //    horizontalMovement *= -1;
-        //    //FlipSprite();
-        //}
+        _rigidbody2D.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 
-    private bool GetRandomBool()
+    public override void OnLoad()
     {
-        return (Random.value > 0.5f);
+        _rigidbody2D.constraints = RigidbodyConstraints2D.None;
     }
 
     private void StandUprightUpdate()
@@ -78,7 +74,7 @@ public class StepSpike_Movement : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    public override void FixedUpdateState()
     {
         ProcessMovementUpdate();
 

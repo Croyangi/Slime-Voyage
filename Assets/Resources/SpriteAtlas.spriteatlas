@@ -632,6 +632,7 @@ SpriteAtlas:
     - 87c54ffb87c250542a1464db17f5e26d: 1489353679
     - 87c54ffb87c250542a1464db17f5e26d: 539325300
     - 62c9201c9710e9246b4ab41a25a7482a: 21300000
+    - 6a6b701c211c3fe42ab81e9e319a959e: 21300000
     - 6933fa1cca7d9214c81cc5617c05b214: 21300000
     - 891db02c02116554a92c2722ffe868c2: 21300000
     - de08212ca9ed5fc4786fcbeb1d0c1843: 21300000
@@ -1403,6 +1404,7 @@ SpriteAtlas:
   - {fileID: 1489353679, guid: 87c54ffb87c250542a1464db17f5e26d, type: 3}
   - {fileID: 539325300, guid: 87c54ffb87c250542a1464db17f5e26d, type: 3}
   - {fileID: 21300000, guid: 62c9201c9710e9246b4ab41a25a7482a, type: 3}
+  - {fileID: 21300000, guid: 6a6b701c211c3fe42ab81e9e319a959e, type: 3}
   - {fileID: 21300000, guid: 6933fa1cca7d9214c81cc5617c05b214, type: 3}
   - {fileID: 21300000, guid: 891db02c02116554a92c2722ffe868c2, type: 3}
   - {fileID: 21300000, guid: de08212ca9ed5fc4786fcbeb1d0c1843, type: 3}
@@ -2173,6 +2175,7 @@ SpriteAtlas:
   - BaseSlime_Splat_2
   - BaseSlime_Splat_3
   - PFP_BaseSlimeEyebrowRaised
+  - WarehouseLightbulbOff
   - PFP_Daria
   - PFP_ChunkfishMouthClosed
   - Billboard_NotPayingToFrown

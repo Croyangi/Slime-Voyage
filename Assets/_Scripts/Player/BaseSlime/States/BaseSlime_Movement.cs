@@ -63,7 +63,7 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
 
     private void OnJumpPerformed(InputAction.CallbackContext value)
     {
-        Debug.Log(_stateMachine.currentState);
+        //Debug.Log(_stateMachine.currentState);
 
         // Standard jump
         if (_helper.canJump && _movementVars.jumpCooldownTimer <= 0)
@@ -119,7 +119,7 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
 
         _movementVars.jumpBufferTimer = 0f;
 
-        Debug.Log("JUMP");
+        //Debug.Log("JUMP");
     }
 
     private void OnJumpCancelled(InputAction.CallbackContext value)

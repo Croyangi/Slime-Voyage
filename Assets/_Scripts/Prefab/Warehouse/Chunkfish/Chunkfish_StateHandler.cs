@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Chunkfish_StateHandler : MonoBehaviour
+public class Chunkfish_StateHandler : Chunkfish_State
 {
     [SerializeField] private AudioClip sfx_chunkfishFullyInflated;
     [SerializeField] private float chunkfish_sfxMaxRange = 30f;
@@ -30,7 +30,6 @@ public class Chunkfish_StateHandler : MonoBehaviour
 
     [Header("Tags")]
     [SerializeField] private TagsScriptObj _isChunkfishDetectable;
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -87,7 +86,12 @@ public class Chunkfish_StateHandler : MonoBehaviour
         chunkfish_inflateTimer = chunkfish_deflateSpeed;
     }
 
-    private void FixedUpdate()
+    public override void FixedUpdateState()
+    {
+        StateCheck();
+    }
+
+    private void StateCheck()
     {
         if (chunkfish_inflateTimer >= chunkfish_fullyInflatedSpeed)
         {
@@ -97,12 +101,14 @@ public class Chunkfish_StateHandler : MonoBehaviour
                 PlayFullyInflatedSFX();
             }
 
-        } else if (chunkfish_inflateTimer <= 0)
+        }
+        else if (chunkfish_inflateTimer <= 0)
         {
             isFullyInflated = false;
         }
 
-        if (!isDetecting) {
+        if (!isDetecting)
+        {
             chunkfish_inflateTimer = Mathf.Clamp(chunkfish_inflateTimer - Time.deltaTime, 0, 9999);
 
             if (chunkfish_inflateTimer <= 0)
@@ -110,7 +116,8 @@ public class Chunkfish_StateHandler : MonoBehaviour
                 isInflated = false;
                 isStayingFullyInflated = false;
             }
-        } else
+        }
+        else
         {
             chunkfish_inflateTimer = Mathf.Clamp(chunkfish_inflateTimer + Time.deltaTime, 0, 9999);
         }

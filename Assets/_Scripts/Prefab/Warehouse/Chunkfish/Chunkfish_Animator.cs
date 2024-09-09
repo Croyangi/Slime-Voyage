@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chunkfish_Animator : MonoBehaviour
+public class Chunkfish_Animator : Chunkfish_State
 {
     [Header("General References")]
     [SerializeField] private Animator _animator;
@@ -27,7 +27,12 @@ public class Chunkfish_Animator : MonoBehaviour
         RandomSpriteFlip();
     }
 
-    private void FixedUpdate()
+    public override void FixedUpdateState()
+    {
+        StateChecks();
+    }
+
+    private void StateChecks()
     {
         if (_stateHandler.isDetecting && _stateHandler.detectedObject != null)
         {
@@ -37,7 +42,8 @@ public class Chunkfish_Animator : MonoBehaviour
         if (_stateHandler.isInflated)
         {
             ChangeAnimationState(CHUNKFISH_INFLATE);
-        } else
+        }
+        else
         {
             ChangeAnimationState(CHUNKFISH_DEFLATE);
         }
@@ -45,7 +51,8 @@ public class Chunkfish_Animator : MonoBehaviour
         if (_stateHandler.isFullyInflated)
         {
             _eyesHandler.ToggleEyes(true);
-        } else
+        }
+        else
         {
             _eyesHandler.ToggleEyes(false);
         }

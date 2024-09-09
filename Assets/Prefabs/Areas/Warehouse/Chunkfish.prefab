@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5403911998612314211}
   m_Layer: 0
-  m_Name: LoadedObjects
+  m_Name: Scripts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5403911998612314211
 Transform:
   m_ObjectHideFlags: 0
@@ -29,9 +29,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6233621833256383866}
-  - {fileID: 6233621834042999994}
   - {fileID: 6233621834012938453}
+  - {fileID: 6233621834042999994}
+  - {fileID: 6233621833256383866}
   - {fileID: 4034181110296288414}
   - {fileID: 4884853683753412981}
   - {fileID: 8589074306990205773}
@@ -222,7 +222,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5575642879872455581}
-  - component: {fileID: 8393717033188648453}
+  - component: {fileID: 3800320392509594249}
   - component: {fileID: 5004720842889370026}
   m_Layer: 10
   m_Name: Culler
@@ -246,7 +246,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1064569738316811207}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8393717033188648453
+--- !u!114 &3800320392509594249
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -255,10 +255,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 4879299012791258910}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5f8705fc704baa43a7e44759d6a01bc, type: 3}
+  m_Script: {fileID: 11500000, guid: e7d359785901eaf40a34d753e3663943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadedObjects: {fileID: 489511886412174671}
+  states:
+  - {fileID: 6233621834012938455}
+  - {fileID: 6233621834042999972}
+  - {fileID: 4213772354033992762}
+  - {fileID: 6206812090679670569}
+  isCulledActive: 0
 --- !u!61 &5004720842889370026
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -498,9 +503,9 @@ MonoBehaviour:
   chunkfish: {fileID: 2312117044969209689}
   initialPos: {x: 0, y: 0}
   _amplitude: 0.07
-  _frequency: 2
-  _amplitudeRotate: 2
-  _frequencyRotate: 3
+  _frequency: 3
+  _amplitudeRotate: 3
+  _frequencyRotate: 2
   time: 0
 --- !u!1 &7115138252381664244
 GameObject:

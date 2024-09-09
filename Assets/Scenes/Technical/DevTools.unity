@@ -249,8 +249,8 @@ MonoBehaviour:
   isFreeCameraEnabled: 0
   playerPosition: {x: 0, y: 0, z: 0}
   _camera: {fileID: 223054985}
-  cameraSpeedWeight: {x: 1, y: 0.5}
-  cameraSpeed: 0.7
+  cameraSpeedWeight: {x: 1, y: 1}
+  cameraSpeed: 7
   cameraSize: 20
   cameraRb: {fileID: 223054986}
   _movementVars: {fileID: 11400000, guid: 0acf88f771b938e40b01fbab42e5d5e1, type: 2}

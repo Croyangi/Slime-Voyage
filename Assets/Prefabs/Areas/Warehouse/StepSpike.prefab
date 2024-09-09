@@ -125,7 +125,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 891687577173294104}
-  - component: {fileID: 4047929707142215518}
+  - component: {fileID: 3145694883981108107}
   - component: {fileID: 357810471994668905}
   m_Layer: 10
   m_Name: Culler
@@ -149,7 +149,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 891687578245934463}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4047929707142215518
+--- !u!114 &3145694883981108107
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,11 +158,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 891687577173294103}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 683fa4bf3d75c1348a1d07698fb19593, type: 3}
+  m_Script: {fileID: 11500000, guid: e07aed1193590314db93d02ecb25fbc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadedObjects: {fileID: 891687577356256595}
-  _rb: {fileID: 891687578245934461}
+  states:
+  - {fileID: 891687577932789817}
+  - {fileID: 891687577174508057}
+  - {fileID: 891687577407312587}
+  isCulledActive: 0
 --- !u!61 &357810471994668905
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -285,12 +288,12 @@ GameObject:
   m_Component:
   - component: {fileID: 891687577356256596}
   m_Layer: 0
-  m_Name: LoadedObjects
+  m_Name: Scripts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &891687577356256596
 Transform:
   m_ObjectHideFlags: 0

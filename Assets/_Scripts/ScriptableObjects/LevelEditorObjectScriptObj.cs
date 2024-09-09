@@ -15,12 +15,30 @@ public class LevelEditorObjectScriptObj : ScriptableObject
 
     private void OnValidate()
     {
+        // If the parent has a Renderer, use its bounds size
         if (levelEditorObject.GetComponent<Renderer>() != null)
         {
             levelEditorObjectSize = levelEditorObject.GetComponent<Renderer>().bounds.size;
         }
-        //objectOffset.x = levelEditorObjectSize.x - levelEditorObject.transform.localScale.x;
-        //objectOffset.y = levelEditorObjectSize.y - levelEditorObject.transform.localScale.y;
+        else
+        {
+            // Initialize variables to store the minimum and maximum bounds
+            Vector3 minBounds = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
+            Vector3 maxBounds = new Vector3(float.MinValue, float.MinValue, float.MinValue);
+
+            // Get all Renderers in the parent and its children
+            Renderer[] renderers = levelEditorObject.GetComponentsInChildren<Renderer>();
+
+            foreach (Renderer renderer in renderers)
+            {
+                // Expand the min and max bounds to include the renderer's bounds
+                minBounds = Vector3.Min(minBounds, renderer.bounds.min);
+                maxBounds = Vector3.Max(maxBounds, renderer.bounds.max);
+            }
+
+            // Calculate the overall size based on the min and max bounds
+            levelEditorObjectSize = maxBounds - minBounds;
+        }
     }
 
     //[SerializeField] public bool hasEditableAttributes;

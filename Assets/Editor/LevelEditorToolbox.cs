@@ -338,11 +338,33 @@ public class LevelEditorToolbox : EditorWindow
 
             // Get internal offset to align with visual aid
             Vector3 internalOffset = Vector3.zero;
-            if (prefab.TryGetComponent<Renderer>(out var renderer)) 
+            Vector2 size = new Vector2();
+            if (prefab.TryGetComponent<Renderer>(out var rendererSize))
             {
-                internalOffset.x = cellCenter.x + renderer.bounds.extents.x - 0.5f;
-                internalOffset.y = cellCenter.y + renderer.bounds.extents.y - 0.5f;
+                size = rendererSize.bounds.extents;
+            } else
+            {
+                // Initialize variables to store the minimum and maximum bounds
+                Vector3 minBounds = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
+                Vector3 maxBounds = new Vector3(float.MinValue, float.MinValue, float.MinValue);
+
+                // Get all Renderers in the parent and its children
+                Renderer[] renderers = prefab.GetComponentsInChildren<Renderer>();
+
+                foreach (Renderer renderer in renderers)
+                {
+                    // Expand the min and max bounds to include the renderer's bounds
+                    minBounds = Vector3.Min(minBounds, renderer.bounds.min);
+                    maxBounds = Vector3.Max(maxBounds, renderer.bounds.max);
+                }
+
+                // Calculate the overall size based on the min and max bounds
+                size = maxBounds - minBounds;
+                size -= size / 2f;
             }
+
+            internalOffset.x = cellCenter.x + size.x - 0.5f;
+            internalOffset.y = cellCenter.y + size.y - 0.5f;
 
             // Apply offset
             instantiatedObject.transform.position = (Vector3) internalOffset;

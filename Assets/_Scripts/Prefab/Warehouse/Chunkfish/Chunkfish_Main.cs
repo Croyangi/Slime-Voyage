@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.HID;
 
-public class Chunkfish_Main : MonoBehaviour
+public class Chunkfish_Main : Chunkfish_State
 {
     [Header("General References")]
     [SerializeField] private GameObject chunkfish;
@@ -21,7 +21,12 @@ public class Chunkfish_Main : MonoBehaviour
         initialPos = chunkfish.transform.position;
     }
 
-    private void FixedUpdate()
+    public override void FixedUpdateState()
+    {
+        HoverEffect();
+    }
+
+    private void HoverEffect()
     {
         time += Time.deltaTime;
         float y = Mathf.Sin(time * _frequency) * _amplitude;

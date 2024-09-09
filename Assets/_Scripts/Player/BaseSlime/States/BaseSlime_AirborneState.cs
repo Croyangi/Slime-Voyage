@@ -79,7 +79,7 @@ public class BaseSlime_AirborneState : State
         {
             if (_stateMachine.PlayerStatesDictionary.TryGetValue(BaseSlime_StateMachine.PlayerStates.Sticking, out State state))
             {
-                Debug.Log("INSTANT");
+                //Debug.Log("INSTANT");
                 TransitionToState(state);
             }
         }
@@ -89,9 +89,9 @@ public class BaseSlime_AirborneState : State
         {
             if (_stateMachine.PlayerStatesDictionary.TryGetValue(BaseSlime_StateMachine.PlayerStates.Sticking, out State state))
             {
-                Debug.Log("NOTGrounded: " + !_helper.isGrounded +
-                    "\nIsPermaStick: " + _helper.isPermanentlySticking +
-                    "\nOnNextWallJump: " + (_helper.touchingDirection.x == _helper.nextWallJumpDirection));
+                //Debug.Log("NOTGrounded: " + !_helper.isGrounded +
+                    //"\nIsPermaStick: " + _helper.isPermanentlySticking +
+                    //"\nOnNextWallJump: " + (_helper.touchingDirection.x == _helper.nextWallJumpDirection));
                 //Debug.Break();
 
 

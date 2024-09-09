@@ -15,11 +15,11 @@ TagManager:
   - Entities
   - IgnoreEntities
   - Player
-  - IsPlayerCullable
+  - IsCullable
   - IgnorePlayer
   - OnlyGround
   - TestLayer
-  - 
+  - Culler
   - 
   - 
   - 

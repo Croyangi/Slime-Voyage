@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chunkfish_Eyes : MonoBehaviour
+public class Chunkfish_Eyes : Chunkfish_State
 {
     [Header("General References")]
     [SerializeField] private GameObject chunkfish;
@@ -13,7 +13,7 @@ public class Chunkfish_Eyes : MonoBehaviour
 
     [SerializeField] private Chunkfish_StateHandler _stateHandler;
 
-    private void FixedUpdate()
+    public override void FixedUpdateState()
     {
         if (_stateHandler.isDetecting && _stateHandler.detectedObject != null)
         {

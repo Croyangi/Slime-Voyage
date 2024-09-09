@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StepSpike_Animator : MonoBehaviour
+public class StepSpike_Animator : StepSpike_State
 {
     [Header("General References")]
     [SerializeField] private Animator _animator;
@@ -29,6 +29,16 @@ public class StepSpike_Animator : MonoBehaviour
         isSpriteFlippedX = _spriteRenderer.flipX;
     }
 
+    public override void OnCull()
+    {
+        _animator.speed = 0f;
+    }
+
+    public override void OnLoad()
+    {
+        _animator.speed = 1f;
+    }
+
     private void FlipSprite(bool flipDirection)
     {
         _spriteRenderer.flipX = flipDirection;
@@ -51,7 +61,7 @@ public class StepSpike_Animator : MonoBehaviour
         currentPriority = newPriority;
     }
 
-    private void FixedUpdate()
+    public override void FixedUpdateState()
     {
         IsWalkingUpdate();
         SpriteFlipUpdate();

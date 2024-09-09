@@ -39,7 +39,7 @@ public class BaseSlime_StickingState : State
         //_movementVars.processedInputMovement == Vector2.zero && _stateHandler.isGrounded && _rigidBody2D.velocity.y < 0.1 && _stateHandler.isOnEdge == 0
         if (_helper.isGrounded && _helper.stickingDirection.x == 0 && !isTransitioning)
         {
-            Debug.Log("IDLE");
+            //Debug.Log("IDLE");
 
             if (_stateMachine.PlayerStatesDictionary.TryGetValue(BaseSlime_StateMachine.PlayerStates.Idle, out State state))
             {
@@ -52,7 +52,7 @@ public class BaseSlime_StickingState : State
             if (_stateMachine.PlayerStatesDictionary.TryGetValue(BaseSlime_StateMachine.PlayerStates.Airborne, out State state))
             {
                 TransitionToState(state);
-                Debug.Log("NON FORCE");
+                //Debug.Log("NON FORCE");
             }
         }
 
@@ -65,7 +65,7 @@ public class BaseSlime_StickingState : State
                 TransitionToState(state);
 
                 // Movement conditionals
-                Debug.Log("CANCEL DOWN");
+                //Debug.Log("CANCEL DOWN");
                 _helper.isPermanentlySticking = false;
             }
         }
@@ -79,7 +79,7 @@ public class BaseSlime_StickingState : State
                 TransitionToState(state);
 
                 // Movement conditionals
-                Debug.Log("CANCEL HORIZ");
+                //Debug.Log("CANCEL HORIZ");
                 _helper.isPermanentlySticking = false;
             }
         }

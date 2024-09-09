@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StepSpike_StateHandler : MonoBehaviour
+public class StepSpike_StateHandler : StepSpike_State
 {
     [Header("General References")]
     [SerializeField] private GameObject stepSpike_parentObject;
@@ -23,13 +23,9 @@ public class StepSpike_StateHandler : MonoBehaviour
 
     [SerializeField] private ContactFilter2D _ignoreStepSpikeFilter;
 
-
-
     List<Collider2D> colliders = new List<Collider2D>();
 
-
-
-    private void FixedUpdate()
+    public override void FixedUpdateState()
     {
         isGrounded = IsGrounded();
 
