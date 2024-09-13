@@ -4948,12 +4948,12 @@ GameObject:
   m_Component:
   - component: {fileID: 3083047465370778453}
   m_Layer: 0
-  m_Name: CulledObjects
+  m_Name: Scripts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3083047465370778453
 Transform:
   m_ObjectHideFlags: 0
@@ -5016,7 +5016,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5f8705fc704baa43a7e44759d6a01bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadedObjects: {fileID: 4549626429691096823}
+  states:
+  - {fileID: 5884861834296103997}
+  isCulledActive: 0
 --- !u!61 &5831896792251644603
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5108,6 +5110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fly: {fileID: 4347926473201686833}
   initPos: {x: 0, y: 0}
+  ambientDust: {fileID: 3914224988187735724}
   amplitude: {x: 0, y: 0}
   frequency: {x: 2, y: 4}
   initAmplitude: {x: 0.02, y: 0.02}

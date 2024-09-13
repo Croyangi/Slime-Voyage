@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4284583308725217480}
   m_Layer: 0
-  m_Name: LoadedObjects
+  m_Name: Scripts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4873,8 +4873,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4346937146764712023}
-  - component: {fileID: 3050925357532754253}
   - component: {fileID: 1977084524280276140}
+  - component: {fileID: 3050925357532754253}
   m_Layer: 0
   m_Name: Detect
   m_TagString: Untagged
@@ -4897,6 +4897,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4284583308725217480}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1977084524280276140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4346937146764712020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7ee4473cd2d41942a2772cfa67f066a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snoring: {fileID: 4346937146481043487}
+  tag_player: {fileID: 11400000, guid: 052214d19408f7a48bba66682f7001de, type: 2}
 --- !u!61 &3050925357532754253
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4942,19 +4956,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.14, y: 0.4}
   m_EdgeRadius: 0
---- !u!114 &1977084524280276140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4346937146764712020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7ee4473cd2d41942a2772cfa67f066a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerTag: {fileID: 11400000, guid: 052214d19408f7a48bba66682f7001de, type: 2}
 --- !u!1 &5861748191319503422
 GameObject:
   m_ObjectHideFlags: 0
@@ -5000,7 +5001,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5f8705fc704baa43a7e44759d6a01bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadedObjects: {fileID: 77188295036401621}
+  states:
+  - {fileID: 1977084524280276140}
+  isCulledActive: 0
 --- !u!61 &4428841944588980865
 BoxCollider2D:
   m_ObjectHideFlags: 0

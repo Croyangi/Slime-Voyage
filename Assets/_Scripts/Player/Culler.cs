@@ -30,7 +30,7 @@ public class Culler : MonoBehaviour
         {
             culler = obj.GetComponent<ICuller>();
             cullerCache[obj] = culler;
-            culler.LoadObjects();
+            obj.GetComponent<ICuller>().LoadObjects();
         } else {
             obj.GetComponent<ICuller>().LoadObjects();
         }

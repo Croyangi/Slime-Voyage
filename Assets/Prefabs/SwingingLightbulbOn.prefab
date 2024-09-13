@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -20
   m_Sprite: {fileID: 21300000, guid: 1217fbaae62ba4248aba04928543cf1a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -132,7 +132,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 5}
-  m_ConnectedAnchor: {x: 42.57, y: 58.65}
+  m_ConnectedAnchor: {x: 40.42, y: 19.68}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -159,7 +159,7 @@ MonoBehaviour:
   xVelocityWeight: 1
   yVelocityWeight: 0.5
   swingCooldownTimer: 0
-  swingCooldown: 1
+  swingCooldown: 0.5
   rb_lightbulb: {fileID: 235055225400677151}
   col_lightbulb: {fileID: 7810345191275825201}
   lightbulb: {fileID: 7947816657734236496}
@@ -168,8 +168,9 @@ MonoBehaviour:
   hinge_lightbulb: {fileID: 3557963210723334008}
   lightbulbOn: {fileID: 21300000, guid: 16e4b2151b189a44884cf56052bc09db, type: 3}
   lightbulbOff: {fileID: 21300000, guid: 6a6b701c211c3fe42ab81e9e319a959e, type: 3}
-  light2d: {fileID: 4645834715000939540}
-  isInversed: 0
+  lights:
+  - {fileID: 4645834715000939540}
+  length: 0
 --- !u!61 &7810345191275825201
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -286,7 +287,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 8
+  m_PointLightOuterRadius: 11
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -416,7 +417,7 @@ Transform:
   m_GameObject: {fileID: 7947816657734236496}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -5.5, z: 0}
+  m_LocalPosition: {x: 0, y: -5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -463,7 +464,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 16e4b2151b189a44884cf56052bc09db, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -212,7 +212,7 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 15359
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
@@ -380,8 +380,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.027750015, y: 0.0632, z: 0}
-    m_Extent: {x: 1.00275, y: 0.6255, z: 0}
+    m_Center: {x: 0.027799994, y: 0.06345001, z: 0}
+    m_Extent: {x: 1.003, y: 0.62545, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -544,8 +544,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.01030001, y: 0.05794999, z: 0}
-    m_Extent: {x: 0.78429997, y: 0.62294996, z: 0}
+    m_Center: {x: -0.010800004, y: 0.0582, z: 0}
+    m_Extent: {x: 0.784, y: 0.6216, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -857,8 +857,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.016499996, y: 0.058699995, z: 0}
-    m_Extent: {x: 0.7198, y: 0.6229, z: 0}
+    m_Center: {x: 0.016499996, y: 0.058750004, z: 0}
+    m_Extent: {x: 0.7191, y: 0.62265, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0

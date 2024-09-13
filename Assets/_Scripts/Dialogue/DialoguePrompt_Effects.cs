@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialoguePrompt_Effects : MonoBehaviour
+public class DialoguePrompt_Effects : GeneralCullerCommunicator
 {
     [Header("References")]
     [SerializeField] private Vector2 initialDialoguePromptPosition;
@@ -117,7 +117,7 @@ public class DialoguePrompt_Effects : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    public override void FixedUpdateState()
     {
         HoveringEffectUpdate();
     }

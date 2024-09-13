@@ -128,11 +128,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -171,6 +172,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
@@ -183,6 +185,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -195,6 +198,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -207,6 +211,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -219,6 +224,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -231,6 +237,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -877,39 +897,38 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Animation_24: -5751829492854817598
-      Animation_11: 5021506724192914705
-      Animation_3: 4873358367803472704
-      Animation_5: -4573408279075214707
-      Animation_15: 4539855897199859091
-      Animation_22: 8930554481666654525
-      Animation_12: 8205141292254445082
-      Animation_6: -5312699776443621071
-      Animation_8: 4365072214762097464
-      Animation_28: 4760121670689881827
-      Animation_7: -1285638715501733310
-      Animation_23: -7088790019483620798
       Animation_0: 5148676874399617708
-      Animation_10: 8769834437802526653
-      Animation_19: -6690454506160936106
-      Animation_17: 2058576119414841407
-      Animation_20: 4741064742094319209
-      Animation_16: -6919421813385288206
-      Animation_14: 5511879047408621434
       Animation_1: -2116301368006561546
-      Animation_21: -4600911918956786192
-      Animation_2: 8201368165407130277
-      Animation_26: -4449433429494503869
-      Animation_18: 643645489602608906
-      Animation_25: 6639618438358369150
-      Animation_29: -3054588194003238206
-      Animation_4: -6973823048216505844
+      Animation_10: 8769834437802526653
+      Animation_11: 5021506724192914705
+      Animation_12: 8205141292254445082
       Animation_13: -4147135289202293165
+      Animation_14: 5511879047408621434
+      Animation_15: 4539855897199859091
+      Animation_16: -6919421813385288206
+      Animation_17: 2058576119414841407
+      Animation_18: 643645489602608906
+      Animation_19: -6690454506160936106
+      Animation_2: 8201368165407130277
+      Animation_20: 4741064742094319209
+      Animation_21: -4600911918956786192
+      Animation_22: 8930554481666654525
+      Animation_23: -7088790019483620798
+      Animation_24: -5751829492854817598
+      Animation_25: 6639618438358369150
+      Animation_26: -4449433429494503869
       Animation_27: -1908146683188866790
+      Animation_28: 4760121670689881827
+      Animation_29: -3054588194003238206
+      Animation_3: 4873358367803472704
+      Animation_4: -6973823048216505844
+      Animation_5: -4573408279075214707
+      Animation_6: -5312699776443621071
+      Animation_7: -1285638715501733310
+      Animation_8: 4365072214762097464
       Animation_9: 5576780757670322865
-  spritePackingTag: 
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

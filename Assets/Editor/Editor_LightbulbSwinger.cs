@@ -21,6 +21,12 @@ public class Editor_LightbulbSwinger : Editor
         length = EditorGUILayout.FloatField("Length:", length);
 
         // Create a button in the Inspector
+        if (GUILayout.Button("Inverse"))
+        {
+            swinger.ToggleLights();
+        }
+
+        // Create a button in the Inspector
         if (GUILayout.Button("Set Size"))
         {
             swinger.ChangeLightbulbLength(length);

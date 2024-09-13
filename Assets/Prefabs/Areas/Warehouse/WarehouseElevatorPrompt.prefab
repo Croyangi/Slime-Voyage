@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 7231729060098808346}
   - component: {fileID: 6158986547818918976}
   m_Layer: 10
-  m_Name: GeneralLoader
+  m_Name: Culler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,7 +129,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5f8705fc704baa43a7e44759d6a01bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadedObjects: {fileID: 6777853403065469907}
+  states:
+  - {fileID: 2117292860217059764}
+  isCulledActive: 0
 --- !u!61 &6158986547818918976
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -611,7 +613,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2838311008212672969}
-  - {fileID: 2013435007452225806}
+  - {fileID: 8717445584444518749}
   - {fileID: 8810983482894260864}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -665,7 +667,7 @@ MonoBehaviour:
   col_prompt: {fileID: 5435463709706601536}
   canvas_elevator: {fileID: 0}
   elevatorPanel: {fileID: 0}
-  _WarehouseElevator: {fileID: 0}
+  _warehouseElevator: {fileID: 0}
   tag_player: {fileID: 11400000, guid: 052214d19408f7a48bba66682f7001de, type: 2}
 --- !u!1 &4245450798885943515
 GameObject:
@@ -679,7 +681,7 @@ GameObject:
   - component: {fileID: 2117292860217059764}
   - component: {fileID: 6797954347613764600}
   m_Layer: 0
-  m_Name: DialoguePrompt_Effects
+  m_Name: Effects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -698,7 +700,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2013435007452225806}
+  m_Father: {fileID: 9065067452936411783}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2117292860217059764
 MonoBehaviour:
@@ -719,6 +721,7 @@ MonoBehaviour:
   innerCircleInitialColor: {r: 0, g: 0, b: 0, a: 0}
   col_prompt: {fileID: 5435463709706601536}
   col_promptEffects: {fileID: 6797954347613764600}
+  isMovingEffects: 0
   detectedScale: {x: 1, y: 1}
   undetectedScale: {x: 0.5, y: 0.5}
   detectedScaleTime: 0.1
@@ -798,38 +801,6 @@ Transform:
   - {fileID: 5693017661320193452}
   - {fileID: 7292281148473642351}
   - {fileID: 8466919257969630173}
-  m_Father: {fileID: 9065067452936411783}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &6777853403065469907
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2013435007452225806}
-  m_Layer: 0
-  m_Name: LoadedObjects
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &2013435007452225806
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6777853403065469907}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8717445584444518749}
   m_Father: {fileID: 9065067452936411783}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6835424511808952097

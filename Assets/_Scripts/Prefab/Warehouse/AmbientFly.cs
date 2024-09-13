@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AmbientFly : MonoBehaviour
+public class AmbientFly : GeneralCullerCommunicator
 {
     [SerializeField] private GameObject fly;
     [SerializeField] private Vector2 initPos;
+    [SerializeField] private ParticleSystem ambientDust;
 
     [Header("Rise/Fall Visual Settings")]
     [SerializeField] private Vector2 amplitude;
@@ -25,18 +26,21 @@ public class AmbientFly : MonoBehaviour
         StartCoroutine(RandomizeOscillatingEffect());
     }
 
-    private void OnEnable()
+    public override void OnLoad()
     {
+        ambientDust.Play();
         fly.gameObject.transform.position = initPos;
         StartCoroutine(RandomizeOscillatingEffect());
     }
 
-    private void OnDisable()
+    public override void OnCull()
     {
+        ambientDust.Stop();
         fly.gameObject.transform.position = initPos;
+        StopAllCoroutines();
     }
 
-    private void FixedUpdate()
+    public override void FixedUpdateState()
     {
         // Oscillates in a circular motion
         elapsedTime += Time.deltaTime;

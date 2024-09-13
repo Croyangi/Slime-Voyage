@@ -25,40 +25,63 @@ public class LightbulbSwinger : GeneralCullerCommunicator
 
     [SerializeField] private Sprite lightbulbOn;
     [SerializeField] private Sprite lightbulbOff;
-    [SerializeField] private Light2D light2d;
-    [SerializeField] private bool isInversed;
+    [SerializeField] private Light2D[] lights;
+    [SerializeField] private float length;
 
-    private void Start()
+    private void Awake()
     {
-        if (isInversed)
+        // Set length
+        length = sr_wire.size.y;
+        ChangeLightbulbLength(length);
+
+        // Set swing strength offset based on wire length
+        float offset = 5f - length;
+        if (offset > 0)
         {
-            light2d.enabled = false;
-            sr_lightbulb.sprite = lightbulbOff;
+            swingStrengthMultiplier -= offset * 0.3f;
+            swingStrengthMultiplier = Mathf.Clamp(swingStrengthMultiplier, 0.05f, 999);
         }
     }
 
     public override void OnLoad()
     {
-        float appliedForce = Random.Range(3f, 5f);
+        rb_lightbulb.simulated = true;
+
         if (GetRandomChance(0.5f))
         {
-            appliedForce *= -1;
+            float appliedForce = Random.Range(1f, 3f);
+            if (GetRandomChance(0.5f))
+            {
+                appliedForce *= -1;
+            }
+            ApplyVelocity(appliedForce);
         }
-
-        rb_lightbulb.AddTorque(appliedForce, ForceMode2D.Impulse);
-        Debug.Log("Applying: " + appliedForce);
-
-        swingCooldownTimer = swingCooldown;
-        StartCoroutine(CooldownTimer());
     }
 
-    public void ChangeLightbulbLength(float length)
+    public override void OnCull()
     {
+        rb_lightbulb.angularVelocity = 0f;
+        rb_lightbulb.velocity = Vector2.zero;
+        sr_wire.transform.rotation = Quaternion.identity;
+
+        rb_lightbulb.simulated = false;
+    }
+
+    public override void FixedUpdateState()
+    {
+        if (Mathf.Abs(transform.parent.rotation.z) > 40)
+        {
+            rb_lightbulb.angularVelocity = 0f;
+        }
+    }
+
+    public void ChangeLightbulbLength(float newLength)
+    {
+        length = newLength;
         sr_wire.size = new Vector2(sr_wire.size.x, length);
         col_lightbulb.size = new Vector2(col_lightbulb.size.x, length);
         hinge_lightbulb.anchor = new Vector2(hinge_lightbulb.anchor.x, length / 2f);
-        Debug.Log(-(length / 2f) - 0.5f);
-        lightbulb.transform.localPosition = new Vector2(lightbulb.transform.localPosition.x, -(length / 2f) - 0.5f);
+        lightbulb.transform.localPosition = new Vector2(lightbulb.transform.localPosition.x, -(length / 2f));
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -67,6 +90,14 @@ public class LightbulbSwinger : GeneralCullerCommunicator
         if (swingCooldownTimer <= 0f)
         {
             CheckPlayerVelocity(collision);
+
+            if (collision.gameObject.TryGetComponent<Tags>(out var _tags))
+            {
+                if (_tags.CheckTags(tag_player.name) == true)
+                {
+                    if (GetRandomChance(0.2f)) { StartCoroutine(LightbulbFlicker()); }
+                }
+            }
         }
 
         //if (collision.gameObject.TryGetComponent<Tags>(out var _tags))
@@ -95,16 +126,21 @@ public class LightbulbSwinger : GeneralCullerCommunicator
         }
     }
 
-    private void ToggleLights()
+    public void ToggleLights()
     {
-        light2d.enabled = !light2d.enabled;
-        if (light2d.enabled)
+        foreach (Light2D light in lights)
+        {
+            light.enabled = !light.enabled;
+        }
+
+        if (lights[0].enabled)
         {
             sr_lightbulb.sprite = lightbulbOn;
-        } else
+        }
+        else
         {
             sr_lightbulb.sprite = lightbulbOff;
-        } 
+        }
     }
 
     private bool GetRandomChance(float chance)
@@ -117,18 +153,16 @@ public class LightbulbSwinger : GeneralCullerCommunicator
         // Checks velocity and applies it to the lightbulb
         if (collision.TryGetComponent<Rigidbody2D>(out var rb))
         {
-            if (GetRandomChance(0.2f)) { StartCoroutine(LightbulbFlicker()); }
-
             float appliedForce = (rb.velocity.x * xVelocityWeight) + (rb.velocity.y * yVelocityWeight);
-            appliedForce *= swingStrengthMultiplier;
-            appliedForce = Mathf.Clamp(appliedForce, -swingStrengthMax, swingStrengthMax);
-
             ApplyVelocity(appliedForce);
         }
     }
 
     private void ApplyVelocity(float force)
     {
+        force *= swingStrengthMultiplier;
+        force = Mathf.Clamp(force, -swingStrengthMax, swingStrengthMax);
+
         rb_lightbulb.AddTorque(force, ForceMode2D.Impulse);
 
         swingCooldownTimer = swingCooldown;

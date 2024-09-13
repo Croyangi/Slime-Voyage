@@ -161,11 +161,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -204,6 +205,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
@@ -216,6 +218,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -228,6 +231,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -240,6 +244,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -252,6 +257,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -264,6 +270,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -1267,56 +1287,55 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Grassy Rocks_29: -6755643376888039831
-      Grassy Rocks_13: 2876289842292397269
-      Grassy Rocks_6: 5060518175605648744
-      Grassy Rocks_9: 6785028972473229031
-      Grassy Rocks_21: 887928161550792138
-      Grassy Rocks_39: -5086438056879495722
-      Grassy Rocks_4: 953783120112740992
-      Grassy Rocks_23: 3941948186986737496
-      Grassy Rocks_32: -601677842210107440
-      Grassy Rocks_5: -1360409950514755245
-      Grassy Rocks_22: 745841626403570789
-      Grassy Rocks_35: -4298306793728516231
-      Grassy Rocks_15: 1919852563886843932
-      Grassy Rocks_38: -8489321040709604124
-      Grassy Rocks_45: -7520349544260831245
-      Grassy Rocks_46: 7783693668955549748
-      Grassy Rocks_41: -8443642464835747935
-      Grassy Rocks_1: -1338530704310333808
-      Grassy Rocks_2: 5440291298764554988
-      Grassy Rocks_24: -1288263786353817358
-      Grassy Rocks_37: -1599222074695836703
-      Grassy Rocks_31: -2112737299535947800
-      Grassy Rocks_30: -3619114268394944511
-      Grassy Rocks_11: 1611802837339211158
-      Grassy Rocks_27: -6747421613608841231
-      Grassy Rocks_10: 7747969498277567530
-      Grassy Rocks_26: -3638206246315484973
-      Grassy Rocks_19: -2252955222662681551
-      Grassy Rocks_14: 8915606343298973229
-      Grassy Rocks_28: 378510455043679678
-      Grassy Rocks_44: 4096599733341001204
       Grassy Rocks_0: 8935116391671119923
-      Grassy Rocks_25: -5292647261990834348
-      Grassy Rocks_8: -7333667465980939252
-      Grassy Rocks_18: 2483181217229616039
-      Grassy Rocks_3: -2455775453941419483
-      Grassy Rocks_33: 918139711895885004
-      Grassy Rocks_20: -1905652470267465447
+      Grassy Rocks_1: -1338530704310333808
+      Grassy Rocks_10: 7747969498277567530
+      Grassy Rocks_11: 1611802837339211158
+      Grassy Rocks_12: -9120626113919346638
+      Grassy Rocks_13: 2876289842292397269
+      Grassy Rocks_14: 8915606343298973229
+      Grassy Rocks_15: 1919852563886843932
       Grassy Rocks_16: 6435101608598299951
       Grassy Rocks_17: -3268497425394815164
-      Grassy Rocks_36: 3412340275108458791
+      Grassy Rocks_18: 2483181217229616039
+      Grassy Rocks_19: -2252955222662681551
+      Grassy Rocks_2: 5440291298764554988
+      Grassy Rocks_20: -1905652470267465447
+      Grassy Rocks_21: 887928161550792138
+      Grassy Rocks_22: 745841626403570789
+      Grassy Rocks_23: 3941948186986737496
+      Grassy Rocks_24: -1288263786353817358
+      Grassy Rocks_25: -5292647261990834348
+      Grassy Rocks_26: -3638206246315484973
+      Grassy Rocks_27: -6747421613608841231
+      Grassy Rocks_28: 378510455043679678
+      Grassy Rocks_29: -6755643376888039831
+      Grassy Rocks_3: -2455775453941419483
+      Grassy Rocks_30: -3619114268394944511
+      Grassy Rocks_31: -2112737299535947800
+      Grassy Rocks_32: -601677842210107440
+      Grassy Rocks_33: 918139711895885004
       Grassy Rocks_34: 3511303046735141340
-      Grassy Rocks_42: -5458343138778018379
-      Grassy Rocks_7: -6399861423333123127
-      Grassy Rocks_12: -9120626113919346638
+      Grassy Rocks_35: -4298306793728516231
+      Grassy Rocks_36: 3412340275108458791
+      Grassy Rocks_37: -1599222074695836703
+      Grassy Rocks_38: -8489321040709604124
+      Grassy Rocks_39: -5086438056879495722
+      Grassy Rocks_4: 953783120112740992
       Grassy Rocks_40: -4169188284693801165
+      Grassy Rocks_41: -8443642464835747935
+      Grassy Rocks_42: -5458343138778018379
       Grassy Rocks_43: 8296768581933770509
-  spritePackingTag: 
+      Grassy Rocks_44: 4096599733341001204
+      Grassy Rocks_45: -7520349544260831245
+      Grassy Rocks_46: 7783693668955549748
+      Grassy Rocks_5: -1360409950514755245
+      Grassy Rocks_6: 5060518175605648744
+      Grassy Rocks_7: -6399861423333123127
+      Grassy Rocks_8: -7333667465980939252
+      Grassy Rocks_9: 6785028972473229031
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
