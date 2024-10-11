@@ -15,6 +15,8 @@ public class AreaSet
 
 public class GameData
 {
+    public bool hasPlayedGameBefore;
+
     public int deathCount;
 
     public List<AreaSet> areaSets = new List<AreaSet>();

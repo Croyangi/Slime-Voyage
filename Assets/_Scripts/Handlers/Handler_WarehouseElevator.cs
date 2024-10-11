@@ -99,7 +99,6 @@ public class Handler_WarehouseElevator : MonoBehaviour
     public void OnElevatorUpButton()
     {
         Manager_PlayerState.instance.SetResetDeath(false);
-        Manager_SpeedrunTimer.instance.EndSpeedrunTimer();
 
         // Cleanup
         canvas_elevator.SetActive(false);

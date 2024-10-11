@@ -13,8 +13,10 @@ public class DevTool_FreeTools : MonoBehaviour
     [SerializeField] private bool isFreeRoamEnabled;
     [SerializeField] private bool isFreeCameraEnabled;
     [SerializeField] private Vector3 playerPosition;
+    [SerializeField] private bool isStaticCamera;
 
     [Header("Camera References")]
+    [SerializeField] private Camera mainCamera;
     [SerializeField] private Camera _camera;
     [SerializeField] private Vector2 cameraSpeedWeight;
     [SerializeField] private float cameraSpeed;
@@ -23,7 +25,8 @@ public class DevTool_FreeTools : MonoBehaviour
     [SerializeField] private ScriptObj_DevToolsMovementVariables _movementVars;
 
     [Header("Tags")]
-    [SerializeField] private TagsScriptObj _playerTag;
+    [SerializeField] private TagsScriptObj tag_player;
+    [SerializeField] private TagsScriptObj tag_mainCamera;
 
     private void Awake()
     {
@@ -68,6 +71,11 @@ public class DevTool_FreeTools : MonoBehaviour
         inputMovement.y = 0;
     }
 
+    public void OnToggleStaticCamera()
+    {
+        isStaticCamera = !isStaticCamera;
+    }
+
     public void OnAddCameraSize()
     {
         cameraSize += 1f;
@@ -99,7 +107,6 @@ public class DevTool_FreeTools : MonoBehaviour
         _camera.orthographicSize = cameraSize;
     }
 
-
     private void FindPlayer()
     {
         Tags _tags;
@@ -111,10 +118,29 @@ public class DevTool_FreeTools : MonoBehaviour
             if (thisObject.GetComponent<Tags>() != null)
             {
                 _tags = thisObject.GetComponent<Tags>();
-                if (_tags.CheckTags(_playerTag.name) == true)
+                if (_tags.CheckTags(tag_player.name) == true)
                 {
                     //Debug.Log("Successfully found GameObject with tag: " + tag);
                     player = thisObject;
+                }
+            }
+    }
+
+    private void FindMainCamera()
+    {
+        Tags _tags;
+
+        GameObject[] allObjects = FindObjectsOfType<GameObject>();
+
+        foreach (GameObject thisObject in allObjects)
+
+            if (thisObject.GetComponent<Tags>() != null)
+            {
+                _tags = thisObject.GetComponent<Tags>();
+                if (_tags.CheckTags(tag_mainCamera.name) == true)
+                {
+                    //Debug.Log("Successfully found GameObject with tag: " + tag);
+                    mainCamera = thisObject.GetComponent<Camera>();
                 }
             }
     }
@@ -152,38 +178,36 @@ public class DevTool_FreeTools : MonoBehaviour
         StartCoroutine(FreeToolsUpdate());
     }
 
-    private void FreeRoamUpdate()
-    {
-        player.transform.position = new Vector3(_camera.transform.position.x, _camera.transform.position.y, player.transform.position.z);
-        player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-
-        //_camera.transform.position = new Vector3(_camera.transform.position.x + (inputMovement.x * cameraSpeed), _camera.transform.position.y + (inputMovement.y * cameraSpeed), _camera.transform.position.z);
-
-        // Math.Sign is because Unity's input can give float values if diagonal movement
-        float xTargetSpeed = inputMovement.x * _movementVars.devTools.movementSpeed * cameraSpeedWeight.x;
-        float xSpeedDif = xTargetSpeed - cameraRb.velocity.x;
-        float xAccelRate = (Mathf.Abs(xTargetSpeed) > 0.01f) ? _movementVars.devTools.acceleration : _movementVars.devTools.deceleration;
-        float xMovement = Mathf.Pow(Mathf.Abs(xSpeedDif) * xAccelRate, _movementVars.devTools.velocityPower) * Mathf.Sign(xSpeedDif);
-
-        float yTargetSpeed = inputMovement.y * _movementVars.devTools.movementSpeed * cameraSpeedWeight.y;
-        float ySpeedDif = yTargetSpeed - cameraRb.velocity.y;
-        float yAccelRate = (Mathf.Abs(yTargetSpeed) > 0.01f) ? _movementVars.devTools.acceleration : _movementVars.devTools.deceleration;
-        float yMovement = Mathf.Pow(Mathf.Abs(ySpeedDif) * yAccelRate, _movementVars.devTools.velocityPower) * Mathf.Sign(ySpeedDif);
-
-        cameraRb.AddForce(new Vector2(xMovement, yMovement));
-    }
-
     private IEnumerator FreeToolsUpdate()
     {
-        if (isFreeRoamEnabled && player != null)
+        if (isFreeCameraEnabled && !isStaticCamera)
         {
-            FreeRoamUpdate();
+            player.transform.position = playerPosition;
+            player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        } else if (isFreeRoamEnabled && !isStaticCamera)
+        {
+            player.transform.position = new Vector3(_camera.transform.position.x, _camera.transform.position.y, player.transform.position.z);
+            player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
 
-        if (isFreeCameraEnabled)
+        //_camera.transform.position = new Vector3(_camera.transform.position.x + (inputMovement.x * cameraSpeed), _camera.transform.position.y + (inputMovement.y * cameraSpeed), _camera.transform.position.z);
+        // Math.Sign is because Unity's input can give float values if diagonal movement
+        float xMovement = 0f;
+        float yMovement = 0f;
+        if (!isStaticCamera)
         {
-            FreeCameraUpdate();
+            float xTargetSpeed = inputMovement.x * _movementVars.devTools.movementSpeed;
+            float xSpeedDif = xTargetSpeed - cameraRb.velocity.x;
+            float xAccelRate = (Mathf.Abs(xTargetSpeed) > 0.01f) ? _movementVars.devTools.acceleration : _movementVars.devTools.deceleration;
+            xMovement = Mathf.Pow(Mathf.Abs(xSpeedDif) * xAccelRate, _movementVars.devTools.velocityPower) * Mathf.Sign(xSpeedDif);
+
+            float yTargetSpeed = inputMovement.y * _movementVars.devTools.movementSpeed;
+            float ySpeedDif = yTargetSpeed - cameraRb.velocity.y;
+            float yAccelRate = (Mathf.Abs(yTargetSpeed) > 0.01f) ? _movementVars.devTools.acceleration : _movementVars.devTools.deceleration;
+            yMovement = Mathf.Pow(Mathf.Abs(ySpeedDif) * yAccelRate, _movementVars.devTools.velocityPower) * Mathf.Sign(ySpeedDif);
         }
+
+        cameraRb.AddForce(new Vector2(xMovement, yMovement));
 
         yield return new WaitForFixedUpdate();
         if (isFreeCameraEnabled || isFreeRoamEnabled)
@@ -231,26 +255,5 @@ public class DevTool_FreeTools : MonoBehaviour
         playerPosition = player.transform.position;
 
         StartCoroutine(FreeToolsUpdate());
-
-    }
-
-    private void FreeCameraUpdate()
-    {
-        player.transform.position = playerPosition;
-        player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-
-        //_camera.transform.position = new Vector3(_camera.transform.position.x + (inputMovement.x * cameraSpeed), _camera.transform.position.y + (inputMovement.y * cameraSpeed), _camera.transform.position.z);
-        // Math.Sign is because Unity's input can give float values if diagonal movement
-        float xTargetSpeed = inputMovement.x * _movementVars.devTools.movementSpeed;
-        float xSpeedDif = xTargetSpeed - cameraRb.velocity.x;
-        float xAccelRate = (Mathf.Abs(xTargetSpeed) > 0.01f) ? _movementVars.devTools.acceleration : _movementVars.devTools.deceleration;
-        float xMovement = Mathf.Pow(Mathf.Abs(xSpeedDif) * xAccelRate, _movementVars.devTools.velocityPower) * Mathf.Sign(xSpeedDif);
-
-        float yTargetSpeed = inputMovement.y * _movementVars.devTools.movementSpeed;
-        float ySpeedDif = yTargetSpeed - cameraRb.velocity.y;
-        float yAccelRate = (Mathf.Abs(yTargetSpeed) > 0.01f) ? _movementVars.devTools.acceleration : _movementVars.devTools.deceleration;
-        float yMovement = Mathf.Pow(Mathf.Abs(ySpeedDif) * yAccelRate, _movementVars.devTools.velocityPower) * Mathf.Sign(ySpeedDif);
-
-        cameraRb.AddForce(new Vector2(xMovement, yMovement));
     }
 }

@@ -260,7 +260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   states:
   - {fileID: 6233621834012938455}
-  - {fileID: 6233621834042999972}
+  - {fileID: 3444352129339450836}
   - {fileID: 4213772354033992762}
   - {fileID: 6206812090679670569}
   isCulledActive: 0
@@ -465,7 +465,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6233621834042999994}
-  - component: {fileID: 6233621834042999972}
+  - component: {fileID: 3444352129339450836}
   m_Layer: 0
   m_Name: Chunkfish_Main
   m_TagString: Untagged
@@ -488,7 +488,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5403911998612314211}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6233621834042999972
+--- !u!114 &3444352129339450836
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -497,7 +497,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6233621834042999993}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c01ed08e3fd10f44bfc5fa044696f99, type: 3}
+  m_Script: {fileID: 11500000, guid: 3777a7d309484f3468d10ef5288263ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   chunkfish: {fileID: 2312117044969209689}

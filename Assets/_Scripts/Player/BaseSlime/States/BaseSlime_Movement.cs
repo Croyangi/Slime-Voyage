@@ -91,6 +91,9 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
         {
             _helper._movementVars.jumpBufferTimer = _helper._movementVars.jumpBuffer;
             _helper.isJumpBuffered = true;
+        } else
+        {
+            Debug.Log("JUMP FAILED, STATE: " + _stateMachine.currentState);
         }
 
         //if (_movementVars.coyoteJumpTimer == 0 && _helper.stickingDirection != Vector2.zero)
@@ -103,6 +106,8 @@ public class BaseSlime_Movement : MonoBehaviour, IMovementProcessor
     public void OnJump() 
     {
         _movementVars.timeSinceJump = 0f;
+        _movementVars.coyoteJumpTimer = 0f;
+        _movementVars.jumpBufferTimer = 0f;
         _helper.canJumpCancel = true;
         _helper.canJumpBuffer = false;
 

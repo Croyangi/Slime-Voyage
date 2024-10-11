@@ -24,7 +24,7 @@ public class Culler : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject obj = collision.gameObject;
-        Debug.Log("LOADED:" + obj.transform.parent.name);
+        //Debug.Log("LOADED:" + obj.transform.parent.name);
 
         if (!cullerCache.TryGetValue(obj, out ICuller culler))
         {
@@ -32,14 +32,14 @@ public class Culler : MonoBehaviour
             cullerCache[obj] = culler;
             obj.GetComponent<ICuller>().LoadObjects();
         } else {
-            obj.GetComponent<ICuller>().LoadObjects();
+            culler.LoadObjects();
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         GameObject obj = collision.gameObject;
-        Debug.Log("DELOADED:" + obj.transform.parent.name);
+        //Debug.Log("DELOADED:" + obj.transform.parent.name);
 
         if (!cullerCache.TryGetValue(obj, out ICuller culler))
         {

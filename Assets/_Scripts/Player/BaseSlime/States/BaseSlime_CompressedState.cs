@@ -53,7 +53,6 @@ public class BaseSlime_CompressedState : State
     public override void ExitState()
     {
         // Movement conditionals
-        _helper.canJump = false;
         _helper._movementVars.movementSpeed = _helper._movementVars.walkingSpeed;
     }
 

@@ -48,7 +48,6 @@ public class BaseSlime_LookingUp : State
     public override void ExitState()
     {
         // Movement conditionals
-        _helper.canJump = false;
         _helper._movementVars.movementSpeed = _helper._movementVars.walkingSpeed;
     }
 

@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -141,9 +140,9 @@ public class BaseSlime_IdleState : State
         _helper.canJumpBuffer = true;
 
         // Vertical Correcting
-        if (_helper.currentHighestImpactVelocityY < -0.1f && isVerticalCorrecting == true)
+        if (_helper.currentHighestImpactVelocityY < -3f && isVerticalCorrecting == true)
         {
-            CheckPenetrationDepth();
+            //CheckPenetrationDepth();
         }
 
         // Plays landing animation based on Y velocity
@@ -168,8 +167,6 @@ public class BaseSlime_IdleState : State
 
         // Movement Conditionals
         _helper.canEmote = false;
-        _helper.canJump = false;
-        _helper.canJumpBuffer = false;
     }
 
     public override void TransitionToState(State state)
@@ -184,21 +181,30 @@ public class BaseSlime_IdleState : State
     private void CheckPenetrationDepth()
     {
         float distance = _helper.col_slime.bounds.size.y / 2f;
+        if (Mathf.Sign(_helper.col_slime.offset.y) == -1)
+        {
+            distance += -(_helper.col_slime.offset.y);
+        }
+        Debug.Log(distance);
 
         Vector3 topMidPos = new Vector3(transform.position.x + _helper.col_slime.offset.x, transform.position.y + _helper.col_slime.offset.y, 0f);
         RaycastHit2D[] midHits = Physics2D.RaycastAll(topMidPos, Vector2.down, distance);
-        VerticalCorrectingRaycast(midHits);
 
         Vector3 topLeftPos = new Vector3(transform.position.x + _helper.col_slime.offset.x - _helper.col_slime.bounds.size.x / 2f, transform.position.y + _helper.col_slime.offset.y, 0f);
         RaycastHit2D[] leftHits = Physics2D.RaycastAll(topLeftPos, Vector2.down, distance);
-        VerticalCorrectingRaycast(leftHits);
 
         Vector3 topRightPos = new Vector3(transform.position.x + _helper.col_slime.offset.x + _helper.col_slime.bounds.size.x / 2f, transform.position.y + _helper.col_slime.offset.y, 0f);
         RaycastHit2D[] rightHits = Physics2D.RaycastAll(topRightPos, Vector2.down, distance);
-        VerticalCorrectingRaycast(rightHits);
+
+        List<RaycastHit2D> allHits = new List<RaycastHit2D>();
+        allHits.AddRange(midHits);
+        allHits.AddRange(leftHits);
+        allHits.AddRange(rightHits);
+
+        VerticalCorrectingRaycast(allHits);
     }
 
-    private void VerticalCorrectingRaycast(RaycastHit2D[] hits)
+    private void VerticalCorrectingRaycast(List<RaycastHit2D> hits)
     {
         foreach (RaycastHit2D hit in hits)
         {
@@ -238,6 +244,11 @@ public class BaseSlime_IdleState : State
         //Gizmos.DrawWireSphere(col_hitbox.transform.position + botPos, 0.2f);
 
         float distance = _helper.col_slime.bounds.size.y / 2f;
+        if (Mathf.Sign(_helper.col_slime.offset.y) == -1)
+        {
+            distance += -(_helper.col_slime.offset.y);
+        }
+        //Debug.Log(distance);
 
         // Perform the raycast
         RaycastHit2D[] hits0 = Physics2D.RaycastAll(topMidPos, Vector2.down, distance);

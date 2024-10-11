@@ -91,7 +91,7 @@ public class BaseSlime_MovingState : State
     public override void ExitState()
     {
         // Movement conditionals
-        _helper.canJump = false;
+        //_helper.canJump = false;
     }
 
     public override void TransitionToState(State state)

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public class WarehouseLampMorseCode : MonoBehaviour
+public class WarehouseLampMorseCode : GeneralCullerCommunicator
 {
     [SerializeField] private GameObject flickeringLight;
     [SerializeField] private string morseCode;
@@ -14,13 +14,13 @@ public class WarehouseLampMorseCode : MonoBehaviour
         StartCoroutine(MorseCodeFlicker());
     }
 
-    private void OnEnable()
+    public override void OnLoad()
     {
         flickeringLight.SetActive(false);
         StartCoroutine(MorseCodeFlicker());
     }
 
-    private void OnDisable()
+    public override void OnCull()
     {
         StopAllCoroutines();
     }

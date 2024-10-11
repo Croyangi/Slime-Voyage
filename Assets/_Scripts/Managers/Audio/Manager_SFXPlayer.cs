@@ -43,11 +43,16 @@ public class Manager_SFXPlayer : MonoBehaviour
         audioSource.ignoreListenerPause = isUnaffectedByTime;
 
         // Pitch Shift
+        float pitch;
         if (isPitchShifted)
         {
-            float pitch = audioSource.pitch + (RandomSign() * Random.Range(0, pitchShift));
-            audioSource.pitch = pitch;
+            pitch = (RandomSign() * Random.Range(0, pitchShift));
         }
+        else
+        {
+            pitch = pitchShift;
+        }
+        audioSource.pitch += pitch;
 
         // Mixing
         if (mixerGroup != null)

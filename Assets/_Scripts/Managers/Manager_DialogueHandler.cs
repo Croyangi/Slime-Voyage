@@ -436,6 +436,12 @@ public class Manager_DialogueHandler : MonoBehaviour
         }
     }
 
+    [ContextMenu("Penis")]
+    public void SetText()
+    {
+        current_dialogueBoxText.text = _dialogues[currentDialogueIndex].dialogueText;
+    }
+
     private IEnumerator TypeCharacters(Dialogue dialogue)
     {
         isDialogueTyping = true;

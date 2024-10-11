@@ -23,7 +23,6 @@ public class Handler_WarehouseDioramaMenu : MonoBehaviour, IDataPersistence
     [SerializeField] private ScriptObj_SceneName scene_deloadedScene;
     [SerializeField] private ScriptObj_SceneName scene_loadedScene;
     [SerializeField] private ScriptObj_SceneName scene_mainMenu;
-    [SerializeField] private ScriptObj_SceneName scene_warehouse;
 
     public bool isSpeedrunModeOn;
     public bool isUsed;
@@ -44,11 +43,6 @@ public class Handler_WarehouseDioramaMenu : MonoBehaviour, IDataPersistence
             ticketButton.sprite = playTicketHolePunched;
             Manager_SFXPlayer.instance.PlaySFXClip(sfx_onPressMode, transform, 1f, false, Manager_AudioMixer.instance.mixer_sfx);
 
-            if (isSpeedrunModeOn)
-            {
-                scene_loadedScene = scene_warehouse;
-            }
-
             _checkpointQueue.checkpointId = "WarehouseIntro";
 
             TransitionToScene();
@@ -60,7 +54,6 @@ public class Handler_WarehouseDioramaMenu : MonoBehaviour, IDataPersistence
     {
         if (!_bootLoader.isTransitioning)
         {
-            scene_loadedScene = scene_warehouse;
             Manager_SFXPlayer.instance.PlaySFXClip(sfx_onPressMode, transform, 1f, false, Manager_AudioMixer.instance.mixer_sfx);
             _checkpointQueue.checkpointId = "WarehouseIntro";
             TransitionToScene();
@@ -144,6 +137,7 @@ public class Handler_WarehouseDioramaMenu : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
+        data.isSpeedrunModeOn = false;
     }
 
     public void SaveData(ref GameData data)

@@ -173,6 +173,8 @@ public class BaseSlime_StickingState : State
         _helper.isPermanentlySticking = true;
         _helper.canWallJump = true;
         _helper.canStick = true;
+        _helper.canJump = false;
+        _helper.canJumpBuffer = false;
 
         // Edging and sticky ironically doesn't go together
         _helper.col_onEdgeLeft.gameObject.SetActive(false);

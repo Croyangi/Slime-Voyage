@@ -12,8 +12,6 @@ public class BaseSlime_AirborneState : State
     [SerializeField] private BaseSlime_Movement _movement;
     [SerializeField] private bool isTransitioning;
 
-    [SerializeField] private bool isBufferTransition;
-
     [Header("Technical References")]
     [SerializeField] private PlayerInput playerInput = null;
 
@@ -65,7 +63,6 @@ public class BaseSlime_AirborneState : State
         {
             if (_stateMachine.PlayerStatesDictionary.TryGetValue(BaseSlime_StateMachine.PlayerStates.Idle, out State state))
             {
-                isBufferTransition = true;
                 TransitionToState(state);
             }
         }
@@ -163,7 +160,7 @@ public class BaseSlime_AirborneState : State
         ModifyStateKey(this);
 
         // Movement conditionals
-        isBufferTransition = false;
+        _helper.canJump = false;
         _helper.canJumpBuffer = true;
 
         // Input
@@ -222,12 +219,6 @@ public class BaseSlime_AirborneState : State
     public override void ExitState()
     {
         // Movement conditionals
-        if (isBufferTransition)
-        {
-            _helper.canJump = true;
-            isBufferTransition = false;
-        }
-        _helper.canJumpBuffer = false;
 
         // Flipping
         if (_helper.stickingDirection.x == 1)
