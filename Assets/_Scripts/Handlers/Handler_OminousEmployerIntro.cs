@@ -64,6 +64,8 @@ public class Handler_OminousEmployerIntro : MonoBehaviour, IDataPersistence
     {
         playerInput = new PlayerInput(); // Instantiate new Unity's Input System
 
+        Cursor.visible = false;
+
         DisableDialogueContinue();
         cutsceneObjects.SetActive(false);
         typewriter.SetTypewriterSpeed(0.01f);
@@ -252,6 +254,7 @@ public class Handler_OminousEmployerIntro : MonoBehaviour, IDataPersistence
 
         DataPersistenceManager.instance.SaveGame();
         yield return new WaitForSeconds(5f);
+        Cursor.visible = true;
         SceneManager.LoadScene("MainMenu");
 
     }

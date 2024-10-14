@@ -100,7 +100,7 @@ public class Handler_OminousEmployerIntroCamera : MonoBehaviour
     // Detects if you are nodding yes or no
     private void NoddingDetect()
     {
-        // Detect if you went at least 80% nodding yes
+        // Detect if you went at least xx% nodding yes
         if (Input.mousePosition.y > Screen.height * 0.60f && lastNodDirection.y != 1)
         {
             lastNodDirection = Vector2.up;
